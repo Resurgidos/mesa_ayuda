@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.CasoInstancia" table="casoinstancia">
+
+        <id name="OID" type="string">
+            <column name="OIDCasoInstancia"/>
+            <generator class="uuid2"/>
+            
+        </id>
+
+        <property name="fechaHoraFinPlanificada" type="date">
+            <column name="fechaHoraFinPlanificada"/>
+        </property>
+
+        <property name="fechaHoraFinReal" type="date">
+            <column name="fechaHoraFinReal"/>
+        </property>
+        
+        <property name="fechaHoraInicioPlanificada" type="date">
+            <column name="fechaHoraInicioPlanificada"/>
+        </property>
+        
+        <property name="fechaHoraInicioReal" type="date">
+            <column name="fechaHoraInicioReal"/>
+        </property>
+        
+        <property name="observaciones" type="string">
+            <column name="observaciones"/>
+        </property>
+        
+        <property name="OrdenCasoIntancia" type="int">
+            <column name="ordenCasoIntancia"/>
+        </property>
+
+        
+        <many-to-one name="eCasoInstancia" class="entidades.EstadoCasoInstancia" column="OIDEstadoCasoInstancia" not-null="true"/>
+        <many-to-one name="especialista" class="entidades.Especialista" column="OIDEspecialista" not-null="true"/> 
+        <many-to-one name="tipoInstancia" class="entidades.TipoInstancia" column="OIDTipoInstancia" not-null="true"/>
+       
+        
+        <bag name="casoInsTarea" table="casoinstanciatarea" cascade="save-update" > 
+            <key column="OIDCasoInstancia" not-null="true"/> 
+            <one-to-many class="entidades.CasoInstanciaTarea"/> 
+        </bag>
+
+    </class>
+
+</hibernate-mapping>
