@@ -20,7 +20,7 @@
         
         
         <many-to-one name="tipoInstancia" class="entidades.TipoInstancia" column="OIDTipoInstancia" not-null="true"/>
-
+        
        
        
 

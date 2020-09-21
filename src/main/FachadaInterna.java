@@ -24,12 +24,13 @@ public class FachadaInterna {
     }
 
      List<Object> buscar(String claseABuscar, List<DTOCriterio> criterioList) {
+         /*
         if (HibernateUtil.getSession().getTransaction().isActive())
         {
             HibernateUtil.getSession().getTransaction().commit();
         }
         HibernateUtil.getSession().beginTransaction();
-        
+        */
         Criteria cr = null;
         try {
             cr = HibernateUtil.getSession().createCriteria(Class.forName(paqueteEntidades + "." + claseABuscar), claseABuscar.toLowerCase());

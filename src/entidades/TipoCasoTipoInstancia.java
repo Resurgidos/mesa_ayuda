@@ -7,6 +7,7 @@ public class TipoCasoTipoInstancia extends Entidad {
     private TipoInstancia tipoInstancia;
     //Constructor por defecto
     public TipoCasoTipoInstancia(){}
+    
 
     //Getters y Setters 
 

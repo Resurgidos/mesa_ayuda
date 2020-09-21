@@ -28,8 +28,8 @@
         
         <many-to-one name="tipoCaso" class="entidades.TipoCaso" column="OIDTipoCaso" not-null="true"/>
          
-        <bag name="tipoCtipoIns" table="tipocaso_tipoinstancia" cascade="save-update"> 
-            <key column="OIDConfiguracionTipoCaso" not-null="true"/> 
+        <bag name="tipoCtipoIns" table="tipocaso_tipoinstancia" cascade="none" inverse="false"> 
+            <key column="OIDConfiguracionTipoCaso" not-null="false"/> 
             <one-to-many class="entidades.TipoCasoTipoInstancia"/> 
         </bag>
 

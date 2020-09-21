@@ -67,6 +67,8 @@ public class ConfiguracionTipoCaso extends Entidad{
     public void setTipoCtipoIns(List<TipoCasoTipoInstancia> tipoCtipoIns) {
         this.tipoCtipoIns = tipoCtipoIns;
     }
-    
+     public void addTipoCasoTipoInstancia(TipoCasoTipoInstancia tcti) {
+       tipoCtipoIns.add(tcti) ;
+    }
     
 }
