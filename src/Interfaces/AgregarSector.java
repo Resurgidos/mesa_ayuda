@@ -1,15 +1,20 @@
  
 package Interfaces;
+import Controller.Controlador;
 import entidades.*;
 import java.util.ArrayList;
 import main.*;
 public class AgregarSector extends javax.swing.JFrame {
-private ArrayList Sector;
-    public AgregarSector() {
+
+    private ArrayList Sector;
+  Controlador control = new Controlador();
+
+
+public AgregarSector() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agregar Sector");
-        Controlador controller = new Controlador();
+        
     }
 
     /**
@@ -177,7 +182,7 @@ private ArrayList Sector;
         Integer codsec = new Integer(jTextField1.getText());
         String nombSec = jTextField2.getText();
         String descSec = jTextField3.getText();
-        
+        control.agregarSector(codsec,nombSec,descSec);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

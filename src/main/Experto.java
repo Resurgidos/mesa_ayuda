@@ -1,32 +1,35 @@
 package main;
 
 import entidades.*;
-import java.util.ArrayList;
 
 public class Experto {
 
-    public void Metodo() {
-     crearElementos();
-    }
-    ArrayList<TipoCasoTipoInstancia> lista = new ArrayList<>();
-     void crearElementos() {
-        FachadaPersistencia.getInstance().iniciarTransaccion();  
+    public void agregarSector(Integer codsec, String nombreSect, String descripSect) {
+      FachadaPersistencia.getInstance().iniciarTransaccion();  
         
-        //Instanciaciones de objetos a usar 
-        ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
+        //Instanciaciones de objetos a usar      
+        Sector sector = new Sector();
+       
+        //Pasamos los parametros al Sector      
+        sector.setCodSector(codsec);
+        sector.setNombreSector(nombreSect);
+        sector.setDescripcionSector(descripSect);;
+        FachadaPersistencia.getInstance().guardar(sector);            
+        FachadaPersistencia.getInstance().finalizarTransaccion();
+    }
+         
+}  
+
+
+
+
+
+ /* ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
         TipoCasoTipoInstancia tcti = new TipoCasoTipoInstancia();
         TipoCaso tc = new TipoCaso();
-        TipoInstancia ti = new TipoInstancia();
-        Sector sector = new Sector();
-        TipoTarea tt = new TipoTarea();
-        
-        //Creamos Sector
-        sector.setCodSector(98);
-        sector.setNombreSector("software");
-        sector.setDescripcionSector("");;
-        FachadaPersistencia.getInstance().guardar(sector);
-       
-      /*  tt.setCodTipoTarea(44);
+        TipoInstancia ti = new TipoInstancia();*/
+        /*    TipoTarea tt = new TipoTarea();*/
+ /*  tt.setCodTipoTarea(44);
         tt.setNombreTipoTarea("Alquilar");
         FachadaPersistencia.getInstance().guardar(tt);
         
@@ -51,11 +54,4 @@ public class Experto {
         
         
        */
-         FachadaPersistencia.getInstance().finalizarTransaccion();
-        
-         
-    } 
-         
-}  
-
 

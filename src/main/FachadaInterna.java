@@ -1,5 +1,6 @@
 package main;
 
+import DTO.DTOCriterio;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.FlushMode;
@@ -23,14 +24,14 @@ public class FachadaInterna {
         return fachadaInterna;
     }
 
-     List<Object> buscar(String claseABuscar, List<DTOCriterio> criterioList) {
-         /*
+     List<Object> buscar(String claseABuscar, List<DTOCriterio> criterioList) {///COmentar hasta criteria
+         
         if (HibernateUtil.getSession().getTransaction().isActive())
         {
             HibernateUtil.getSession().getTransaction().commit();
         }
         HibernateUtil.getSession().beginTransaction();
-        */
+        
         Criteria cr = null;
         try {
             cr = HibernateUtil.getSession().createCriteria(Class.forName(paqueteEntidades + "." + claseABuscar), claseABuscar.toLowerCase());

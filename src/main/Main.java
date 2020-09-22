@@ -1,11 +1,14 @@
 package main;
+import Interfaces.MENÚ;
 
 public class Main {
 
     public static void main(String[] args) {
-        new Controlador().Metodo();
+       
+       MENÚ menu = new MENÚ();
+       menu.setVisible(true);
     }
 
-//mandale!
+
 
 }

@@ -1,5 +1,6 @@
 package main;
 
+import DTO.DTOCriterio;
 import java.util.*;
 
 public class FachadaPersistencia {
