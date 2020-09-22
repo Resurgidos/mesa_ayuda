@@ -23,9 +23,10 @@ public class Experto {
         //Creamos Sector
         sector.setCodSector(98);
         sector.setNombreSector("software");
+        sector.setDescripcionSector("");;
         FachadaPersistencia.getInstance().guardar(sector);
        
-        tt.setCodTipoTarea(44);
+      /*  tt.setCodTipoTarea(44);
         tt.setNombreTipoTarea("Alquilar");
         FachadaPersistencia.getInstance().guardar(tt);
         
@@ -49,20 +50,7 @@ public class Experto {
         FachadaPersistencia.getInstance().guardar(configTC);
         
         
-       
-        
-        
-        
-        
-         
-                
-
-        
-       
-        
-        
-        
-        
+       */
          FachadaPersistencia.getInstance().finalizarTransaccion();
         
          

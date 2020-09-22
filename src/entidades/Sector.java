@@ -10,6 +10,7 @@ public class Sector extends Entidad{
     private String descripcionSector;
     private Date fechaHoraFinVigenciaSector;
 
+    
     //Constructor por defecto
     public Sector(){
     }

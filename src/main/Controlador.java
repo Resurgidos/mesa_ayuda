@@ -1,5 +1,5 @@
 package main;
-
+import interfaces.*;
 public class Controlador {
 
     private Experto experto = new Experto();
@@ -7,5 +7,7 @@ public class Controlador {
     public void Metodo() {
         experto.Metodo();
     }
-
+    public void agregarSector(){
+        experto.Metodo();
+    }
 }
