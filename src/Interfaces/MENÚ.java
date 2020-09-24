@@ -1,6 +1,12 @@
 
 package Interfaces;
 
+import Interfaces.ABMConfiguracionTipoCaso.ABMConfiguracionTipoCaso;
+import Interfaces.ABMTipoInstancia.ABMTipoInstancia;
+import Interfaces.ABMTipoTarea.ABMTipoTarea;
+import Interfaces.ABMTipoCaso.ABMTipoCaso;
+import Interfaces.ABMSector.ABMSector;
+
 public class MENÚ extends javax.swing.JFrame {
     public MENÚ() {
         initComponents();

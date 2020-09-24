@@ -1,15 +1,14 @@
 package main;
-
+import DTO.*;
 import entidades.*;
+import java.util.List;
 
 public class Experto {
 
-    public void agregarSector(Integer codsec, String nombreSect, String descripSect) {
-      FachadaPersistencia.getInstance().iniciarTransaccion();  
-        
+    public void agregarSector(Integer codsec, String nombreSect, String descripSect) { //Metodo del experto con el cual creamos un objeto Sector
+      FachadaPersistencia.getInstance().iniciarTransaccion();          
         //Instanciaciones de objetos a usar      
-        Sector sector = new Sector();
-       
+        Sector sector = new Sector();       
         //Pasamos los parametros al Sector      
         sector.setCodSector(codsec);
         sector.setNombreSector(nombreSect);
@@ -17,7 +16,31 @@ public class Experto {
         FachadaPersistencia.getInstance().guardar(sector);            
         FachadaPersistencia.getInstance().finalizarTransaccion();
     }
-         
+    public DTOSector modificarSector(String nombreSector){
+        return null;  
+        
+    }
+    public void bajaSector(Integer codSector){
+        
+    }
+    /**
+     * Busca objetos con un atributo nulo.
+     */
+    public DTOSector buscarTodosLosObjetosDeUnaClase() {
+        List objetoList = FachadaPersistencia.getInstance().buscar("Sector", null);
+
+        for (Object x : objetoList) {
+            Sector sector = (Sector) x;
+            sector.getCodSector();
+            sector.getNombreSector();
+            sector.getDescripcionSector();
+            sector.getFechaHoraFinVigenciaSector();
+            objetoList.add(sector);
+        }
+    //    DTOSector dto = (Sector) objetoList.get();
+      //  return objetoList;
+      return null;
+    }
 }  
 
 
