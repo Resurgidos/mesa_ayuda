@@ -1,6 +1,7 @@
 package Controller;
 
 import DTO.DTOSector;
+import java.util.List;
 
 
 import main.Experto;
@@ -22,6 +23,11 @@ public class ControladorABMSector {
     public void bajaSector(Integer codSector){
         experto.bajaSector(codSector);
     }
+    
+    public List<DTOSector> FiltradoMostrarDTO(String nombreSector){
+        return experto.filtrado(nombreSector);
+    }
+    
     
     
 }

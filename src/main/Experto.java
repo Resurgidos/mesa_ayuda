@@ -1,6 +1,7 @@
 package main;
 import DTO.*;
 import entidades.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Experto {
@@ -26,21 +27,49 @@ public class Experto {
     /**
      * Busca objetos con un atributo nulo.
      */
-    public DTOSector buscarTodosLosObjetosDeUnaClase() {
-        List objetoList = FachadaPersistencia.getInstance().buscar("Sector", null);
+//    public DTOSector buscarTodosLosObjetosDeUnaClase() {
+//        List objetoList = FachadaPersistencia.getInstance().buscar("Sector", null);
+//
+//        for (Object x : objetoList) {
+//            Sector sector = (Sector) x;
+//            sector.getCodSector();
+//            sector.getNombreSector();
+//            sector.getDescripcionSector();
+//            sector.getFechaHoraFinVigenciaSector();
+//            objetoList.add(sector);
+//        }
+//    //    DTOSector dto = (Sector) objetoList.get();
+//      //  return objetoList;
+//      return null;
+//    }
+    
+    public List<DTOSector> filtrado(String nombreSector) {
+        DTOCriterio dtoCrit = new DTOCriterio();
+        dtoCrit.setAtributo("nombreSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+        dtoCrit.setOperacion("like");
+        dtoCrit.setValor(nombreSector); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
 
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+        listadtoCrit.add(dtoCrit);
+
+
+        List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
+        List<DTOSector> dtoList = new ArrayList<>();
         for (Object x : objetoList) {
+            DTOSector dtosec = new DTOSector();
             Sector sector = (Sector) x;
-            sector.getCodSector();
-            sector.getNombreSector();
-            sector.getDescripcionSector();
-            sector.getFechaHoraFinVigenciaSector();
-            objetoList.add(sector);
+            dtosec.setCodSector(sector.getCodSector());
+            dtosec.setNombreSector(sector.getNombreSector());
+            dtosec.setDescripcionSector(sector.getDescripcionSector());
+            dtosec.setFechaFinVigenciaSector(sector.getFechaHoraFinVigenciaSector());
+            dtoList.add(dtosec);
         }
-    //    DTOSector dto = (Sector) objetoList.get();
-      //  return objetoList;
-      return null;
+       return dtoList ;
+
     }
+    
+    
+    
 }  
 
 

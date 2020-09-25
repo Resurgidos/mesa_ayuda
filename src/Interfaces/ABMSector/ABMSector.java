@@ -1,6 +1,11 @@
 package Interfaces.ABMSector;
 
+import Controller.ControladorABMSector;
+import DTO.DTOSector;
 import Interfaces.MENÚ;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,7 +15,12 @@ public class ABMSector extends javax.swing.JFrame {
     
     
     public ABMSector() {
+        ControladorABMSector controlador = new ControladorABMSector();
+        
+        List<DTOSector> lista = controlador.FiltradoMostrarDTO("");
+      
         initComponents();
+        
         setLocationRelativeTo(null);
         setTitle("ABM Sector");
         tablaSectores = new DefaultTableModel();
@@ -19,8 +29,32 @@ public class ABMSector extends javax.swing.JFrame {
         tablaSectores.addColumn("Nombre Sector");
         tablaSectores.addColumn("Descripción");
         tablaSectores.addColumn("Fin Vigencia Sector");
-        tablaSectores.addColumn("Modificar");
-        tablaSectores.addColumn("Eliminar");
+        
+     
+        for (int i = 0; i < lista.size(); i++) {
+            Vector ejemplo = new Vector();
+            ejemplo.add(lista.get(i).getCodSector());
+            ejemplo.add(lista.get(i).getNombreSector());
+            ejemplo.add(lista.get(i).getDescripcionSector());
+            ejemplo.add(lista.get(i).getFechaFinVigenciaSector());
+
+            tablaSectores.addRow( ejemplo);
+        }
+       /* Vector ejemplo = new Vector();
+        
+        ejemplo.add(lista.get(0).getCodSector());
+     
+        ejemplo.add(lista.get(0).getNombreSector());
+        
+        tablaSectores.addRow( ejemplo);*/
+        
+//         Vector ejemplo1 = new Vector();
+//     
+////        ejemplo1.add();
+//        
+//        tablaSectores.addRow( ejemplo1);
+//        
+        
 
     }
 
@@ -37,7 +71,7 @@ public class ABMSector extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Filtro = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaSector = new javax.swing.JTable();
@@ -61,10 +95,9 @@ public class ABMSector extends javax.swing.JFrame {
         jLabel2.setText("Filtrar:");
         jLabel2.setToolTipText("");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Filtro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
+                FiltroKeyTyped(evt);
             }
         });
 
@@ -86,7 +119,7 @@ public class ABMSector extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(107, 107, 107)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
@@ -100,22 +133,21 @@ public class ABMSector extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jButton1))
                 .addGap(14, 14, 14))
         );
 
         tablaSector.setAutoCreateRowSorter(true);
-        tablaSector.setBackground(new java.awt.Color(255, 255, 255));
         tablaSector.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "cod.Sector", "Nombre Sector", "Descripción", "Fecha Fin Vigencia", "Modificar", "Eliminar"
+                "cod.Sector", "Nombre Sector", "Descripción", "Fecha Fin Vigencia"
             }
         ));
         jScrollPane1.setViewportView(tablaSector);
@@ -179,8 +211,8 @@ public class ABMSector extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,9 +262,9 @@ public class ABMSector extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+    private void FiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyTyped
         
-    }//GEN-LAST:event_jTextField1KeyTyped
+    }//GEN-LAST:event_FiltroKeyTyped
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -274,6 +306,7 @@ public class ABMSector extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Filtro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -284,7 +317,6 @@ public class ABMSector extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tablaSector;
     // End of variables declaration//GEN-END:variables
 }
