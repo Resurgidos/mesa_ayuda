@@ -15,8 +15,8 @@ public class ABMSector extends javax.swing.JFrame {
 
     DefaultTableModel tablaSectores;
     ControladorABMSector controlador = new ControladorABMSector();
+    DTOSector dtosectomodificar = new DTOSector();
     
-    DTOSector datosPasar = null;
     public ABMSector() {
       
         initComponents();
@@ -273,10 +273,7 @@ public class ABMSector extends javax.swing.JFrame {
         }
        
     }
-    public void seleccionTablaSector(){
     
-        
-    }
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -298,8 +295,6 @@ public class ABMSector extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Método para modificar Sector
        
-        
-        int c;
        
        int numTabSec = tablaSector.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
        if(numTabSec == -1){               
@@ -309,22 +304,20 @@ public class ABMSector extends javax.swing.JFrame {
         for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
             if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo  
                 
-                System.out.println(tablaSectores.getValueAt(i, 0));//
-                System.out.println(tablaSectores.getValueAt(i, 1));//
-                c = (int)tablaSectores.getValueAt(i, 0);
-              //  datosPasar.setCodSector(c);
-             //   System.out.println(datosPasar);
-              /*  datosPasar.setNombreSector((String)tablaSectores.getValueAt(i, 1));
-                datosPasar.setDescripcionSector((String)tablaSectores.getValueAt(i, 2));*/
+                System.out.println(tablaSectores.getValueAt(i, 0));
+                System.out.println(tablaSectores.getValueAt(i, 1));
                 
+                dtosectomodificar.setCodSector((int) tablaSectores.getValueAt(i, 0));
+                
+                System.out.println(dtosectomodificar.getCodSector());              
             }
             
         }
+        
       
-       ModificarSector mod = new ModificarSector();
-       mod.setVisible(true);
-       this.setVisible(false);
-   //    dispose();
+        ModificarSector mod = new ModificarSector( dtosectomodificar);
+        mod.setVisible(true);
+        this.setVisible(false);
        
        }
             

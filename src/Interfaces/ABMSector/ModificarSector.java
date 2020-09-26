@@ -5,6 +5,7 @@
  */
 package Interfaces.ABMSector;
 
+import DTO.DTOSector;
 import Interfaces.ABMSector.ABMSector;
 
 /**
@@ -13,15 +14,23 @@ import Interfaces.ABMSector.ABMSector;
  */
 public class ModificarSector extends javax.swing.JFrame {
 
-    ABMSector abmsec = new ABMSector();
-    public ModificarSector() {
+//    ABMSector abmsec = new ABMSector();
+    public ModificarSector(DTOSector dtosectomodificar) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Modificar Sector");
+        
+        int ejemplo = dtosectomodificar.getCodSector();
+        
+        inputCodSec.setText(Integer.toString(ejemplo));
       //  inputCodSec.setText(abmsec.datosPasar.getCodSector());
-        System.out.println(abmsec.datosPasar.getCodSector());
+//        System.out.println(abmsec.datosPasar.getCodSector());
      /*   inputnomSec.setText((String)abmsec.dto.get(1));
         inputDesc.setText((String)abmsec.dto.get(2));*/
+    }
+
+    private ModificarSector() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
