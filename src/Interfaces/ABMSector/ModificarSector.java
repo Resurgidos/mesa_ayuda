@@ -8,6 +8,7 @@ package Interfaces.ABMSector;
 import Controller.ControladorABMSector;
 import DTO.DTOSector;
 import Interfaces.ABMSector.ABMSector;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -212,55 +213,40 @@ public class ModificarSector extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void botonConfModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfModifActionPerformed
+        //Boton Confirmar Modificacion      
+          try{
+              do{
+            if (!inputnomSec.getText().isEmpty()) {
+
         //Boton Confirmar Modificacion
-        String codSecnuevo,nombSecnuevo, descSecnuevo;
-         codSecnuevo = inputCodSec.getText();
-         nombSecnuevo = inputnomSec.getText();
-         descSecnuevo = inputDesc.getText();
-        
-        dtoSec.setCodSector(Integer.parseInt(inputCodSec.getText()));
-        dtoSec.setNombreSector(nombSecnuevo);
-        dtoSec.setDescripcionSector(descSecnuevo);
-         System.out.println(dtoSec.getCodSector());
-         System.out.println(dtoSec.getNombreSector());
-         System.out.println(dtoSec.getDescripcionSector());
-         control.modificarSector(dtoSec);
-         
-         ABMSector abmSec = new ABMSector();
-         abmSec.setVisible(true);
-         dispose();
-         
-    }//GEN-LAST:event_botonConfModifActionPerformed
-    /* private void Validar() {
+                String codSecnuevo, nombSecnuevo, descSecnuevo;
+                codSecnuevo = inputCodSec.getText();
+                nombSecnuevo = inputnomSec.getText();
+                descSecnuevo = inputDesc.getText();
 
-        try {
-            if (!jTextField1.getText().isEmpty()) {
-                if (!jTextField2.getText().isEmpty()) {
-                    
+                dtoSec.setCodSector(Integer.parseInt(inputCodSec.getText()));
+                dtoSec.setNombreSector(nombSecnuevo);
+                dtoSec.setDescripcionSector(descSecnuevo);
+                System.out.println(dtoSec.getCodSector());
+                System.out.println(dtoSec.getNombreSector());
+                System.out.println(dtoSec.getDescripcionSector());
+                control.modificarSector(dtoSec);
 
-                        Integer codsec = new Integer(jTextField1.getText()); //Asigno los inputs a las variables de instancia 
-                        String nombSec = jTextField2.getText();
-                        String descSec = jTextField3.getText();
+                ABMSector abmSec = new ABMSector();
+                abmSec.setVisible(true);
+                dispose();
 
-                        ABMSector volver = new ABMSector();  //Oculto la pagina para dar de alta volviendo al menu de Sector
-                        volver.setVisible(true);
-                        this.setVisible(false);
-                        control.agregarSector(codsec, nombSec, descSec);//Aca setteo el sector al controller
-                        JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
-                        //y un chatch en el caso que no se pueda crear el sector
-
-                   
-                } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                }
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese el codigo", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            }
+                JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            }}while(inputnomSec.getText() == null);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }*/
+         
+       
+    }//GEN-LAST:event_botonConfModifActionPerformed
+   
 
     private void inputnomSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputnomSecActionPerformed
         // TODO add your handling code here:
