@@ -16,7 +16,7 @@ public class ControladorABMSector {
     public void agregarSector(Integer codsec, String nombreSect, String descripSect){
         experto.agregarSector(codsec,nombreSect,descripSect);
     }
-    public DTOSector modificarSector(String nombreSector){
+    public DTOSector modificarSector(int codSector, String nombreSector, String descrSector){
         
         return null; 
     }

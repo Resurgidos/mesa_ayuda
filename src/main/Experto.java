@@ -17,7 +17,7 @@ public class Experto {
         FachadaPersistencia.getInstance().guardar(sector);            
         FachadaPersistencia.getInstance().finalizarTransaccion();
     }
-    public DTOSector modificarSector(String nombreSector){
+    public DTOSector modificarSector(int codSector, String nombreSector, String descrSector){
         return null;  
         
     }

@@ -308,6 +308,8 @@ public class ABMSector extends javax.swing.JFrame {
                 System.out.println(tablaSectores.getValueAt(i, 1));
                 
                 dtosectomodificar.setCodSector((int) tablaSectores.getValueAt(i, 0));
+                dtosectomodificar.setNombreSector((String)tablaSectores.getValueAt(i, 1));
+                dtosectomodificar.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
                 
                 System.out.println(dtosectomodificar.getCodSector());              
             }

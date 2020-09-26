@@ -20,9 +20,11 @@ public class ModificarSector extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Modificar Sector");
         
-        int ejemplo = dtosectomodificar.getCodSector();
+        inputCodSec.setText(Integer.toString(dtosectomodificar.getCodSector()));
+        inputnomSec.setText(dtosectomodificar.getNombreSector());
+        inputDesc.setText(dtosectomodificar.getDescripcionSector());
+//        inputnomSec.setText((String)abmsec.dto.get(1));
         
-        inputCodSec.setText(Integer.toString(ejemplo));
       //  inputCodSec.setText(abmsec.datosPasar.getCodSector());
 //        System.out.println(abmsec.datosPasar.getCodSector());
      /*   inputnomSec.setText((String)abmsec.dto.get(1));
