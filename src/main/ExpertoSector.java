@@ -26,7 +26,6 @@ public class ExpertoSector {
             dtoCrit.setValor(dtoSec.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             System.out.println("Experto "+dtoSec.getNombreSector());
-            System.out.println("Experto "+dtoSec.getDescripcionSector());
         
         List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
        
@@ -35,8 +34,6 @@ public class ExpertoSector {
               sec.setNombreSector(dtoSec.getNombreSector());
               sec.setDescripcionSector(dtoSec.getDescripcionSector());
               FachadaPersistencia.getInstance().modificar(sec);  
-              System.out.println("Experto for "+sec.getNombreSector());
-              System.out.println("Experto for "+sec.getDescripcionSector());
          }
          FachadaPersistencia.getInstance().finalizarTransaccion();
         return null;  
