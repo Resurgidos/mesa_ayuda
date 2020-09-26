@@ -220,7 +220,7 @@ public class ModificarSector extends javax.swing.JFrame {
         dtoSec.setDescripcionSector(descSecnuevo);
          System.out.println(dtoSec.getCodSector());
          System.out.println(dtoSec.getNombreSector());
-            System.out.println(dtoSec.getDescripcionSector());
+         System.out.println(dtoSec.getDescripcionSector());
          
     }//GEN-LAST:event_botonConfModifActionPerformed
 
