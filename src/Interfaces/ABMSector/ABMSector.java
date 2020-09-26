@@ -3,9 +3,11 @@ package Interfaces.ABMSector;
 import Controller.ControladorABMSector;
 import DTO.DTOSector;
 import Interfaces.MENÚ;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +16,7 @@ public class ABMSector extends javax.swing.JFrame {
     DefaultTableModel tablaSectores;
     ControladorABMSector controlador = new ControladorABMSector();
     
+    DTOSector datosPasar = null;
     public ABMSector() {
       
         initComponents();
@@ -60,6 +63,7 @@ public class ABMSector extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaSector = new javax.swing.JTable();
+        ErrorMensaje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,6 +192,8 @@ public class ABMSector extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        ErrorMensaje.setToolTipText("");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -195,18 +201,20 @@ public class ABMSector extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(595, 673, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(56, 56, 56))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 24, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -216,8 +224,10 @@ public class ABMSector extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
@@ -239,9 +249,10 @@ public class ABMSector extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+      
     public void tablaSectores(String cadenaFiltro){
-        
         List<DTOSector> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
+        List prueba = null; 
         tablaSectores = new DefaultTableModel();
         tablaSector.setModel(tablaSectores);
         tablaSectores.addColumn("Cod.Sector");
@@ -257,8 +268,14 @@ public class ABMSector extends javax.swing.JFrame {
             ejemplo.add(lista.get(i).getDescripcionSector());
             ejemplo.add(lista.get(i).getFechaFinVigenciaSector());
             tablaSectores.addRow( ejemplo);
+            
+            
         }
+       
+    }
+    public void seleccionTablaSector(){
     
+        
     }
     
     
@@ -279,15 +296,44 @@ public class ABMSector extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //Método para ventana emergente para confirmar baja
-        /*ConfirmarBaja confirBaj = new ConfirmarBaja();
-        confirBaj.setVisible(true);
-        this.setVisible(true);*/
+        //Método para modificar Sector
+       
         
-       int i = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
+        int c;
+       
+       int numTabSec = tablaSector.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+       if(numTabSec == -1){               
+           ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
+       } else{
+        for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
+            if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo  
+                
+                System.out.println(tablaSectores.getValueAt(i, 0));//
+                System.out.println(tablaSectores.getValueAt(i, 1));//
+                c = (int)tablaSectores.getValueAt(i, 0);
+              //  datosPasar.setCodSector(c);
+             //   System.out.println(datosPasar);
+              /*  datosPasar.setNombreSector((String)tablaSectores.getValueAt(i, 1));
+                datosPasar.setDescripcionSector((String)tablaSectores.getValueAt(i, 2));*/
+                
+            }
+            
+        }
+      
+       ModificarSector mod = new ModificarSector();
+       mod.setVisible(true);
+       this.setVisible(false);
+   //    dispose();
+       
+       }
+            
+       
+
+      /* int i = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
             JOptionPane.showMessageDialog(this, "Sector Modificado");
-        }   
+        }   */
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void FiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyTyped
@@ -299,8 +345,7 @@ public class ABMSector extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void botonfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonfiltroActionPerformed
-       //Filtro de busqueda
-      
+       //Filtro de busqueda   
           tablaSectores(Filtro.getText());
           
       
@@ -342,6 +387,7 @@ public class ABMSector extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ErrorMensaje;
     private javax.swing.JTextField Filtro;
     private javax.swing.JButton botonfiltro;
     private javax.swing.JButton jButton1;
