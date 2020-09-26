@@ -300,7 +300,10 @@ public class ABMSector extends javax.swing.JFrame {
 
     private void botonfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonfiltroActionPerformed
        //Filtro de busqueda
-        tablaSectores(Filtro.getText());
+      
+          tablaSectores(Filtro.getText());
+          
+      
     }//GEN-LAST:event_botonfiltroActionPerformed
 
     /**
