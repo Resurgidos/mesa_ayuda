@@ -45,11 +45,14 @@ public class Experto {
     
     public List<DTOSector> filtrado(String nombreSector) {
         DTOCriterio dtoCrit = new DTOCriterio();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
         dtoCrit.setAtributo("nombreSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
         dtoCrit.setOperacion("like");
         dtoCrit.setValor(nombreSector); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-
-        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+        listadtoCrit.add(dtoCrit);
+        dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+        dtoCrit.setOperacion("like");
+        dtoCrit.setValor(Integer.parseInt(nombreSector)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
         listadtoCrit.add(dtoCrit);
 
 

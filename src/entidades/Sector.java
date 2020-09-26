@@ -28,7 +28,12 @@ public class Sector extends Entidad{
     }
 
     public void setNombreSector(String nombreSector) {
+     //  try{
+       // if(nombreSector != null)
         this.nombreSector = nombreSector;
+       //}catch(Exception e){
+         //  e.getMessage();
+       //}
     }
 
     public String getDescripcionSector() {
