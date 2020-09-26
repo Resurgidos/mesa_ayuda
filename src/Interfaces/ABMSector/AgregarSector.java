@@ -1,22 +1,22 @@
- 
 package Interfaces.ABMSector;
+
 import Interfaces.ABMSector.ABMSector;
 import Controller.ControladorABMSector;
+import com.sun.glass.events.KeyEvent;
 import entidades.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import main.*;
+
 public class AgregarSector extends javax.swing.JFrame {
 
-   
-  ControladorABMSector control = new ControladorABMSector();
+    ControladorABMSector control = new ControladorABMSector();
 
-
-public AgregarSector() {
+    public AgregarSector() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agregar Sector");
-        
+
     }
 
     /**
@@ -73,6 +73,16 @@ public AgregarSector() {
         jLabel1.setText("Cod. Sector:");
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -80,6 +90,11 @@ public AgregarSector() {
         jLabel2.setText("Nombre Sector:");
 
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -87,6 +102,11 @@ public AgregarSector() {
         jLabel3.setText("Descripción Sector:");
 
         jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Volver");
@@ -178,17 +198,43 @@ public AgregarSector() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Integer codsec = new Integer(jTextField1.getText()); //Asigno los inputs a las variables de instancia 
-        String nombSec = jTextField2.getText();
-        String descSec = jTextField3.getText();
-        
-        ABMSector volver = new ABMSector();  //Oculto la pagina para dar de alta volviendo al menu de Sector
-        volver.setVisible(true);
-        this.setVisible(false);
-        control.agregarSector(codsec,nombSec,descSec);//Aca setteo el sector al controller
-        JOptionPane.showMessageDialog(null,"El Sector se creo con éxito");//Habria que hacer una validación con un try 
-                                                                         //y un chatch en el caso que no se pueda crear el sector
+        Validar();
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+
+        //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+
+        //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        //Declaramos una variable y asignamos un evento
+    }//GEN-LAST:event_jTextField3KeyTyped
 
     /**
      * @param args the command line arguments
@@ -223,6 +269,46 @@ public AgregarSector() {
                 new AgregarSector().setVisible(true);
             }
         });
+    }
+
+    private void Validar() {
+
+        try {
+            if (!jTextField1.getText().isEmpty()) {
+                if (!jTextField2.getText().isEmpty()) {
+                    
+
+                        Integer codsec = new Integer(jTextField1.getText()); //Asigno los inputs a las variables de instancia 
+                        String nombSec = jTextField2.getText();
+                        String descSec = jTextField3.getText();
+
+                        ABMSector volver = new ABMSector();  //Oculto la pagina para dar de alta volviendo al menu de Sector
+                        volver.setVisible(true);
+                        this.setVisible(false);
+                        control.agregarSector(codsec, nombSec, descSec);//Aca setteo el sector al controller
+                        JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
+                        //y un chatch en el caso que no se pueda crear el sector
+
+                   
+                } else {
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese el codigo", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+
+    private static boolean isNumber(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
