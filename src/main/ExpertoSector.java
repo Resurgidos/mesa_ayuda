@@ -17,20 +17,28 @@ public class ExpertoSector {
         FachadaPersistencia.getInstance().guardar(sector);            
         FachadaPersistencia.getInstance().finalizarTransaccion();
     }
-    public DTOSector modificarSector(String codSector, String nombreSector, String descrSector){
-        DTOCriterio dtoCrit = new DTOCriterio();
+    public DTOSector modificarSector(DTOSector dtoSec){
+        FachadaPersistencia.getInstance().iniciarTransaccion();    
+        DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
-        if(nombreSector.matches("[0-9]+") ) {//El matches es propia d ejava y evalua lo que hay entre parentesis
             dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("=");
-            dtoCrit.setValor(Integer.parseInt(codSector)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(dtoSec.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
+            System.out.println("Experto "+dtoSec.getNombreSector());
+            System.out.println("Experto "+dtoSec.getDescripcionSector());
         
-        }else{
-            System.out.println("No se paso ningun codigo como parametro en el experto modificarSector");
-        }
         List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
-        
+       
+         for (Object x : objetoList){
+              Sector sec = (Sector) x;
+              sec.setNombreSector(dtoSec.getNombreSector());
+              sec.setDescripcionSector(dtoSec.getDescripcionSector());
+              FachadaPersistencia.getInstance().modificar(sec);  
+              System.out.println("Experto for "+sec.getNombreSector());
+              System.out.println("Experto for "+sec.getDescripcionSector());
+         }
+         FachadaPersistencia.getInstance().finalizarTransaccion();
         return null;  
         
         

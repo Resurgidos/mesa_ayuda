@@ -14,7 +14,7 @@ import Interfaces.ABMSector.ABMSector;
  */
 public class ModificarSector extends javax.swing.JFrame {
 
-//    ABMSector abmsec = new ABMSector();
+ DTOSector dtoSec = new DTOSector();
     public ModificarSector(DTOSector dtosectomodificar) {
         initComponents();
         setLocationRelativeTo(null);
@@ -49,7 +49,7 @@ public class ModificarSector extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonConfModif = new javax.swing.JButton();
         inputDesc = new javax.swing.JTextField();
         inputnomSec = new javax.swing.JTextField();
         inputCodSec = new javax.swing.JTextField();
@@ -107,10 +107,10 @@ public class ModificarSector extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Confirmar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonConfModif.setText("Confirmar");
+        botonConfModif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonConfModifActionPerformed(evt);
             }
         });
 
@@ -137,7 +137,7 @@ public class ModificarSector extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
-                            .addComponent(jButton4))
+                            .addComponent(botonConfModif))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(84, 84, 84)
@@ -174,7 +174,7 @@ public class ModificarSector extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(botonConfModif))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -210,9 +210,19 @@ public class ModificarSector extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void botonConfModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfModifActionPerformed
+        String codSecnuevo,nombSecnuevo, descSecnuevo;
+         codSecnuevo = inputCodSec.getText();
+         nombSecnuevo = inputnomSec.getText();
+         descSecnuevo = inputDesc.getText();
+        dtoSec.setCodSector(Integer.parseInt(inputCodSec.getText()));
+        dtoSec.setNombreSector(nombSecnuevo);
+        dtoSec.setDescripcionSector(descSecnuevo);
+         System.out.println(dtoSec.getCodSector());
+         System.out.println(dtoSec.getNombreSector());
+            System.out.println(dtoSec.getDescripcionSector());
+         
+    }//GEN-LAST:event_botonConfModifActionPerformed
 
     private void inputnomSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputnomSecActionPerformed
         // TODO add your handling code here:
@@ -254,11 +264,11 @@ public class ModificarSector extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonConfModif;
     private javax.swing.JTextField inputCodSec;
     private javax.swing.JTextField inputDesc;
     private javax.swing.JTextField inputnomSec;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

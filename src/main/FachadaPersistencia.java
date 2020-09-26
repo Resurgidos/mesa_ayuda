@@ -32,5 +32,7 @@ public class FachadaPersistencia {
     void finalizarTransaccion() {
         FachadaInterna.getInstance().finalizarTransaccion();
     }
-
+     public void modificar(Object objeto){
+         FachadaInterna.getInstance().modificar(objeto);
+     }
 }
