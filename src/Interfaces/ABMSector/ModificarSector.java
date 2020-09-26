@@ -17,6 +17,11 @@ import javax.swing.JOptionPane;
 public class ModificarSector extends javax.swing.JFrame {
  ControladorABMSector control = new ControladorABMSector();
  DTOSector dtoSec = new DTOSector();
+ ABMSector abmSec = new ABMSector();
+ 
+ 
+ 
+ 
     public ModificarSector(DTOSector dtosectomodificar) {
         initComponents();
         setLocationRelativeTo(null);
@@ -210,43 +215,32 @@ public class ModificarSector extends javax.swing.JFrame {
         ABMSector abmSec = new ABMSector();
         abmSec.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void botonConfModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfModifActionPerformed
-        //Boton Confirmar Modificacion      
-          try{
-              do{
-            if (!inputnomSec.getText().isEmpty()) {
-
         //Boton Confirmar Modificacion
-                String codSecnuevo, nombSecnuevo, descSecnuevo;
-                codSecnuevo = inputCodSec.getText();
-                nombSecnuevo = inputnomSec.getText();
-                descSecnuevo = inputDesc.getText();
-
-                dtoSec.setCodSector(Integer.parseInt(inputCodSec.getText()));
-                dtoSec.setNombreSector(nombSecnuevo);
-                dtoSec.setDescripcionSector(descSecnuevo);
-                System.out.println(dtoSec.getCodSector());
-                System.out.println(dtoSec.getNombreSector());
-                System.out.println(dtoSec.getDescripcionSector());
-                control.modificarSector(dtoSec);
-
-                ABMSector abmSec = new ABMSector();
-                abmSec.setVisible(true);
-                dispose();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            }}while(inputnomSec.getText() == null);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-         
+        String nombSecnuevo, descSecnuevo;
+        
+         nombSecnuevo = inputnomSec.getText();
+         descSecnuevo = inputDesc.getText();
+        
+        dtoSec.setCodSector(Integer.parseInt(inputCodSec.getText()));
+        dtoSec.setNombreSector(nombSecnuevo);
+        dtoSec.setDescripcionSector(descSecnuevo);
+         System.out.println(dtoSec.getCodSector());
+         System.out.println(dtoSec.getNombreSector());
+         System.out.println(dtoSec.getDescripcionSector());
+         control.modificarSector(dtoSec);
        
+        JOptionPane.showMessageDialog(this, "Se modifico con exito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
+
+                abmSec.setVisible(true);
+                this.setVisible(false);
+                abmSec.tablaSectores("");
+        
+         
     }//GEN-LAST:event_botonConfModifActionPerformed
-   
 
     private void inputnomSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputnomSecActionPerformed
         // TODO add your handling code here:
