@@ -4,7 +4,7 @@ import entidades.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Experto {
+public class ExpertoSector {
 
     public void agregarSector(Integer codsec, String nombreSect, String descripSect) { //Metodo del experto con el cual creamos un objeto Sector
       FachadaPersistencia.getInstance().iniciarTransaccion();          
@@ -17,31 +17,28 @@ public class Experto {
         FachadaPersistencia.getInstance().guardar(sector);            
         FachadaPersistencia.getInstance().finalizarTransaccion();
     }
-    public DTOSector modificarSector(int codSector, String nombreSector, String descrSector){
+    public DTOSector modificarSector(String codSector, String nombreSector, String descrSector){
+        DTOCriterio dtoCrit = new DTOCriterio();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+        if(nombreSector.matches("[0-9]+") ) {//El matches es propia d ejava y evalua lo que hay entre parentesis
+            dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(Integer.parseInt(codSector)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+        
+        }else{
+            System.out.println("No se paso ningun codigo como parametro en el experto modificarSector");
+        }
+        List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
+        
         return null;  
+        
         
     }
     public void bajaSector(Integer codSector){
         
     }
-    /**
-     * Busca objetos con un atributo nulo.
-     */
-//    public DTOSector buscarTodosLosObjetosDeUnaClase() {
-//        List objetoList = FachadaPersistencia.getInstance().buscar("Sector", null);
-//
-//        for (Object x : objetoList) {
-//            Sector sector = (Sector) x;
-//            sector.getCodSector();
-//            sector.getNombreSector();
-//            sector.getDescripcionSector();
-//            sector.getFechaHoraFinVigenciaSector();
-//            objetoList.add(sector);
-//        }
-//    //    DTOSector dto = (Sector) objetoList.get();
-//      //  return objetoList;
-//      return null;
-//    }
+   
     
     
     public List<DTOSector> filtrado(String nombreSector) {
@@ -74,44 +71,5 @@ public class Experto {
         }
        return dtoList ;
 
-    }
-    
-    
-    
+    }   
 }  
-
-
-
-
-
- /* ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
-        TipoCasoTipoInstancia tcti = new TipoCasoTipoInstancia();
-        TipoCaso tc = new TipoCaso();
-        TipoInstancia ti = new TipoInstancia();*/
-        /*    TipoTarea tt = new TipoTarea();*/
- /*  tt.setCodTipoTarea(44);
-        tt.setNombreTipoTarea("Alquilar");
-        FachadaPersistencia.getInstance().guardar(tt);
-        
-        ti.setCodTipoInstancia(999);
-        ti.setNombreTipoInstancia("prueba");
-        ti.setSector(sector);
-        ti.setTipoTarea(tt);
-        FachadaPersistencia.getInstance().guardar(ti);
-        
-        tc.setCodTipoCaso(777);
-        tc.setNombreTipoCaso("Falla");
-        FachadaPersistencia.getInstance().guardar(tc);
-        
-        tcti.setOrdenTipoCasoTipoInstancia(55);
-        tcti.setTipoInstancia(ti);
-        FachadaPersistencia.getInstance().guardar(tcti);
-        
-        configTC.setNroConfigTC(7);
-        configTC.setTipoCaso(tc);
-        configTC.addTipoCasoTipoInstancia(tcti);
-        FachadaPersistencia.getInstance().guardar(configTC);
-        
-        
-       */
-

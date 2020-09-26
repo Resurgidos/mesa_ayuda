@@ -6,7 +6,7 @@
 package Interfaces.ABMTipoCaso;
 
 import Interfaces.ABMSector.AgregarSector;
-import Interfaces.MENÚ;
+import main.MENÚ;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

@@ -4,11 +4,11 @@ import DTO.DTOSector;
 import java.util.List;
 
 
-import main.Experto;
+import main.ExpertoSector;
 
 public class ControladorABMSector {
 
-    private Experto experto = new Experto();
+    private ExpertoSector experto = new ExpertoSector();
 
    /* public void Metodo() {
         experto.Metodo();
@@ -16,8 +16,8 @@ public class ControladorABMSector {
     public void agregarSector(Integer codsec, String nombreSect, String descripSect){
         experto.agregarSector(codsec,nombreSect,descripSect);
     }
-    public DTOSector modificarSector(int codSector, String nombreSector, String descrSector){
-        
+    public DTOSector modificarSector(String codSector, String nombreSector, String descrSector){
+        experto.modificarSector(codSector, nombreSector, descrSector);
         return null; 
     }
     public void bajaSector(Integer codSector){
