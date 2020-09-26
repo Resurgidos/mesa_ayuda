@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ABMSector extends javax.swing.JFrame {
-
+//hola
     DefaultTableModel tablaSectores;
     ControladorABMSector controlador = new ControladorABMSector();
     DTOSector dtosectomodificar = new DTOSector();
