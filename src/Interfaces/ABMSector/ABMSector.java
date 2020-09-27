@@ -152,6 +152,7 @@ public class ABMSector extends javax.swing.JFrame {
                 "cod.Sector", "Nombre Sector", "Descripción", "Fecha Fin Vigencia"
             }
         ));
+        tablaSector.setFocusable(false);
         jScrollPane1.setViewportView(tablaSector);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

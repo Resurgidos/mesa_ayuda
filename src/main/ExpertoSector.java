@@ -8,14 +8,14 @@ import java.util.List;
 
 public class ExpertoSector {
 
-    public void agregarSector(Integer codsec, String nombreSect, String descripSect) { //Metodo del experto con el cual creamos un objeto Sector
+    public void agregarSector(DTOSector dtoSec) { //Metodo del experto con el cual creamos un objeto Sector
       FachadaPersistencia.getInstance().iniciarTransaccion();          
         //Instanciaciones de objetos a usar      
         Sector sector = new Sector();       
         //Pasamos los parametros al Sector      
-        sector.setCodSector(codsec);
-        sector.setNombreSector(nombreSect);
-        sector.setDescripcionSector(descripSect);;
+        sector.setCodSector(dtoSec.getCodSector());
+        sector.setNombreSector(dtoSec.getNombreSector());
+        sector.setDescripcionSector(dtoSec.getDescripcionSector());;
         FachadaPersistencia.getInstance().guardar(sector);            
         FachadaPersistencia.getInstance().finalizarTransaccion();
     }

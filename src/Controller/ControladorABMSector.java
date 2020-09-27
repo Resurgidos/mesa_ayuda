@@ -13,8 +13,8 @@ public class ControladorABMSector {
    /* public void Metodo() {
         experto.Metodo();
     }*/
-    public void agregarSector(Integer codsec, String nombreSect, String descripSect){
-        experto.agregarSector(codsec,nombreSect,descripSect);
+    public void agregarSector(DTOSector dtoSec){
+        experto.agregarSector(dtoSec);
     }
     public DTOSector modificarSector(DTOSector dtoSec){
         experto.modificarSector(dtoSec);

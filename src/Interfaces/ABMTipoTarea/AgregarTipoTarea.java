@@ -182,7 +182,7 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
         Integer codsec = new Integer(jTextField4.getText());
         String nombSec = jTextField5.getText();
         String descSec = jTextField6.getText();
-        control.agregarSector(codsec,nombSec,descSec);
+//        control.agregarSector(codsec,nombSec,descSec);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

@@ -2,16 +2,16 @@ package Interfaces.ABMSector;
 
 import Interfaces.ABMSector.ABMSector;
 import Controller.ControladorABMSector;
+import DTO.DTOSector;
 import com.sun.glass.events.KeyEvent;
-import entidades.*;
-import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
-import main.*;
+
 
 public class AgregarSector extends javax.swing.JFrame {
 
     ControladorABMSector control = new ControladorABMSector();
-
+    DTOSector dtoSec = new DTOSector();
     public AgregarSector() {
         initComponents();
         setLocationRelativeTo(null);
@@ -278,14 +278,14 @@ public class AgregarSector extends javax.swing.JFrame {
                 if (!jTextField2.getText().isEmpty()) {
                     
 
-                        Integer codsec = new Integer(jTextField1.getText()); //Asigno los inputs a las variables de instancia 
-                        String nombSec = jTextField2.getText();
-                        String descSec = jTextField3.getText();
+                        dtoSec.setCodSector(Integer.parseInt(jTextField1.getText())); //Asigno los inputs a las variables de instancia 
+                        dtoSec.setNombreSector(jTextField2.getText());
+                        dtoSec.setDescripcionSector(jTextField3.getText()); 
 
                         ABMSector volver = new ABMSector();  //Oculto la pagina para dar de alta volviendo al menu de Sector
                         volver.setVisible(true);
                         this.setVisible(false);
-                        control.agregarSector(codsec, nombSec, descSec);//Aca setteo el sector al controller
+                        control.agregarSector(dtoSec);//Aca setteo el sector al controller
                         JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
                         //y un chatch en el caso que no se pueda crear el sector
 
@@ -302,14 +302,7 @@ public class AgregarSector extends javax.swing.JFrame {
         }
     }
 
-    private static boolean isNumber(String cadena) {
-        try {
-            Integer.parseInt(cadena);
-            return true;
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

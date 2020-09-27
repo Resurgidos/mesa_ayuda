@@ -237,7 +237,7 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
         Integer codsec = new Integer(jTextField1.getText());
         String nombSec = jTextField2.getText();
         String descSec = jTextField3.getText();
-        control.agregarSector(codsec,nombSec,descSec);
+   //     control.agregarSector(codsec,nombSec,descSec);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -251,7 +251,7 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
         Integer codsec = new Integer(jTextField1.getText());
         String nombSec = jTextField2.getText();
         String descSec = jTextField3.getText();
-        control.agregarSector(codsec,nombSec,descSec);
+   //     control.agregarSector(codsec,nombSec,descSec);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
