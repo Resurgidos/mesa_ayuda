@@ -96,7 +96,9 @@ public class ExpertoSector {
             dtosec.setCodSector(sector.getCodSector());
             dtosec.setNombreSector(sector.getNombreSector());
             dtosec.setDescripcionSector(sector.getDescripcionSector());
+            if(sector.getFechaHoraFinVigenciaSector() != null){
             dtosec.setFechaFinVigenciaSector(sector.getFechaHoraFinVigenciaSector());
+            }
             dtoList.add(dtosec);
         }
        return dtoList ;

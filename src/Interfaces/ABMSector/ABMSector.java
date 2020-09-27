@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.event.TableModelEvent;
+
 import javax.swing.table.DefaultTableModel;
 
 public class ABMSector extends javax.swing.JFrame {
@@ -143,6 +143,11 @@ public class ABMSector extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sectores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
+        tablaSector = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tablaSector.setAutoCreateRowSorter(true);
         tablaSector.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -339,8 +344,7 @@ public class ABMSector extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Sector Dado de baja"); 
         }
         tablaSectores("");
-        tablaSectores.fireTableDataChanged();
-            }
+                    }
         
         }   
       }

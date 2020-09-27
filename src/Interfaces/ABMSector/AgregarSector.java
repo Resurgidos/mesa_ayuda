@@ -289,7 +289,7 @@ public class AgregarSector extends javax.swing.JFrame {
                          
                         volver.setVisible(true);
                         volver.tablaSectores("");
-                        volver.tablaSectores.fireTableDataChanged();
+                        
                         this.setVisible(false);
                         //Aca setteo el sector al controller
                         JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
