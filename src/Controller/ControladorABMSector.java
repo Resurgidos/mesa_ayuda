@@ -21,8 +21,8 @@ public class ControladorABMSector {
         return null; 
     }
      
-    public void bajaSector(Integer codSector){
-        experto.bajaSector(codSector);
+    public void bajaSector(DTOSector dtobaja){
+        experto.bajaSector(dtobaja);
     }
     
     public List<DTOSector> FiltradoMostrarDTO(String nombreSector){

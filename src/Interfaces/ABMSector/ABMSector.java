@@ -7,13 +7,14 @@ import java.awt.Color;
 
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ABMSector extends javax.swing.JFrame {
 //hola
     DefaultTableModel tablaSectores;
     ControladorABMSector controlador = new ControladorABMSector();
-    DTOSector dtosectomodificar = new DTOSector();
+    DTOSector dtosector = new DTOSector();
     
     public ABMSector() {
       
@@ -185,8 +186,6 @@ public class ABMSector extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -195,6 +194,10 @@ public class ABMSector extends javax.swing.JFrame {
                 .addGap(0, 24, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,10 +205,10 @@ public class ABMSector extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
@@ -285,17 +288,17 @@ public class ABMSector extends javax.swing.JFrame {
                 System.out.println(tablaSectores.getValueAt(i, 0));
                 System.out.println(tablaSectores.getValueAt(i, 1));
                 
-                dtosectomodificar.setCodSector((int) tablaSectores.getValueAt(i, 0));
-                dtosectomodificar.setNombreSector((String)tablaSectores.getValueAt(i, 1));
-                dtosectomodificar.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
+                dtosector.setCodSector((int) tablaSectores.getValueAt(i, 0));
+                dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
+                dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
                 
-                System.out.println(dtosectomodificar.getCodSector());              
+                System.out.println(dtosector.getCodSector());              
             }
-            
+          
         }
         
       
-        ModificarSector mod = new ModificarSector( dtosectomodificar);
+        ModificarSector mod = new ModificarSector(dtosector);
         mod.setVisible(true);
         this.setVisible(false);
        
@@ -303,10 +306,7 @@ public class ABMSector extends javax.swing.JFrame {
             
        
 
-      /* int i = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            JOptionPane.showMessageDialog(this, "Sector Modificado");
-        }   */
+     
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void FiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyTyped
@@ -314,7 +314,25 @@ public class ABMSector extends javax.swing.JFrame {
     }//GEN-LAST:event_FiltroKeyTyped
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // Metodo para dar de baja un sector
+        int numTabSec = tablaSector.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        if(numTabSec == -1){               
+           ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
+       } else{
+        for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
+            if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
+                dtosector.setCodSector((int)tablaSector.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                int j = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
+        if (j == 0) {
+            controlador.bajaSector(dtosector);
+            JOptionPane.showMessageDialog(this, "Sector Dado de baja"); 
+        }
+               
+            }
+        
+        }   
+      }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void botonfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonfiltroActionPerformed
