@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 
 public class ABMSector extends javax.swing.JFrame {
@@ -22,6 +23,7 @@ public class ABMSector extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("ABM Sector");
         tablaSectores("");
+        tablaSectores.fireTableDataChanged();
     }
 
     
@@ -151,7 +153,15 @@ public class ABMSector extends javax.swing.JFrame {
             new String [] {
                 "cod.Sector", "Nombre Sector", "Descripción", "Fecha Fin Vigencia"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaSector.setFocusable(false);
         jScrollPane1.setViewportView(tablaSector);
 
@@ -231,7 +241,6 @@ public class ABMSector extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-      
     public void tablaSectores(String cadenaFiltro){
         List<DTOSector> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
         List prueba = null; 
@@ -298,7 +307,7 @@ public class ABMSector extends javax.swing.JFrame {
           
         }
         
-      
+        
         ModificarSector mod = new ModificarSector(dtosector);
         mod.setVisible(true);
         this.setVisible(false);
@@ -329,7 +338,8 @@ public class ABMSector extends javax.swing.JFrame {
             controlador.bajaSector(dtosector);
             JOptionPane.showMessageDialog(this, "Sector Dado de baja"); 
         }
-               
+        tablaSectores("");
+        tablaSectores.fireTableDataChanged();
             }
         
         }   

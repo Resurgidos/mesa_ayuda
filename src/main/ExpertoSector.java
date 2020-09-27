@@ -17,7 +17,7 @@ public class ExpertoSector {
         sector.setNombreSector(dtoSec.getNombreSector());
         sector.setDescripcionSector(dtoSec.getDescripcionSector());;
         FachadaPersistencia.getInstance().guardar(sector);            
-        FachadaPersistencia.getInstance().finalizarTransaccion();
+      
     }
     public DTOSector modificarSector(DTOSector dtoSec){
         FachadaPersistencia.getInstance().iniciarTransaccion();    
@@ -37,7 +37,7 @@ public class ExpertoSector {
               sec.setDescripcionSector(dtoSec.getDescripcionSector());
               FachadaPersistencia.getInstance().modificar(sec);  
          }
-         FachadaPersistencia.getInstance().finalizarTransaccion();
+        
         return null;  
         
         

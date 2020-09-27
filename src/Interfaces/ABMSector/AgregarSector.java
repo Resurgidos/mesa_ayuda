@@ -199,6 +199,8 @@ public class AgregarSector extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Validar();
+        
+       
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -282,10 +284,14 @@ public class AgregarSector extends javax.swing.JFrame {
                         dtoSec.setNombreSector(jTextField2.getText());
                         dtoSec.setDescripcionSector(jTextField3.getText()); 
 
-                        ABMSector volver = new ABMSector();  //Oculto la pagina para dar de alta volviendo al menu de Sector
+                        ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector
+                        control.agregarSector(dtoSec);
+                         
                         volver.setVisible(true);
+                        volver.tablaSectores("");
+                        volver.tablaSectores.fireTableDataChanged();
                         this.setVisible(false);
-                        control.agregarSector(dtoSec);//Aca setteo el sector al controller
+                        //Aca setteo el sector al controller
                         JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
                         //y un chatch en el caso que no se pueda crear el sector
 

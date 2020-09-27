@@ -238,6 +238,7 @@ public class ModificarSector extends javax.swing.JFrame {
                 abmSec.setVisible(true);
                 this.setVisible(false);
                 abmSec.tablaSectores("");
+                abmSec.tablaSectores.fireTableDataChanged();
         
          
     }//GEN-LAST:event_botonConfModifActionPerformed
