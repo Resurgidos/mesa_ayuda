@@ -67,7 +67,7 @@ public class ABMSector extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 0));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +75,7 @@ public class ABMSector extends javax.swing.JFrame {
             }
         });
 
-        botonfiltro.setBackground(new java.awt.Color(102, 153, 0));
+        botonfiltro.setBackground(new java.awt.Color(204, 204, 204));
         botonfiltro.setText("Buscar");
         botonfiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,18 +337,23 @@ public class ABMSector extends javax.swing.JFrame {
         if(numTabSec == -1){               
            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
            ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
-       } else{
+       
+       }else{
         for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
             if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
+                if(tablaSector.getValueAt(i, 3) != null){
+                    ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+                    ErrorMensaje.setText("El sector elegido ya esta dado de baja");
+                }else{
                 dtosector.setCodSector((int)tablaSector.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                 int j = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
-        if (j == 0) {
-            controlador.bajaSector(dtosector);
-            JOptionPane.showMessageDialog(this, "Sector Dado de baja"); 
-        }
-        tablaSectores("");
-                    }
-        
+                    if (j == 0) {
+                        controlador.bajaSector(dtosector);
+                        JOptionPane.showMessageDialog(this, "Sector Dado de baja"); 
+                           }
+                     tablaSectores("");
+               }
+            }
         }   
       }
     }//GEN-LAST:event_jButton4ActionPerformed

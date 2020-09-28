@@ -12,56 +12,76 @@ public class ExpertoSector {
       FachadaPersistencia.getInstance().iniciarTransaccion();          
         //Instanciaciones de objetos a usar      
         Sector sector = new Sector();    
-        
-        FachadaPersistencia.getInstance().iniciarTransaccion();    
-        DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
-        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
-            dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-            dtoCrit.setOperacion("=");
-            dtoCrit.setValor(dtoSec.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-            listadtoCrit.add(dtoCrit);
-            System.out.println("Experto "+dtoSec.getNombreSector());
-        
-        List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
-        int verificar = 0;
-        for(Object x : objetoList){
-            Sector sec = (Sector)x;
-            verificar = sec.getCodSector();            
-        }
-        if(verificar == 0 ){
-        //Pasamos los parametros al Sector      
-        sector.setCodSector(dtoSec.getCodSector());
-        sector.setNombreSector(dtoSec.getNombreSector());
-        sector.setDescripcionSector(dtoSec.getDescripcionSector());;
-        FachadaPersistencia.getInstance().guardar(sector);            
-        }else{
-            dtoSec.setMensajeError("El código ya existe");           
-        }
-        return dtoSec;
+       try{ 
+            FachadaPersistencia.getInstance().iniciarTransaccion();    
+            DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+            List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+                dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                dtoCrit.setOperacion("=");
+                dtoCrit.setValor(dtoSec.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                listadtoCrit.add(dtoCrit);
+                System.out.println("Experto "+dtoSec.getNombreSector());
+                    try{
+                        List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
+                        int verificar = 0;
+                        for(Object x : objetoList){
+                            Sector sec = (Sector)x;
+                            verificar = sec.getCodSector();            
+                             }
+                                if(verificar == 0 ){
+                                    //Pasamos los parametros al Sector      
+                                    sector.setCodSector(dtoSec.getCodSector());
+                                    sector.setNombreSector(dtoSec.getNombreSector());
+                                    sector.setDescripcionSector(dtoSec.getDescripcionSector());;
+                                    FachadaPersistencia.getInstance().guardar(sector);            
+                                }else{
+                                    dtoSec.setMensajeError("El código ya existe");  
+                                }
+                        }catch(Exception e){
+                             System.out.println("No se pudo registrar el Sector");
+                        }
+
+                 }catch(Exception e){
+                    System.out.println("No se pudo encontrar el Sector");
+                 }
+       return dtoSec;
     }
+    
+    
     public DTOSector modificarSector(DTOSector dtoSec){
-        FachadaPersistencia.getInstance().iniciarTransaccion();    
-        DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
-        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
-            dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-            dtoCrit.setOperacion("=");
-            dtoCrit.setValor(dtoSec.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-            listadtoCrit.add(dtoCrit);
-            System.out.println("Experto "+dtoSec.getNombreSector());
+      try{
+            FachadaPersistencia.getInstance().iniciarTransaccion();    
+            DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+            List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+                dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                dtoCrit.setOperacion("=");
+                dtoCrit.setValor(dtoSec.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                listadtoCrit.add(dtoCrit);
+                System.out.println("Experto "+dtoSec.getNombreSector());
         
-        List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
-       
-         for (Object x : objetoList){
-              Sector sec = (Sector) x;
-              sec.setNombreSector(dtoSec.getNombreSector());
-              sec.setDescripcionSector(dtoSec.getDescripcionSector());
-              FachadaPersistencia.getInstance().modificar(sec);  
-         }
-        
+                try{ List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
+
+                  for (Object x : objetoList){
+                       Sector sec = (Sector) x;
+                       sec.setNombreSector(dtoSec.getNombreSector());
+                       sec.setDescripcionSector(dtoSec.getDescripcionSector());
+                       FachadaPersistencia.getInstance().modificar(sec);  
+                  }
+
+                }catch(Exception e){
+                                    System.out.println("No se pudo modificar el Sector");  
+                               }
+
+                 }catch(Exception e){
+                    System.out.println("No se pudo encontrar el Sector");
+                 }
         return null;  
         
         
     }
+    
+    
+    
     public void bajaSector(DTOSector dtoSec){
         Date fecha = new Date();
             
