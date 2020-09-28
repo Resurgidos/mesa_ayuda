@@ -283,7 +283,7 @@ public class AgregarSector extends javax.swing.JFrame {
                         dtoSec.setDescripcionSector(jTextField3.getText()); 
                         control.agregarSector(dtoSec); //Envia los datos de la pantalla al controlador
                         
-                        if(dtoSec.getMensajeError()== ""){//si el mensaje de error del dto es ""(no hubo error) grabamos los datos
+                        if(dtoSec.getVerificarerror()== 0){//si el mensaje de error del dto es ""(no hubo error) grabamos los datos
                         ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
                         JOptionPane.showMessageDialog(this, "El sector fue creado con éxito");
                         volver.setVisible(true);
@@ -292,8 +292,8 @@ public class AgregarSector extends javax.swing.JFrame {
                         }else{
                            JOptionPane.showMessageDialog(this,dtoSec.getMensajeError());
                             System.out.println("acá esta el error, en registro de sector en validar");
-                           dtoSec.setMensajeError("");
-                       } }while(dtoSec.getMensajeError() != "");
+                           dtoSec.setVerificarerror(0);
+                       } }while(dtoSec.getVerificarerror() != 0);
                         //Aca setteo el sector al controller
                       
             //y un chatch en el caso que no se pueda crear el sector

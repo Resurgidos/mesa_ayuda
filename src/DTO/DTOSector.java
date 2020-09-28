@@ -9,6 +9,7 @@ public class DTOSector {
     String descripcionSector;
     Date fechaFinVigenciaSector;
     String mensajeError;
+    int verificarerror = 0;
 
     
 
@@ -50,6 +51,14 @@ public class DTOSector {
 
     public void setMensajeError(String mensajeError) {
         this.mensajeError = mensajeError;
+    }
+
+    public int getVerificarerror() {
+        return verificarerror;
+    }
+
+    public void setVerificarerror(int verificarerror) {
+        this.verificarerror = verificarerror;
     }
     
     

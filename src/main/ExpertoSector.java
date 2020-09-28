@@ -28,16 +28,20 @@ public class ExpertoSector {
         int verificar = 0;
         for(Object x : objetoList){
             Sector sec = (Sector)x;
-            verificar = sec.getCodSector();            
+            verificar = sec.getCodSector(); 
+            dtoSec.setVerificarerror(verificar);
         }
         System.out.println(verificar);
-        if(verificar == 0 ){
-        //Pasamos los parametros al Sector      
+        if(dtoSec.getVerificarerror() == 0 ){ //Verificamos que El codigo no se repita
+        //Pasamos los parametros al Sector   
+        if(dtoSec.getCodSector() == 0){ //Verificamos que el codigo no sea cero
+            dtoSec.setMensajeError("El Código no esta permitido"); 
+        }else{
         sector.setCodSector(dtoSec.getCodSector());
         sector.setNombreSector(dtoSec.getNombreSector());
         sector.setDescripcionSector(dtoSec.getDescripcionSector());;
         FachadaPersistencia.getInstance().guardar(sector);            
-        }else{
+        }}else{
             dtoSec.setMensajeError("El código ya existe");        
         }}catch(Exception e){
                System.out.println("No se pudo registrar el sector"); 
