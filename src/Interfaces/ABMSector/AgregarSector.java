@@ -198,11 +198,9 @@ public class AgregarSector extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Validar();
-        
-       
-
-
+       //Metodo para agregar un sector
+        Validar();//el metodo esta abajo
+      
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
@@ -276,29 +274,27 @@ public class AgregarSector extends javax.swing.JFrame {
     private void Validar() {
 
         try {
-            if (!jTextField1.getText().isEmpty()) {
-                if (!jTextField2.getText().isEmpty()) {
+            if (!jTextField1.getText().isEmpty()) { //Para que no sea vacio código 
+                if (!jTextField2.getText().isEmpty()) { //Para que no sea vacio el nombre
                     do{
                         dtoSec.setCodSector(Integer.parseInt(jTextField1.getText())); //Asigno los inputs a las variables de instancia 
                         dtoSec.setNombreSector(jTextField2.getText());
                         dtoSec.setDescripcionSector(jTextField3.getText()); 
-                        control.agregarSector(dtoSec); 
+                        control.agregarSector(dtoSec); //Envia los datos de la pantalla al controlador
                         
-                        if(dtoSec.getMensajeError()== ""){
-                        ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                              
-                        volver.setVisible(true);
-                        volver.tablaSectores("");                        
-                        this.setVisible(false);
+                        if(dtoSec.getMensajeError()== ""){//si el mensaje de error del dto es ""(no hubo error) grabamos los datos
+                        ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
                         JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
+                        volver.setVisible(true);
+                        volver.tablaSectores("");
+                        this.setVisible(false);
                         }else{
                            JOptionPane.showMessageDialog(this,dtoSec.getMensajeError());
                            dtoSec.setMensajeError("");
                        } }while(dtoSec.getMensajeError() != "");
                         //Aca setteo el sector al controller
                       
-                        //y un chatch en el caso que no se pueda crear el sector
-
-                   
+            //y un chatch en el caso que no se pueda crear el sector
                 } else {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
