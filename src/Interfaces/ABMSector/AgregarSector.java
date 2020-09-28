@@ -278,15 +278,14 @@ public class AgregarSector extends javax.swing.JFrame {
         try {
             if (!jTextField1.getText().isEmpty()) {
                 if (!jTextField2.getText().isEmpty()) {
-                    
-                      //  do{
+                    do{
                         dtoSec.setCodSector(Integer.parseInt(jTextField1.getText())); //Asigno los inputs a las variables de instancia 
                         dtoSec.setNombreSector(jTextField2.getText());
                         dtoSec.setDescripcionSector(jTextField3.getText()); 
                         control.agregarSector(dtoSec); 
-                        if(dtoSec.getMensajeError()== null){
-                        ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector
-                                              
+                        
+                        if(dtoSec.getMensajeError()== ""){
+                        ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                              
                         volver.setVisible(true);
                         volver.tablaSectores("");                        
                         this.setVisible(false);
@@ -294,7 +293,7 @@ public class AgregarSector extends javax.swing.JFrame {
                         }else{
                            JOptionPane.showMessageDialog(this,dtoSec.getMensajeError());
                            dtoSec.setMensajeError("");
-                        }//}while(dtoSec.getMensajeError() != null);
+                       } }while(dtoSec.getMensajeError() != "");
                         //Aca setteo el sector al controller
                       
                         //y un chatch en el caso que no se pueda crear el sector
