@@ -297,29 +297,31 @@ public class ABMSector extends javax.swing.JFrame {
        if(numTabSec == -1){               
            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
            ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
-       } else{
-        for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
-            if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo  
-                
-                System.out.println(tablaSectores.getValueAt(i, 0));
-                System.out.println(tablaSectores.getValueAt(i, 1));
-                
-                dtosector.setCodSector((int) tablaSectores.getValueAt(i, 0));
-                dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
-                dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
-                
-                System.out.println(dtosector.getCodSector());              
-            }
+       } else{        
+            for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
+                if(tablaSector.getValueAt(i, 3) != null){  
+                    ErrorMensaje.setForeground(Color.RED);
+                    ErrorMensaje.setText("El sector esta dado de baja, no se puede modificar");
+                }else{
+                if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo  
+
+                    System.out.println(tablaSectores.getValueAt(i, 0));
+                    System.out.println(tablaSectores.getValueAt(i, 1));
+
+                    dtosector.setCodSector((int) tablaSectores.getValueAt(i, 0));
+                    dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
+                    dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
+
+                    System.out.println(dtosector.getCodSector());  
+                    ModificarSector mod = new ModificarSector(dtosector);
+                    mod.setVisible(true);
+                    this.setVisible(false);
+                }
           
-        }
-        
-        
-        ModificarSector mod = new ModificarSector(dtosector);
-        mod.setVisible(true);
-        this.setVisible(false);
        
-       }
-            
+        }
+      }
+     }      
        
 
      
