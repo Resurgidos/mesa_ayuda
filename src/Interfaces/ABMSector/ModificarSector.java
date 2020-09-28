@@ -221,12 +221,13 @@ public class ModificarSector extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void botonConfModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfModifActionPerformed
+        if(!inputnomSec.getText().isEmpty()){
         //Boton Confirmar Modificacion
         String nombSecnuevo, descSecnuevo;
-        
+
          nombSecnuevo = inputnomSec.getText();
          descSecnuevo = inputDesc.getText();
-        
+
         dtoSec.setCodSector(Integer.parseInt(inputCodSec.getText()));
         dtoSec.setNombreSector(nombSecnuevo);
         dtoSec.setDescripcionSector(descSecnuevo);
@@ -234,15 +235,17 @@ public class ModificarSector extends javax.swing.JFrame {
          System.out.println(dtoSec.getNombreSector());
          System.out.println(dtoSec.getDescripcionSector());
          control.modificarSector(dtoSec);
-       
-        JOptionPane.showMessageDialog(this, "Se modifico con exito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(this, "Se modifico con éxito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
 
                 abmSec.setVisible(true);
                 this.setVisible(false);
                 abmSec.tablaSectores("");
-                
-        
-         
+       }
+       else{
+       JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del sector para poder modificar", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+       }
+ 
     }//GEN-LAST:event_botonConfModifActionPerformed
 
     private void inputnomSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputnomSecActionPerformed

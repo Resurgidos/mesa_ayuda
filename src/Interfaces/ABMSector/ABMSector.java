@@ -291,19 +291,20 @@ public class ABMSector extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Método para modificar Sector
-       
-       
+       //Método para modificar Sector
+
+
        int numTabSec = tablaSector.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-       if(numTabSec == -1){               
+       if(numTabSec == -1){
            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
            ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
-       } else{        
+       } else{
             for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
-                if(tablaSector.getValueAt(i, 3) != null){  
+                if(tablaSector.getValueAt(i, 3) != null){
                     ErrorMensaje.setForeground(Color.RED);
                     ErrorMensaje.setText("El sector esta dado de baja, no se puede modificar");
                 }else{
-                if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo  
+                if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
 
                     System.out.println(tablaSectores.getValueAt(i, 0));
                     System.out.println(tablaSectores.getValueAt(i, 1));
@@ -312,19 +313,17 @@ public class ABMSector extends javax.swing.JFrame {
                     dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
                     dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
 
-                    System.out.println(dtosector.getCodSector());  
+                    System.out.println(dtosector.getCodSector());
                     ModificarSector mod = new ModificarSector(dtosector);
                     mod.setVisible(true);
                     this.setVisible(false);
                 }
-          
-       
+
+
         }
       }
-     }      
-       
+     }
 
-     
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void FiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyTyped

@@ -225,10 +225,11 @@ public class AgregarSector extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
         }
+            
 
     }//GEN-LAST:event_jTextField2KeyTyped
 
@@ -284,12 +285,13 @@ public class AgregarSector extends javax.swing.JFrame {
                         
                         if(dtoSec.getMensajeError()== ""){//si el mensaje de error del dto es ""(no hubo error) grabamos los datos
                         ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
-                        JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
+                        JOptionPane.showMessageDialog(this, "El sector fue creado con éxito");
                         volver.setVisible(true);
                         volver.tablaSectores("");
                         this.setVisible(false);
                         }else{
                            JOptionPane.showMessageDialog(this,dtoSec.getMensajeError());
+                            System.out.println("acá esta el error, en registro de sector en validar");
                            dtoSec.setMensajeError("");
                        } }while(dtoSec.getMensajeError() != "");
                         //Aca setteo el sector al controller
