@@ -291,7 +291,6 @@ public class ABMSector extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Método para modificar Sector
-       //Método para modificar Sector
 
 
        int numTabSec = tablaSector.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
@@ -335,7 +334,7 @@ public class ABMSector extends javax.swing.JFrame {
         int numTabSec = tablaSector.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if(numTabSec == -1){               
            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-           ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
+           ErrorMensaje.setText("No ha seleccionado ningún sector para dar de baja");
        
        }else{
         for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla

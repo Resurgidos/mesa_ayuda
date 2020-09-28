@@ -13,12 +13,12 @@ public class ControladorABMSector {
    /* public void Metodo() {
         experto.Metodo();
     }*/
-    public void agregarSector(DTOSector dtoSec){
-        experto.agregarSector(dtoSec);
+    public DTOSector agregarSector(DTOSector dtoSec){   
+        return  experto.agregarSector(dtoSec);
     }
     public DTOSector modificarSector(DTOSector dtoSec){
-        experto.modificarSector(dtoSec);
-        return null; 
+        
+        return experto.modificarSector(dtoSec);
     }
      
     public void bajaSector(DTOSector dtobaja){
