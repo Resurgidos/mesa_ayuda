@@ -8,6 +8,9 @@ public class DTOSector {
     String nombreSector;
     String descripcionSector;
     Date fechaFinVigenciaSector;
+    String mensajeError;
+
+    
 
     //Setters y Getters
     public int getCodSector() {
@@ -40,6 +43,13 @@ public class DTOSector {
 
     public void setFechaFinVigenciaSector(Date fechaFinVigenciaSector) {
         this.fechaFinVigenciaSector = fechaFinVigenciaSector;
+    }
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
     }
     
     

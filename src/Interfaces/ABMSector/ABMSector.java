@@ -187,6 +187,7 @@ public class ABMSector extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        ErrorMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ErrorMensaje.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -12,4 +12,3 @@ package Controller;
 public class ControladorABMTipoInstancia {
     
 }
-// ESTO ES UNA PRUEBA PARA VERIFICAR

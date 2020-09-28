@@ -8,16 +8,36 @@ import java.util.List;
 
 public class ExpertoSector {
 
-    public void agregarSector(DTOSector dtoSec) { //Metodo del experto con el cual creamos un objeto Sector
+    public DTOSector agregarSector(DTOSector dtoSec) { //Metodo del experto con el cual creamos un objeto Sector
       FachadaPersistencia.getInstance().iniciarTransaccion();          
         //Instanciaciones de objetos a usar      
-        Sector sector = new Sector();       
+        Sector sector = new Sector();    
+        
+        FachadaPersistencia.getInstance().iniciarTransaccion();    
+        DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+            dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(dtoSec.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            System.out.println("Experto "+dtoSec.getNombreSector());
+        
+        List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
+        int verificar = 0;
+        for(Object x : objetoList){
+            Sector sec = (Sector)x;
+            verificar = sec.getCodSector();            
+        }
+        if(verificar == 0 ){
         //Pasamos los parametros al Sector      
         sector.setCodSector(dtoSec.getCodSector());
         sector.setNombreSector(dtoSec.getNombreSector());
         sector.setDescripcionSector(dtoSec.getDescripcionSector());;
         FachadaPersistencia.getInstance().guardar(sector);            
-      
+        }else{
+            dtoSec.setMensajeError("El código ya existe");           
+        }
+        return dtoSec;
     }
     public DTOSector modificarSector(DTOSector dtoSec){
         FachadaPersistencia.getInstance().iniciarTransaccion();    
@@ -100,6 +120,8 @@ public class ExpertoSector {
             dtosec.setFechaFinVigenciaSector(sector.getFechaHoraFinVigenciaSector());
             }
             dtoList.add(dtosec);
+            
+            
         }
        return dtoList ;
 

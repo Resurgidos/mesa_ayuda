@@ -279,20 +279,24 @@ public class AgregarSector extends javax.swing.JFrame {
             if (!jTextField1.getText().isEmpty()) {
                 if (!jTextField2.getText().isEmpty()) {
                     
-
+                      //  do{
                         dtoSec.setCodSector(Integer.parseInt(jTextField1.getText())); //Asigno los inputs a las variables de instancia 
                         dtoSec.setNombreSector(jTextField2.getText());
                         dtoSec.setDescripcionSector(jTextField3.getText()); 
-
+                        control.agregarSector(dtoSec); 
+                        if(dtoSec.getMensajeError()== null){
                         ABMSector volver = new ABMSector(); //Oculto la pagina para dar de alta volviendo al menu de Sector
-                        control.agregarSector(dtoSec);
-                         
+                                              
                         volver.setVisible(true);
-                        volver.tablaSectores("");
-                        
+                        volver.tablaSectores("");                        
                         this.setVisible(false);
-                        //Aca setteo el sector al controller
                         JOptionPane.showMessageDialog(null, "El Sector se creo con éxito");//Habria que hacer una validación con un try 
+                        }else{
+                           JOptionPane.showMessageDialog(this,dtoSec.getMensajeError());
+                           dtoSec.setMensajeError("");
+                        }//}while(dtoSec.getMensajeError() != null);
+                        //Aca setteo el sector al controller
+                      
                         //y un chatch en el caso que no se pueda crear el sector
 
                    
