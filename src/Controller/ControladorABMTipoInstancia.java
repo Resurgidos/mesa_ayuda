@@ -1,14 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
-/**
- *
- * @author leand
- */
+import DTO.DTOTipoInstancia;
+import java.util.List;
+import main.ExpertoTipoInstancia;
+
 public class ControladorABMTipoInstancia {
+ ExpertoTipoInstancia expertoTI = new ExpertoTipoInstancia();
+ 
+    public DTOTipoInstancia agregarTipoInstancia(DTOTipoInstancia dtoTI){
+        return expertoTI.agregarTipoInstancia(dtoTI) ;
+    }
+    public List<DTOTipoInstancia> filtradoTI(DTOTipoInstancia dtoTI){
+       return expertoTI.filtradoTI(dtoTI) ; 
+    }
+    public List<DTOTipoInstancia> filtroAgregar(DTOTipoInstancia dtoTI){
+        return expertoTI.filtroAgregar(dtoTI);
+    }
     
 }

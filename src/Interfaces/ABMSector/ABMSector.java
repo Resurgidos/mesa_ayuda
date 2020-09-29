@@ -4,6 +4,7 @@ import main.MENÚ;
 import Controller.ControladorABMSector;
 import DTO.DTOSector;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 import java.util.List;
 import java.util.Vector;
@@ -62,6 +63,9 @@ public class ABMSector extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
 
         Filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FiltroKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 FiltroKeyTyped(evt);
             }
@@ -362,6 +366,12 @@ public class ABMSector extends javax.swing.JFrame {
           
       
     }//GEN-LAST:event_botonfiltroActionPerformed
+
+    private void FiltroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        tablaSectores(Filtro.getText());
+    }
+    }//GEN-LAST:event_FiltroKeyPressed
 
     /**
      * @param args the command line arguments

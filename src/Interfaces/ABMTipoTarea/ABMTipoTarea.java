@@ -1,56 +1,76 @@
-
 package Interfaces.ABMTipoTarea;
-
-import Interfaces.ABMSector.AgregarSector;
 import main.MENÚ;
+import Controller.ControladorABMTipoTarea;
+import DTO.DTOTipoTarea;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ABMTipoTarea extends javax.swing.JFrame {
-      DefaultTableModel tablaTipoTarea;
+    
+    DefaultTableModel tablaTipoTarea;
+    ControladorABMTipoTarea controlador = new ControladorABMTipoTarea();
+    DTOTipoTarea dtotipotareamodificar = new DTOTipoTarea();
+    //private Object ErrorMensaje;
+    
     public ABMTipoTarea() {
         initComponents();
-        setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
         setTitle("ABM Tipo Tarea");
-        tablaTipoTarea = new DefaultTableModel();
-        tablaSector.setModel(tablaTipoTarea);
-        tablaTipoTarea.addColumn("Cod.TipoTarea");
-        tablaTipoTarea.addColumn("Nombre TipoTarea");
-        tablaTipoTarea.addColumn("Fin Vigencia TipoTarea");
-        tablaTipoTarea.addColumn("");
+        tablaTipoTarea("");
+        tablaTipoTarea.fireTableDataChanged();
     }
-
-  
+    
     @SuppressWarnings("unchecked")
+    
+    public void tablaTipoTarea(String cadenaFiltro){
+        List<DTOTipoTarea> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
+        List prueba = null; 
+        tablaTipoTarea = new DefaultTableModel();
+        TipoTareaTabla.setModel(tablaTipoTarea);
+        tablaTipoTarea.addColumn("Codigo Tipo Tarea");
+        tablaTipoTarea.addColumn("Nombre Tipo Tarea");
+        tablaTipoTarea.addColumn("Descripcion");
+        tablaTipoTarea.addColumn("Fin Vigencia");
+       
+        for (int i = 0; i < lista.size(); i++) {
+            Vector ejemplo = new Vector();
+            ejemplo.add(lista.get(i).getCodTipoTarea());
+            ejemplo.add(lista.get(i).getNombreTipoTarea());
+            ejemplo.add(lista.get(i).getDescripcionTipoTarea());
+            ejemplo.add(lista.get(i).getFechaHoraFinVigenciaTipoTarea());
+            tablaTipoTarea.addRow( ejemplo);
+        }   
+    } 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BotonModificar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Filtro = new javax.swing.JTextField();
+        BotonFiltro = new javax.swing.JButton();
+        BotonAgregar = new javax.swing.JButton();
+        BotonEliminar = new javax.swing.JButton();
+        MensajeError = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaSector = new javax.swing.JTable();
+        TipoTareaTabla = new javax.swing.JTable();
+        BotonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton2.setText("Volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificar.setText("Modificar");
+        BotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BotonModificarActionPerformed(evt);
             }
         });
 
@@ -60,21 +80,38 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("TIPO TAREA");
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Filtrar:");
         jLabel2.setToolTipText("");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Filtro.setBackground(new java.awt.Color(102, 102, 102));
+        Filtro.setForeground(new java.awt.Color(204, 204, 204));
+        Filtro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltroActionPerformed(evt);
+            }
+        });
+        Filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FiltroKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
+                FiltroKeyTyped(evt);
+            }
+        });
+
+        BotonFiltro.setText("Buscar");
+        BotonFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonFiltroActionPerformed(evt);
+            }
+        });
+
+        BotonAgregar.setForeground(new java.awt.Color(51, 51, 51));
+        BotonAgregar.setText("Agregar");
+        BotonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAgregarActionPerformed(evt);
             }
         });
 
@@ -85,42 +122,65 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(95, 95, 95))
+                .addGap(18, 18, 18)
+                .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonFiltro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonAgregar)
+                .addGap(27, 27, 27))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonFiltro)
+                    .addComponent(BotonAgregar))
                 .addGap(22, 22, 22))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tablaSector.setBackground(new java.awt.Color(255, 255, 255));
-        tablaSector.setModel(new javax.swing.table.DefaultTableModel(
+        BotonEliminar.setText("Eliminar");
+        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarActionPerformed(evt);
+            }
+        });
+
+        MensajeError.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        TipoTareaTabla = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        TipoTareaTabla.setBackground(new java.awt.Color(255, 255, 255));
+        TipoTareaTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo Tipo Tarea", "Nombre Tipo Tarea", "Descripcion", "Fecha fin vigencia"
             }
         ));
-        jScrollPane1.setViewportView(tablaSector);
+        jScrollPane1.setViewportView(TipoTareaTabla);
+
+        BotonVolver.setText("Volver");
+        BotonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,126 +188,165 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(193, 193, 193))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(BotonVolver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonModificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(BotonEliminar)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(24, 24, 24)
-                .addComponent(jButton2)
-                .addGap(34, 34, 34))
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonModificar)
+                    .addComponent(BotonEliminar)
+                    .addComponent(BotonVolver))
+                .addGap(73, 73, 73))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
         //Botón para volver a Menú principal
         MENÚ menu = new MENÚ();
         menu.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BotonVolverActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //Método para ventana emergente para confirmar baja
-        /*ConfirmarBaja confirBaj = new ConfirmarBaja();
-        confirBaj.setVisible(true);
-        this.setVisible(true);*/
+    private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
 
-        int i = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja wuachin?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            JOptionPane.showMessageDialog(this, "Sos un crack papu, vamos por la promo!");
-        } else if (i == 1) {
-            JOptionPane.showMessageDialog(this, "Elejiste la opcion no guachoon");
+       int numTabtita = TipoTareaTabla.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+       if(numTabtita == -1){
+           MensajeError.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           MensajeError.setText("No ha seleccionado ningún tipo tarea para modificar");
+       } else{
+            for(int i=0; i<TipoTareaTabla.getRowCount(); i++){ //Recorremos la tabla
+                if(TipoTareaTabla.getValueAt(i, 3) != null){
+                    MensajeError.setForeground(Color.RED);
+                    MensajeError.setText("Tipo Tarea esta dado de baja, no se puede modificar");
+                }else{
+                if(numTabtita==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
+
+                    System.out.println(tablaTipoTarea.getValueAt(i, 0));
+                    System.out.println(tablaTipoTarea.getValueAt(i, 1));
+
+                    dtotipotareamodificar.setCodTipoTarea((int) tablaTipoTarea.getValueAt(i, 0));
+                    dtotipotareamodificar.setNombreTipoTarea((String)tablaTipoTarea.getValueAt(i, 1));
+                    dtotipotareamodificar.setDescripcionTipoTarea((String) tablaTipoTarea.getValueAt(i, 2));
+
+                    System.out.println(dtotipotareamodificar.getCodTipoTarea());
+                    ModificarTipoTarea mod = new ModificarTipoTarea(dtotipotareamodificar);
+                    mod.setVisible(true);
+                    this.setVisible(false);
+                }
         }
+      }
+     }
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BotonModificarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Botón que llama al método para agregar un nuevo sector, derivandonos a su pantalla
-        AgregarSector agregSector = new AgregarSector();
+    private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
+
+        AgregarTipoTarea agregSector = new AgregarTipoTarea();
         agregSector.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotonAgregarActionPerformed
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1KeyTyped
+    
+    private void FiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyTyped
+       
+    }//GEN-LAST:event_FiltroKeyTyped
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private void BotonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFiltroActionPerformed
+       tablaTipoTarea(Filtro.getText());
+    }//GEN-LAST:event_BotonFiltroActionPerformed
+
+    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+
+        int numTabtita = TipoTareaTabla.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        if(numTabtita == -1){               
+           MensajeError.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           MensajeError.setText("No ha seleccionado ningún tipo tarea para dar de baja");
+       
+       }else{
+        for(int i=0; i<TipoTareaTabla.getRowCount(); i++){ //Recorremos la tabla
+            if(numTabtita==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
+                if(TipoTareaTabla.getValueAt(i, 3) != null){
+                    MensajeError.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+                    MensajeError.setText("Tipo Tarea elegido ya esta dado de baja");
+                }else{
+                dtotipotareamodificar.setCodTipoTarea((int)TipoTareaTabla.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                int j = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Tipo Tarea", JOptionPane.YES_NO_OPTION);
+                    if (j == 0) {
+                        controlador.bajaTipoTarea(dtotipotareamodificar);
+                        JOptionPane.showMessageDialog(this, "Tipo Tarea Dado de baja"); 
+                           }
+                     tablaTipoTarea("");
+               }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ABMTipoTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ABMTipoTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ABMTipoTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ABMTipoTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        }   
+      }
 
-        /* Create and display the form */
+    }//GEN-LAST:event_BotonEliminarActionPerformed
+
+    private void FiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FiltroActionPerformed
+
+    private void FiltroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){ //Para que al presionar enter me busque por filtro
+        tablaTipoTarea(Filtro.getText());
+    }
+    }//GEN-LAST:event_FiltroKeyPressed
+
+    
+   public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ABMTipoTarea().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton BotonAgregar;
+    private javax.swing.JButton BotonEliminar;
+    private javax.swing.JButton BotonFiltro;
+    private javax.swing.JButton BotonModificar;
+    private javax.swing.JButton BotonVolver;
+    private javax.swing.JTextField Filtro;
+    private javax.swing.JLabel MensajeError;
+    private javax.swing.JTable TipoTareaTabla;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tablaSector;
     // End of variables declaration//GEN-END:variables
 }
