@@ -1,12 +1,22 @@
 
 package Interfaces.ABMTipoInstancia;
 
-public class ABMTipoInstancia extends javax.swing.JFrame {
+import Controller.ControladorABMTipoInstancia;
+import DTO.DTOTipoInstancia;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
+public class ABMTipoInstancia extends javax.swing.JFrame {
+    DefaultTableModel tablaTI;
+    ControladorABMTipoInstancia controlTI = new ControladorABMTipoInstancia();
+    DTOTipoInstancia dtoTI = new DTOTipoInstancia();
     public ABMTipoInstancia() {
         initComponents();
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
         setTitle("ABM Tipo Instancia");
+        tablaTI("");
+        tablaTI.fireTableDataChanged();
     }
 
   
@@ -24,7 +34,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         FiltrarTI = new javax.swing.JButton();
         AgregarTI = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaTipoInstancia = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         ModificarTI = new javax.swing.JButton();
         BajaTI = new javax.swing.JButton();
@@ -110,7 +120,12 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaTipoInstancia = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tablaTipoInstancia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -129,7 +144,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaTipoInstancia);
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
         jButton3.setText("Volver");
@@ -211,8 +226,28 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void filtradoTI(){
-        
+    public void tablaTI(String nombreTI){
+        List<DTOTipoInstancia> lista = controlTI.filtroTI(nombreTI);
+        tablaTI = new DefaultTableModel();
+        tablaTipoInstancia.setModel(tablaTI);
+        tablaTI.addColumn("Cod. Tipo Instancia");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
+        tablaTI.addColumn("Nombre Tipo Instancia");//que Luego esta tabla le setteamos para mostrar en modelo de la interfaz
+        tablaTI.addColumn("Nombre Sector");
+        tablaTI.addColumn("Nombre Tipo Tarea");
+        tablaTI.addColumn("Fecha Fin Vigencia");
+    
+        for (int i = 0; i < lista.size(); i++) {
+            Vector fil = new Vector();
+            fil.add(lista.get(i).getCodTipoInstancia());
+            fil.add(lista.get(i).getNombreTipoInstancia());
+            fil.add(lista.get(i).getNombreSector());
+            fil.add(lista.get(i).getNombreTipoTarea());
+            fil.add(lista.get(i).getFechaHoraFinVigenciaTI());
+            tablaTI.addRow(fil);
+                    
+            
+        }
+    
     }
      public void tablaSectores(String cadenaFiltro){
        /* List<DTOSector> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
@@ -286,7 +321,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tablaTipoInstancia;
     // End of variables declaration//GEN-END:variables
 }

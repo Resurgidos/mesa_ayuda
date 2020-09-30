@@ -62,6 +62,50 @@ public class ExpertoTipoInstancia {
     public DTOTipoInstancia modificarTipoInstancia(DTOTipoInstancia dtoTI){
         return null;
     }
+    public DTOTipoInstancia bajaTipoInstancia(DTOTipoInstancia dtoTI){
+        return null;
+    }
+    public List<DTOTipoInstancia> filtroTI(String nombreTI){
+        DTOCriterio dtoCrit = new DTOCriterio();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+
+        if(nombreTI.matches("[0-9]+") ) {//El matches es propia d ejava y evalua lo que hay entre parentesis
+            dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(Integer.parseInt(nombreTI)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+        }else{
+            dtoCrit.setAtributo("nombreTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("like");
+            dtoCrit.setValor(nombreTI); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);       
+        }
+            
+            
+        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+        List<DTOTipoInstancia> dtoList = new ArrayList<>();
+        
+        for (Object x : objetoList) {
+            DTOTipoInstancia dtoTI = new DTOTipoInstancia();
+            System.out.println("LLego antes");
+            TipoInstancia ti = (TipoInstancia) x;
+            dtoTI.setCodTipoInstancia(ti.getCodTipoInstancia());
+            dtoTI.setNombreTipoInstancia(ti.getNombreTipoInstancia());
+            dtoTI.setCodSector(ti.getSector().getCodSector());
+            dtoTI.setNombreSector(ti.getSector().getNombreSector());
+            dtoTI.setCodTipoTarea(ti.getTipoTarea().getCodTipoTarea());
+            dtoTI.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
+          //  if(ti.getFechaHoraFinVigenciaTipoInstancia() != null){
+            dtoTI.setFechaHoraFinVigenciaTI(ti.getFechaHoraFinVigenciaTipoInstancia());
+          //  }
+            dtoList.add(dtoTI);
+            System.out.println("LLega");
+            
+        }
+        
+        return dtoList;
+    }
+    
     
     public List<DTOTipoInstancia> filtradoSector(String dtoTI){
         DTOTipoInstancia dtosec = new DTOTipoInstancia();
