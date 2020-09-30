@@ -303,10 +303,11 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
        dtoAgregar.setNombreSector(outnombSec.getText());
        dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
        dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-              
        control.agregarTipoInstancia(dtoAgregar);
        
        ABMTipoInstancia abmti = new ABMTipoInstancia();
+       abmti.tablaTI("");
+       JOptionPane.showMessageDialog(null,"SOmos la interfaz");
        abmti.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_confirmarAgregarActionPerformed

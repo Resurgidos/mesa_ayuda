@@ -1,5 +1,5 @@
 package Interfaces.ABMTipoTarea;
-import main.MENÚ;
+import main.Menu;
 import Controller.ControladorABMTipoTarea;
 import DTO.DTOTipoTarea;
 import java.awt.Color;
@@ -235,7 +235,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
 
     private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
         //Botón para volver a Menú principal
-        MENÚ menu = new MENÚ();
+        Menu menu = new Menu();
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BotonVolverActionPerformed

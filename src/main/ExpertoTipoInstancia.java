@@ -52,9 +52,8 @@ public class ExpertoTipoInstancia {
             tipoIns.setTipoTarea(tt);
             System.out.println(tt.getNombreTipoTarea());
             FachadaPersistencia.getInstance().guardar(tipoIns);
-            FachadaPersistencia.getInstance().finalizarTransaccion();
-                                                                           
-        return dtoTI;
+            
+            return dtoTI;
     }
         
         

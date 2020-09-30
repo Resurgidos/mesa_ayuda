@@ -10,7 +10,7 @@ import DTO.DTOTipoCaso;
 import Interfaces.ABMSector.AgregarSector;
 import java.util.List;
 import java.util.Vector;
-import main.MENÚ;
+import main.Menu;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -236,7 +236,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Botón para volver a Menú principal
-        MENÚ menu = new MENÚ();
+        Menu menu = new Menu();
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed

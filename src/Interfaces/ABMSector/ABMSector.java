@@ -1,6 +1,6 @@
 package Interfaces.ABMSector;
 
-import main.MENÚ;
+import main.Menu;
 import Controller.ControladorABMSector;
 import DTO.DTOSector;
 import java.awt.Color;
@@ -287,7 +287,7 @@ public class ABMSector extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Botón para volver a Menú principal
-        MENÚ menu = new MENÚ();
+        Menu menu = new Menu();
         menu.setVisible(true);
         this.setVisible(false);
         
