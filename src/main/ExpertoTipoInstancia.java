@@ -45,38 +45,16 @@ public class ExpertoTipoInstancia {
                  System.out.println(tt.getNombreTipoTarea());
                 }            
                     
-            tipoIns.setCodTipoInstancia(dtoTI.getCodTipoInstancia());
-            System.out.println(dtoTI.getCodTipoInstancia());
-            tipoIns.setNombreTipoInstancia(dtoTI.getNombreTipoInstancia());
-            System.out.println(dtoTI.getNombreTipoInstancia());
+            tipoIns.setCodTipoInstancia(dtoTI.getCodTipoInstancia());           
+            tipoIns.setNombreTipoInstancia(dtoTI.getNombreTipoInstancia());          
             tipoIns.setSector(sec);
+            System.out.println(sec.getNombreSector());
             tipoIns.setTipoTarea(tt);
+            System.out.println(tt.getNombreTipoTarea());
             FachadaPersistencia.getInstance().guardar(tipoIns);
-             System.out.println("FIN");
-              /*  Sector sec = null;
-                listadtoCrit.add(dtoCrit);
-                for (Object x : objetoList3) {
-                 sec = (Sector)x ;  
-                    System.out.println(sec.getNombreSector());
-                }
-                 TipoTarea tt = null;
-                List objetoList2 = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit);                        
-                for (Object x : objetoList2) {
-                tt = (TipoTarea)x ;
-                    System.out.println(tt.getNombreTipoTarea());                
-                }
-                
-                  //List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
-                 TI.setCodTipoInstancia(dtoTI.getCodTipoInstancia());
-                 TI.setNombreTipoInstancia(dtoTI.getNombreTipoInstancia());
-               
-                                        
-                FachadaPersistencia.getInstance().guardar(TI); 
-                System.out.println("Se guardo");
-                                        
-                                        
-                     */                   
-        return null;
+            FachadaPersistencia.getInstance().finalizarTransaccion();
+                                                                           
+        return dtoTI;
     }
         
         

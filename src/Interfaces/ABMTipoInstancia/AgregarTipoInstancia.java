@@ -297,14 +297,18 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
        //Método para agregar un Tipo de Instancia 
        DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
-       dtoAgregar.setCodSector(Integer.parseInt(inputcodTI.getText()));
-       dtoAgregar.setNombreSector(inputnombTI.getText());
+       dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
+       dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
        dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
        dtoAgregar.setNombreSector(outnombSec.getText());
        dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
        dtoAgregar.setNombreTipoTarea(outnombTT.getText());
               
        control.agregarTipoInstancia(dtoAgregar);
+       
+       ABMTipoInstancia abmti = new ABMTipoInstancia();
+       abmti.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_confirmarAgregarActionPerformed
 
     private void inputcodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTIActionPerformed
