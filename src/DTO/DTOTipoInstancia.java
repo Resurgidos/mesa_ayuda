@@ -12,6 +12,9 @@ public class DTOTipoInstancia {
     private String nombreSector;
     private int codTipoTarea;
     private String nombreTipoTarea;
+    private int verificarError;
+    private String ErrorMensaje;
+   
 //En el DTO declaramos los atributos de sector o solamente utilizamos sus dtos
    
     
@@ -70,6 +73,22 @@ public class DTOTipoInstancia {
 
     public void setNombreTipoTarea(String nombreTipoTarea) {
         this.nombreTipoTarea = nombreTipoTarea;
+    }
+
+    public int getVerificarError() {
+        return verificarError;
+    }
+
+    public void setVerificarError(int verificarError) {
+        this.verificarError = verificarError;
+    }
+
+    public String getErrorMensaje() {
+        return ErrorMensaje;
+    }
+
+    public void setErrorMensaje(String ErrorMensaje) {
+        this.ErrorMensaje = ErrorMensaje;
     }
     
 

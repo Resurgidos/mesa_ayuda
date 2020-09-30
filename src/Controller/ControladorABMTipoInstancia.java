@@ -1,7 +1,7 @@
 
 package Controller;
 
-import DTO.DTOTipoInstancia;
+import DTO.*;
 import java.util.List;
 import main.ExpertoTipoInstancia;
 
@@ -11,11 +11,12 @@ public class ControladorABMTipoInstancia {
     public DTOTipoInstancia agregarTipoInstancia(DTOTipoInstancia dtoTI){
         return expertoTI.agregarTipoInstancia(dtoTI) ;
     }
-    public List<DTOTipoInstancia> filtradoTI(DTOTipoInstancia dtoTI){
-       return expertoTI.filtradoTI(dtoTI) ; 
+    public List<DTOTipoInstancia> filtradoSector(String dtoTI){
+       return expertoTI.filtradoSector(dtoTI); 
     }
-    public List<DTOTipoInstancia> filtroAgregar(DTOTipoInstancia dtoTI){
-        return expertoTI.filtroAgregar(dtoTI);
+    public List<DTOTipoInstancia> filtradoTT(String dtoTI){
+       return expertoTI.filtradoTT(dtoTI);
+      
     }
     
 }

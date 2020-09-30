@@ -1,19 +1,20 @@
 package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
-import DTO.DTOTipoInstancia;
+import DTO.*;
 import com.sun.glass.events.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 
 public class AgregarTipoInstancia extends javax.swing.JFrame {
-DTOTipoInstancia dtoTI = new DTOTipoInstancia();
-ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
+        DTOTipoInstancia dtoTI = new DTOTipoInstancia();
+        ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
+      
 
 
-    public AgregarTipoInstancia() {
-      // inputcodTT.requestFocus();
+    public AgregarTipoInstancia() { //Constructor de la clase
+        
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agregar Tipo Instancia");
@@ -25,7 +26,7 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        confirmarAgregar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -34,7 +35,7 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
         inputnombTI = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         inputcodSec = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        volverABMAgregar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         inputcodTT = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -48,11 +49,11 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Confirmar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
+        confirmarAgregar.setText("Confirmar");
+        confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                confirmarAgregarActionPerformed(evt);
             }
         });
 
@@ -125,11 +126,11 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        volverABMAgregar.setBackground(new java.awt.Color(204, 204, 204));
+        volverABMAgregar.setText("Volver");
+        volverABMAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                volverABMAgregarActionPerformed(evt);
             }
         });
 
@@ -208,7 +209,7 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,15 +222,15 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
                             .addComponent(outnombSec)
                             .addComponent(inputcodTT)
                             .addComponent(outnombTT)
-                            .addComponent(inputcodSec)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputnombTI))
+                            .addComponent(inputcodSec, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(inputcodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputcodTI)
+                            .addComponent(inputnombTI))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscarSectorAgregar)
@@ -237,10 +238,10 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
                 .addGap(59, 59, 59))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,8 +275,8 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
                     .addComponent(outnombTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(confirmarAgregar)
+                    .addComponent(volverABMAgregar))
                 .addGap(15, 15, 15))
         );
 
@@ -293,18 +294,18 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //Metodo para agregar un sector
-       dtoTI.setCodSector(Integer.parseInt(inputcodSec.getText()));
-       control.filtroAgregar(dtoTI);
-       List<DTOTipoInstancia> list = control.filtroAgregar(dtoTI);
-        for (int i = 0; i < list.size(); i++) {
-            outnombSec.setText(list.get(i).getNombreSector());
-            
-        }
-           
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
+       //Método para agregar un Tipo de Instancia 
+       DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
+       dtoAgregar.setCodSector(Integer.parseInt(inputcodTI.getText()));
+       dtoAgregar.setNombreSector(inputnombTI.getText());
+       dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
+       dtoAgregar.setNombreSector(outnombSec.getText());
+       dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
+       dtoAgregar.setNombreTipoTarea(outnombTT.getText());
+              
+       control.agregarTipoInstancia(dtoAgregar);
+    }//GEN-LAST:event_confirmarAgregarActionPerformed
 
     private void inputcodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTIActionPerformed
         // TODO add your handling code here:
@@ -339,12 +340,12 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
         //Declaramos una variable y asignamos un evento
     }//GEN-LAST:event_inputcodSecKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Botón para volver al menú de sector
+    private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
+        //Botón para volver al menú de TipoInstancia
         ABMTipoInstancia abmTI = new ABMTipoInstancia();
         abmTI.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_volverABMAgregarActionPerformed
 
     private void inputcodTTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTTKeyTyped
         // TODO add your handling code here:
@@ -376,17 +377,31 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
 
     private void buscarSectorAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarSectorAgregarActionPerformed
         //Método para buscar sector por codigo
-        
+       MostrarSectorFil(inputcodSec.getText());
     }//GEN-LAST:event_buscarSectorAgregarActionPerformed
-
+    public void MostrarSectorFil(String dtosec){
+       List<DTOTipoInstancia> lista = control.filtradoSector(dtosec);
+        for (int i = 0; i < lista.size(); i++) {
+           DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(i);
+           outnombSec.setText(tI.getNombreSector());
+           
+        }
+    }
     private void buscarTTAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTTAgregarActionPerformed
         //Método para buscar Tipo Tarea filtrado
-       dtoTI.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-       control.filtroAgregar(dtoTI);
-       outnombTT.setText(dtoTI.getNombreTipoTarea());
-       
+        MostrarTTFil(inputcodTT.getText());
+      
     }//GEN-LAST:event_buscarTTAgregarActionPerformed
 
+     public void MostrarTTFil(String dtott){
+       List<DTOTipoInstancia> lista = control.filtradoTT(dtott);
+        for (int i = 0; i < lista.size(); i++) {
+           DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(i);
+           outnombTT.setText(tI.getNombreTipoTarea());
+            System.out.println(tI.getNombreTipoTarea());
+           
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -425,12 +440,11 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarSectorAgregar;
     private javax.swing.JButton buscarTTAgregar;
+    private javax.swing.JButton confirmarAgregar;
     private javax.swing.JTextField inputcodSec;
     private javax.swing.JTextField inputcodTI;
     private javax.swing.JTextField inputcodTT;
     private javax.swing.JTextField inputnombTI;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -442,5 +456,6 @@ ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField outnombSec;
     private javax.swing.JTextField outnombTT;
+    private javax.swing.JButton volverABMAgregar;
     // End of variables declaration//GEN-END:variables
 }
