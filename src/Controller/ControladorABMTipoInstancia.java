@@ -11,6 +11,9 @@ public class ControladorABMTipoInstancia {
     public DTOTipoInstancia agregarTipoInstancia(DTOTipoInstancia dtoTI){
         return expertoTI.agregarTipoInstancia(dtoTI) ;
     }
+    public DTOTipoInstancia modificarTipoInstancia(DTOTipoInstancia dtoTI){
+        return null;
+    }
     public List<DTOTipoInstancia> filtradoSector(String dtoTI){
        return expertoTI.filtradoSector(dtoTI); 
     }
