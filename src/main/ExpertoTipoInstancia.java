@@ -2,13 +2,13 @@
 package main;
 
 import DTO.DTOCriterio;
-import DTO.DTOSector;
+
 
 import DTO.DTOTipoInstancia;
 import entidades.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
+
 
 public class ExpertoTipoInstancia {
           
