@@ -3,6 +3,7 @@ package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
 import DTO.DTOTipoInstancia;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Vector;
@@ -277,7 +278,37 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void ModificarTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTIActionPerformed
-        // TODO add your handling code here:
+        //Método para modificar
+         int numTabTI = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabTI
+    /*   if(numTabTI == -1){
+           ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
+       } else{
+         */   for(int i=0; i<tablaTipoInstancia.getRowCount(); i++){ //Recorremos la tabla
+               // if(tablaTipoInstancia.getValueAt(i, 4) != null){ 
+                  /*  ErrorMensaje.setForeground(Color.RED);
+                    ErrorMensaje.setText("El Tipo instancia esta dado de baja, no se puede modificar");
+                }else{*/
+               // if(numTabTI==i){ //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
+
+                    System.out.println(tablaTI.getValueAt(i, 0));
+                    System.out.println(tablaTI.getValueAt(i, 1));
+                    dtoTI.setCodTipoInstancia((int)tablaTI.getValueAt(i, 0));
+                    dtoTI.setNombreTipoInstancia((String) tablaTI.getValueAt(i, 1));
+                    dtoTI.setCodSector((int) tablaTI.getValueAt(i, 2));
+                    dtoTI.setCodTipoTarea((int)tablaTI.getValueAt(i, 3));
+                    
+
+                    System.out.println(dtoTI.getNombreSector());
+                    ModificarTipoInstancia mod = new ModificarTipoInstancia(dtoTI);
+                    mod.setVisible(true);
+                    this.setVisible(false);
+                }
+
+
+        
+      
+     
     }//GEN-LAST:event_ModificarTIActionPerformed
 
     private void BajaTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaTIActionPerformed
