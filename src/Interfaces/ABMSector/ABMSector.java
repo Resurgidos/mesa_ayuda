@@ -405,11 +405,8 @@ public class ABMSector extends javax.swing.JFrame {
                     dtosector.setCodSector((int) tablaSectores.getValueAt(i, 0));
                     dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
                     dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
-                    if(tablaSectores.getValueAt(i, 3) != null){
-                    dtosector.setFechaFinVigenciaSector(Date.valueOf(tablaSectores.getValueAt(i, 3).toString()));
-                    }else{
-                    dtosector.setFechaFinVigenciaSector(null);
-                    }
+                    dtosector.setFechaFinVigenciaSector((Date)tablaSectores.getValueAt(i, 3));
+                   
                     System.out.println(dtosector.getCodSector());
                     VerDatosSector mostrar = new VerDatosSector(dtosector);
                     mostrar.setVisible(true);

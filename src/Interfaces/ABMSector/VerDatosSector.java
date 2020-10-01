@@ -7,6 +7,9 @@ package Interfaces.ABMSector;
 
 import DTO.DTOSector;
 import com.sun.glass.events.KeyEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,10 +28,13 @@ public class VerDatosSector extends javax.swing.JFrame {
         verCodSec.setText(Integer.toString(dtoSec.getCodSector()));
         verNombSec.setText(dtoSec.getNombreSector());
         verDescSec.setText(dtoSec.getDescripcionSector());
-        if(dtoSec.getFechaFinVigenciaSector()!= null){
-        verFechaFinSec.setText(dtoSec.getFechaFinVigenciaSector().toString());
+        if(dtoSec.getFechaFinVigenciaSector()== null){
+            verFechaFinSec.setText("vigente");
         }else{
-        verFechaFinSec.setText("El Sector esta Vigente");
+            DateFormat df = new SimpleDateFormat();
+            Date fecha = dtoSec.getFechaFinVigenciaSector();
+            String fechaString = df.format(fecha);
+            verFechaFinSec.setText(fechaString);
         }
     }
     private VerDatosSector() {

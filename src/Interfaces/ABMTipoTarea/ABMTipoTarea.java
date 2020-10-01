@@ -360,11 +360,8 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                     dtotipotareamodificar.setCodTipoTarea((int) tablaTipoTarea.getValueAt(i, 0));
                     dtotipotareamodificar.setNombreTipoTarea((String)tablaTipoTarea.getValueAt(i, 1));
                     dtotipotareamodificar.setDescripcionTipoTarea((String) tablaTipoTarea.getValueAt(i, 2));
-                    if(TipoTareaTabla.getValueAt(i, 3) != null){
-                    dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea(Date.valueOf(tablaTipoTarea.getValueAt(i, 3).toString()));
-                    }else{
-                    dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea(null);
-                    }
+                    dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea((Date)tablaTipoTarea.getValueAt(i, 3));
+                    
                     System.out.println(dtotipotareamodificar.getCodTipoTarea());
                     VerDatosTipoTarea mostrar = new VerDatosTipoTarea(dtotipotareamodificar);
                     mostrar.setVisible(true);

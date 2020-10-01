@@ -406,7 +406,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
                     dtoTI.setCodTipoInstancia((int) tablaTI.getValueAt(i, 0)); //Asigna codigo de tipo Instancia a dto
                     dtoTI.setNombreTipoInstancia((String)tablaTI.getValueAt(i, 1));//Asigna nombre de tipo Instancia a dto
-                    dtoTI.setFechaHoraFinVigenciaTI(Date.valueOf(tablaTI.getValueAt(i, 4).toString()));//Asigna fecha fin de TipoInstancia a dto
+                    dtoTI.setFechaHoraFinVigenciaTI((Date)tablaTI.getValueAt(i, 4));//Asigna fecha fin de TipoInstancia a dto
                     
                     //Inicio busqueda de sector
                     controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
@@ -417,17 +417,20 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                         dtoTI.setCodSector(tI.getCodSector()); //Asigna codigo de Sector a dto
                         dtoTI.setFechaFinVigenciaSector(tI.getFechaFinVigenciaSector());//Asigna fecha fin de sector a dto
                     }
+                    dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());//Asigna nombre a sector
+                    dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());//Asigna nombre a Tipo Tarea
                     //Inicio busqueda de TipoTarea
-                    dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());
-                     String tt = tablaTI.getValueAt(i, 3).toString();
-                    List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
+                    
+                         controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
+                        String tt = tablaTI.getValueAt(i, 3).toString();
+                        List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
                         for (int j = 0; j < lista.size(); j++) {
                         DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
                         dtoTI.setCodTipoTarea(tI.getCodTipoTarea());//Asigna codigo de tipo Tarea a dto
                         dtoTI.setFechaFinVigenciaTT(tI.getFechaFinVigenciaTT());  //Asigna fecha fin de Tipo Tarea a dto        
                     }
                     
-                    System.out.println(dtoTI.getCodSector());
+                   
                     VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(dtoTI);
                     mostrar.setVisible(true);
 

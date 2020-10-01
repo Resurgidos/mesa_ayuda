@@ -9,6 +9,9 @@ import Interfaces.ABMSector.*;
 import DTO.DTOSector;
 import DTO.DTOTipoTarea;
 import com.sun.glass.events.KeyEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,10 +30,13 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
         verCodTipoTarea.setText(Integer.toString(dtoTipoTarea.getCodTipoTarea()));
         verNombTipoTarea.setText(dtoTipoTarea.getNombreTipoTarea());
         verDescTipoTarea.setText(dtoTipoTarea.getDescripcionTipoTarea());
-        if(dtoTipoTarea.getFechaHoraFinVigenciaTipoTarea()!= null){
-        verFechaFinTipoTarea.setText(dtoTipoTarea.getFechaHoraFinVigenciaTipoTarea().toString());
+        if(dtoTipoTarea.getFechaHoraFinVigenciaTipoTarea() == null){
+            verFechaFinTipoTarea.setText("vigente");
         }else{
-        verFechaFinTipoTarea.setText("TipoTarea esta Vigente");
+            DateFormat df = new SimpleDateFormat();
+            Date fecha = dtoTipoTarea.getFechaHoraFinVigenciaTipoTarea();
+            String fechaString = df.format(fecha);
+            verFechaFinTipoTarea.setText(fechaString);
         }
     }
     private VerDatosTipoTarea() {
