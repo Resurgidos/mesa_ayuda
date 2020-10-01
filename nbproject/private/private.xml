@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMSector/ModificarSector.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMSector/ABMSector.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMTipoInstancia/AgregarTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMTipoInstancia/ABMTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/DTO/DTOTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/main/ExpertoTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMTipoInstancia/ModificarTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/main/ExpertoSector.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Controller/ControladorABMTipoInstancia.java</file>
+        </group>
     </open-files>
 </project-private>

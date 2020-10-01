@@ -5,6 +5,7 @@ import Controller.ControladorABMSector;
 import DTO.DTOSector;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.sql.Date;
 
 import java.util.List;
 import java.util.Vector;
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ABMSector extends javax.swing.JFrame {
-//hola
+
     DefaultTableModel tablaSectores;
     ControladorABMSector controlador = new ControladorABMSector();
     DTOSector dtosector = new DTOSector();
@@ -46,6 +47,7 @@ public class ABMSector extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaSector = new javax.swing.JTable();
         ErrorMensaje = new javax.swing.JLabel();
+        botonMostrarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,12 +189,20 @@ public class ABMSector extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         ErrorMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ErrorMensaje.setToolTipText("");
+
+        botonMostrarDatos.setBackground(new java.awt.Color(204, 204, 204));
+        botonMostrarDatos.setText("Mostrar Datos");
+        botonMostrarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarDatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -200,25 +210,27 @@ public class ABMSector extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(56, 56, 56))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 24, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton2)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonMostrarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(54, 54, 54))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(56, 56, 56))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,14 +238,17 @@ public class ABMSector extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonMostrarDatos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton2))
                 .addGap(15, 15, 15))
         );
 
@@ -373,6 +388,39 @@ public class ABMSector extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_FiltroKeyPressed
 
+    private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
+        //Método Mostrar datos de Sector
+         int numTabSec = tablaSector.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+       if(numTabSec == -1){
+           ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           ErrorMensaje.setText("No ha seleccionado ningún sector para mostrar");
+       } else{
+            for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
+                
+                if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
+
+                    System.out.println(tablaSectores.getValueAt(i, 0));
+                    System.out.println(tablaSectores.getValueAt(i, 1));
+
+                    dtosector.setCodSector((int) tablaSectores.getValueAt(i, 0));
+                    dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
+                    dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
+                    if(tablaSectores.getValueAt(i, 3) != null){
+                    dtosector.setFechaFinVigenciaSector(Date.valueOf(tablaSectores.getValueAt(i, 3).toString()));
+                    }else{
+                    dtosector.setFechaFinVigenciaSector(null);
+                    }
+                    System.out.println(dtosector.getCodSector());
+                    VerDatosSector mostrar = new VerDatosSector(dtosector);
+                    mostrar.setVisible(true);
+                    
+                }
+
+            }
+        }
+        
+    }//GEN-LAST:event_botonMostrarDatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -411,6 +459,7 @@ public class ABMSector extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorMensaje;
     private javax.swing.JTextField Filtro;
+    private javax.swing.JButton botonMostrarDatos;
     private javax.swing.JButton botonfiltro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
