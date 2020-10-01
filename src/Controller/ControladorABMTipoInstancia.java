@@ -12,10 +12,10 @@ public class ControladorABMTipoInstancia {
         return expertoTI.agregarTipoInstancia(dtoTI) ;
     }
     public DTOTipoInstancia modificarTipoInstancia(DTOTipoInstancia dtoTI){
-        return null;
+        return expertoTI.modificarTipoInstancia(dtoTI);
     }
     public DTOTipoInstancia bajaTipoInstancia(DTOTipoInstancia dtoTI){
-        return null;
+        return expertoTI.bajaTipoInstancia(dtoTI);
     }
     public List<DTOTipoInstancia> filtroTI(String nombreTI){
         return expertoTI.filtroTI(nombreTI);

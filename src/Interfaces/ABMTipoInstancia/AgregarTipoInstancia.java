@@ -328,8 +328,8 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                       
                    //y un chatch en el caso que no se pueda crear el Tipo Instancia
                             } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                }
+                        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                     }
                       
                        } else {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -383,7 +383,9 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
         //Botón para volver al menú de TipoInstancia
         ABMTipoInstancia abmTI = new ABMTipoInstancia();
+       
         abmTI.setVisible(true);
+        abmTI.tablaTI("");
         this.setVisible(false);
     }//GEN-LAST:event_volverABMAgregarActionPerformed
 

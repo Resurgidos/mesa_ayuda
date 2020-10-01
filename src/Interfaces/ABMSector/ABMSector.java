@@ -414,6 +414,7 @@ public class ABMSector extends javax.swing.JFrame {
                     VerDatosSector mostrar = new VerDatosSector(dtosector);
                     mostrar.setVisible(true);
                     
+                    
                 }
 
             }

@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import main.Menu;
 
@@ -14,6 +15,8 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     DefaultTableModel tablaTI;
     ControladorABMTipoInstancia controlTI = new ControladorABMTipoInstancia();
     DTOTipoInstancia dtoTI = new DTOTipoInstancia();
+    
+    
     public ABMTipoInstancia() {
         initComponents();
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
@@ -338,7 +341,30 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         
     
     private void BajaTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaTIActionPerformed
-        // TODO add your handling code here:
+        //Método para eliminar
+        int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        if(numTabSec == -1){               
+           ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para dar de baja");
+       
+       }else{
+        for(int i=0; i<tablaTipoInstancia.getRowCount(); i++){ //Recorremos la tabla
+            if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
+                if(tablaTipoInstancia.getValueAt(i, 4) != null){
+                    ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+                    ErrorMensaje.setText("El sector elegido ya esta dado de baja");
+                }else{
+                dtoTI.setCodTipoInstancia((int)tablaTipoInstancia.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                int j = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
+                    if (j == 0) {
+                        controlTI.bajaTipoInstancia(dtoTI);
+                        JOptionPane.showMessageDialog(this, "Sector Dado de baja"); 
+                           }
+                        tablaTI("");
+               }
+            }
+        }   
+      }
     }//GEN-LAST:event_BajaTIActionPerformed
 
     private void FiltrarTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltrarTIActionPerformed

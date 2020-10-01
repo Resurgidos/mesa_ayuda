@@ -220,7 +220,7 @@ public class VerDatosSector extends javax.swing.JFrame {
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         //Botón para volver al menú de sector
        ABMSector abm = new ABMSector();
-       abm.setVisible(true);
+       abm.setVisible(false);
        this.setVisible(false);
     }//GEN-LAST:event_botonContinuarActionPerformed
 
