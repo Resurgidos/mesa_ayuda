@@ -26,10 +26,12 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Modificar TipoInstancia");
-        inputcodTImod.setText(dtodatos.getNombreTipoInstancia());
+        inputcodTImod.setText(Integer.toString(dtodatos.getCodTipoInstancia()));
         inputnombTImod.setText(dtodatos.getNombreTipoInstancia());
         inputcodSecmod.setText(Integer.toString(dtodatos.getCodSector()));
+        outnombSecmod.setText(dtodatos.getNombreSector());
         inputcodTTmod.setText(Integer.toString(dtodatos.getCodTipoTarea()));
+        outnombTTmod.setText(dtodatos.getNombreTipoTarea());
     }
 
     private ModificarTipoInstancia() {
@@ -413,7 +415,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
         ABMTipoInstancia abmti = new ABMTipoInstancia();
         abmti.tablaTI("");
-        JOptionPane.showMessageDialog(null,"SOmos la interfaz de modificar");
+        JOptionPane.showMessageDialog(null,"El tipoInstancia fue modificado con éxito");
         abmti.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_confirmarAgregarActionPerformed

@@ -257,6 +257,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             fil.add(lista.get(i).getNombreTipoTarea());
             fil.add(lista.get(i).getFechaHoraFinVigenciaTI());
             tablaTI.addRow(fil);
+            
           }
     } 
     private void filBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusquedaActionPerformed
@@ -280,23 +281,42 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     private void ModificarTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTIActionPerformed
         //Método para modificar
          int numTabTI = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabTI
-    /*   if(numTabTI == -1){
+       if(numTabTI == -1){
            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
            ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
        } else{
-         */   for(int i=0; i<tablaTipoInstancia.getRowCount(); i++){ //Recorremos la tabla
-               // if(tablaTipoInstancia.getValueAt(i, 4) != null){ 
-                  /*  ErrorMensaje.setForeground(Color.RED);
+            for(int i=0; i<tablaTipoInstancia.getRowCount(); i++){ //Recorremos la tabla
+                if(tablaTipoInstancia.getValueAt(i, 4) != null){ 
+                    ErrorMensaje.setForeground(Color.RED);
                     ErrorMensaje.setText("El Tipo instancia esta dado de baja, no se puede modificar");
-                }else{*/
-               // if(numTabTI==i){ //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
+                }else{
+                if(numTabTI==i){ //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
 
                     System.out.println(tablaTI.getValueAt(i, 0));
                     System.out.println(tablaTI.getValueAt(i, 1));
                     dtoTI.setCodTipoInstancia((int)tablaTI.getValueAt(i, 0));
                     dtoTI.setNombreTipoInstancia((String) tablaTI.getValueAt(i, 1));
-                    dtoTI.setCodSector((int) tablaTI.getValueAt(i, 2));
-                    dtoTI.setCodTipoTarea((int)tablaTI.getValueAt(i, 3));
+                    System.out.println(tablaTI.getValueAt(i, 2));
+                    
+                    
+                    controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
+                    dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());
+                   System.out.println(tablaTI.getValueAt(i, 3));
+                   
+                    String sec = tablaTI.getValueAt(i, 2).toString();
+                    List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
+                    for (int j = 0; j < listamod.size(); j++) {
+                    DTOTipoInstancia tI = (DTOTipoInstancia) listamod.get(j);
+                        dtoTI.setCodSector(tI.getCodSector());
+                    }
+                    String tt = tablaTI.getValueAt(i, 3).toString();
+                    List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
+                        for (int j = 0; j < lista.size(); j++) {
+                        DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
+                        dtoTI.setCodTipoTarea(tI.getCodSector());
+           
+                    }
+                        dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());
                     
 
                     System.out.println(dtoTI.getNombreSector());
@@ -306,11 +326,13 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 }
 
 
-        
-      
-     
+         }
+            }
+            }
     }//GEN-LAST:event_ModificarTIActionPerformed
-
+   
+        
+    
     private void BajaTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaTIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BajaTIActionPerformed

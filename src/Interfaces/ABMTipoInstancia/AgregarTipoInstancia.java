@@ -307,7 +307,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
        
        ABMTipoInstancia abmti = new ABMTipoInstancia();
        abmti.tablaTI("");
-       JOptionPane.showMessageDialog(null,"SOmos la interfaz");
+       JOptionPane.showMessageDialog(null,"El tipoInstancia fue creado con éxito");
        abmti.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_confirmarAgregarActionPerformed
