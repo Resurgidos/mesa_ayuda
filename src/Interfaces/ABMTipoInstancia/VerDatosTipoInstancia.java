@@ -49,9 +49,10 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         }
         //Correspondiente a Tipo Tarea
         verCodTT.setText(Integer.toString(dtoTI.getCodTipoTarea()));
+        JOptionPane.showMessageDialog(this, dtoTI.getCodSector());
         verNombTT.setText(dtoTI.getNombreTipoTarea());      
         if(dtoTI.getFechaFinVigenciaTT()== null){
-            verFechaFinTI.setText("vigente");
+            verFechaFinTT.setText("vigente");
         }else{
             DateFormat df = new SimpleDateFormat();
             Date fecha = dtoTI.getFechaFinVigenciaTT();

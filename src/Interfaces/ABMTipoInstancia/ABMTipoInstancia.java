@@ -421,14 +421,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());//Asigna nombre a Tipo Tarea
                     //Inicio busqueda de TipoTarea
                     
-                         controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
+                        controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
                         String tt = tablaTI.getValueAt(i, 3).toString();
                         List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
-                        for (int j = 0; j < lista.size(); j++) {
-                        DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
+                        for (int l = 0; l < lista.size(); l++) {
+                        DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(l);
                         dtoTI.setCodTipoTarea(tI.getCodTipoTarea());//Asigna codigo de tipo Tarea a dto
-                        dtoTI.setFechaFinVigenciaTT(tI.getFechaFinVigenciaTT());  //Asigna fecha fin de Tipo Tarea a dto        
-                    }
+                        dtoTI.setFechaFinVigenciaTT(tI.getFechaFinVigenciaTT());  //Asigna fecha fin de Tipo Tarea a dto     
+                        JOptionPane.showMessageDialog(this, dtoTI.getCodTipoTarea());
+                        }
                     
                    
                     VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(dtoTI);
