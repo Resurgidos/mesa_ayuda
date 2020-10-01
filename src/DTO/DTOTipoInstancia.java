@@ -10,8 +10,10 @@ public class DTOTipoInstancia {
     private Date fechaHoraFinVigenciaTI;
     private int codSector;
     private String nombreSector;
+    private Date fechaFinVigenciaSector;
     private int codTipoTarea;
     private String nombreTipoTarea;
+    private Date fechaFinVigenciaTT;
     private int verificarError;
     private String ErrorMensaje;
    
@@ -89,6 +91,22 @@ public class DTOTipoInstancia {
 
     public void setErrorMensaje(String ErrorMensaje) {
         this.ErrorMensaje = ErrorMensaje;
+    }
+
+    public Date getFechaFinVigenciaSector() {
+        return fechaFinVigenciaSector;
+    }
+
+    public void setFechaFinVigenciaSector(Date fechaFinVigenciaSector) {
+        this.fechaFinVigenciaSector = fechaFinVigenciaSector;
+    }
+
+    public Date getFechaFinVigenciaTT() {
+        return fechaFinVigenciaTT;
+    }
+
+    public void setFechaFinVigenciaTT(Date fechaFinVigenciaTT) {
+        this.fechaFinVigenciaTT = fechaFinVigenciaTT;
     }
     
 

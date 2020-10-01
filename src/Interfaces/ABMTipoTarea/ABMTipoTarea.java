@@ -4,10 +4,10 @@ import Controller.ControladorABMTipoTarea;
 import DTO.DTOTipoTarea;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.sql.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ABMTipoTarea extends javax.swing.JFrame {
@@ -62,6 +62,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TipoTareaTabla = new javax.swing.JTable();
         BotonVolver = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,25 +183,33 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Mostrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(BotonVolver)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(BotonVolver)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(BotonEliminar)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BotonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -209,13 +218,19 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonModificar)
-                    .addComponent(BotonEliminar)
-                    .addComponent(BotonVolver))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotonModificar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonVolver)
+                    .addComponent(BotonEliminar))
                 .addGap(73, 73, 73))
         );
 
@@ -326,6 +341,41 @@ public class ABMTipoTarea extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_FiltroKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+
+       //Método datos de Tipo Tarea
+       int numTabTT = TipoTareaTabla.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+       if(numTabTT == -1){
+           MensajeError.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           MensajeError.setText("No ha seleccionado ningún sector para mostrar");
+       } else{
+            for(int i=0; i<TipoTareaTabla.getRowCount(); i++){ //Recorremos la tabla
+                
+                if(numTabTT==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
+
+                    System.out.println(tablaTipoTarea.getValueAt(i, 0));
+                    System.out.println(tablaTipoTarea.getValueAt(i, 1));
+
+                    dtotipotareamodificar.setCodTipoTarea((int) tablaTipoTarea.getValueAt(i, 0));
+                    dtotipotareamodificar.setNombreTipoTarea((String)tablaTipoTarea.getValueAt(i, 1));
+                    dtotipotareamodificar.setDescripcionTipoTarea((String) tablaTipoTarea.getValueAt(i, 2));
+                    if(TipoTareaTabla.getValueAt(i, 3) != null){
+                    dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea(Date.valueOf(tablaTipoTarea.getValueAt(i, 3).toString()));
+                    }else{
+                    dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea(null);
+                    }
+                    System.out.println(dtotipotareamodificar.getCodTipoTarea());
+                    VerDatosTipoTarea mostrar = new VerDatosTipoTarea(dtotipotareamodificar);
+                    mostrar.setVisible(true);
+                    
+                }
+
+            }
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -343,6 +393,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
     private javax.swing.JTextField Filtro;
     private javax.swing.JLabel MensajeError;
     private javax.swing.JTable TipoTareaTabla;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -29,8 +29,8 @@ public class ExpertoTipoInstancia {
                 dtoCrit.setOperacion("=");
                 dtoCrit.setValor(dtoTI.getCodTipoInstancia()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
                 validarCod.add(dtoCrit);
-        try{       
-        List objetoList = FachadaPersistencia.getInstance().buscar("Sector",validarCod );
+        try{      
+        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",validarCod );
              int verificar = 0;
              for (Object x : objetoList) {
                  tipoIns = (TipoInstancia)x;
@@ -78,10 +78,10 @@ public class ExpertoTipoInstancia {
                 }else{
                                 dtoTI.setErrorMensaje("El código ya existe");        
                  }}catch(Exception e){
-                        System.out.println("No se pudo registrar el sector"); 
+                        System.out.println("No se pudo registrar el TipoInstancia"); 
                  }    
             }catch(Exception e){
-                    System.out.println("No se pudo encontrar el sector");                
+                    System.out.println("No se pudo encontrar el TipoInstancia");                
             }
             return dtoTI;
     }
@@ -236,6 +236,7 @@ public class ExpertoTipoInstancia {
                 Sector sec = (Sector)x ;
                 dtosec.setCodSector(sec.getCodSector());
                 dtosec.setNombreSector(sec.getNombreSector());
+                dtosec.setFechaFinVigenciaSector(sec.getFechaHoraFinVigenciaSector());
                
                 
                 dtoList.add(dtosec);
@@ -268,7 +269,7 @@ public class ExpertoTipoInstancia {
                 TipoTarea tt = (TipoTarea)x ; //por cada objeto de la lista, se lo asigno a un objeto de la clase
                 dtoTT.setCodSector(tt.getCodTipoTarea());
                 dtoTT.setNombreTipoTarea(tt.getNombreTipoTarea());
-                
+                dtoTT.setFechaFinVigenciaTT(tt.getFechaHoraFinVigenciaTipoTarea());
                 dtoList.add(dtoTT);
                 }         
         return dtoList;

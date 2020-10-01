@@ -5,6 +5,7 @@ import Controller.ControladorABMTipoInstancia;
 import DTO.DTOTipoInstancia;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.sql.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -45,6 +46,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         ModificarTI = new javax.swing.JButton();
         BajaTI = new javax.swing.JButton();
         ErrorMensaje = new javax.swing.JTextField();
+        botonMostrarDatos = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -190,6 +192,14 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         ErrorMensaje.setBackground(new java.awt.Color(204, 204, 204));
         ErrorMensaje.setBorder(null);
 
+        botonMostrarDatos.setBackground(new java.awt.Color(204, 204, 204));
+        botonMostrarDatos.setText("Mostrar Datos");
+        botonMostrarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarDatosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -207,7 +217,8 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(BajaTI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ModificarTI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(ModificarTI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonMostrarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(42, 42, 42))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +230,9 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonMostrarDatos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ErrorMensaje)
                     .addComponent(ModificarTI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -299,16 +312,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 }else{
                 if(numTabTI==i){ //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
 
-                    System.out.println(tablaTI.getValueAt(i, 0));
-                    System.out.println(tablaTI.getValueAt(i, 1));
+                   
                     dtoTI.setCodTipoInstancia((int)tablaTI.getValueAt(i, 0));
                     dtoTI.setNombreTipoInstancia((String) tablaTI.getValueAt(i, 1));
-                    System.out.println(tablaTI.getValueAt(i, 2));
+                    
                     
                     
                     controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
                     dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());
-                   System.out.println(tablaTI.getValueAt(i, 3));
+                  
                    
                     String sec = tablaTI.getValueAt(i, 2).toString();
                     List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
@@ -320,7 +332,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
                         for (int j = 0; j < lista.size(); j++) {
                         DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
-                        dtoTI.setCodTipoTarea(tI.getCodSector());
+                        dtoTI.setCodTipoTarea(tI.getCodTipoTarea());
            
                     }
                         dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());
@@ -378,6 +390,54 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_filBusquedaKeyPressed
 
+    private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
+        //Método Mostrar datos de Sector
+        int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        if(numTabSec == -1){
+            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+            ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");
+        } else{
+            for(int i=0; i<tablaTipoInstancia.getRowCount(); i++){ //Recorremos la tabla
+
+                if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
+
+                    System.out.println(tablaTI.getValueAt(i, 0));
+                    System.out.println(tablaTI.getValueAt(i, 1));
+
+                    dtoTI.setCodTipoInstancia((int) tablaTI.getValueAt(i, 0)); //Asigna codigo de tipo Instancia a dto
+                    dtoTI.setNombreTipoInstancia((String)tablaTI.getValueAt(i, 1));//Asigna nombre de tipo Instancia a dto
+                    dtoTI.setFechaHoraFinVigenciaTI(Date.valueOf(tablaTI.getValueAt(i, 4).toString()));//Asigna fecha fin de TipoInstancia a dto
+                    
+                    //Inicio busqueda de sector
+                    controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
+                    String sec = tablaTI.getValueAt(i, 2).toString();
+                    List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
+                    for (int j = 0; j < listamod.size(); j++) {
+                    DTOTipoInstancia tI = (DTOTipoInstancia) listamod.get(j);
+                        dtoTI.setCodSector(tI.getCodSector()); //Asigna codigo de Sector a dto
+                        dtoTI.setFechaFinVigenciaSector(tI.getFechaFinVigenciaSector());//Asigna fecha fin de sector a dto
+                    }
+                    //Inicio busqueda de TipoTarea
+                    dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());
+                     String tt = tablaTI.getValueAt(i, 3).toString();
+                    List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
+                        for (int j = 0; j < lista.size(); j++) {
+                        DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
+                        dtoTI.setCodTipoTarea(tI.getCodTipoTarea());//Asigna codigo de tipo Tarea a dto
+                        dtoTI.setFechaFinVigenciaTT(tI.getFechaFinVigenciaTT());  //Asigna fecha fin de Tipo Tarea a dto        
+                    }
+                    
+                    System.out.println(dtoTI.getCodSector());
+                    VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(dtoTI);
+                    mostrar.setVisible(true);
+
+                }
+
+            }
+        }
+
+    }//GEN-LAST:event_botonMostrarDatosActionPerformed
+
    
     public static void main(String args[]) {
       
@@ -394,6 +454,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     private javax.swing.JTextField ErrorMensaje;
     private javax.swing.JButton FiltrarTI;
     private javax.swing.JButton ModificarTI;
+    private javax.swing.JButton botonMostrarDatos;
     private javax.swing.JTextField filBusqueda;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

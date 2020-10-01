@@ -5,9 +5,12 @@
  */
 package Interfaces.ABMTipoCaso;
 
-import Controller.ControladorAMBTipoCaso;
+import Controller.ControladorABMTipoCaso;
 import DTO.DTOTipoCaso;
 import Interfaces.ABMSector.AgregarSector;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import main.Menu;
@@ -20,8 +23,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ABMTipoCaso extends javax.swing.JFrame {
     DefaultTableModel tablaTipoCaso;
-    ControladorAMBTipoCaso controlador = new ControladorAMBTipoCaso();
-    DTOTipoCaso dtosector = new DTOTipoCaso();
+    ControladorABMTipoCaso controlador = new ControladorABMTipoCaso();
+    DTOTipoCaso dtoTipoCaso = new DTOTipoCaso();
     
     public ABMTipoCaso() {
         initComponents();
@@ -54,6 +57,8 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaTipoCasos = new javax.swing.JTable();
         botonEliminarTipoCaso = new javax.swing.JButton();
+        ErrorMensaje = new javax.swing.JLabel();
+        botonMostrarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +102,9 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             }
         });
         filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                filtroKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 filtroKeyTyped(evt);
             }
@@ -146,17 +154,30 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        tablaTipoCasos = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tablaTipoCasos.setBackground(new java.awt.Color(255, 255, 255));
         tablaTipoCasos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaTipoCasos);
 
         botonEliminarTipoCaso.setText("Eliminar");
@@ -166,36 +187,67 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             }
         });
 
+        ErrorMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ErrorMensaje.setToolTipText("");
+
+        botonMostrarDatos.setText("Mostrar datos");
+        botonMostrarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarDatosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonModificarTipoCaso)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButton2)
-                            .addGap(505, 505, 505)
-                            .addComponent(botonEliminarTipoCaso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonModificarTipoCaso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonMostrarDatos, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(480, 480, 480)
+                                .addComponent(botonEliminarTipoCaso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 9, Short.MAX_VALUE)))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(botonModificarTipoCaso)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonEliminarTipoCaso)
-                    .addComponent(jButton2))
-                .addGap(34, 34, 34))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(botonMostrarDatos))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonModificarTipoCaso)
+                        .addGap(8, 8, 8)
+                        .addComponent(botonEliminarTipoCaso)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(44, 44, 44))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -206,7 +258,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -242,24 +294,37 @@ public class ABMTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonModificarTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarTipoCasoActionPerformed
-        //Método para ventana emergente para confirmar baja
-        /*ConfirmarBaja confirBaj = new ConfirmarBaja();
-        confirBaj.setVisible(true);
-        this.setVisible(true);*/
-
-        int i = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja wuachin?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            JOptionPane.showMessageDialog(this, "Sos un crack papu, vamos por la promo!");
-        } else if (i == 1) {
-            JOptionPane.showMessageDialog(this, "Elejiste la opcion no guachoon");
-        }
-
+//        Metodo de modificar tipocaso
+          int numTabTipoCaso = tablaTipoCasos.getSelectedRow();
+          if (numTabTipoCaso == -1){
+              ErrorMensaje.setForeground(Color.RED);
+              ErrorMensaje.setText("No ha seleccionado ningún tipo caso para modificar");
+              
+          }else{
+              for(int i=0 ; i < tablaTipoCasos.getRowCount(); i++){
+                if( tablaTipoCasos.getValueAt(i, 2) != null){
+                    ErrorMensaje.setForeground(Color.RED);
+                    ErrorMensaje.setText("El Tipo Caso ya esta dado de baja, no se puede modificar");
+                }else{
+                    if(i==numTabTipoCaso){
+                      dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
+                      dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
+                        System.out.println(dtoTipoCaso.getCodTipoCaso());
+                        System.out.println(dtoTipoCaso.getNombreTipoCaso());
+                      ModificarTipoCaso modificarPantalla = new ModificarTipoCaso(dtoTipoCaso);
+                      modificarPantalla.setVisible(true);
+                      this.setVisible(false);                     
+                    }
+                }
+                  
+              }
+          }
     }//GEN-LAST:event_botonModificarTipoCasoActionPerformed
 
     private void botonAddTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddTipoCasoActionPerformed
         //Botón que llama al método para agregar un nuevo sector, derivandonos a su pantalla
-        AgregarSector agregSector = new AgregarSector();
-        agregSector.setVisible(true);
+        AgregarTipoCaso agregarTipoCaso = new AgregarTipoCaso();
+        agregarTipoCaso.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonAddTipoCasoActionPerformed
 
@@ -273,12 +338,65 @@ public class ABMTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_botonBuscarTCasoActionPerformed
 
     private void botonEliminarTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarTipoCasoActionPerformed
-        // TODO add your handling code here:
+        //Eliminar un tipo caso
+        int numTabTipoCaso = tablaTipoCasos.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        if(numTabTipoCaso == -1){               
+           ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+           ErrorMensaje.setText("No ha seleccionado ningún tipo caso para dar de baja");
+       }else{
+//            System.out.println(tablaTipoCasos.getRowCount());
+            for(int i=0; i<tablaTipoCasos.getRowCount(); i++){ //Recorremos la tabla
+                if(numTabTipoCaso==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
+                    System.out.println("Encontre el numero");
+                    System.out.println(tablaTipoCasos.getValueAt(i, 2));
+                    if(tablaTipoCasos.getValueAt(i, 2) != null){
+                        ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+                        ErrorMensaje.setText("El Tipo Caso elegido ya esta dado de baja");
+                    }else{
+                        dtoTipoCaso.setCodTipoCaso((int)tablaTipoCasos.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                        System.out.println((int)tablaTipoCasos.getValueAt(i,0));
+                        int j = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Tipo Caso", JOptionPane.YES_NO_OPTION);
+                        if (j == 0) {
+                            controlador.bajaTipoCaso(dtoTipoCaso);
+                            JOptionPane.showMessageDialog(this, "Tipo Caso dado de baja"); 
+                        }
+                        tablaTipoCaso("");
+                   }
+                }
+            }   
+      }
     }//GEN-LAST:event_botonEliminarTipoCasoActionPerformed
 
     private void filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_filtroActionPerformed
+
+    private void filtroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tablaTipoCaso(filtro.getText());
+        }
+    }//GEN-LAST:event_filtroKeyPressed
+
+    private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
+//        Ver mas detalles del tipo caso
+        int numTabTipoCaso = tablaTipoCasos.getSelectedRow();
+          if (numTabTipoCaso == -1){
+              ErrorMensaje.setForeground(Color.RED);
+              ErrorMensaje.setText("No ha seleccionado ningún tipo caso");  
+          }else{
+              for(int i=0 ; i < tablaTipoCasos.getRowCount(); i++){             
+                    if(i==numTabTipoCaso){
+                      dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
+                      dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
+                      dtoTipoCaso.setFechaFinVigenciaTipoCaso((Date) tablaTipoCasos.getValueAt(i, 2));
+      
+                      VerDatosTipoCasos verDatos = new VerDatosTipoCasos(dtoTipoCaso);
+                      verDatos.setVisible(true);
+                      this.setVisible(false);                     
+                    }                               
+              }
+          }
+    }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,10 +434,12 @@ public class ABMTipoCaso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ErrorMensaje;
     private javax.swing.JButton botonAddTipoCaso;
     private javax.swing.JButton botonBuscarTCaso;
     private javax.swing.JButton botonEliminarTipoCaso;
     private javax.swing.JButton botonModificarTipoCaso;
+    private javax.swing.JButton botonMostrarDatos;
     private javax.swing.JTextField filtro;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel5;
