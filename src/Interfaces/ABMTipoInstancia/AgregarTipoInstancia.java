@@ -296,22 +296,57 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
        //Método para agregar un Tipo de Instancia 
-       DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
-       dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
-       dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
-       dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
-       dtoAgregar.setNombreSector(outnombSec.getText());
-       dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-       dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-       control.agregarTipoInstancia(dtoAgregar);
+       try {
+            if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código 
+                if (!inputnombTI.getText().isEmpty()) {//Para que el nombre del TI no este vacio
+                    if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
+                         if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
+                    do{
+                        DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
+                        dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
+                        dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
+                        dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
+                        dtoAgregar.setNombreSector(outnombSec.getText());
+                        dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
+                        dtoAgregar.setNombreTipoTarea(outnombTT.getText());
+                        control.agregarTipoInstancia(dtoAgregar);
        
-       ABMTipoInstancia abmti = new ABMTipoInstancia();
-       abmti.tablaTI("");
-       JOptionPane.showMessageDialog(null,"El tipoInstancia fue creado con éxito");
-       abmti.setVisible(true);
-       this.setVisible(false);
+       
+       
+                            if(dtoTI.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
+                            ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
+                            JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
+                            volver.setVisible(true);
+                            volver.tablaTI("");
+                            this.setVisible(false);
+                        }else{
+                           JOptionPane.showMessageDialog(this,dtoTI.getErrorMensaje());
+                           System.out.println("acá esta el error, en registro de sector en validar");
+                           dtoTI.setVerificarError(0);
+                       } }while(dtoTI.getVerificarError() != 0);
+                        
+                      
+                   //y un chatch en el caso que no se pueda crear el Tipo Instancia
+                            } else {
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }
+                      
+                       } else {
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }
+                     } else {
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_confirmarAgregarActionPerformed
 
+    
     private void inputcodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputcodTIActionPerformed
