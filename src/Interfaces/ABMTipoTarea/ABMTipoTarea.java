@@ -85,7 +85,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         jLabel2.setText("Filtrar:");
         jLabel2.setToolTipText("");
 
-        Filtro.setBackground(new java.awt.Color(102, 102, 102));
+        Filtro.setBackground(new java.awt.Color(204, 204, 204));
         Filtro.setForeground(new java.awt.Color(204, 204, 204));
         Filtro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +108,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             }
         });
 
-        BotonAgregar.setForeground(new java.awt.Color(51, 51, 51));
+        BotonAgregar.setForeground(new java.awt.Color(204, 204, 204));
         BotonAgregar.setText("Agregar");
         BotonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

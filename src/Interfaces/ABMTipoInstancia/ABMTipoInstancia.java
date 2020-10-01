@@ -320,7 +320,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     
                     controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
                     dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());
-                  
+                    
                    
                     String sec = tablaTI.getValueAt(i, 2).toString();
                     List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
@@ -328,14 +328,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     DTOTipoInstancia tI = (DTOTipoInstancia) listamod.get(j);
                         dtoTI.setCodSector(tI.getCodSector());
                     }
+                    controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
                     String tt = tablaTI.getValueAt(i, 3).toString();
                     List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
-                        for (int j = 0; j < lista.size(); j++) {
-                        DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
-                        dtoTI.setCodTipoTarea(tI.getCodTipoTarea());
+                    for (int j = 0; j < lista.size(); j++) {
+                    DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
+                    dtoTI.setCodTipoTarea(tI.getCodTipoTarea());
            
                     }
-                        dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());
+                    dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());
                     
 
                     System.out.println(dtoTI.getNombreSector());
@@ -428,7 +429,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                         DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(l);
                         dtoTI.setCodTipoTarea(tI.getCodTipoTarea());//Asigna codigo de tipo Tarea a dto
                         dtoTI.setFechaFinVigenciaTT(tI.getFechaFinVigenciaTT());  //Asigna fecha fin de Tipo Tarea a dto     
-                        JOptionPane.showMessageDialog(this, dtoTI.getCodTipoTarea());
+                        
                         }
                     
                    

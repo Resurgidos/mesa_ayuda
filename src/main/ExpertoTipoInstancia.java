@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 public class ExpertoTipoInstancia {
@@ -35,7 +36,7 @@ public class ExpertoTipoInstancia {
              for (Object x : objetoList) {
                  tipoIns = (TipoInstancia)x;
                  verificar = tipoIns.getCodTipoInstancia();
-                 System.out.println(sec.getNombreSector());
+                 
                  dtoTI.setVerificarError(verificar);
                 }if(dtoTI.getVerificarError() == 0 ){  
                     if(dtoTI.getCodTipoInstancia() == 0){ //Verificamos que el codigo no sea cero
@@ -264,10 +265,8 @@ public class ExpertoTipoInstancia {
             List objetoList = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit );
             List<DTOTipoInstancia> dtoList = new ArrayList<>();
             for (Object x : objetoList) {
-                       
-                
                 TipoTarea tt = (TipoTarea)x ; //por cada objeto de la lista, se lo asigno a un objeto de la clase
-                dtoTT.setCodSector(tt.getCodTipoTarea());
+                dtoTT.setCodTipoTarea(tt.getCodTipoTarea());               
                 dtoTT.setNombreTipoTarea(tt.getNombreTipoTarea());
                 dtoTT.setFechaFinVigenciaTT(tt.getFechaHoraFinVigenciaTipoTarea());
                 dtoList.add(dtoTT);

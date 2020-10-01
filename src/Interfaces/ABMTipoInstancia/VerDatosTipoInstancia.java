@@ -49,7 +49,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         }
         //Correspondiente a Tipo Tarea
         verCodTT.setText(Integer.toString(dtoTI.getCodTipoTarea()));
-        JOptionPane.showMessageDialog(this, dtoTI.getCodSector());
         verNombTT.setText(dtoTI.getNombreTipoTarea());      
         if(dtoTI.getFechaFinVigenciaTT()== null){
             verFechaFinTT.setText("vigente");
