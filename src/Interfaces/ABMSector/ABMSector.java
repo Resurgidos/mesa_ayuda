@@ -68,6 +68,9 @@ public class ABMSector extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FiltroKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                FiltroKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 FiltroKeyTyped(evt);
             }
@@ -418,6 +421,11 @@ public class ABMSector extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
+
+    private void FiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyReleased
+        // TODO add your handling code here:
+        tablaSectores(Filtro.getText());
+    }//GEN-LAST:event_FiltroKeyReleased
 
     /**
      * @param args the command line arguments

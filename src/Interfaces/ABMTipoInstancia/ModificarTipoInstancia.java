@@ -182,6 +182,11 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jLabel3.setText("Cod. Sector:");
 
         inputcodSecmod.setBackground(new java.awt.Color(255, 255, 255));
+        inputcodSecmod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputcodSecmodFocusLost(evt);
+            }
+        });
         inputcodSecmod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputcodSecmodActionPerformed(evt);
@@ -434,6 +439,19 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     private void inputcodTTmodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTTmodKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_inputcodTTmodKeyTyped
+
+    private void inputcodSecmodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodSecmodFocusLost
+        // TODO add your handling code here:
+        
+         if (!inputcodSecmod.getText().isEmpty()){
+            MostrarSectorFil(inputcodSecmod.getText());
+        }
+         else{
+             JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+                                                   
+        ///lost
+    }//GEN-LAST:event_inputcodSecmodFocusLost
 
     /**
      * @param args the command line arguments
