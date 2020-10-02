@@ -421,7 +421,9 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
     private void buscarSectorAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarSectorAgregarActionPerformed
         //Método para buscar sector por codigo
+         if (!inputcodSec.getText().isEmpty()) {
        MostrarSectorFil(inputcodSec.getText());
+         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_buscarSectorAgregarActionPerformed
     public void MostrarSectorFil(String dtosec){
        List<DTOTipoInstancia> lista = control.filtradoSector(dtosec);
@@ -433,8 +435,9 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }
     private void buscarTTAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTTAgregarActionPerformed
         //Método para buscar Tipo Tarea filtrado
+        if (!inputcodTT.getText().isEmpty()) {
         MostrarTTFil(inputcodTT.getText());
-      
+        }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_buscarTTAgregarActionPerformed
 
      public void MostrarTTFil(String dtott){
