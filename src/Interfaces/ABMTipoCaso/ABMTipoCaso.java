@@ -9,6 +9,7 @@ import Controller.ControladorABMTipoCaso;
 import DTO.DTOTipoCaso;
 import Interfaces.ABMSector.AgregarSector;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.List;
@@ -22,15 +23,16 @@ import javax.swing.table.DefaultTableModel;
  * @author leand
  */
 public class ABMTipoCaso extends javax.swing.JFrame {
+
     DefaultTableModel tablaTipoCaso;
     ControladorABMTipoCaso controlador = new ControladorABMTipoCaso();
     DTOTipoCaso dtoTipoCaso = new DTOTipoCaso();
-    
+
     public ABMTipoCaso() {
         initComponents();
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
         setTitle("ABM Tipo Caso");
-        
+
         tablaTipoCaso("");
         tablaTipoCaso.fireTableDataChanged();
 //        tablaTipoCaso = new DefaultTableModel();
@@ -141,24 +143,22 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonAddTipoCaso)
-                .addGap(41, 41, 41))
+                .addGap(43, 43, 43))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonAddTipoCaso)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(botonAddTipoCaso)))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                                .addComponent(jLabel6)))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         tablaTipoCasos = new javax.swing.JTable(){
@@ -185,6 +185,8 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaTipoCasos.setSelectionBackground(new java.awt.Color(29, 219, 156));
+        tablaTipoCasos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaTipoCasos);
 
         botonEliminarTipoCaso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -268,32 +270,32 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void tablaTipoCaso(String cadenaFiltro){
+    public void tablaTipoCaso(String cadenaFiltro) {
         List<DTOTipoCaso> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
         List prueba = null;
         tablaTipoCaso = new DefaultTableModel();
         tablaTipoCasos.setModel(tablaTipoCaso);
-         tablaTipoCaso.addColumn("Cod.TipoCaso");
-         tablaTipoCaso.addColumn("Nombre TipoCaso");
-         tablaTipoCaso.addColumn("Fin Vigencia TipoCaso");
+        tablaTipoCaso.addColumn("Cod.TipoCaso");
+        tablaTipoCaso.addColumn("Nombre TipoCaso");
+        tablaTipoCaso.addColumn("Fin Vigencia TipoCaso");
+
+        tablaTipoCasos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tablaTipoCasos.getTableHeader().setBackground(new Color(73, 182, 153));
 //         tablaTipoCasos.getRowSorter().toggleSortOrder(0);
 
 //        tablaTipoCasos.getRowSorter().toggleSortOrder(1);
-         tablaTipoCasos.setAutoCreateRowSorter(true);
-         tablaTipoCasos.getRowSorter().toggleSortOrder(1);
-         for (int i = 0; i < lista.size(); i++) {
+        tablaTipoCasos.setAutoCreateRowSorter(true);
+        tablaTipoCasos.getRowSorter().toggleSortOrder(1);
+        for (int i = 0; i < lista.size(); i++) {
             Vector ejemplo = new Vector();
             ejemplo.add(lista.get(i).getCodTipoCaso());
             ejemplo.add(lista.get(i).getNombreTipoCaso());
             ejemplo.add(lista.get(i).getFechaFinVigenciaTipoCaso());
-            tablaTipoCaso.addRow( ejemplo); 
+            tablaTipoCaso.addRow(ejemplo);
         }
-         
-        
-        
+
     }
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Botón para volver a Menú principal
         Menu menu = new Menu();
@@ -303,30 +305,30 @@ public class ABMTipoCaso extends javax.swing.JFrame {
 
     private void botonModificarTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarTipoCasoActionPerformed
 //        Metodo de modificar tipocaso
-          int numTabTipoCaso = tablaTipoCasos.getSelectedRow();
-          if (numTabTipoCaso == -1){
-              ErrorMensaje.setForeground(Color.RED);
-              ErrorMensaje.setText("No ha seleccionado ningún tipo caso para modificar");
-              
-          }else{
-              for(int i=0 ; i < tablaTipoCasos.getRowCount(); i++){
-                if( tablaTipoCasos.getValueAt(i, 2) != null){
+        int numTabTipoCaso = tablaTipoCasos.getSelectedRow();
+        if (numTabTipoCaso == -1) {
+            ErrorMensaje.setForeground(Color.RED);
+            ErrorMensaje.setText("No ha seleccionado ningún tipo caso para modificar");
+
+        } else {
+            for (int i = 0; i < tablaTipoCasos.getRowCount(); i++) {
+                if (tablaTipoCasos.getValueAt(i, 2) != null) {
                     ErrorMensaje.setForeground(Color.RED);
                     ErrorMensaje.setText("El Tipo Caso ya esta dado de baja, no se puede modificar");
-                }else{
-                    if(i==numTabTipoCaso){
-                      dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
-                      dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
+                } else {
+                    if (i == numTabTipoCaso) {
+                        dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
+                        dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
                         System.out.println(dtoTipoCaso.getCodTipoCaso());
                         System.out.println(dtoTipoCaso.getNombreTipoCaso());
-                      ModificarTipoCaso modificarPantalla = new ModificarTipoCaso(dtoTipoCaso);
-                      modificarPantalla.setVisible(true);
-                      this.setVisible(false);                     
+                        ModificarTipoCaso modificarPantalla = new ModificarTipoCaso(dtoTipoCaso);
+                        modificarPantalla.setVisible(true);
+                        this.setVisible(false);
                     }
                 }
-                  
-              }
-          }
+
+            }
+        }
     }//GEN-LAST:event_botonModificarTipoCasoActionPerformed
 
     private void botonAddTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddTipoCasoActionPerformed
@@ -343,35 +345,35 @@ public class ABMTipoCaso extends javax.swing.JFrame {
     private void botonEliminarTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarTipoCasoActionPerformed
         //Eliminar un tipo caso
         int numTabTipoCaso = tablaTipoCasos.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-        if(numTabTipoCaso == -1){               
-           ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-           ErrorMensaje.setText("No ha seleccionado ningún tipo caso para dar de baja");
-       }else{
+        if (numTabTipoCaso == -1) {
+            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+            ErrorMensaje.setText("No ha seleccionado ningún tipo caso para dar de baja");
+        } else {
 //            System.out.println(tablaTipoCasos.getRowCount());
-            for(int i=0; i<tablaTipoCasos.getRowCount(); i++){ //Recorremos la tabla
-                if(numTabTipoCaso==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
+            for (int i = 0; i < tablaTipoCasos.getRowCount(); i++) { //Recorremos la tabla
+                if (numTabTipoCaso == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
                     System.out.println("Encontre el numero");
                     System.out.println(tablaTipoCasos.getValueAt(i, 2));
-                    if(tablaTipoCasos.getValueAt(i, 2) != null){
+                    if (tablaTipoCasos.getValueAt(i, 2) != null) {
                         ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                         ErrorMensaje.setText("El Tipo Caso elegido ya esta dado de baja");
-                    }else{  
-                        dtoTipoCaso.setCodTipoCaso((int)tablaTipoCasos.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
-                        System.out.println((int)tablaTipoCasos.getValueAt(i,0));
-                         int j = JOptionPane.showConfirmDialog(this, ""
+                    } else {
+                        dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                        System.out.println((int) tablaTipoCasos.getValueAt(i, 0));
+                        int j = JOptionPane.showConfirmDialog(this, ""
                                 + "¿Estas seguro que confirmar la baja? \n\n"
                                 + "Cod TipoCaso: " + (int) tablaTipoCasos.getValueAt(i, 0) + "\n"
-                                + "Nombre: " + tablaTipoCasos.getValueAt(i, 1) + "\n\n"
-                                , "Dar de baja Tipo Caso", JOptionPane.YES_NO_OPTION);
+                                + "Nombre: " + tablaTipoCasos.getValueAt(i, 1) + "\n\n",
+                                 "Dar de baja Tipo Caso", JOptionPane.YES_NO_OPTION);
                         if (j == 0) {
                             controlador.bajaTipoCaso(dtoTipoCaso);
-                            JOptionPane.showMessageDialog(this, "Tipo Caso dado de baja"); 
+                            JOptionPane.showMessageDialog(this, "Tipo Caso dado de baja");
                         }
                         tablaTipoCaso("");
-                   }
+                    }
                 }
-            }   
-      }
+            }
+        }
     }//GEN-LAST:event_botonEliminarTipoCasoActionPerformed
 
     private void filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroActionPerformed
@@ -387,27 +389,27 @@ public class ABMTipoCaso extends javax.swing.JFrame {
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
 //        Ver mas detalles del tipo caso
         int numTabTipoCaso = tablaTipoCasos.getSelectedRow();
-          if (numTabTipoCaso == -1){
-              ErrorMensaje.setForeground(Color.RED);
-              ErrorMensaje.setText("No ha seleccionado ningún tipo caso");  
-          }else{
-              for(int i=0 ; i < tablaTipoCasos.getRowCount(); i++){             
-                    if(i==numTabTipoCaso){
-                      dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
-                      dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
-                      dtoTipoCaso.setFechaFinVigenciaTipoCaso((Date) tablaTipoCasos.getValueAt(i, 2));
-      
-                      VerDatosTipoCasos verDatos = new VerDatosTipoCasos(dtoTipoCaso);
-                      verDatos.setVisible(true);
-                      this.setVisible(false);                     
-                    }                               
-              }
-          }
+        if (numTabTipoCaso == -1) {
+            ErrorMensaje.setForeground(Color.RED);
+            ErrorMensaje.setText("No ha seleccionado ningún tipo caso");
+        } else {
+            for (int i = 0; i < tablaTipoCasos.getRowCount(); i++) {
+                if (i == numTabTipoCaso) {
+                    dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
+                    dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
+                    dtoTipoCaso.setFechaFinVigenciaTipoCaso((Date) tablaTipoCasos.getValueAt(i, 2));
+
+                    VerDatosTipoCasos verDatos = new VerDatosTipoCasos(dtoTipoCaso);
+                    verDatos.setVisible(true);
+                    this.setVisible(false);
+                }
+            }
+        }
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     private void filtroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroKeyReleased
 
-         tablaTipoCaso(filtro.getText());
+        tablaTipoCaso(filtro.getText());
     }//GEN-LAST:event_filtroKeyReleased
 
     /**
