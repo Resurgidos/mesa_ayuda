@@ -103,13 +103,15 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        botonVolver.setBackground(new java.awt.Color(255, 255, 255));
         botonVolver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonVolver.setForeground(new java.awt.Color(0, 0, 0));
-        botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
+        botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         botonVolver.setMnemonic('v');
         botonVolver.setText("Volver");
+        botonVolver.setBorder(null);
         botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,11 +119,13 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
             }
         });
 
+        botonAgregar.setBackground(new java.awt.Color(255, 255, 255));
         botonAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confirmar.png"))); // NOI18N
+        botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
         botonAgregar.setMnemonic('c');
         botonAgregar.setText("Confirmar");
+        botonAgregar.setBorder(null);
         botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,11 +133,11 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(102, 153, 0));
+        jPanel4.setBackground(new java.awt.Color(119, 148, 166));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AGREGAR2.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_add_black_18dp.png"))); // NOI18N
         jLabel5.setText("AGREGAR TIPO CASO");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -204,12 +208,12 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(inputCodTipoCaso, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                                     .addComponent(inputNombreTipoCaso))))
-                        .addContainerGap(67, Short.MAX_VALUE))
+                        .addContainerGap(71, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(botonAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonVolver)
-                        .addGap(59, 59, 59))))
+                        .addGap(48, 48, 48))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

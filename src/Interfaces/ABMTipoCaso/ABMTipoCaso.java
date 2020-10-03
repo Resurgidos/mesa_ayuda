@@ -63,13 +63,15 @@ public class ABMTipoCaso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         jButton2.setMnemonic('v');
         jButton2.setText("Volver");
+        jButton2.setBorder(null);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,11 +79,13 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             }
         });
 
+        botonModificarTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
         botonModificarTipoCaso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonModificarTipoCaso.setForeground(new java.awt.Color(0, 0, 0));
-        botonModificarTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        botonModificarTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_edit_black_18dp.png"))); // NOI18N
         botonModificarTipoCaso.setMnemonic('m');
         botonModificarTipoCaso.setText("Modificar");
+        botonModificarTipoCaso.setBorder(null);
         botonModificarTipoCaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonModificarTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,17 +93,19 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(102, 153, 0));
+        jPanel4.setBackground(new java.awt.Color(119, 148, 166));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("TIPO CASO");
 
+        botonAddTipoCaso.setBackground(new java.awt.Color(119, 148, 166));
         botonAddTipoCaso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonAddTipoCaso.setForeground(new java.awt.Color(0, 0, 0));
-        botonAddTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar.png"))); // NOI18N
+        botonAddTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_add_black_18dp.png"))); // NOI18N
         botonAddTipoCaso.setMnemonic('a');
         botonAddTipoCaso.setText("Agregar");
+        botonAddTipoCaso.setBorder(null);
         botonAddTipoCaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAddTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +115,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupita.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
         jLabel6.setToolTipText("");
 
         filtro.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,27 +145,22 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(67, 67, 67)
                 .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonAddTipoCaso)
-                .addGap(43, 43, 43))
+                .addGap(37, 37, 37))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonAddTipoCaso)
+                    .addComponent(jLabel6)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonAddTipoCaso)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel6)))))
+                        .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -168,7 +169,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 return false;
             }
         };
-        tablaTipoCasos.setBackground(new java.awt.Color(255, 255, 255));
+        tablaTipoCasos.setBackground(new java.awt.Color(204, 204, 204));
         tablaTipoCasos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -187,15 +188,17 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaTipoCasos.setSelectionBackground(new java.awt.Color(29, 219, 156));
+        tablaTipoCasos.setSelectionBackground(new java.awt.Color(153, 153, 153));
         tablaTipoCasos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaTipoCasos);
 
+        botonEliminarTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
         botonEliminarTipoCaso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonEliminarTipoCaso.setForeground(new java.awt.Color(0, 0, 0));
-        botonEliminarTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
+        botonEliminarTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_delete_black_18dp.png"))); // NOI18N
         botonEliminarTipoCaso.setMnemonic('b');
         botonEliminarTipoCaso.setText("Dar Baja");
+        botonEliminarTipoCaso.setBorder(null);
         botonEliminarTipoCaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEliminarTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,11 +209,14 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         ErrorMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ErrorMensaje.setToolTipText("");
 
+        botonMostrarDatos.setBackground(new java.awt.Color(255, 255, 255));
         botonMostrarDatos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonMostrarDatos.setForeground(new java.awt.Color(0, 0, 0));
-        botonMostrarDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojoverde1.png"))); // NOI18N
+        botonMostrarDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_visibility_black_18dp.png"))); // NOI18N
         botonMostrarDatos.setMnemonic('d');
         botonMostrarDatos.setText("Mostrar Datos");
+        botonMostrarDatos.setToolTipText("Muestra datos");
+        botonMostrarDatos.setBorder(null);
         botonMostrarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonMostrarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,21 +230,21 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonModificarTipoCaso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonMostrarDatos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonModificarTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonEliminarTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(453, 453, 453)
+                                .addComponent(botonEliminarTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonMostrarDatos)))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,15 +253,17 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonMostrarDatos)
-                    .addComponent(botonModificarTipoCaso)
+                    .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonModificarTipoCaso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonEliminarTipoCaso)
                     .addComponent(jButton2))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,7 +290,8 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         tablaTipoCaso.addColumn("Fin Vigencia TipoCaso");
 
         tablaTipoCasos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        tablaTipoCasos.getTableHeader().setBackground(new Color(73, 182, 153));
+        tablaTipoCasos.getTableHeader().setBackground(new Color(119, 148, 166));
+      
 //         tablaTipoCasos.getRowSorter().toggleSortOrder(0);
 
 //        tablaTipoCasos.getRowSorter().toggleSortOrder(1);
