@@ -38,7 +38,6 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         filBusqueda = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        FiltrarTI = new javax.swing.JButton();
         AgregarTI = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaTipoInstancia = new javax.swing.JTable();
@@ -82,22 +81,19 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 filBusquedaKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filBusquedaKeyReleased(evt);
+            }
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Filtrar:");
-
-        FiltrarTI.setBackground(new java.awt.Color(204, 204, 204));
-        FiltrarTI.setText("Buscar");
-        FiltrarTI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FiltrarTIActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("Buscar");
 
         AgregarTI.setBackground(new java.awt.Color(204, 204, 204));
+        AgregarTI.setMnemonic('a');
         AgregarTI.setText("Agregar");
+        AgregarTI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AgregarTI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarTIActionPerformed(evt);
@@ -111,30 +107,24 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addGap(40, 40, 40)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(filBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(FiltrarTI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AgregarTI)
                 .addGap(51, 51, 51))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(FiltrarTI))
-                .addGap(14, 14, 14))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AgregarTI)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(filBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -165,7 +155,9 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaTipoInstancia);
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jButton3.setMnemonic('v');
         jButton3.setText("Volver");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -181,7 +173,9 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         });
 
         BajaTI.setBackground(new java.awt.Color(204, 204, 204));
-        BajaTI.setText("Eliminar");
+        BajaTI.setMnemonic('b');
+        BajaTI.setText("Dar baja");
+        BajaTI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BajaTI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BajaTIActionPerformed(evt);
@@ -268,6 +262,9 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         tablaTI.addColumn("Nombre Sector");
         tablaTI.addColumn("Nombre Tipo Tarea");
         tablaTI.addColumn("Fecha Fin Vigencia");
+        
+        tablaTipoInstancia.setAutoCreateRowSorter(true);
+        tablaTipoInstancia.getRowSorter().toggleSortOrder(1);
     
         for (int i = 0; i < lista.size(); i++) {
             Vector fil = new Vector();
@@ -380,11 +377,6 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_BajaTIActionPerformed
 
-    private void FiltrarTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltrarTIActionPerformed
-       //Filtro de busqueda
-          tablaTI(filBusqueda.getText());
-    }//GEN-LAST:event_FiltrarTIActionPerformed
-
     private void filBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
         tablaTI(filBusqueda.getText());
@@ -443,6 +435,10 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
+    private void filBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaKeyReleased
+          tablaTI(filBusqueda.getText());
+    }//GEN-LAST:event_filBusquedaKeyReleased
+
    
     public static void main(String args[]) {
       
@@ -457,7 +453,6 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     private javax.swing.JButton AgregarTI;
     private javax.swing.JButton BajaTI;
     private javax.swing.JTextField ErrorMensaje;
-    private javax.swing.JButton FiltrarTI;
     private javax.swing.JButton ModificarTI;
     private javax.swing.JButton botonMostrarDatos;
     private javax.swing.JTextField filBusqueda;

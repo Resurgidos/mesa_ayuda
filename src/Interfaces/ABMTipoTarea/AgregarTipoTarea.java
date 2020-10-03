@@ -76,7 +76,9 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
             }
         });
 
+        confirmar.setMnemonic('c');
         confirmar.setText("Confirmar");
+        confirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarActionPerformed(evt);
@@ -123,7 +125,9 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
             }
         });
 
+        volver.setMnemonic('v');
         volver.setText("Volver");
+        volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverActionPerformed(evt);

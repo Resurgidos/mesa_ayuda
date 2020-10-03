@@ -88,7 +88,9 @@ public class ModificarTipoTarea extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Codigo Tipo Tarea:");
 
+        Bconfirmar.setMnemonic('c');
         Bconfirmar.setText("Confirmar");
+        Bconfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Bconfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BconfirmarActionPerformed(evt);
@@ -117,7 +119,9 @@ public class ModificarTipoTarea extends javax.swing.JFrame {
             }
         });
 
+        Bvolver.setMnemonic('v');
         Bvolver.setText("Volver");
+        Bvolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Bvolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BvolverActionPerformed(evt);

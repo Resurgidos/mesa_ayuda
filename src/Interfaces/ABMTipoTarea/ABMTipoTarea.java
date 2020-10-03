@@ -58,7 +58,6 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Filtro = new javax.swing.JTextField();
-        BotonFiltro = new javax.swing.JButton();
         BotonAgregar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         MensajeError = new javax.swing.JLabel();
@@ -71,7 +70,9 @@ public class ABMTipoTarea extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
+        BotonModificar.setMnemonic('m');
         BotonModificar.setText("Modificar");
+        BotonModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarActionPerformed(evt);
@@ -107,15 +108,10 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             }
         });
 
-        BotonFiltro.setText("Buscar");
-        BotonFiltro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonFiltroActionPerformed(evt);
-            }
-        });
-
         BotonAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        BotonAgregar.setMnemonic('a');
         BotonAgregar.setText("Agregar");
+        BotonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAgregarActionPerformed(evt);
@@ -129,12 +125,10 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
+                .addGap(69, 69, 69)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BotonFiltro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonAgregar)
                 .addGap(27, 27, 27))
@@ -146,7 +140,6 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(BotonFiltro)
                     .addComponent(BotonAgregar))
                 .addGap(22, 22, 22))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -155,7 +148,9 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
+        BotonEliminar.setMnemonic('b');
         BotonEliminar.setText("Dar Baja");
+        BotonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarActionPerformed(evt);
@@ -182,14 +177,18 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TipoTareaTabla);
 
+        BotonVolver.setMnemonic('v');
         BotonVolver.setText("Volver");
+        BotonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonVolverActionPerformed(evt);
             }
         });
 
+        jButton1.setMnemonic('d');
         jButton1.setText("Mostrar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -302,10 +301,6 @@ public class ABMTipoTarea extends javax.swing.JFrame {
        
     }//GEN-LAST:event_FiltroKeyTyped
 
-    private void BotonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFiltroActionPerformed
-//       tablaTipoTarea(Filtro.getText());
-    }//GEN-LAST:event_BotonFiltroActionPerformed
-
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
 
         int numTabtita = TipoTareaTabla.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
@@ -397,7 +392,6 @@ public class ABMTipoTarea extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAgregar;
     private javax.swing.JButton BotonEliminar;
-    private javax.swing.JButton BotonFiltro;
     private javax.swing.JButton BotonModificar;
     private javax.swing.JButton BotonVolver;
     private javax.swing.JTextField Filtro;

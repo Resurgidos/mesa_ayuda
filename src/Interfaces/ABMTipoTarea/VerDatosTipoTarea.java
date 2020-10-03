@@ -76,7 +76,9 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
         labeldescver.setText("Descripción Tipo Tarea:");
 
         botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
+        botonContinuar.setMnemonic('c');
         botonContinuar.setText("Continuar");
+        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);
