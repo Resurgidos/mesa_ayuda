@@ -63,14 +63,18 @@ public class ABMTipoCaso extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
+        jButton2.setMnemonic('v');
         jButton2.setText("Volver");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        botonModificarTipoCaso.setMnemonic('m');
         botonModificarTipoCaso.setText("Modificar");
+        botonModificarTipoCaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonModificarTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModificarTipoCasoActionPerformed(evt);
@@ -83,7 +87,9 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("TIPO CASO");
 
+        botonAddTipoCaso.setMnemonic('a');
         botonAddTipoCaso.setText("Agregar");
+        botonAddTipoCaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAddTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAddTipoCasoActionPerformed(evt);
@@ -169,7 +175,9 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaTipoCasos);
 
+        botonEliminarTipoCaso.setMnemonic('b');
         botonEliminarTipoCaso.setText("Dar Baja");
+        botonEliminarTipoCaso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEliminarTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarTipoCasoActionPerformed(evt);
@@ -179,7 +187,9 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         ErrorMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ErrorMensaje.setToolTipText("");
 
-        botonMostrarDatos.setText("Mostrar datos");
+        botonMostrarDatos.setMnemonic('d');
+        botonMostrarDatos.setText("Mostrar Datos");
+        botonMostrarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonMostrarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMostrarDatosActionPerformed(evt);

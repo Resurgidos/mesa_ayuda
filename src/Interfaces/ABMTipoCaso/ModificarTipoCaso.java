@@ -95,7 +95,9 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         jLabel1.setText("Cod. Tipo Caso:");
 
         botonVolver.setBackground(new java.awt.Color(204, 204, 204));
+        botonVolver.setMnemonic('v');
         botonVolver.setText("Volver");
+        botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActionPerformed(evt);
@@ -103,7 +105,9 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         });
 
         botonConfModif.setBackground(new java.awt.Color(204, 204, 204));
+        botonConfModif.setMnemonic('c');
         botonConfModif.setText("Confirmar");
+        botonConfModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonConfModif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConfModifActionPerformed(evt);
@@ -128,24 +132,27 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(botonVolver)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonConfModif))
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inputCodTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputCodTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputnombreTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 59, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(botonConfModif)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(inputnombreTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 30, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(botonVolver)))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,8 +168,8 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
                     .addComponent(inputnombreTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVolver)
-                    .addComponent(botonConfModif))
+                    .addComponent(botonConfModif)
+                    .addComponent(botonVolver))
                 .addContainerGap())
         );
 

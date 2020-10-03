@@ -105,14 +105,18 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
+        botonVolver.setMnemonic('v');
         botonVolver.setText("Volver");
+        botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActionPerformed(evt);
             }
         });
 
+        botonAgregar.setMnemonic('c');
         botonAgregar.setText("Confirmar");
+        botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
@@ -182,9 +186,9 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -193,13 +197,12 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(inputCodTipoCaso, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                                     .addComponent(inputNombreTipoCaso))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(53, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(botonAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonVolver)))
-                .addContainerGap())
+                        .addComponent(botonVolver)
+                        .addGap(43, 43, 43))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

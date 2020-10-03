@@ -110,7 +110,9 @@ public class AgregarSector extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setMnemonic('v');
         jButton1.setText("Volver");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -118,7 +120,9 @@ public class AgregarSector extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setMnemonic('c');
         jButton2.setText("Confirmar");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

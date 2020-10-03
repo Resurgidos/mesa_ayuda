@@ -81,7 +81,10 @@ public class ABMSector extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setMnemonic('a');
         jButton1.setText("Agregar");
+        jButton1.setToolTipText("");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -119,7 +122,9 @@ public class ABMSector extends javax.swing.JFrame {
         );
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setMnemonic('v');
         jButton2.setText("Volver");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -127,7 +132,9 @@ public class ABMSector extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jButton3.setMnemonic('m');
         jButton3.setText("Modificar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -135,7 +142,9 @@ public class ABMSector extends javax.swing.JFrame {
         });
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
+        jButton4.setMnemonic('b');
         jButton4.setText("Dar Baja");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -143,7 +152,7 @@ public class ABMSector extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sectores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sectores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         tablaSector = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -193,7 +202,10 @@ public class ABMSector extends javax.swing.JFrame {
         ErrorMensaje.setToolTipText("");
 
         botonMostrarDatos.setBackground(new java.awt.Color(204, 204, 204));
+        botonMostrarDatos.setMnemonic('d');
         botonMostrarDatos.setText("Mostrar Datos");
+        botonMostrarDatos.setToolTipText("");
+        botonMostrarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonMostrarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMostrarDatosActionPerformed(evt);

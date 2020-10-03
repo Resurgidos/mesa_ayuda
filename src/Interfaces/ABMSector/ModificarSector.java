@@ -108,7 +108,9 @@ public class ModificarSector extends javax.swing.JFrame {
         jLabel1.setText("Cod. Sector:");
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jButton3.setMnemonic('v');
         jButton3.setText("Volver");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -116,7 +118,9 @@ public class ModificarSector extends javax.swing.JFrame {
         });
 
         botonConfModif.setBackground(new java.awt.Color(204, 204, 204));
+        botonConfModif.setMnemonic('c');
         botonConfModif.setText("Confirmar");
+        botonConfModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonConfModif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConfModifActionPerformed(evt);

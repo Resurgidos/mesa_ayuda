@@ -67,7 +67,9 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
+        botonContinuar.setMnemonic('v');
         botonContinuar.setText("Volver");
+        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);
