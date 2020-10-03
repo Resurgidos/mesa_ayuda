@@ -46,27 +46,26 @@
               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                          <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="labelcodver" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
-                          <Component id="verCodTipoTarea" min="-2" pref="224" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labeldescver" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelnombver" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelFechaFinver" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="labelcodver" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="54" max="32767" attributes="0"/>
+                              <Component id="verCodTipoTarea" min="-2" pref="224" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="verNombTipoTarea" alignment="1" pref="223" max="32767" attributes="0"/>
-                              <Component id="verDescTipoTarea" alignment="1" pref="223" max="32767" attributes="0"/>
-                              <Component id="verFechaFinTipoTarea" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labeldescver" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelnombver" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelFechaFinver" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="verNombTipoTarea" alignment="1" pref="223" max="32767" attributes="0"/>
+                                  <Component id="verDescTipoTarea" alignment="1" pref="223" max="32767" attributes="0"/>
+                                  <Component id="verFechaFinTipoTarea" alignment="1" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -98,9 +97,9 @@
                       <Component id="labelFechaFinver" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="verFechaFinTipoTarea" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

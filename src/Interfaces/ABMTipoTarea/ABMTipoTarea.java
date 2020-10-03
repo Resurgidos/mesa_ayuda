@@ -36,6 +36,9 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         tablaTipoTarea.addColumn("Nombre Tipo Tarea");
         tablaTipoTarea.addColumn("Descripcion");
         tablaTipoTarea.addColumn("Fin Vigencia");
+        
+        TipoTareaTabla.setAutoCreateRowSorter(true);
+        TipoTareaTabla.getRowSorter().toggleSortOrder(1);
        
         for (int i = 0; i < lista.size(); i++) {
             Vector ejemplo = new Vector();
@@ -82,11 +85,11 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         jLabel1.setText("TIPO TAREA");
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Filtrar:");
+        jLabel2.setText("Buscar");
         jLabel2.setToolTipText("");
 
         Filtro.setBackground(new java.awt.Color(204, 204, 204));
-        Filtro.setForeground(new java.awt.Color(204, 204, 204));
+        Filtro.setForeground(new java.awt.Color(0, 0, 0));
         Filtro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FiltroActionPerformed(evt);
@@ -95,6 +98,9 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         Filtro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FiltroKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                FiltroKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 FiltroKeyTyped(evt);
@@ -108,7 +114,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             }
         });
 
-        BotonAgregar.setForeground(new java.awt.Color(204, 204, 204));
+        BotonAgregar.setForeground(new java.awt.Color(0, 0, 0));
         BotonAgregar.setText("Agregar");
         BotonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +142,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
@@ -146,10 +152,10 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        BotonEliminar.setText("Eliminar");
+        BotonEliminar.setText("Dar Baja");
         BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarActionPerformed(evt);
@@ -218,27 +224,24 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotonModificar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BotonModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotonVolver)
                     .addComponent(BotonEliminar))
-                .addGap(73, 73, 73))
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +303,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
     }//GEN-LAST:event_FiltroKeyTyped
 
     private void BotonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFiltroActionPerformed
-       tablaTipoTarea(Filtro.getText());
+//       tablaTipoTarea(Filtro.getText());
     }//GEN-LAST:event_BotonFiltroActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
@@ -317,13 +320,18 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                     MensajeError.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                     MensajeError.setText("Tipo Tarea elegido ya esta dado de baja");
                 }else{
-                dtotipotareamodificar.setCodTipoTarea((int)TipoTareaTabla.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
-                int j = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Tipo Tarea", JOptionPane.YES_NO_OPTION);
+                    dtotipotareamodificar.setCodTipoTarea((int)TipoTareaTabla.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                    int j = JOptionPane.showConfirmDialog(this, ""
+                                + "¿Estas seguro que confirmar la baja? \n\n"
+                                + "Cod Tipo Tarea: " + (int) TipoTareaTabla.getValueAt(i, 0) + "\n"
+                                + "Nombre: " + TipoTareaTabla.getValueAt(i, 1) + "\n"
+                                + "Descripción: " + TipoTareaTabla.getValueAt(i, 2) + "\n\n"
+                                , "Dar de baja Tipo Caso", JOptionPane.YES_NO_OPTION);
                     if (j == 0) {
                         controlador.bajaTipoTarea(dtotipotareamodificar);
                         JOptionPane.showMessageDialog(this, "Tipo Tarea Dado de baja"); 
-                           }
-                     tablaTipoTarea("");
+                    }
+                    tablaTipoTarea("");
                }
             }
         }   
@@ -372,6 +380,11 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void FiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyReleased
+        // Filtra cuando voy escribiendo
+         tablaTipoTarea(Filtro.getText());
+    }//GEN-LAST:event_FiltroKeyReleased
 
     
    public static void main(String args[]) {

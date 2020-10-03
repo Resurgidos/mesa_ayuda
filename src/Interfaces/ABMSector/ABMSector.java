@@ -39,7 +39,6 @@ public class ABMSector extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Filtro = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        botonfiltro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -61,9 +60,14 @@ public class ABMSector extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Filtrar:");
+        jLabel2.setText("Buscar");
         jLabel2.setToolTipText("");
 
+        Filtro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltroActionPerformed(evt);
+            }
+        });
         Filtro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FiltroKeyPressed(evt);
@@ -84,14 +88,6 @@ public class ABMSector extends javax.swing.JFrame {
             }
         });
 
-        botonfiltro.setBackground(new java.awt.Color(204, 204, 204));
-        botonfiltro.setText("Buscar");
-        botonfiltro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonfiltroActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -103,9 +99,7 @@ public class ABMSector extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonfiltro)
-                .addGap(79, 79, 79)
+                .addGap(160, 160, 160)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -120,8 +114,7 @@ public class ABMSector extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(botonfiltro))
+                    .addComponent(jLabel2))
                 .addGap(14, 14, 14))
         );
 
@@ -142,7 +135,7 @@ public class ABMSector extends javax.swing.JFrame {
         });
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("Eliminar");
+        jButton4.setText("Dar Baja");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -150,7 +143,7 @@ public class ABMSector extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sectores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sectores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(0, 0, 0))); // NOI18N
 
         tablaSector = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -286,10 +279,10 @@ public class ABMSector extends javax.swing.JFrame {
             ejemplo.add(lista.get(i).getNombreSector());
             ejemplo.add(lista.get(i).getDescripcionSector());
             ejemplo.add(lista.get(i).getFechaFinVigenciaSector());
-            tablaSectores.addRow( ejemplo);
-            
-            
+            tablaSectores.addRow( ejemplo);   
         }
+        
+        tablaSector.getRowSorter().toggleSortOrder(1);
        
     }
     
@@ -365,25 +358,23 @@ public class ABMSector extends javax.swing.JFrame {
                     ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                     ErrorMensaje.setText("El sector elegido ya esta dado de baja");
                 }else{
-                dtosector.setCodSector((int)tablaSector.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
-                int j = JOptionPane.showConfirmDialog(this, "¿Estas seguro que confirmar la baja?", "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
-                    if (j == 0) {
-                        controlador.bajaSector(dtosector);
-                        JOptionPane.showMessageDialog(this, "Sector Dado de baja"); 
-                           }
-                     tablaSectores("");
+                    dtosector.setCodSector((int) tablaSector.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                        int j = JOptionPane.showConfirmDialog(this, ""
+                                + "¿Estas seguro que confirmar la baja? \n\n"
+                                + "Cod Sector: " + (int) tablaSector.getValueAt(i, 0) + "\n"
+                                + "Nombre: " + tablaSector.getValueAt(i, 1) + "\n"
+                                + "Descripción: " + tablaSector.getValueAt(i, 2) + "\n\n"
+                                , "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
+                        if (j == 0) {
+                            controlador.bajaSector(dtosector);
+                            JOptionPane.showMessageDialog(this, "Sector Dado de baja");
+                        }
+                        tablaSectores("");
                }
             }
         }   
       }
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void botonfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonfiltroActionPerformed
-       //Filtro de busqueda   
-          tablaSectores(Filtro.getText());
-          
-      
-    }//GEN-LAST:event_botonfiltroActionPerformed
 
     private void FiltroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltroKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -427,6 +418,10 @@ public class ABMSector extends javax.swing.JFrame {
         tablaSectores(Filtro.getText());
     }//GEN-LAST:event_FiltroKeyReleased
 
+    private void FiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FiltroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -466,7 +461,6 @@ public class ABMSector extends javax.swing.JFrame {
     private javax.swing.JLabel ErrorMensaje;
     private javax.swing.JTextField Filtro;
     private javax.swing.JButton botonMostrarDatos;
-    private javax.swing.JButton botonfiltro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
