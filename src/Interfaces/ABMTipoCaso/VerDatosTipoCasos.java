@@ -66,7 +66,9 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
+        botonContinuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonContinuar.setForeground(new java.awt.Color(0, 0, 0));
+        botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
         botonContinuar.setMnemonic('v');
         botonContinuar.setText("Volver");
         botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -89,7 +91,7 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(labelTituloMostrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,6 +139,11 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
 
         inputFechaTipoCaso.setEditable(false);
         inputFechaTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputFechaTipoCaso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputFechaTipoCasoActionPerformed(evt);
+            }
+        });
         inputFechaTipoCaso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 inputFechaTipoCasoKeyTyped(evt);
@@ -162,13 +169,13 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
                                     .addComponent(labelnombver)
                                     .addComponent(labelcodver))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(inputCodTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(inputNomTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(inputCodTipoCaso, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                    .addComponent(inputNomTipoCaso)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(145, 145, 145)
                         .addComponent(botonContinuar)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,12 +190,12 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
                     .addComponent(labelnombver)
                     .addComponent(inputNomTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputFechaTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelFechaFinver, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFechaFinver, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputFechaTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(botonContinuar)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -244,6 +251,10 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
     private void inputFechaTipoCasoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputFechaTipoCasoKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_inputFechaTipoCasoKeyTyped
+
+    private void inputFechaTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFechaTipoCasoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputFechaTipoCasoActionPerformed
 
     /**
      * @param args the command line arguments

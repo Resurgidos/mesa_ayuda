@@ -43,15 +43,17 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         outnombSec = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         outnombTT = new javax.swing.JTextField();
-        buscarSectorAgregar = new javax.swing.JButton();
-        buscarTTAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
+        confirmarAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        confirmarAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        confirmarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confirmar.png"))); // NOI18N
+        confirmarAgregar.setMnemonic('c');
         confirmarAgregar.setText("Confirmar");
+        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarAgregarActionPerformed(evt);
@@ -116,6 +118,11 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         jLabel3.setText("Cod. Sector:");
 
         inputcodSec.setBackground(new java.awt.Color(255, 255, 255));
+        inputcodSec.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputcodSecFocusLost(evt);
+            }
+        });
         inputcodSec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputcodSecActionPerformed(evt);
@@ -127,8 +134,12 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             }
         });
 
-        volverABMAgregar.setBackground(new java.awt.Color(204, 204, 204));
+        volverABMAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        volverABMAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        volverABMAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
+        volverABMAgregar.setMnemonic('v');
         volverABMAgregar.setText("Volver");
+        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volverABMAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMAgregarActionPerformed(evt);
@@ -141,6 +152,11 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         jLabel6.setText("Cod. Tipo Tarea:");
 
         inputcodTT.setBackground(new java.awt.Color(255, 255, 255));
+        inputcodTT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputcodTTFocusLost(evt);
+            }
+        });
         inputcodTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputcodTTActionPerformed(evt);
@@ -188,61 +204,47 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             }
         });
 
-        buscarSectorAgregar.setBackground(new java.awt.Color(204, 204, 204));
-        buscarSectorAgregar.setText("Buscar");
-        buscarSectorAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarSectorAgregarActionPerformed(evt);
-            }
-        });
-
-        buscarTTAgregar.setBackground(new java.awt.Color(204, 204, 204));
-        buscarTTAgregar.setText("Buscar");
-        buscarTTAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarTTAgregarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputcodTI, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                            .addComponent(inputnombTI)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(outnombSec)
-                            .addComponent(inputcodTT)
-                            .addComponent(outnombTT)
-                            .addComponent(inputcodSec, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buscarSectorAgregar)
-                    .addComponent(buscarTTAgregar))
-                .addGap(59, 59, 59))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(outnombSec)
+                                    .addComponent(inputcodTT)
+                                    .addComponent(outnombTT)
+                                    .addComponent(inputcodSec, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputnombTI)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(inputcodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(211, 211, 211)))
+                .addGap(121, 121, 121))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(346, 346, 346)
+                .addComponent(volverABMAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(70, 70, 70))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,26 +261,24 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarSectorAgregar))
-                .addGap(6, 6, 6)
+                    .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(outnombSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputcodTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(buscarTTAgregar))
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(outnombTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmarAgregar)
                     .addComponent(volverABMAgregar))
-                .addContainerGap())
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -417,13 +417,6 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void inputcodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodSecActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputcodSecActionPerformed
-
-    private void buscarSectorAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarSectorAgregarActionPerformed
-        //Método para buscar sector por codigo
-         if (!inputcodSec.getText().isEmpty()) {
-       MostrarSectorFil(inputcodSec.getText());
-         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
-    }//GEN-LAST:event_buscarSectorAgregarActionPerformed
     public void MostrarSectorFil(String dtosec){
 //        if(dtosec){
 //        }
@@ -434,14 +427,21 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
            
         }
     }
-    private void buscarTTAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTTAgregarActionPerformed
-        //Método para buscar Tipo Tarea filtrado
-        if (!inputcodTT.getText().isEmpty()) {
+    private void inputcodSecFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodSecFocusLost
+      if (!inputcodSec.getText().isEmpty()) {
+       MostrarSectorFil(inputcodSec.getText());
+         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
+                                                       
+     
+    }//GEN-LAST:event_inputcodSecFocusLost
+
+    private void inputcodTTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodTTFocusLost
+         if (!inputcodTT.getText().isEmpty()) {
         MostrarTTFil(inputcodTT.getText());
         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
-    }//GEN-LAST:event_buscarTTAgregarActionPerformed
+    }//GEN-LAST:event_inputcodTTFocusLost
 
-     public void MostrarTTFil(String dtott){
+    public void MostrarTTFil(String dtott){
        List<DTOTipoInstancia> lista = control.filtradoTT(dtott);
         for (int i = 0; i < lista.size(); i++) {
            DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(i);
@@ -486,8 +486,6 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buscarSectorAgregar;
-    private javax.swing.JButton buscarTTAgregar;
     private javax.swing.JButton confirmarAgregar;
     private javax.swing.JTextField inputcodSec;
     private javax.swing.JTextField inputcodTI;

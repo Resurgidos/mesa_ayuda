@@ -73,9 +73,11 @@ public class VerDatosSector extends javax.swing.JFrame {
         labeldescver.setForeground(new java.awt.Color(0, 0, 0));
         labeldescver.setText("Descripción Sector:");
 
-        botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
-        botonContinuar.setMnemonic('c');
-        botonContinuar.setText("Continuar");
+        botonContinuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonContinuar.setForeground(new java.awt.Color(0, 0, 0));
+        botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
+        botonContinuar.setMnemonic('v');
+        botonContinuar.setText("Volver");
         botonContinuar.setContentAreaFilled(false);
         botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +188,7 @@ public class VerDatosSector extends javax.swing.JFrame {
                                     .addComponent(verNombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(verDescSec, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(164, 164, 164)
                         .addComponent(botonContinuar)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -210,9 +212,9 @@ public class VerDatosSector extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelFechaFinver)
                     .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botonContinuar)
-                .addContainerGap())
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

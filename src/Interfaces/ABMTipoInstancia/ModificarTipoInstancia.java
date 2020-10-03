@@ -57,9 +57,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         inputcodTImod = new javax.swing.JTextField();
         outnombTTmod = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        buscarSectormod = new javax.swing.JButton();
         inputnombTImod = new javax.swing.JTextField();
-        buscarTTmod = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         inputcodSecmod = new javax.swing.JTextField();
         volverABMAgregar = new javax.swing.JButton();
@@ -153,26 +151,10 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre Tipo Instancia:");
 
-        buscarSectormod.setBackground(new java.awt.Color(204, 204, 204));
-        buscarSectormod.setText("Buscar");
-        buscarSectormod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarSectormodActionPerformed(evt);
-            }
-        });
-
         inputnombTImod.setBackground(new java.awt.Color(255, 255, 255));
         inputnombTImod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 inputnombTImodKeyTyped(evt);
-            }
-        });
-
-        buscarTTmod.setBackground(new java.awt.Color(204, 204, 204));
-        buscarTTmod.setText("Buscar");
-        buscarTTmod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarTTmodActionPerformed(evt);
             }
         });
 
@@ -198,8 +180,12 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             }
         });
 
-        volverABMAgregar.setBackground(new java.awt.Color(204, 204, 204));
+        volverABMAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        volverABMAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        volverABMAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
+        volverABMAgregar.setMnemonic('v');
         volverABMAgregar.setText("Volver");
+        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volverABMAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMAgregarActionPerformed(evt);
@@ -211,8 +197,11 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cod. Tipo Tarea:");
 
-        confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
+        confirmarAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        confirmarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confirmar.png"))); // NOI18N
+        confirmarAgregar.setMnemonic('c');
         confirmarAgregar.setText("Confirmar");
+        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarAgregarActionPerformed(evt);
@@ -220,6 +209,11 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         });
 
         inputcodTTmod.setBackground(new java.awt.Color(255, 255, 255));
+        inputcodTTmod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputcodTTmodFocusLost(evt);
+            }
+        });
         inputcodTTmod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputcodTTmodActionPerformed(evt);
@@ -236,41 +230,35 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputcodTImod, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(inputnombTImod))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscarSectormod)
-                            .addComponent(buscarTTmod))
-                        .addGap(59, 59, 59))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(outnombSecmod)
-                            .addComponent(inputcodTTmod)
-                            .addComponent(outnombTTmod)
-                            .addComponent(inputcodSecmod, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(142, 142, 142))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(65, 65, 65)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
+                        .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(inputnombTImod, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                .addComponent(inputcodTImod)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel6))
+                            .addGap(25, 25, 25)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(inputcodTTmod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                .addComponent(inputcodSecmod, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(outnombSecmod, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(outnombTTmod)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,29 +275,27 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(inputcodSecmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarSectormod))
-                .addGap(6, 6, 6)
+                    .addComponent(inputcodSecmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(outnombSecmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputcodTTmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(buscarTTmod))
+                    .addComponent(jLabel6))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(outnombTTmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(volverABMAgregar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(volverABMAgregar)
-                            .addComponent(confirmarAgregar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addComponent(confirmarAgregar)
                         .addContainerGap())))
         );
 
@@ -358,13 +344,6 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     private void outnombTTmodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_outnombTTmodKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_outnombTTmodKeyTyped
-
-    private void buscarSectormodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarSectormodActionPerformed
-        //Método para buscar sector por codigo
-        if (!inputcodSecmod.getText().isEmpty()){
-        MostrarSectorFil(inputcodSecmod.getText());
-    }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
-    }//GEN-LAST:event_buscarSectormodActionPerformed
      public void MostrarSectorFil(String dtosec){
        List<DTOTipoInstancia> lista = control.filtradoSector(dtosec);
         for (int i = 0; i < lista.size(); i++) {
@@ -384,14 +363,6 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputnombTImodKeyTyped
-
-    private void buscarTTmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTTmodActionPerformed
-        //Método para buscar Tipo Tarea filtrado
-        if (!inputcodTTmod.getText().isEmpty()){
-        MostrarTTFil(inputcodTTmod.getText());
-         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
-
-    }//GEN-LAST:event_buscarTTmodActionPerformed
     public void MostrarTTFil(String dtott){
        List<DTOTipoInstancia> lista = control.filtradoTT(dtott);
         for (int i = 0; i < lista.size(); i++) {
@@ -455,6 +426,15 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         ///lost
     }//GEN-LAST:event_inputcodSecmodFocusLost
 
+    private void inputcodTTmodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodTTmodFocusLost
+     
+        if (!inputcodTTmod.getText().isEmpty()){
+        MostrarTTFil(inputcodTTmod.getText());
+         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
+
+    
+    }//GEN-LAST:event_inputcodTTmodFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -491,8 +471,6 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buscarSectormod;
-    private javax.swing.JButton buscarTTmod;
     private javax.swing.JButton confirmarAgregar;
     private javax.swing.JTextField inputcodSecmod;
     private javax.swing.JTextField inputcodTImod;

@@ -68,7 +68,7 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(102, 153, 0));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Modificar Tipo Caso");
 
@@ -95,6 +95,9 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         jLabel1.setText("Cod. Tipo Caso:");
 
         botonVolver.setBackground(new java.awt.Color(204, 204, 204));
+        botonVolver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonVolver.setForeground(new java.awt.Color(0, 0, 0));
+        botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
         botonVolver.setMnemonic('v');
         botonVolver.setText("Volver");
         botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -105,6 +108,9 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         });
 
         botonConfModif.setBackground(new java.awt.Color(204, 204, 204));
+        botonConfModif.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonConfModif.setForeground(new java.awt.Color(0, 0, 0));
+        botonConfModif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confirmar.png"))); // NOI18N
         botonConfModif.setMnemonic('c');
         botonConfModif.setText("Confirmar");
         botonConfModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -137,13 +143,10 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(inputCodTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(botonConfModif)))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(botonConfModif))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -166,11 +169,11 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(inputnombreTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonConfModif)
                     .addComponent(botonVolver))
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

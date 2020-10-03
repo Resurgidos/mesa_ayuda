@@ -105,6 +105,9 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
+        botonVolver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonVolver.setForeground(new java.awt.Color(0, 0, 0));
+        botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
         botonVolver.setMnemonic('v');
         botonVolver.setText("Volver");
         botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -114,6 +117,9 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
             }
         });
 
+        botonAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confirmar.png"))); // NOI18N
         botonAgregar.setMnemonic('c');
         botonAgregar.setText("Confirmar");
         botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
