@@ -63,9 +63,9 @@ public class ABMTipoCaso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(204, 204, 204));
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
@@ -79,7 +79,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        botonModificarTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        botonModificarTipoCaso.setBackground(new java.awt.Color(204, 204, 204));
         botonModificarTipoCaso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonModificarTipoCaso.setForeground(new java.awt.Color(0, 0, 0));
         botonModificarTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_edit_black_18dp.png"))); // NOI18N
@@ -160,7 +160,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -169,7 +169,8 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 return false;
             }
         };
-        tablaTipoCasos.setBackground(new java.awt.Color(204, 204, 204));
+        tablaTipoCasos.setBackground(new java.awt.Color(255, 255, 255));
+        tablaTipoCasos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tablaTipoCasos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -188,11 +189,12 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaTipoCasos.setRowHeight(20);
         tablaTipoCasos.setSelectionBackground(new java.awt.Color(153, 153, 153));
         tablaTipoCasos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaTipoCasos);
 
-        botonEliminarTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        botonEliminarTipoCaso.setBackground(new java.awt.Color(204, 204, 204));
         botonEliminarTipoCaso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonEliminarTipoCaso.setForeground(new java.awt.Color(0, 0, 0));
         botonEliminarTipoCaso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_delete_black_18dp.png"))); // NOI18N
@@ -209,7 +211,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         ErrorMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ErrorMensaje.setToolTipText("");
 
-        botonMostrarDatos.setBackground(new java.awt.Color(255, 255, 255));
+        botonMostrarDatos.setBackground(new java.awt.Color(204, 204, 204));
         botonMostrarDatos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         botonMostrarDatos.setForeground(new java.awt.Color(0, 0, 0));
         botonMostrarDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_visibility_black_18dp.png"))); // NOI18N
@@ -289,8 +291,8 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         tablaTipoCaso.addColumn("Nombre TipoCaso");
         tablaTipoCaso.addColumn("Fin Vigencia TipoCaso");
 
-        tablaTipoCasos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        tablaTipoCasos.getTableHeader().setBackground(new Color(119, 148, 166));
+        tablaTipoCasos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tablaTipoCasos.getTableHeader().setBackground(new Color(172, 202, 221));
       
 //         tablaTipoCasos.getRowSorter().toggleSortOrder(0);
 

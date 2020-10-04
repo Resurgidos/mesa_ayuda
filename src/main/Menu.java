@@ -37,9 +37,9 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("¿Que desea hacer?");
+        jLabel2.setText("¿Qué desea hacer?");
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 0));
+        jPanel2.setBackground(new java.awt.Color(119, 148, 166));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
