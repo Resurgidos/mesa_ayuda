@@ -28,8 +28,10 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         
         
         
+        
         inputCodTipoCaso.setText(Integer.toString(dtoTipoCasoModif.getCodTipoCaso()));
         inputnombreTipoCaso.setText(dtoTipoCasoModif.getNombreTipoCaso());
+        inputnombreTipoCaso.requestFocus();
     }
 
     private ModificarTipoCaso() {

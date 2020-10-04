@@ -17,6 +17,7 @@ public class ModificarTipoTarea extends javax.swing.JFrame {
         inputCodtita.setText(Integer.toString(dtotipotareamodificar.getCodTipoTarea()));
         inputnomtita.setText(dtotipotareamodificar.getNombreTipoTarea());
         inputDesctita.setText(dtotipotareamodificar.getDescripcionTipoTarea());
+        inputnomtita.requestFocus();
       
     }
 
