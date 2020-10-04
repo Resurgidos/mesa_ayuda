@@ -32,6 +32,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         outnombSecmod.setText(dtodatos.getNombreSector());
         inputcodTTmod.setText(Integer.toString(dtodatos.getCodTipoTarea()));
         outnombTTmod.setText(dtodatos.getNombreTipoTarea());
+        inputnombTImod.selectAll();
         inputnombTImod.requestFocus();
     }
 

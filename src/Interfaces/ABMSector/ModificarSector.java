@@ -30,6 +30,7 @@ public class ModificarSector extends javax.swing.JFrame {
         inputCodSec.setText(Integer.toString(dtosectomodificar.getCodSector()));
         inputnomSec.setText(dtosectomodificar.getNombreSector());
         inputDesc.setText(dtosectomodificar.getDescripcionSector());
+        inputnomSec.selectAll();
         inputnomSec.requestFocus();
 //        inputnomSec.setText((String)abmsec.dto.get(1));
         
