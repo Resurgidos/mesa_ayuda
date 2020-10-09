@@ -116,7 +116,8 @@ public class ExpertoTipoInstancia {
                          for (Object h : secmod) {
 
                              sec = (Sector)h ;
-                             System.out.println(sec.getNombreSector());
+                             ti.setSector(sec);
+                          //   System.out.println(sec.getNombreSector());
                             }  
                         
                         dtoCrit.setAtributo("codTipoTarea");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
@@ -128,11 +129,12 @@ public class ExpertoTipoInstancia {
                         List ttmod = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit);
                          for (Object j : ttmod) {
                              tt = (TipoTarea)j ;
-                             System.out.println(tt.getNombreTipoTarea());
+                             ti.setTipoTarea(tt);
+                            // System.out.println(tt.getNombreTipoTarea());
                             } 
                    ti.setNombreTipoInstancia(dtoTI.getNombreTipoInstancia());
-                   ti.setSector(sec);
-                   ti.setTipoTarea(tt);
+                   
+                   
                          
                   FachadaPersistencia.getInstance().modificar(ti);  
              } }catch(Exception e){
@@ -201,6 +203,8 @@ public class ExpertoTipoInstancia {
             dtoTI.setCodSector(ti.getSector().getCodSector());
             dtoTI.setNombreSector(ti.getSector().getNombreSector());
             dtoTI.setCodTipoTarea(ti.getTipoTarea().getCodTipoTarea());
+            dtoTI.setFechaFinVigenciaSector(ti.getSector().getFechaHoraFinVigenciaSector());
+            dtoTI.setFechaFinVigenciaTT(ti.getTipoTarea().getFechaHoraFinVigenciaTipoTarea());
             dtoTI.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
           //  if(ti.getFechaHoraFinVigenciaTipoInstancia() != null){
             dtoTI.setFechaHoraFinVigenciaTI(ti.getFechaHoraFinVigenciaTipoInstancia());

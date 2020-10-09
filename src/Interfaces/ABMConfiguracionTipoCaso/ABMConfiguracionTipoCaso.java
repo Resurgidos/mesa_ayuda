@@ -42,6 +42,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         AgregarTI2 = new javax.swing.JButton();
         botonMostrarDatos = new javax.swing.JButton();
+        botonTrabajarRenglo = new javax.swing.JButton();
+        botonVerificar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -135,6 +137,11 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         ErrorMensaje.setBackground(new java.awt.Color(204, 204, 204));
         ErrorMensaje.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ErrorMensaje.setBorder(null);
+        ErrorMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ErrorMensajeActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(119, 148, 166));
 
@@ -218,6 +225,34 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
         });
 
+        botonTrabajarRenglo.setBackground(new java.awt.Color(204, 204, 204));
+        botonTrabajarRenglo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonTrabajarRenglo.setForeground(new java.awt.Color(0, 0, 0));
+        botonTrabajarRenglo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_edit_black_18dp.png"))); // NOI18N
+        botonTrabajarRenglo.setMnemonic('m');
+        botonTrabajarRenglo.setText("Trabajar con renglones");
+        botonTrabajarRenglo.setBorder(null);
+        botonTrabajarRenglo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonTrabajarRenglo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTrabajarRengloActionPerformed(evt);
+            }
+        });
+
+        botonVerificar.setBackground(new java.awt.Color(204, 204, 204));
+        botonVerificar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonVerificar.setForeground(new java.awt.Color(0, 0, 0));
+        botonVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_visibility_black_18dp.png"))); // NOI18N
+        botonVerificar.setMnemonic('d');
+        botonVerificar.setText("Verificar Configuración");
+        botonVerificar.setBorder(null);
+        botonVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -226,28 +261,24 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addComponent(jButton3)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(205, 205, 205)
+                            .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 483, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botonTrabajarRenglo, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(botonVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGap(662, 662, 662)
-                                            .addComponent(ModificarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jButton3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(BajaTI, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(666, 666, 666)
-                                        .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(42, Short.MAX_VALUE))))
+                                    .addComponent(ModificarTI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BajaTI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,11 +291,14 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonMostrarDatos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ModificarTI)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ModificarTI)
+                    .addComponent(botonVerificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BajaTI)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(botonTrabajarRenglo))
                 .addGap(12, 12, 12))
         );
 
@@ -441,6 +475,18 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
+    private void botonTrabajarRengloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrabajarRengloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonTrabajarRengloActionPerformed
+
+    private void botonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonVerificarActionPerformed
+
+    private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ErrorMensajeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -477,26 +523,18 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AgregarTI;
-    private javax.swing.JButton AgregarTI1;
     private javax.swing.JButton AgregarTI2;
     private javax.swing.JButton BajaTI;
     private javax.swing.JTextField ErrorMensaje;
     private javax.swing.JButton ModificarTI;
     private javax.swing.JButton botonMostrarDatos;
-    private javax.swing.JTextField filBusqueda;
-    private javax.swing.JTextField filBusqueda1;
+    private javax.swing.JButton botonTrabajarRenglo;
+    private javax.swing.JButton botonVerificar;
     private javax.swing.JTextField filBusqueda2;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaTipoInstancia;

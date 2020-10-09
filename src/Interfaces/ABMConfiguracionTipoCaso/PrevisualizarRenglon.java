@@ -187,7 +187,7 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
                 .addComponent(labelFechaFinver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 21, Short.MAX_VALUE)
                 .addComponent(botonContinuar)
                 .addContainerGap())
         );
@@ -221,9 +221,17 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_botonContinuarActionPerformed
 
-    private void verCodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodSecActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_verCodSecActionPerformed
+    private void verNombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombSecKeyTyped
+
+        //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_verNombSecKeyTyped
 
     private void verCodSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verCodSecKeyTyped
 
@@ -237,17 +245,9 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verCodSecKeyTyped
 
-    private void verNombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombSecKeyTyped
-
-        //Declaramos una variable y asignamos un evento
-        char car = evt.getKeyChar();
-
-        //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_verNombSecKeyTyped
+    private void verCodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodSecActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verCodSecActionPerformed
 
     /**
      * @param args the command line arguments
