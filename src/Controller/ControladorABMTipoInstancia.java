@@ -7,25 +7,45 @@ import main.ExpertoTipoInstancia;
 
 public class ControladorABMTipoInstancia {
  ExpertoTipoInstancia expertoTI = new ExpertoTipoInstancia();
- 
-    public DTOTipoInstancia agregarTipoInstancia(DTOTipoInstancia dtoTI){
-        return expertoTI.agregarTipoInstancia(dtoTI) ;
+    
+    //Método para agreagar un Tipo Instancia
+    public DTOErrorMensajes agregarTipoInstancia(DTOAgregarTipoInstancia dtoAgregarTI){
+       return expertoTI.agregarTipoInstancia(dtoAgregarTI);      
     }
-    public DTOTipoInstancia modificarTipoInstancia(DTOTipoInstancia dtoTI){
-        return expertoTI.modificarTipoInstancia(dtoTI);
+    //Método para modificar un Tipo Instancia
+    public DTOErrorMensajes modificarTipoInstancia(DTOModificarTipoInstancia dtoModificarTI){
+       return expertoTI.modificarTipoInstancia(dtoModificarTI);
     }
-    public DTOTipoInstancia bajaTipoInstancia(DTOTipoInstancia dtoTI){
-        return expertoTI.bajaTipoInstancia(dtoTI);
+    //Método para la baja de un Tipo Instancia
+    public void bajaTipoInstancia(int codTipoInstancia){
+         expertoTI.bajaTipoInstancia(codTipoInstancia);
     }
-    public List<DTOTipoInstancia> filtroTI(String nombreTI){
-        return expertoTI.filtroTI(nombreTI);
+    //Método para filtrar los Tipo Instancia en la tabla de la interfaz pasando el código o el nombre del Ti 
+    public List<DTOFiltroTI> filtroTI(String filTipoInstancia){
+        return expertoTI.filtroTI(filTipoInstancia);
     }
-    public List<DTOTipoInstancia> filtradoSector(String dtoTI){
-       return expertoTI.filtradoSector(dtoTI); 
+    //Método para buscar los datos de un Tipo Instancia pasando el código para modificarla
+    public DTOModificarTipoInstancia buscarPorCodTipoInstancia(int filTipoInstancia){ //Método para buscar el nombre TipoInstancia y devolver el nombre a pantalla
+        return expertoTI.buscarPorCodTipoInstancia(filTipoInstancia);       
     }
-    public List<DTOTipoInstancia> filtradoTT(String dtoTI){
-       return expertoTI.filtradoTT(dtoTI);
+    //Método para buscar los datos de un Tipo Instancia pasando el código
+    public DTOVisualizarDatosTI visualizarDatosTipoInstancia(int codTipoInstancia){ //Buscamos por codigo los datos para mostrar las cosas en la pantalla
+        return expertoTI.visualizarDatosTipoInstancia(codTipoInstancia);
+    }
+    //Método para buscar los datos de un Sector pasando el código
+    public String buscarNombSector(String filSector){ //Método para buscar el nombre Sector y devolver el nombre a pantalla
+       return expertoTI.buscarNombSector(filSector); 
+    }
+    //Método para buscar los datos de un Sector pasando el código
+    public String buscarNombTipoTarea(String filTipoTarea){ //Método para buscar el nombre TipoTarea y devolver el nombre a pantalla
+       return expertoTI.buscarNombTipoTarea(filTipoTarea); 
+    }
+   /* public List<DTOAgregarTipoInstancia> filtradoSector(String filSector){
+       return expertoTI.filtradoSector(filSector); 
+    }
+    public List<DTOAgregarTipoInstancia> filtradoTT(String filTipoTarea){
+       return expertoTI.filtradoTT(filTipoTarea);
       
-    }
+    }*/
     
 }

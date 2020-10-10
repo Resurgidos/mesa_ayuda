@@ -73,11 +73,9 @@
                               <Component id="labelcodver2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labelnombver2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labelFechaFinver2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="verFechaFinSec" alignment="0" pref="260" max="32767" attributes="0"/>
-                                  <Component id="verNombSec" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="verCodSec" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="verFechaFinSec" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="verNombSec" alignment="0" max="32767" attributes="0"/>
+                              <Component id="verCodSec" alignment="0" max="32767" attributes="0"/>
                               <Component id="verNombTI" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>

@@ -2,9 +2,13 @@
 package main;
 
 import DTO.DTOCriterio;
+import DTO.DTOFiltroTI;
 
 
-import DTO.DTOTipoInstancia;
+import DTO.DTOAgregarTipoInstancia;
+import DTO.DTOErrorMensajes;
+import DTO.DTOModificarTipoInstancia;
+import DTO.DTOVisualizarDatosTI;
 import entidades.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,10 +20,11 @@ import javax.swing.JOptionPane;
 public class ExpertoTipoInstancia {
           
 
-    public DTOTipoInstancia agregarTipoInstancia(DTOTipoInstancia dtoTI){  
+    public DTOErrorMensajes agregarTipoInstancia(DTOAgregarTipoInstancia dtoAgregarTI){  
         TipoInstancia tipoIns = new TipoInstancia(); 
         TipoTarea tt = new TipoTarea();
         Sector sec = new Sector();
+        DTOErrorMensajes dtoErrores = new DTOErrorMensajes();
         DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
         try{
@@ -28,78 +33,78 @@ public class ExpertoTipoInstancia {
         List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
                 dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                 dtoCrit.setOperacion("=");
-                dtoCrit.setValor(dtoTI.getCodTipoInstancia()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                dtoCrit.setValor(dtoAgregarTI.getCodTipoInstancia()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
                 validarCod.add(dtoCrit);
         try{      
-        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",validarCod );
+            List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",validarCod );
              int verificar = 0;
-             for (Object x : objetoList) {
-                 tipoIns = (TipoInstancia)x;
-                 verificar = tipoIns.getCodTipoInstancia();
+             for (Object x : objetoList) {  //Con este for verifico que no haya un código ya existente
+                 tipoIns = (TipoInstancia)x; //Si ya existe ese código, settea a verificar para validar y que muestre un mensaje
+                 verificar = tipoIns.getCodTipoInstancia();                
+                 dtoErrores.setVerificarError(verificar);
                  
-                 dtoTI.setVerificarError(verificar);
-                }if(dtoTI.getVerificarError() == 0 ){  
-                    if(dtoTI.getCodTipoInstancia() == 0){ //Verificamos que el codigo no sea cero
-                                    dtoTI.setVerificarError(1);
-                                    dtoTI.setErrorMensaje("El Código no esta permitido"); 
-                    }else{
-                        
+                }if(dtoErrores.getVerificarError() == 0 ){  //Comprobamos que el código no existe. Si existe settea el mensaje
+                    if(dtoAgregarTI.getCodTipoInstancia() == 0){ //Verificamos que el codigo no sea cero, si es 0 Settea error
+                                    dtoErrores.setVerificarError(1);
+                                    dtoErrores.setErrorMensaje("El Código no esta permitido"); 
+                    }else{                        
                         dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                         dtoCrit.setOperacion("=");
-                        dtoCrit.setValor(dtoTI.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                        dtoCrit.setValor(dtoAgregarTI.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
                         listadtoCrit.add(dtoCrit);
-
+                        
+                        
+                        //Busco el sector que ingrese por la interfaz y luego se lo asigno al Tipo Instancia que estoy creando
                         List objetoList3 = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
                          for (Object x : objetoList3) {
-
                              sec = (Sector)x ;
-                             System.out.println(sec.getNombreSector());
+                             tipoIns.setSector(sec);
                             }  
 
                         dtoCrit.setAtributo("codTipoTarea");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                         dtoCrit.setOperacion("=");
-                        dtoCrit.setValor(dtoTI.getCodTipoTarea()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                        dtoCrit.setValor(dtoAgregarTI.getCodTipoTarea()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
                         listadtoCrit.add(dtoCrit);
 
-
+                        //Busco el TipoTarea que ingrese por la interfaz y luego se lo asigno al Tipo Instancia que estoy creando
                         List objetoList2 = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit);
                          for (Object x : objetoList2) {
                              tt = (TipoTarea)x ;
-                             System.out.println(tt.getNombreTipoTarea());
+                             tipoIns.setTipoTarea(tt);
                             }            
-
-                        tipoIns.setCodTipoInstancia(dtoTI.getCodTipoInstancia());           
-                        tipoIns.setNombreTipoInstancia(dtoTI.getNombreTipoInstancia());          
-                        tipoIns.setSector(sec);
-                        System.out.println(sec.getNombreSector());
-                        tipoIns.setTipoTarea(tt);
-                        System.out.println(tt.getNombreTipoTarea());
-                        FachadaPersistencia.getInstance().guardar(tipoIns);
-                }
+                        
+                        //Asigno al tipo instancia que estoy creando el código y el nombre
+                        tipoIns.setCodTipoInstancia(dtoAgregarTI.getCodTipoInstancia());           
+                        tipoIns.setNombreTipoInstancia(dtoAgregarTI.getNombreTipoInstancia());          
+                        
+                       FachadaPersistencia.getInstance().guardar(tipoIns);
+                    }
                 }else{
-                                dtoTI.setErrorMensaje("El código ya existe");        
-                 }}catch(Exception e){
+                     dtoErrores.setErrorMensaje("El código ya existe");  //Muestra el mensaje si el código está existente
+                     }
+                }catch(Exception e){
                         System.out.println("No se pudo registrar el TipoInstancia"); 
                  }    
             }catch(Exception e){
                     System.out.println("No se pudo encontrar el TipoInstancia");                
-            }
-            return dtoTI;
+        }
+        return dtoErrores;
     }
         
         
    
-    public DTOTipoInstancia modificarTipoInstancia(DTOTipoInstancia dtoTI){
+    public DTOErrorMensajes modificarTipoInstancia(DTOModificarTipoInstancia dtoModificarTI){
         Sector sec = new Sector();
         TipoTarea tt  = new TipoTarea();
         TipoInstancia ti = new TipoInstancia();
+        DTOErrorMensajes dtoErrores = new DTOErrorMensajes();
         try{
             FachadaPersistencia.getInstance().iniciarTransaccion();    
             DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
-             List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+            List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
                 dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                 dtoCrit.setOperacion("=");
-                dtoCrit.setValor(dtoTI.getCodTipoInstancia()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                dtoCrit.setValor(dtoModificarTI.getCodTipoInstancia()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
                 listadtoCrit.add(dtoCrit);
            try{
             List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
@@ -109,7 +114,7 @@ public class ExpertoTipoInstancia {
                   
                    dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                         dtoCrit.setOperacion("=");
-                        dtoCrit.setValor(dtoTI.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                        dtoCrit.setValor(dtoModificarTI.getCodSector()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
                         listadtoCrit.add(dtoCrit);
 
                         List secmod = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
@@ -122,7 +127,7 @@ public class ExpertoTipoInstancia {
                         
                         dtoCrit.setAtributo("codTipoTarea");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                         dtoCrit.setOperacion("=");
-                        dtoCrit.setValor(dtoTI.getCodTipoTarea()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                        dtoCrit.setValor(dtoModificarTI.getCodTipoTarea()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
                         listadtoCrit.add(dtoCrit);
 
 
@@ -132,36 +137,32 @@ public class ExpertoTipoInstancia {
                              ti.setTipoTarea(tt);
                             // System.out.println(tt.getNombreTipoTarea());
                             } 
-                   ti.setNombreTipoInstancia(dtoTI.getNombreTipoInstancia());
-                   
-                   
-                         
-                  FachadaPersistencia.getInstance().modificar(ti);  
+                   ti.setNombreTipoInstancia(dtoModificarTI.getNombreTipoInstancia());
+                   FachadaPersistencia.getInstance().modificar(ti);  
              } }catch(Exception e){
                System.out.println("No se pudo modificar el sector"); 
                  }    
         }catch(Exception e){
                 System.out.println("No se pudo encontrar el sector");                
         }
-       
-        return null;  
-       
+          
+       return dtoErrores;
     }
-    public DTOTipoInstancia bajaTipoInstancia(DTOTipoInstancia dtoTI){
+    public void bajaTipoInstancia(int codTipoInstancia){
         Date fecha = new Date();
             
         DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
             dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("=");
-            dtoCrit.setValor(dtoTI.getCodTipoInstancia()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(codTipoInstancia); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             
         
             // datos que Setteamos fecha y hora              
-            SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy HH:mm"); // La cadena de formato de fecha se pasa como un argumento al objeto 
+            SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy - HH:mm"); // La cadena de formato de fecha se pasa como un argumento al objeto 
             String fechaFin = objSDF.format(fecha);    
-
+            System.out.println(fechaFin);
                 List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );        
                 for(Object x : objetoList){
                     TipoInstancia ti = (TipoInstancia) x ;
@@ -172,76 +173,166 @@ public class ExpertoTipoInstancia {
                     }
         }
        
-        return null;
+       
     }
-    public List<DTOTipoInstancia> filtroTI(String nombreTI){
+    
+    public DTOVisualizarDatosTI visualizarDatosTipoInstancia(int codTipoInstancia){
+        FachadaPersistencia.getInstance().iniciarTransaccion();  
+        DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+        DTOVisualizarDatosTI dtoVisualizar = new DTOVisualizarDatosTI();
+            dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(codTipoInstancia); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            
+            List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+           
+            for (Object x : objetoList) {
+                
+                TipoInstancia ti = (TipoInstancia)x ; //por cada objeto de la lista, se lo asigno a un objeto de la clase
+                dtoVisualizar.setCodTipoInstancia(ti.getCodTipoInstancia());
+                dtoVisualizar.setNombreTipoInstancia(ti.getNombreTipoInstancia());
+                dtoVisualizar.setFechaHoraFinVigenciaTipoInstancia(ti.getFechaHoraFinVigenciaTipoInstancia());
+                dtoVisualizar.setCodSector(ti.getSector().getCodSector());
+                dtoVisualizar.setNombreSector(ti.getSector().getNombreSector());
+                dtoVisualizar.setFechaHoraFinVigenciaSector(ti.getSector().getFechaHoraFinVigenciaSector());
+                dtoVisualizar.setCodTipoTarea(ti.getTipoTarea().getCodTipoTarea());
+                dtoVisualizar.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
+                dtoVisualizar.setFechaHoraFinVigenciaTipoTarea(ti.getTipoTarea().getFechaHoraFinVigenciaTipoTarea());               
+                }  
+        
+        return dtoVisualizar;
+    }
+    
+    
+    
+    
+    
+    public List<DTOFiltroTI> filtroTI(String filTipoInstancia){
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
 
-        if(nombreTI.matches("[0-9]+") ) {//El matches es propia d ejava y evalua lo que hay entre parentesis
+        if(filTipoInstancia.matches("[0-9]+") ) {//El matches es propia d ejava y evalua lo que hay entre parentesis
             dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("=");
-            dtoCrit.setValor(Integer.parseInt(nombreTI)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(Integer.parseInt(filTipoInstancia)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
         }else{
             dtoCrit.setAtributo("nombreTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("like");
-            dtoCrit.setValor(nombreTI); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(filTipoInstancia); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);       
         }
             
             
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
-        List<DTOTipoInstancia> dtoList = new ArrayList<>();
+        List<DTOFiltroTI> dtoList = new ArrayList<>();
         
         for (Object x : objetoList) {
-            DTOTipoInstancia dtoTI = new DTOTipoInstancia();
+            DTOFiltroTI dtoTI = new DTOFiltroTI();
             
             TipoInstancia ti = (TipoInstancia) x;
             dtoTI.setCodTipoInstancia(ti.getCodTipoInstancia());
-            dtoTI.setNombreTipoInstancia(ti.getNombreTipoInstancia());
-            dtoTI.setCodSector(ti.getSector().getCodSector());
-            dtoTI.setNombreSector(ti.getSector().getNombreSector());
-            dtoTI.setCodTipoTarea(ti.getTipoTarea().getCodTipoTarea());
-            dtoTI.setFechaFinVigenciaSector(ti.getSector().getFechaHoraFinVigenciaSector());
-            dtoTI.setFechaFinVigenciaTT(ti.getTipoTarea().getFechaHoraFinVigenciaTipoTarea());
+            dtoTI.setNombreTipoInstancia(ti.getNombreTipoInstancia());            
+            dtoTI.setNombreSector(ti.getSector().getNombreSector());            
             dtoTI.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
-          //  if(ti.getFechaHoraFinVigenciaTipoInstancia() != null){
-            dtoTI.setFechaHoraFinVigenciaTI(ti.getFechaHoraFinVigenciaTipoInstancia());
-          //  }
+            dtoTI.setFechaHoraFinVigenciaTI(ti.getFechaHoraFinVigenciaTipoInstancia());          
             dtoList.add(dtoTI);
-            
-            
-        }
-        
+           }       
         return dtoList;
     }
-    
-    
-    public List<DTOTipoInstancia> filtradoSector(String dtoTI){
-        DTOTipoInstancia dtosec = new DTOTipoInstancia();
+    public DTOModificarTipoInstancia buscarPorCodTipoInstancia(int filTipoInstancia){
         FachadaPersistencia.getInstance().iniciarTransaccion();  
         DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
-            if(dtoTI.matches("[0-9]+") ){
+        DTOModificarTipoInstancia dtoModificar = new DTOModificarTipoInstancia();
+            dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(filTipoInstancia); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            
+            List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+           
+            for (Object x : objetoList) {
+                
+                TipoInstancia ti = (TipoInstancia)x ; //por cada objeto de la lista, se lo asigno a un objeto de la clase
+                dtoModificar.setCodTipoInstancia(ti.getCodTipoInstancia());
+                dtoModificar.setNombreTipoInstancia(ti.getNombreTipoInstancia());
+                dtoModificar.setCodSector(ti.getSector().getCodSector());
+                dtoModificar.setNombreSector(ti.getSector().getNombreSector());
+                dtoModificar.setCodTipoTarea(ti.getTipoTarea().getCodTipoTarea());
+                dtoModificar.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
+                
+                }    
+           return dtoModificar;
+    }
+    public String buscarNombSector(String filSector){
+         
+        FachadaPersistencia.getInstance().iniciarTransaccion();  
+        DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+            
             dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("=");
-            dtoCrit.setValor(Integer.parseInt(dtoTI)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(Integer.parseInt(filSector)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            
+            List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
+            for (Object x : objetoList) {
+                String nombreSec = null;
+                Sector sec = (Sector)x ;
+                nombreSec = sec.getNombreSector();
+                return nombreSec;
+            }
+          
+          return "No se encontro el Sector"; 
+    }
+    public String buscarNombTipoTarea(String filTipoTarea){
+        FachadaPersistencia.getInstance().iniciarTransaccion();  
+        DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+            
+            dtoCrit.setAtributo("codTipoTarea");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(Integer.parseInt(filTipoTarea)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            
+            List objetoList = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit );
+           
+            for (Object x : objetoList) {
+                String nombreTT = null;
+                TipoTarea tt = (TipoTarea)x ; //por cada objeto de la lista, se lo asigno a un objeto de la clase
+                nombreTT = tt.getNombreTipoTarea();
+                return nombreTT;
+                }                    
+          return "No se encontro el TipoTarea"; 
+    }
+    /*
+    public List<DTOAgregarTipoInstancia> filtradoSector(String filSector){
+        DTOAgregarTipoInstancia dtosec = new DTOAgregarTipoInstancia();
+        FachadaPersistencia.getInstance().iniciarTransaccion();  
+        DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+            if(filSector.matches("[0-9]+") ){
+            dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(Integer.parseInt(filSector)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             }else{
             dtoCrit.setAtributo("nombreSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("like");
-            dtoCrit.setValor(dtoTI); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(filSector); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             }         
             List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
-            List<DTOTipoInstancia> dtoList = new ArrayList<>();
+            List<DTOAgregarTipoInstancia> dtoList = new ArrayList<>();
             for (Object x : objetoList) {
               
                 Sector sec = (Sector)x ;
                 dtosec.setCodSector(sec.getCodSector());
                 dtosec.setNombreSector(sec.getNombreSector());
-                dtosec.setFechaFinVigenciaSector(sec.getFechaHoraFinVigenciaSector());
+              //  dtosec.setFechaFinVigenciaSector(sec.getFechaHoraFinVigenciaSector());
                
                 
                 dtoList.add(dtosec);
@@ -249,34 +340,34 @@ public class ExpertoTipoInstancia {
         return dtoList;
     }
     
-    public List<DTOTipoInstancia> filtradoTT(String dtoTI){
-        DTOTipoInstancia dtoTT = new DTOTipoInstancia();
+    public List<DTOAgregarTipoInstancia> filtradoTT(String filTipoTarea){
+        DTOAgregarTipoInstancia dtoTT = new DTOAgregarTipoInstancia();
         FachadaPersistencia.getInstance().iniciarTransaccion();  
         DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
-            if(dtoTI.matches("[0-9]+") ){
+            if(filTipoTarea.matches("[0-9]+") ){
             dtoCrit.setAtributo("codTipoTarea");  //Utilizamos la sentencias para buscar el TipoInstancia que pusimos en el filtro 
             dtoCrit.setOperacion("=");
-            dtoCrit.setValor(Integer.parseInt(dtoTI)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(Integer.parseInt(filTipoTarea)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             }else{
                dtoCrit.setAtributo("nombreTipoTarea");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("like");
-            dtoCrit.setValor(dtoTI); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(filTipoTarea); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             }
             
             List objetoList = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit );
-            List<DTOTipoInstancia> dtoList = new ArrayList<>();
+            List<DTOAgregarTipoInstancia> dtoList = new ArrayList<>();
             for (Object x : objetoList) {
                 TipoTarea tt = (TipoTarea)x ; //por cada objeto de la lista, se lo asigno a un objeto de la clase
                 dtoTT.setCodTipoTarea(tt.getCodTipoTarea());               
                 dtoTT.setNombreTipoTarea(tt.getNombreTipoTarea());
-                dtoTT.setFechaFinVigenciaTT(tt.getFechaHoraFinVigenciaTipoTarea());
+              //  dtoTT.setFechaFinVigenciaTT(tt.getFechaHoraFinVigenciaTipoTarea());
                 dtoList.add(dtoTT);
                 }         
         return dtoList;
-    }
+    }*/
 }
    
 

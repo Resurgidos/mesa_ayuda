@@ -4,12 +4,14 @@ import Controller.ControladorABMTipoInstancia;
 import DTO.*;
 //import java.awt.event.KeyEvent;
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 
 public class AgregarTipoInstancia extends javax.swing.JFrame {
-        DTOTipoInstancia dtoTI = new DTOTipoInstancia();
+        DTOAgregarTipoInstancia dtoTI = new DTOAgregarTipoInstancia();
+        DTOErrorMensajes dtoErrores = new DTOErrorMensajes();
         ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
       
 
@@ -299,28 +301,28 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                     if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
                          if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
                     do{
-                        DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
-                        dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
-                        dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
-                        dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
-                        dtoAgregar.setNombreSector(outnombSec.getText());
-                        dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-                        dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-                        control.agregarTipoInstancia(dtoAgregar);
+                            DTOAgregarTipoInstancia dtoAgregar = new DTOAgregarTipoInstancia();
+                            dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
+                            dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
+                            dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
+                            dtoAgregar.setNombreSector(outnombSec.getText());
+                            dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
+                            dtoAgregar.setNombreTipoTarea(outnombTT.getText());
+                            dtoErrores = control.agregarTipoInstancia(dtoAgregar);
+
        
        
-       
-                            if(dtoTI.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
+                            if(dtoErrores.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
                             ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
                             JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
                             volver.setVisible(true);
                             volver.tablaTI("");
                             this.setVisible(false);
+                            
                         }else{
-                           JOptionPane.showMessageDialog(this,dtoTI.getErrorMensaje());
-                           System.out.println("acá esta el error, en registro de sector en validar");
-                           dtoTI.setVerificarError(0);
-                       } }while(dtoTI.getVerificarError() != 0);
+                           JOptionPane.showMessageDialog(this,dtoErrores.getErrorMensaje());                           
+                           dtoErrores.setVerificarError(0);
+                       } }while(dtoErrores.getVerificarError() != 0);
                         
                       
                    //y un chatch en el caso que no se pueda crear el Tipo Instancia
@@ -375,6 +377,13 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
     private void inputcodSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodSecKeyTyped
         //Declaramos una variable y asignamos un evento
+         char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales ni letras", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_inputcodSecKeyTyped
 
     private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
@@ -387,7 +396,13 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_volverABMAgregarActionPerformed
 
     private void inputcodTTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTTKeyTyped
-        // TODO add your handling code here:
+         char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales ni letras", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_inputcodTTKeyTyped
 
     private void outnombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_outnombSecKeyTyped
@@ -395,7 +410,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_outnombSecKeyTyped
 
     private void inputcodTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTTActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_inputcodTTActionPerformed
 
     private void outnombTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outnombTTActionPerformed
@@ -413,15 +428,25 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void inputcodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodSecActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputcodSecActionPerformed
-    public void MostrarSectorFil(String dtosec){
-//        if(dtosec){
+    public void MostrarSectorFil(String filSector){
+//        if(filSector){
 //        }
-       List<DTOTipoInstancia> lista = control.filtradoSector(dtosec);
+      /* List<DTOTipoInstancia> lista = control.filtradoSector(filSector);
         for (int i = 0; i < lista.size(); i++) {
-           DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(i);
+           DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombSec.setText(tI.getNombreSector());
-           
-        }
+        }*/
+      String nombreSector = control.buscarNombSector(filSector);
+      if(nombreSector == "No se encontro el Sector"){
+           outnombSec.setText("");
+           outnombSec.setForeground(Color.GRAY);
+           outnombSec.setText(nombreSector);
+           JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");    
+       }else{
+      outnombSec.setText("");
+      outnombSec.setForeground(Color.GRAY);
+      outnombSec.setText(nombreSector);
+      }
     }
     private void inputcodSecFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodSecFocusLost
       if (!inputcodSec.getText().isEmpty()) {
@@ -433,17 +458,26 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
     private void inputcodTTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodTTFocusLost
          if (!inputcodTT.getText().isEmpty()) {
-        MostrarTTFil(inputcodTT.getText());
+        MostrarTTFil(inputcodTT.getText());       
         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_inputcodTTFocusLost
 
-    public void MostrarTTFil(String dtott){
-       List<DTOTipoInstancia> lista = control.filtradoTT(dtott);
+    public void MostrarTTFil(String nombreTT){
+     /*  List<DTOTipoInstancia> lista = control.filtradoTT(nombreTT);
         for (int i = 0; i < lista.size(); i++) {
-           DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(i);
+           DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombTT.setText(tI.getNombreTipoTarea());
-            System.out.println(tI.getNombreTipoTarea());
-           
+         }*/
+     
+        String nombreTipoT = control.buscarNombTipoTarea(nombreTT);
+        if(nombreTipoT == "No se encontro el TipoTarea"){
+           outnombTT.setText("");
+           outnombTT.setText(nombreTT);
+           JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");    
+       }else{
+        outnombTT.setText("");
+        outnombTT.setForeground(Color.GRAY);
+        outnombTT.setText(nombreTipoT);
         }
     }
     /**

@@ -6,9 +6,11 @@
 
 package Interfaces.ABMTipoInstancia;
 
-import DTO.DTOTipoInstancia;
+import Controller.ControladorABMTipoInstancia;
+import DTO.DTOVisualizarDatosTI;
 //import java.awt.event.KeyEvent;
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,48 +23,67 @@ import javax.swing.JOptionPane;
 public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
     /** Creates new form VerDatosTipoInstancia */
-    public VerDatosTipoInstancia(DTOTipoInstancia dtoTI) {
+    ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
+    
+    
+    public VerDatosTipoInstancia(int codTIMostrar) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Datos Tipo Instancia");
         
-        //Corresponde a Tipo Instancia
-        verCodTI.setText(Integer.toString(dtoTI.getCodTipoInstancia()));
-        verNombTI.setText(dtoTI.getNombreTipoInstancia());      
-        if(dtoTI.getFechaHoraFinVigenciaTI()== null){
-            verFechaFinTI.setText("vigente");
-        }else{
-            DateFormat df = new SimpleDateFormat();
-            Date fecha = dtoTI.getFechaHoraFinVigenciaTI();
-            String fechaString = df.format(fecha);
-            verFechaFinTI.setText(fechaString);
-        }
-        //Correspondiente a Sector
-        verCodSec.setText(Integer.toString(dtoTI.getCodSector()));
-        verNombSec.setText(dtoTI.getNombreSector());      
-        if(dtoTI.getFechaFinVigenciaSector()== null){
-            verFechaFinSec.setText("vigente");
-        }else{
-            DateFormat df = new SimpleDateFormat();
-            Date fecha = dtoTI.getFechaFinVigenciaSector();
-            String fechaString = df.format(fecha);
-            verFechaFinSec.setText(fechaString);
-        }
-        //Correspondiente a Tipo Tarea
-        verCodTT.setText(Integer.toString(dtoTI.getCodTipoTarea()));
-        verNombTT.setText(dtoTI.getNombreTipoTarea());      
-        if(dtoTI.getFechaFinVigenciaTT()== null){
-            verFechaFinTT.setText("vigente");
-        }else{
-            DateFormat df = new SimpleDateFormat();
-            Date fecha = dtoTI.getFechaFinVigenciaTT();
-            String fechaString = df.format(fecha);
-            verFechaFinTT.setText(fechaString);
-        }
+        DTOVisualizarDatosTI dtoVisu = control.visualizarDatosTipoInstancia(codTIMostrar);
+        inicializarDatosMostrar(dtoVisu);
+        
     }
 
     private VerDatosTipoInstancia() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public DTOVisualizarDatosTI inicializarDatosMostrar(DTOVisualizarDatosTI dtoVisu){
+        //Corresponde a Tipo Instancia
+        verCodTI.setForeground(Color.GRAY);
+        verCodTI.setText(Integer.toString(dtoVisu.getCodTipoInstancia()));
+        verNombTI.setForeground(Color.GRAY);
+        verNombTI.setText(dtoVisu.getNombreTipoInstancia());  
+        verFechaFinTI.setForeground(Color.GRAY);
+        if(dtoVisu.getFechaHoraFinVigenciaTipoInstancia()== null){
+            verFechaFinTI.setText("Vigente");
+        }else{
+            DateFormat df = new SimpleDateFormat();
+            Date fecha = dtoVisu.getFechaHoraFinVigenciaTipoInstancia();
+            String fechaString = df.format(fecha);            
+            verFechaFinTI.setText(fechaString);
+        }
+        //Correspondiente a Sector
+        verCodSec.setForeground(Color.GRAY);
+        verCodSec.setText(Integer.toString(dtoVisu.getCodSector()));
+        verNombSec.setForeground(Color.GRAY);
+        verNombSec.setText(dtoVisu.getNombreSector());    
+        verFechaFinSec.setForeground(Color.GRAY);
+        if(dtoVisu.getFechaHoraFinVigenciaSector()== null){
+            verFechaFinSec.setText("Vigente");
+        }else{
+            DateFormat df = new SimpleDateFormat();
+            Date fecha = dtoVisu.getFechaHoraFinVigenciaSector();
+            String fechaString = df.format(fecha);
+            verFechaFinSec.setText(fechaString);
+        }
+        //Correspondiente a Tipo Tarea
+        verCodTT.setForeground(Color.GRAY);
+        verCodTT.setText(Integer.toString(dtoVisu.getCodTipoTarea()));
+        verNombTT.setForeground(Color.GRAY);
+        verNombTT.setText(dtoVisu.getNombreTipoTarea()); 
+        verFechaFinTT.setForeground(Color.GRAY);
+        if(dtoVisu.getFechaHoraFinVigenciaTipoTarea()== null){
+            verFechaFinTT.setText("Vigente");
+        }else{
+            DateFormat df = new SimpleDateFormat();
+            Date fecha = dtoVisu.getFechaHoraFinVigenciaTipoTarea();
+            String fechaString = df.format(fecha);
+            verFechaFinTT.setText(fechaString);
+        }
+        return dtoVisu;
     }
 
     /** This method is called from within the constructor to

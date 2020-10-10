@@ -1,7 +1,8 @@
 package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
-import DTO.DTOTipoInstancia;
+import DTO.DTOFiltroTI;
+import DTO.DTOAgregarTipoInstancia;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -16,7 +17,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
     DefaultTableModel tablaTI;
     ControladorABMTipoInstancia controlTI = new ControladorABMTipoInstancia();
-    DTOTipoInstancia dtoTI = new DTOTipoInstancia();
+    DTOAgregarTipoInstancia dtoTI = new DTOAgregarTipoInstancia();
 
     public ABMTipoInstancia() {
         initComponents();
@@ -213,6 +214,11 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         ErrorMensaje.setBackground(new java.awt.Color(204, 204, 204));
         ErrorMensaje.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ErrorMensaje.setBorder(null);
+        ErrorMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ErrorMensajeActionPerformed(evt);
+            }
+        });
 
         botonMostrarDatos.setBackground(new java.awt.Color(204, 204, 204));
         botonMostrarDatos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -294,8 +300,8 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void tablaTI(String nombreTI) { //Método de la tabla que se muestra en la interfaz
-        List<DTOTipoInstancia> lista = controlTI.filtroTI(nombreTI);
+    public void tablaTI(String filTipoInstancia) { //Método de la tabla que se muestra en la interfaz
+        List<DTOFiltroTI> lista = controlTI.filtroTI(filTipoInstancia);
         tablaTI = new DefaultTableModel();
         tablaTipoInstancia.setModel(tablaTI);
         tablaTI.addColumn("Cod. Tipo Instancia");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
@@ -352,33 +358,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     ErrorMensaje.setText("El Tipo instancia esta dado de baja, no se puede modificar");
                 } else {
                     if (numTabTI == i) { //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
-
-                        dtoTI.setCodTipoInstancia((int) tablaTI.getValueAt(i, 0));
-                        dtoTI.setNombreTipoInstancia((String) tablaTI.getValueAt(i, 1));
-
-                        controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
-                        dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());
-
-                        String sec = tablaTI.getValueAt(i, 2).toString();
-                        List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
-                        for (int j = 0; j < listamod.size(); j++) {
-                            DTOTipoInstancia tI = (DTOTipoInstancia) listamod.get(j);
-                            dtoTI.setCodSector(tI.getCodSector());
-                        }
-                        controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
-                        String tt = tablaTI.getValueAt(i, 3).toString();
-                        List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
-                        for (int j = 0; j < lista.size(); j++) {
-                            DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
-                            dtoTI.setCodTipoTarea(tI.getCodTipoTarea());
-
-                        }
-                        dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());
-
-                        System.out.println(dtoTI.getNombreSector());
-                        ModificarTipoInstancia mod = new ModificarTipoInstancia(dtoTI);
-                        mod.setVisible(true);
-                        this.setVisible(false);
+                        
+                        int codTIModi = (int)tablaTI.getValueAt(i, 0);  
+                        //la "i" es la fila y el 0 la columna de la tabla
+                       
+                        System.out.println("Es la interfaz");    
+                        
+                    ModificarTipoInstancia mod = new ModificarTipoInstancia(codTIModi);
+                    mod.setVisible(true);
+                    this.setVisible(false);
                     }
 
                 }
@@ -401,7 +389,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                         ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                         ErrorMensaje.setText("El sector elegido ya esta dado de baja");
                     } else {
-                        dtoTI.setCodTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                    //    dtoTI.setCodTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         int j = JOptionPane.showConfirmDialog(this,
                                 ""
                                 + "¿Estas seguro que confirmar la baja? \n\n"
@@ -411,7 +399,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                                 + "Nombre Tipo Tarea: " + tablaTipoInstancia.getValueAt(i, 3) + "\n\n",
                                  "Dar de Baja Tipo Instancia", JOptionPane.YES_NO_OPTION);
                         if (j == 0) {
-                            controlTI.bajaTipoInstancia(dtoTI);
+                            controlTI.bajaTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));
                             JOptionPane.showMessageDialog(this, "Sector Dado de baja");
                         }
                         tablaTI("");
@@ -428,7 +416,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_filBusquedaKeyPressed
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
-        //Método Mostrar datos de Sector
+        //Método Mostrar datos de TipoInstancia
         int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
@@ -437,38 +425,8 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
 
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
-
-                    System.out.println(tablaTI.getValueAt(i, 0));
-                    System.out.println(tablaTI.getValueAt(i, 1));
-
-                    dtoTI.setCodTipoInstancia((int) tablaTI.getValueAt(i, 0)); //Asigna codigo de tipo Instancia a dto
-                    dtoTI.setNombreTipoInstancia((String) tablaTI.getValueAt(i, 1));//Asigna nombre de tipo Instancia a dto
-                    dtoTI.setFechaHoraFinVigenciaTI((Date) tablaTI.getValueAt(i, 4));//Asigna fecha fin de TipoInstancia a dto
-
-                    //Inicio busqueda de sector
-                    controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
-                    String sec = tablaTI.getValueAt(i, 2).toString();
-                    List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
-                    for (int j = 0; j < listamod.size(); j++) {
-                        DTOTipoInstancia tI = (DTOTipoInstancia) listamod.get(j);
-                        dtoTI.setCodSector(tI.getCodSector()); //Asigna codigo de Sector a dto
-                        dtoTI.setFechaFinVigenciaSector(tI.getFechaFinVigenciaSector());//Asigna fecha fin de sector a dto
-                    }
-                    dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());//Asigna nombre a sector
-                    dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());//Asigna nombre a Tipo Tarea
-                    //Inicio busqueda de TipoTarea
-
-                    controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
-                    String tt = tablaTI.getValueAt(i, 3).toString();
-                    List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
-                    for (int l = 0; l < lista.size(); l++) {
-                        DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(l);
-                        dtoTI.setCodTipoTarea(tI.getCodTipoTarea());//Asigna codigo de tipo Tarea a dto
-                        dtoTI.setFechaFinVigenciaTT(tI.getFechaFinVigenciaTT());  //Asigna fecha fin de Tipo Tarea a dto     
-
-                    }
-
-                    VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(dtoTI);
+                    int codTIMostrar = (int) tablaTI.getValueAt(i, 0);
+                    VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(codTIMostrar);
                     mostrar.setVisible(true);
 
                 }
@@ -481,6 +439,10 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     private void filBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaKeyReleased
         tablaTI(filBusqueda.getText());
     }//GEN-LAST:event_filBusquedaKeyReleased
+
+    private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ErrorMensajeActionPerformed
 
     public static void main(String args[]) {
 

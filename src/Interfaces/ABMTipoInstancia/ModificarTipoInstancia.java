@@ -6,8 +6,10 @@
 package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
-import DTO.DTOTipoInstancia;
+import DTO.DTOAgregarTipoInstancia;
+import DTO.DTOModificarTipoInstancia;
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -20,24 +22,32 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     /**
      * Creates new form ModificarTipoInstancia
      */
-    DTOTipoInstancia dtoTI = new DTOTipoInstancia();
+    
     ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
-    public ModificarTipoInstancia(DTOTipoInstancia dtodatos) {
+    public ModificarTipoInstancia(int codTIModi) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Modificar TipoInstancia");
-        inputcodTImod.setText(Integer.toString(dtodatos.getCodTipoInstancia()));
-        inputnombTImod.setText(dtodatos.getNombreTipoInstancia());
-        inputcodSecmod.setText(Integer.toString(dtodatos.getCodSector()));
-        outnombSecmod.setText(dtodatos.getNombreSector());
-        inputcodTTmod.setText(Integer.toString(dtodatos.getCodTipoTarea()));
-        outnombTTmod.setText(dtodatos.getNombreTipoTarea());
-        inputnombTImod.selectAll();
-        inputnombTImod.requestFocus();
+        DTOModificarTipoInstancia dtoModificar = control.buscarPorCodTipoInstancia(codTIModi);
+        inicializarDatos(dtoModificar);
+        
     }
 
     private ModificarTipoInstancia() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public void inicializarDatos (DTOModificarTipoInstancia dtoModificar){
+        
+        inputcodTImod.setText(Integer.toString(dtoModificar.getCodTipoInstancia()));
+        inputnombTImod.setText(dtoModificar.getNombreTipoInstancia());
+        inputcodSecmod.setText(Integer.toString(dtoModificar.getCodSector()));
+        outnombSecmod.setForeground(Color.GRAY);
+        outnombSecmod.setText(dtoModificar.getNombreSector());
+        inputcodTTmod.setText(Integer.toString(dtoModificar.getCodTipoTarea()));
+        outnombTTmod.setForeground(Color.GRAY);
+        outnombTTmod.setText(dtoModificar.getNombreTipoTarea());
+        inputnombTImod.selectAll();
+        inputnombTImod.requestFocus();
     }
 
     /**
@@ -345,12 +355,22 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     private void outnombTTmodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_outnombTTmodKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_outnombTTmodKeyTyped
-     public void MostrarSectorFil(String dtosec){
-       List<DTOTipoInstancia> lista = control.filtradoSector(dtosec);
+     public void MostrarSectorFil(String codSecModi){
+       /*List<DTOAgregarTipoInstancia> lista = control.filtradoSector(codSecModi);
         for (int i = 0; i < lista.size(); i++) {
-           DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(i);
+           DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombSecmod.setText(tI.getNombreSector());
            
+        }*/
+       String nombreSector = control.buscarNombSector(codSecModi);
+       if(nombreSector == "No se encontro el Sector"){
+           outnombSecmod.setText("");
+           outnombSecmod.setText(nombreSector);
+           JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");    
+       }else{
+         outnombSecmod.setText("");
+         outnombSecmod.setForeground(Color.GRAY);
+         outnombSecmod.setText(nombreSector);
         }
     }
     private void inputnombTImodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputnombTImodKeyTyped
@@ -364,14 +384,24 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputnombTImodKeyTyped
-    public void MostrarTTFil(String dtott){
-       List<DTOTipoInstancia> lista = control.filtradoTT(dtott);
+    public void MostrarTTFil(String codTTModi){
+       /*List<DTOAgregarTipoInstancia> lista = control.filtradoTT(codTTModi);
         for (int i = 0; i < lista.size(); i++) {
-           DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(i);
+           DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombTTmod.setText(tI.getNombreTipoTarea());
             System.out.println(tI.getNombreTipoTarea());
            
-        }
+        }*/
+       String nombreTT = control.buscarNombTipoTarea(codTTModi);
+       if(nombreTT == "No se encontro el TipoTarea"){
+           outnombTTmod.setText("");
+           outnombTTmod.setText(nombreTT);
+           JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");    
+       }else{
+         outnombTTmod.setText("");
+         outnombTTmod.setForeground(Color.GRAY);
+         outnombTTmod.setText(nombreTT);
+       }
     }
     private void inputcodSecmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodSecmodActionPerformed
         // TODO add your handling code here:
@@ -390,7 +420,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
         //Método para agregar un Tipo de Instancia
-        DTOTipoInstancia dtoModificar = new DTOTipoInstancia();
+        DTOModificarTipoInstancia dtoModificar = new DTOModificarTipoInstancia();
         dtoModificar.setCodTipoInstancia(Integer.parseInt(inputcodTImod.getText()));
         dtoModificar.setNombreTipoInstancia(inputnombTImod.getText());
         dtoModificar.setCodSector(Integer.parseInt(inputcodSecmod.getText()));
