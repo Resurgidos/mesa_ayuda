@@ -64,8 +64,14 @@ public class ExpertoConfigurar {
         
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
             
-        TipoCaso tipoCaso = (TipoCaso) objetoList.get(0);        
+        System.out.println(objetoList.size());
         
-        return tipoCaso.getNombreTipoCaso();
+        if(objetoList.size() > 0){
+            TipoCaso tipoCaso = (TipoCaso) objetoList.get(0);        
+            return tipoCaso.getNombreTipoCaso();     
+        }else {
+            return "";
+        }
+
     }
 }

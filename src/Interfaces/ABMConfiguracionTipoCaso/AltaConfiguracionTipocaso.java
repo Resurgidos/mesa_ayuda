@@ -6,7 +6,12 @@
 package Interfaces.ABMConfiguracionTipoCaso;
 
 import Controller.ControladorConfiguracionTipoCaso;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -102,9 +107,13 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha Inicio Vigencia:");
 
-        inputInicioVigencia.setEditable(false);
         inputInicioVigencia.setBackground(new java.awt.Color(255, 255, 255));
         inputInicioVigencia.setBorder(null);
+        inputInicioVigencia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputInicioVigenciaFocusLost(evt);
+            }
+        });
         inputInicioVigencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputInicioVigenciaActionPerformed(evt);
@@ -287,7 +296,15 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         try {
             if (!inputNumConfiCaso.getText().isEmpty()) { 
                 if (!inputCodTipoCaso1.getText().isEmpty()) {
-                   
+                   if (!inputNombreTipoCaso.getText().isEmpty()) {
+                        if(!inputNombreTipoCaso.getText().isEmpty()){
+                            validarFecha(inputNombreTipoCaso.getText());
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Por favor ingrese una Fecha de Inicio", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                   }else{
+                        JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                   }
                 } else {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -301,10 +318,28 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmarAgregarActionPerformed
 
     public void MostrarTipoCasoInput(String codCaso){
-        String nombreTCaso = controlador.inputCodTipoCaso(codCaso);        
-        inputNombreTipoCaso.setText(nombreTCaso);
+        String nombreTCaso = controlador.inputCodTipoCaso(codCaso);     
+        if(nombreTCaso == ""){
+            JOptionPane.showMessageDialog(this, "Ingrese un Código de Tipo Caso VALIDO", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            inputNombreTipoCaso.setText("");
+        }else{
+            inputNombreTipoCaso.setText(nombreTCaso);
+        }
+        
     }
     
+    public void validarFecha(String inputNombreTipoCaso){
+        //        VALIDACION DE FECHA       
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");            
+        Date fechaInicio=null;
+        try {
+            fechaInicio = dateFormat.parse(inputInicioVigencia.getText());
+            System.out.println("Se convirtio con exito");
+            
+        } catch (ParseException ex) {
+            System.out.println("Error no es una fecha");
+        }
+    }
     
     
     private void inputNumConfiCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNumConfiCasoActionPerformed
@@ -326,6 +361,10 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_inputCodTipoCaso1FocusLost
+
+    private void inputInicioVigenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputInicioVigenciaFocusLost
+//        no se usa
+    }//GEN-LAST:event_inputInicioVigenciaFocusLost
 
     /**
      * @param args the command line arguments
