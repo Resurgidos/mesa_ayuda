@@ -6,17 +6,31 @@
 
 package Interfaces.ABMConfiguracionTipoCaso;
 
+import Controller.ControladorConfiguracionTipoCaso;
+import DTO.DTOTipoConfiguracionGrilla;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import main.Menu;
+
 /**
  *
  * @author leand
  */
 public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
+    
+    DefaultTableModel tablaConfiguraciones;
+    ControladorConfiguracionTipoCaso controlador = new ControladorConfiguracionTipoCaso();
+    DTOTipoConfiguracionGrilla dtoConfi = new DTOTipoConfiguracionGrilla();
 
     /** Creates new form ABMConfiguracionTipoCaso */
     public ABMConfiguracionTipoCaso() {
         initComponents();
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
         setTitle("ABM Configuracion De Tipo Caso");
+        tablaConfiguracion("");    
     }
 
     /** This method is called from within the constructor to
@@ -31,16 +45,16 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaTipoInstancia = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        ModificarTI = new javax.swing.JButton();
-        BajaTI = new javax.swing.JButton();
+        tablaConfiguracionCaso = new javax.swing.JTable();
+        botonVolver = new javax.swing.JButton();
+        ModificarConfiguracion = new javax.swing.JButton();
+        BajaConfiguracion = new javax.swing.JButton();
         ErrorMensaje = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         textTitulo = new javax.swing.JLabel();
-        filBusqueda2 = new javax.swing.JTextField();
+        filtroBusqueda = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        AgregarTI2 = new javax.swing.JButton();
+        AgregarCTC = new javax.swing.JButton();
         botonMostrarDatos = new javax.swing.JButton();
         botonTrabajarRenglo = new javax.swing.JButton();
         botonVerificar = new javax.swing.JButton();
@@ -60,14 +74,14 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        tablaTipoInstancia = new javax.swing.JTable(){
+        tablaConfiguracionCaso = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
             }
         };
-        tablaTipoInstancia.setBackground(new java.awt.Color(255, 255, 255));
-        tablaTipoInstancia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        tablaTipoInstancia.setModel(new javax.swing.table.DefaultTableModel(
+        tablaConfiguracionCaso.setBackground(new java.awt.Color(255, 255, 255));
+        tablaConfiguracionCaso.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tablaConfiguracionCaso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -86,50 +100,50 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaTipoInstancia.setRowHeight(20);
-        tablaTipoInstancia.setSelectionBackground(new java.awt.Color(153, 153, 153));
-        tablaTipoInstancia.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(tablaTipoInstancia);
+        tablaConfiguracionCaso.setRowHeight(20);
+        tablaConfiguracionCaso.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        tablaConfiguracionCaso.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(tablaConfiguracionCaso);
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
-        jButton3.setMnemonic('v');
-        jButton3.setText("Volver");
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonVolver.setBackground(new java.awt.Color(204, 204, 204));
+        botonVolver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonVolver.setForeground(new java.awt.Color(0, 0, 0));
+        botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
+        botonVolver.setMnemonic('v');
+        botonVolver.setText("Volver");
+        botonVolver.setBorder(null);
+        botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonVolverActionPerformed(evt);
             }
         });
 
-        ModificarTI.setBackground(new java.awt.Color(204, 204, 204));
-        ModificarTI.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        ModificarTI.setForeground(new java.awt.Color(0, 0, 0));
-        ModificarTI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_edit_black_18dp.png"))); // NOI18N
-        ModificarTI.setMnemonic('m');
-        ModificarTI.setText("Modificar");
-        ModificarTI.setBorder(null);
-        ModificarTI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ModificarTI.addActionListener(new java.awt.event.ActionListener() {
+        ModificarConfiguracion.setBackground(new java.awt.Color(204, 204, 204));
+        ModificarConfiguracion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        ModificarConfiguracion.setForeground(new java.awt.Color(0, 0, 0));
+        ModificarConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_edit_black_18dp.png"))); // NOI18N
+        ModificarConfiguracion.setMnemonic('m');
+        ModificarConfiguracion.setText("Modificar");
+        ModificarConfiguracion.setBorder(null);
+        ModificarConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ModificarConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarTIActionPerformed(evt);
+                ModificarConfiguracionActionPerformed(evt);
             }
         });
 
-        BajaTI.setBackground(new java.awt.Color(204, 204, 204));
-        BajaTI.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BajaTI.setForeground(new java.awt.Color(0, 0, 0));
-        BajaTI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_delete_black_18dp.png"))); // NOI18N
-        BajaTI.setMnemonic('b');
-        BajaTI.setText("Dar baja");
-        BajaTI.setBorder(null);
-        BajaTI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BajaTI.addActionListener(new java.awt.event.ActionListener() {
+        BajaConfiguracion.setBackground(new java.awt.Color(204, 204, 204));
+        BajaConfiguracion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BajaConfiguracion.setForeground(new java.awt.Color(0, 0, 0));
+        BajaConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_delete_black_18dp.png"))); // NOI18N
+        BajaConfiguracion.setMnemonic('b');
+        BajaConfiguracion.setText("Dar baja");
+        BajaConfiguracion.setBorder(null);
+        BajaConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BajaConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BajaTIActionPerformed(evt);
+                BajaConfiguracionActionPerformed(evt);
             }
         });
 
@@ -149,18 +163,19 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         textTitulo.setForeground(new java.awt.Color(0, 0, 0));
         textTitulo.setText("Configuración Tipo Caso");
 
-        filBusqueda2.setBackground(new java.awt.Color(255, 255, 255));
-        filBusqueda2.addActionListener(new java.awt.event.ActionListener() {
+        filtroBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        filtroBusqueda.setBorder(null);
+        filtroBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filBusqueda2ActionPerformed(evt);
+                filtroBusquedaActionPerformed(evt);
             }
         });
-        filBusqueda2.addKeyListener(new java.awt.event.KeyAdapter() {
+        filtroBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                filBusqueda2KeyPressed(evt);
+                filtroBusquedaKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                filBusqueda2KeyReleased(evt);
+                filtroBusquedaKeyReleased(evt);
             }
         });
 
@@ -168,17 +183,17 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
 
-        AgregarTI2.setBackground(new java.awt.Color(119, 148, 166));
-        AgregarTI2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        AgregarTI2.setForeground(new java.awt.Color(0, 0, 0));
-        AgregarTI2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_add_black_18dp.png"))); // NOI18N
-        AgregarTI2.setMnemonic('a');
-        AgregarTI2.setText("Agregar");
-        AgregarTI2.setBorder(null);
-        AgregarTI2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AgregarTI2.addActionListener(new java.awt.event.ActionListener() {
+        AgregarCTC.setBackground(new java.awt.Color(119, 148, 166));
+        AgregarCTC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        AgregarCTC.setForeground(new java.awt.Color(0, 0, 0));
+        AgregarCTC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_add_black_18dp.png"))); // NOI18N
+        AgregarCTC.setMnemonic('a');
+        AgregarCTC.setText("Agregar");
+        AgregarCTC.setBorder(null);
+        AgregarCTC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AgregarCTC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarTI2ActionPerformed(evt);
+                AgregarCTCActionPerformed(evt);
             }
         });
 
@@ -189,12 +204,12 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(textTitulo)
-                .addGap(59, 59, 59)
-                .addComponent(filBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(65, 65, 65)
+                .addComponent(filtroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AgregarTI2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(AgregarCTC, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
         jPanel5Layout.setVerticalGroup(
@@ -202,12 +217,12 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AgregarTI2)
+                    .addComponent(AgregarCTC)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(filBusqueda2))))
+                            .addComponent(filtroBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -261,7 +276,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
+                    .addComponent(botonVolver)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,8 +291,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                                     .addComponent(botonVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ModificarTI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BajaTI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BajaConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -292,12 +307,12 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     .addComponent(botonMostrarDatos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ModificarTI)
+                    .addComponent(ModificarConfiguracion)
                     .addComponent(botonVerificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BajaTI)
-                    .addComponent(jButton3)
+                    .addComponent(BajaConfiguracion)
+                    .addComponent(botonVolver)
                     .addComponent(botonTrabajarRenglo))
                 .addGap(12, 12, 12))
         );
@@ -315,23 +330,56 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+    public void tablaConfiguracion(String nombreConfi) { //Método de la tabla que se muestra en la interfaz
+        List<DTOTipoConfiguracionGrilla> lista = controlador.filtroConfiguracion(nombreConfi);
+        tablaConfiguraciones = new DefaultTableModel();
+        tablaConfiguracionCaso.setModel(tablaConfiguraciones);
+        
+        tablaConfiguraciones.addColumn("Num Config. TC");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
+        tablaConfiguraciones.addColumn("Cod. Tipo Caso");//que Luego esta tabla le setteamos para mostrar en modelo de la interfaz
+        tablaConfiguraciones.addColumn("Fecha Inicio Vigencia");
+        tablaConfiguraciones.addColumn("Fecha Fin Vigencia");
+        tablaConfiguraciones.addColumn("Fecha Verificacion");
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        tablaConfiguracionCaso.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tablaConfiguracionCaso.getTableHeader().setBackground(new Color(172, 202, 221));
+
+        tablaConfiguracionCaso.setAutoCreateRowSorter(true);
+        tablaConfiguracionCaso.getRowSorter().toggleSortOrder(1);
+
+       for (int i = 0; i < lista.size(); i++) {
+            Vector fil = new Vector();
+            fil.add(lista.get(i).getNroConfig());
+            fil.add(lista.get(i).getCodTipoCaso());
+            fil.add(lista.get(i).getFechaInicioVigencia());
+            fil.add(lista.get(i).getFechaFinVigencia());
+            fil.add(lista.get(i).getFechaVerificacion());
+            tablaConfiguraciones.addRow(fil);
+      }
+    }
+    
+    
+    
+    
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         //Método para volver
         Menu menu = new Menu();
         menu.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void ModificarTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTIActionPerformed
+    }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void ModificarConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarConfiguracionActionPerformed
         //Método para modificar
-        int numTabTI = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabTI
+        int numTabTI = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabTI
         if (numTabTI == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
         } else {
-            for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
-                if (tablaTipoInstancia.getValueAt(i, 4) != null) {
+            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
+                if (tablaConfiguracionCaso.getValueAt(i, 4) != null) {
                     ErrorMensaje.setForeground(Color.RED);
                     ErrorMensaje.setText("El Tipo instancia esta dado de baja, no se puede modificar");
                 } else {
@@ -368,30 +416,30 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_ModificarTIActionPerformed
+    }//GEN-LAST:event_ModificarConfiguracionActionPerformed
 
-    private void BajaTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaTIActionPerformed
+    private void BajaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaConfiguracionActionPerformed
         //Método para eliminar
-        int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para dar de baja");
 
         } else {
-            for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
+            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
-                    if (tablaTipoInstancia.getValueAt(i, 4) != null) {
+                    if (tablaConfiguracionCaso.getValueAt(i, 4) != null) {
                         ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                         ErrorMensaje.setText("El sector elegido ya esta dado de baja");
                     } else {
-                        dtoTI.setCodTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
+                        dtoTI.setCodTipoInstancia((int) tablaConfiguracionCaso.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         int j = JOptionPane.showConfirmDialog(this,
                             ""
                             + "¿Estas seguro que confirmar la baja? \n\n"
-                            + "Cod Tipo Instancia: " + (int) tablaTipoInstancia.getValueAt(i, 0) + "\n"
-                            + "Nombre Tipo Instancia: " + tablaTipoInstancia.getValueAt(i, 1) + "\n"
-                            + "Nombre Sector: " + tablaTipoInstancia.getValueAt(i, 2) + "\n"
-                            + "Nombre Tipo Tarea: " + tablaTipoInstancia.getValueAt(i, 3) + "\n\n",
+                            + "Cod Tipo Instancia: " + (int) tablaConfiguracionCaso.getValueAt(i, 0) + "\n"
+                            + "Nombre Tipo Instancia: " + tablaConfiguracionCaso.getValueAt(i, 1) + "\n"
+                            + "Nombre Sector: " + tablaConfiguracionCaso.getValueAt(i, 2) + "\n"
+                            + "Nombre Tipo Tarea: " + tablaConfiguracionCaso.getValueAt(i, 3) + "\n\n",
                             "Dar de Baja Tipo Instancia", JOptionPane.YES_NO_OPTION);
                         if (j == 0) {
                             controlTI.bajaTipoInstancia(dtoTI);
@@ -402,37 +450,37 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_BajaTIActionPerformed
+    }//GEN-LAST:event_BajaConfiguracionActionPerformed
 
-    private void filBusqueda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusqueda2ActionPerformed
+    private void filtroBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroBusquedaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_filBusqueda2ActionPerformed
+    }//GEN-LAST:event_filtroBusquedaActionPerformed
 
-    private void filBusqueda2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusqueda2KeyPressed
+    private void filtroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             tablaTI(filBusqueda.getText());
         }
-    }//GEN-LAST:event_filBusqueda2KeyPressed
+    }//GEN-LAST:event_filtroBusquedaKeyPressed
 
-    private void filBusqueda2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusqueda2KeyReleased
+    private void filtroBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaKeyReleased
         tablaTI(filBusqueda.getText());
-    }//GEN-LAST:event_filBusqueda2KeyReleased
+    }//GEN-LAST:event_filtroBusquedaKeyReleased
 
-    private void AgregarTI2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarTI2ActionPerformed
+    private void AgregarCTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCTCActionPerformed
         //Metodo para agregar un Tipo instancia
-        AgregarTipoInstancia agregar = new AgregarTipoInstancia();
+        AltaConfiguracionTipocaso agregar = new AltaConfiguracionTipocaso();
         agregar.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_AgregarTI2ActionPerformed
+    }//GEN-LAST:event_AgregarCTCActionPerformed
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
         //Método Mostrar datos de Sector
-        int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");
         } else {
-            for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
+            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
 
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
 
@@ -523,21 +571,21 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AgregarTI2;
-    private javax.swing.JButton BajaTI;
+    private javax.swing.JButton AgregarCTC;
+    private javax.swing.JButton BajaConfiguracion;
     private javax.swing.JTextField ErrorMensaje;
-    private javax.swing.JButton ModificarTI;
+    private javax.swing.JButton ModificarConfiguracion;
     private javax.swing.JButton botonMostrarDatos;
     private javax.swing.JButton botonTrabajarRenglo;
     private javax.swing.JButton botonVerificar;
-    private javax.swing.JTextField filBusqueda2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonVolver;
+    private javax.swing.JTextField filtroBusqueda;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaTipoInstancia;
+    private javax.swing.JTable tablaConfiguracionCaso;
     private javax.swing.JLabel textTitulo;
     // End of variables declaration//GEN-END:variables
 

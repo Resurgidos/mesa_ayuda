@@ -7,8 +7,8 @@ package DTO;
 
 /**
  *
- * @author leand
+ * @author julie
  */
-public class DTOTipoConfiguracion {
+public class DTOConfiguracionBusqueda {
     
 }

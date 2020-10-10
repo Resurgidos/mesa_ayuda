@@ -5,11 +5,17 @@
  */
 package Interfaces.ABMConfiguracionTipoCaso;
 
+import Controller.ControladorConfiguracionTipoCaso;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author leand
  */
 public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
+    ControladorConfiguracionTipoCaso controlador = new ControladorConfiguracionTipoCaso();
+
 
     /**
      * Creates new form AltaConfiguracionTipocaso
@@ -30,31 +36,17 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        inputnombTI = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        inputcodSec = new javax.swing.JTextField();
-        volverABMAgregar = new javax.swing.JButton();
+        inputNombreTipoCaso = new javax.swing.JTextField();
+        volverABM = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        outnombSec = new javax.swing.JTextField();
+        inputInicioVigencia = new javax.swing.JTextField();
         confirmarAgregar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        inputcodTI = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        inputcodTI2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
-        inputcodTI3 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        inputcodTI4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        inputcodTI1 = new javax.swing.JTextField();
+        inputNumConfiCaso = new javax.swing.JTextField();
+        inputCodTipoCaso1 = new javax.swing.JTextField();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -67,67 +59,60 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre Tipo Caso:");
 
-        inputnombTI.setBackground(new java.awt.Color(255, 255, 255));
-        inputnombTI.setBorder(null);
-        inputnombTI.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputnombTIKeyTyped(evt);
-            }
-        });
-
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cod. Tipo Caso: (PONER LOGO DE LUPA)");
 
-        inputcodSec.setBackground(new java.awt.Color(255, 255, 255));
-        inputcodSec.setBorder(null);
-        inputcodSec.addFocusListener(new java.awt.event.FocusAdapter() {
+        inputNombreTipoCaso.setEditable(false);
+        inputNombreTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputNombreTipoCaso.setBorder(null);
+        inputNombreTipoCaso.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                inputcodSecFocusLost(evt);
+                inputNombreTipoCasoFocusLost(evt);
             }
         });
-        inputcodSec.addActionListener(new java.awt.event.ActionListener() {
+        inputNombreTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputcodSecActionPerformed(evt);
+                inputNombreTipoCasoActionPerformed(evt);
             }
         });
-        inputcodSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        inputNombreTipoCaso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputcodSecKeyTyped(evt);
+                inputNombreTipoCasoKeyTyped(evt);
             }
         });
 
-        volverABMAgregar.setBackground(new java.awt.Color(204, 204, 204));
-        volverABMAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        volverABMAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        volverABMAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
-        volverABMAgregar.setMnemonic('v');
-        volverABMAgregar.setText("Volver");
-        volverABMAgregar.setBorder(null);
-        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        volverABMAgregar.addActionListener(new java.awt.event.ActionListener() {
+        volverABM.setBackground(new java.awt.Color(204, 204, 204));
+        volverABM.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        volverABM.setForeground(new java.awt.Color(0, 0, 0));
+        volverABM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
+        volverABM.setMnemonic('v');
+        volverABM.setText("Volver");
+        volverABM.setBorder(null);
+        volverABM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverABM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                volverABMAgregarActionPerformed(evt);
+                volverABMActionPerformed(evt);
             }
         });
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Fecha Desde:");
+        jLabel7.setText("Fecha Inicio Vigencia:");
 
-        outnombSec.setEditable(false);
-        outnombSec.setBackground(new java.awt.Color(255, 255, 255));
-        outnombSec.setBorder(null);
-        outnombSec.addActionListener(new java.awt.event.ActionListener() {
+        inputInicioVigencia.setEditable(false);
+        inputInicioVigencia.setBackground(new java.awt.Color(255, 255, 255));
+        inputInicioVigencia.setBorder(null);
+        inputInicioVigencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                outnombSecActionPerformed(evt);
+                inputInicioVigenciaActionPerformed(evt);
             }
         });
-        outnombSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        inputInicioVigencia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                outnombSecKeyTyped(evt);
+                inputInicioVigenciaKeyTyped(evt);
             }
         });
 
@@ -159,7 +144,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel5)
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,208 +159,29 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Núm. Configuración Tipo Caso:");
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RENGLÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
-
-        inputcodTI.setBackground(new java.awt.Color(255, 255, 255));
-        inputcodTI.setBorder(null);
-        inputcodTI.addActionListener(new java.awt.event.ActionListener() {
+        inputNumConfiCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputNumConfiCaso.setBorder(null);
+        inputNumConfiCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputcodTIActionPerformed(evt);
+                inputNumConfiCasoActionPerformed(evt);
             }
         });
-        inputcodTI.addKeyListener(new java.awt.event.KeyAdapter() {
+        inputNumConfiCaso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputcodTIKeyTyped(evt);
+                inputNumConfiCasoKeyTyped(evt);
             }
         });
 
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Orden TCTI:");
-
-        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Minutos Máxima Iteracion: ");
-
-        inputcodTI2.setBackground(new java.awt.Color(255, 255, 255));
-        inputcodTI2.setBorder(null);
-        inputcodTI2.addActionListener(new java.awt.event.ActionListener() {
+        inputCodTipoCaso1.setBackground(new java.awt.Color(255, 255, 255));
+        inputCodTipoCaso1.setBorder(null);
+        inputCodTipoCaso1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputCodTipoCaso1FocusLost(evt);
+            }
+        });
+        inputCodTipoCaso1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputcodTI2ActionPerformed(evt);
-            }
-        });
-        inputcodTI2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputcodTI2KeyTyped(evt);
-            }
-        });
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Agregar");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Orden TCTI", "Minutos Max", "Cod. Tipo Instancia", "Nomb. Tipo Instancia"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Cod. Tipo Instancia:");
-
-        inputcodTI3.setBackground(new java.awt.Color(255, 255, 255));
-        inputcodTI3.setBorder(null);
-        inputcodTI3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputcodTI3ActionPerformed(evt);
-            }
-        });
-        inputcodTI3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputcodTI3KeyTyped(evt);
-            }
-        });
-
-        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Nombre Tipo Instancia:");
-
-        inputcodTI4.setBackground(new java.awt.Color(255, 255, 255));
-        inputcodTI4.setBorder(null);
-        inputcodTI4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputcodTI4ActionPerformed(evt);
-            }
-        });
-        inputcodTI4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputcodTI4KeyTyped(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Modificar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(inputcodTI3))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(48, 48, 48)
-                                    .addComponent(inputcodTI4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(inputcodTI2)
-                                        .addComponent(inputcodTI))))
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(22, 22, 22))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(inputcodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(inputcodTI2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(inputcodTI4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(inputcodTI3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        inputcodTI1.setBackground(new java.awt.Color(255, 255, 255));
-        inputcodTI1.setBorder(null);
-        inputcodTI1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputcodTI1ActionPerformed(evt);
-            }
-        });
-        inputcodTI1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputcodTI1KeyTyped(evt);
+                inputCodTipoCaso1ActionPerformed(evt);
             }
         });
 
@@ -387,51 +193,51 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                            .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(outnombSec, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputcodSec, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputnombTI, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel3)
-                    .addComponent(inputcodTI1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(inputCodTipoCaso1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                            .addComponent(inputInicioVigencia, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputNombreTipoCaso, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputNumConfiCaso, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputNumConfiCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputCodTipoCaso1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputNombreTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputInicioVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(inputcodTI1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputnombTI, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(outnombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(confirmarAgregar)
-                            .addComponent(volverABMAgregar)))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(confirmarAgregar)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(volverABM)
+                        .addGap(24, 24, 24))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -448,154 +254,78 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputcodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTIActionPerformed
+    private void inputNombreTipoCasoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNombreTipoCasoFocusLost
+
+    }//GEN-LAST:event_inputNombreTipoCasoFocusLost
+
+    private void inputNombreTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombreTipoCasoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTIActionPerformed
+    }//GEN-LAST:event_inputNombreTipoCasoActionPerformed
 
-    private void inputcodTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTIKeyTyped
-
+    private void inputNombreTipoCasoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNombreTipoCasoKeyTyped
         //Declaramos una variable y asignamos un evento
-        char car = evt.getKeyChar();
+    }//GEN-LAST:event_inputNombreTipoCasoKeyTyped
 
-        //Condicion
-        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_inputcodTIKeyTyped
+    private void volverABMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMActionPerformed
 
-    private void inputnombTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputnombTIKeyTyped
+        ABMConfiguracionTipoCaso abmConf = new ABMConfiguracionTipoCaso();
+        abmConf.setVisible(true);
+        abmConf.tablaConfiguracion("");
+        abmConf.setVisible(false);
+    }//GEN-LAST:event_volverABMActionPerformed
 
-        //Declaramos una variable y asignamos un evento
-        char car = evt.getKeyChar();
-
-        //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_inputnombTIKeyTyped
-
-    private void inputcodSecFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodSecFocusLost
-        if (!inputcodSec.getText().isEmpty()) {
-            MostrarSectorFil(inputcodSec.getText());
-        }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
-
-    }//GEN-LAST:event_inputcodSecFocusLost
-
-    private void inputcodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodSecActionPerformed
+    private void inputInicioVigenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputInicioVigenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodSecActionPerformed
+    }//GEN-LAST:event_inputInicioVigenciaActionPerformed
 
-    private void inputcodSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodSecKeyTyped
-        //Declaramos una variable y asignamos un evento
-    }//GEN-LAST:event_inputcodSecKeyTyped
-
-    private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
-        //Botón para volver al menú de TipoInstancia
-        ABMTipoInstancia abmTI = new ABMTipoInstancia();
-
-        abmTI.setVisible(true);
-        abmTI.tablaTI("");
-        this.setVisible(false);
-    }//GEN-LAST:event_volverABMAgregarActionPerformed
-
-    private void outnombSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outnombSecActionPerformed
+    private void inputInicioVigenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputInicioVigenciaKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_outnombSecActionPerformed
-
-    private void outnombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_outnombSecKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_outnombSecKeyTyped
+    }//GEN-LAST:event_inputInicioVigenciaKeyTyped
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
         //Método para agregar un Tipo de Instancia
         try {
-            if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código
-                if (!inputnombTI.getText().isEmpty()) {//Para que el nombre del TI no este vacio
-                    if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
-                        if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
-                            do{
-                                DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
-                                dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
-                                dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
-                                dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
-                                dtoAgregar.setNombreSector(outnombSec.getText());
-                                dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-                                dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-                                control.agregarTipoInstancia(dtoAgregar);
-
-                                if(dtoTI.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
-                                    ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector
-                                    JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
-                                    volver.setVisible(true);
-                                    volver.tablaTI("");
-                                    this.setVisible(false);
-                                }else{
-                                    JOptionPane.showMessageDialog(this,dtoTI.getErrorMensaje());
-                                    System.out.println("acá esta el error, en registro de sector en validar");
-                                    dtoTI.setVerificarError(0);
-                                } }while(dtoTI.getVerificarError() != 0);
-
-                                //y un chatch en el caso que no se pueda crear el Tipo Instancia
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                    }
+            if (!inputNumConfiCaso.getText().isEmpty()) { 
+                if (!inputCodTipoCaso1.getText().isEmpty()) {
+                   
                 } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un Número de Configuración de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_confirmarAgregarActionPerformed
 
-    private void inputcodTI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTI1ActionPerformed
+    public void MostrarTipoCasoInput(String codCaso){
+        String nombreTCaso = controlador.inputCodTipoCaso(codCaso);        
+        inputNombreTipoCaso.setText(nombreTCaso);
+    }
+    
+    
+    
+    private void inputNumConfiCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNumConfiCasoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI1ActionPerformed
+    }//GEN-LAST:event_inputNumConfiCasoActionPerformed
 
-    private void inputcodTI1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTI1KeyTyped
+    private void inputNumConfiCasoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNumConfiCasoKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI1KeyTyped
+    }//GEN-LAST:event_inputNumConfiCasoKeyTyped
 
-    private void inputcodTI2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTI2ActionPerformed
+    private void inputCodTipoCaso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCodTipoCaso1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI2ActionPerformed
+    }//GEN-LAST:event_inputCodTipoCaso1ActionPerformed
 
-    private void inputcodTI2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTI2KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI2KeyTyped
-
-    private void inputcodTI3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTI3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI3ActionPerformed
-
-    private void inputcodTI3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTI3KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI3KeyTyped
-
-    private void inputcodTI4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTI4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI4ActionPerformed
-
-    private void inputcodTI4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTI4KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputcodTI4KeyTyped
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void inputCodTipoCaso1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCodTipoCaso1FocusLost
+        if (!inputCodTipoCaso1.getText().isEmpty()) {
+            MostrarTipoCasoInput(inputCodTipoCaso1.getText());
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_inputCodTipoCaso1FocusLost
 
     /**
      * @param args the command line arguments
@@ -634,32 +364,18 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirmarAgregar;
-    private javax.swing.JTextField inputcodSec;
-    private javax.swing.JTextField inputcodTI;
-    private javax.swing.JTextField inputcodTI1;
-    private javax.swing.JTextField inputcodTI2;
-    private javax.swing.JTextField inputcodTI3;
-    private javax.swing.JTextField inputcodTI4;
-    private javax.swing.JTextField inputnombTI;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTextField inputCodTipoCaso1;
+    private javax.swing.JTextField inputInicioVigencia;
+    private javax.swing.JTextField inputNombreTipoCaso;
+    private javax.swing.JTextField inputNumConfiCaso;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField outnombSec;
-    private javax.swing.JButton volverABMAgregar;
+    private javax.swing.JButton volverABM;
     // End of variables declaration//GEN-END:variables
 }
