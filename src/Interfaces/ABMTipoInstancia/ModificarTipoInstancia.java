@@ -74,7 +74,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         inputcodSecmod = new javax.swing.JTextField();
         volverABMAgregar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        confirmarAgregar = new javax.swing.JButton();
+        confirmarModificar = new javax.swing.JButton();
         inputcodTTmod = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -217,16 +217,16 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cod. Tipo Tarea:");
 
-        confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
-        confirmarAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        confirmarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
-        confirmarAgregar.setMnemonic('c');
-        confirmarAgregar.setText("Confirmar");
-        confirmarAgregar.setBorder(null);
-        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
+        confirmarModificar.setBackground(new java.awt.Color(204, 204, 204));
+        confirmarModificar.setForeground(new java.awt.Color(0, 0, 0));
+        confirmarModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
+        confirmarModificar.setMnemonic('c');
+        confirmarModificar.setText("Confirmar");
+        confirmarModificar.setBorder(null);
+        confirmarModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarAgregarActionPerformed(evt);
+                confirmarModificarActionPerformed(evt);
             }
         });
 
@@ -257,7 +257,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(164, 164, 164)
                         .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -305,7 +305,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                 .addComponent(outnombTTmod, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmarAgregar)
+                    .addComponent(confirmarModificar)
                     .addComponent(volverABMAgregar))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -418,7 +418,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_volverABMAgregarActionPerformed
 
-    private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
+    private void confirmarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarModificarActionPerformed
         //Método para agregar un Tipo de Instancia
         DTOModificarTipoInstancia dtoModificar = new DTOModificarTipoInstancia();
         dtoModificar.setCodTipoInstancia(Integer.parseInt(inputcodTImod.getText()));
@@ -434,7 +434,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"El tipoInstancia fue modificado con éxito");
         abmti.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_confirmarAgregarActionPerformed
+    }//GEN-LAST:event_confirmarModificarActionPerformed
 
     private void inputcodTTmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTTmodActionPerformed
         // TODO add your handling code here:
@@ -502,7 +502,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton confirmarAgregar;
+    private javax.swing.JButton confirmarModificar;
     private javax.swing.JTextField inputcodSecmod;
     private javax.swing.JTextField inputcodTImod;
     private javax.swing.JTextField inputcodTTmod;

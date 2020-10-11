@@ -373,7 +373,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
     private void ModificarConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarConfiguracionActionPerformed
         //Método para modificar
-        int numTabTI = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabTI
+     /*   int numTabTI = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabTI
         if (numTabTI == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
@@ -415,12 +415,12 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
                 }
             }
-        }
+        }*/
     }//GEN-LAST:event_ModificarConfiguracionActionPerformed
 
     private void BajaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaConfiguracionActionPerformed
         //Método para eliminar
-        int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+     /*   int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para dar de baja");
@@ -449,7 +449,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     }
                 }
             }
-        }
+        }*/
     }//GEN-LAST:event_BajaConfiguracionActionPerformed
 
     private void filtroBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroBusquedaActionPerformed
@@ -457,13 +457,13 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_filtroBusquedaActionPerformed
 
     private void filtroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      /*  if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             tablaTI(filBusqueda.getText());
-        }
+        }*/
     }//GEN-LAST:event_filtroBusquedaKeyPressed
 
     private void filtroBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaKeyReleased
-        tablaTI(filBusqueda.getText());
+       // tablaTI(filBusqueda.getText());
     }//GEN-LAST:event_filtroBusquedaKeyReleased
 
     private void AgregarCTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCTCActionPerformed
@@ -475,7 +475,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
         //Método Mostrar datos de Sector
-        int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+     /*   int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");
@@ -520,7 +520,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 }
 
             }
-        }
+        }*/
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     private void botonTrabajarRengloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrabajarRengloActionPerformed

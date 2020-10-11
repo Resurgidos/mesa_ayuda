@@ -242,6 +242,8 @@ public class ExpertoTipoInstancia {
            }       
         return dtoList;
     }
+    
+    
     public DTOModificarTipoInstancia buscarPorCodTipoInstancia(int filTipoInstancia){
         FachadaPersistencia.getInstance().iniciarTransaccion();  
         DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos

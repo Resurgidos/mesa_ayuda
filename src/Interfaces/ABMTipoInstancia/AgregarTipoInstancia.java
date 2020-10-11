@@ -1,5 +1,6 @@
 package Interfaces.ABMTipoInstancia;
 
+import DTO.DTOAgregarTipoInstancia;
 import Controller.ControladorABMTipoInstancia;
 import DTO.*;
 //import java.awt.event.KeyEvent;
