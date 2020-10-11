@@ -1,4 +1,4 @@
-package DTO.DTOsTipoTarea;
+package DTO;
 
 import java.util.Date;
 

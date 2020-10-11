@@ -18,7 +18,7 @@
             <column name="nombreTipoCaso"/>
         </property>
         
-        <property name="fechaFinVigenciaTipoCaso" type="timestamp">
+        <property name="fechaFinVigenciaTipoCaso" type="date">
             <column name="fechaFinVigenciaTipoCaso"/>
         </property>
         

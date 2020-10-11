@@ -1,4 +1,5 @@
 package main;
+import DTO.DTOCriterio;
 import DTO.DTOsSector.*;
 import entidades.*;
 import java.text.SimpleDateFormat;

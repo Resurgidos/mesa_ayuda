@@ -5,6 +5,7 @@
  */
 package main;
 
+import DTO.DTOCriterio;
 import DTO.DTOsTipoCaso.*;
 import entidades.TipoCaso;
 import java.text.SimpleDateFormat;
