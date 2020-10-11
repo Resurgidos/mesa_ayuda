@@ -7,7 +7,7 @@
 package Interfaces.ABMConfiguracionTipoCaso;
 
 import Controller.ControladorConfiguracionTipoCaso;
-import DTO.DTOTipoConfiguracionGrilla;
+import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.List;

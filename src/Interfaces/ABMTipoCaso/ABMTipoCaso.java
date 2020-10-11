@@ -6,7 +6,7 @@
 package Interfaces.ABMTipoCaso;
 
 import Controller.ControladorABMTipoCaso;
-import DTO.DTOTipoCaso;
+import DTO.DTOsTipoCaso.DTOTipoCaso;
 import Interfaces.ABMSector.AgregarSector;
 import java.awt.Color;
 import java.awt.Font;

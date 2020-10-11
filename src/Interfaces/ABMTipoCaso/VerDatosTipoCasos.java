@@ -6,7 +6,7 @@
 package Interfaces.ABMTipoCaso;
 
 
-import DTO.DTOTipoCaso;
+import DTO.DTOsTipoCaso.DTOTipoCaso;
 //import java.awt.event.KeyEvent;
 import com.sun.glass.events.KeyEvent;
 import java.text.DateFormat;

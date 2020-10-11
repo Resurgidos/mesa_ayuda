@@ -2,7 +2,7 @@
 package main;
 
 import DTO.DTOCriterio;
-import DTO.DTOTipoConfiguracionGrilla;
+import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
 import java.util.ArrayList;
 import java.util.List;
 import entidades.*;
@@ -70,7 +70,7 @@ public class ExpertoConfigurar {
             TipoCaso tipoCaso = (TipoCaso) objetoList.get(0);        
             return tipoCaso.getNombreTipoCaso();     
         }else {
-            return "";
+            return "No existe el Tipo Caso Ingresado";
         }
 
     }

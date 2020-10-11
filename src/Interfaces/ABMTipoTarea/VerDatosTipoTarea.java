@@ -6,7 +6,7 @@
 package Interfaces.ABMTipoTarea;
 
 import Interfaces.ABMSector.*;
-import DTO.DTOSector;
+import DTO.DTOsSector.DTOSector;
 import DTO.DTOTipoTarea;
 //import java.awt.event.KeyEvent;
 import com.sun.glass.events.KeyEvent;

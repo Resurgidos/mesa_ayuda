@@ -1,6 +1,6 @@
 package Controller;
 
-import DTO.DTOSector;
+import DTO.DTOsSector.DTOSector;
 import java.util.List;
 
 

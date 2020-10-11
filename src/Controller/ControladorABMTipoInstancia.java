@@ -1,7 +1,7 @@
 
 package Controller;
 
-import DTO.*;
+import DTO.DTOsTipoInstancia.*;
 import java.util.List;
 import main.ExpertoTipoInstancia;
 

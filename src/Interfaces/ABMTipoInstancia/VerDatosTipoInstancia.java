@@ -7,7 +7,7 @@
 package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
-import DTO.DTOVisualizarDatosTI;
+import DTO.DTOsTipoInstancia.DTOVisualizarDatosTI;
 //import java.awt.event.KeyEvent;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Color;

@@ -6,7 +6,7 @@
 package Interfaces.ABMSector;
 
 import Controller.ControladorABMSector;
-import DTO.DTOSector;
+import DTO.DTOsSector.DTOSector;
 import Interfaces.ABMSector.ABMSector;
 import javax.swing.JOptionPane;
 

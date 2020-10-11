@@ -6,8 +6,8 @@
 package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
-import DTO.DTOAgregarTipoInstancia;
-import DTO.DTOModificarTipoInstancia;
+import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
+import DTO.DTOsTipoInstancia.DTOModificarTipoInstancia;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.util.List;

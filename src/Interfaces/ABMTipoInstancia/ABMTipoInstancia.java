@@ -1,8 +1,8 @@
 package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
-import DTO.DTOFiltroTI;
-import DTO.DTOAgregarTipoInstancia;
+import DTO.DTOsTipoInstancia.DTOFiltroTI;
+import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;

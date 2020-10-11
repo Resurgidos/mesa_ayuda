@@ -5,7 +5,7 @@
  */
 package main;
 
-import DTO.*;
+import DTO.DTOsTipoCaso.*;
 import entidades.TipoCaso;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

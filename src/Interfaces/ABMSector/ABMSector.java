@@ -2,7 +2,7 @@ package Interfaces.ABMSector;
 
 import main.Menu;
 import Controller.ControladorABMSector;
-import DTO.DTOSector;
+import DTO.DTOsSector.DTOSector;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;

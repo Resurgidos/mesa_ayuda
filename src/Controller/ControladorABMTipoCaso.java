@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DTO.DTOTipoCaso;
+import DTO.DTOsTipoCaso.DTOTipoCaso;
 import main.ExpertoTipoCaso;
 import java.util.List;
 /**

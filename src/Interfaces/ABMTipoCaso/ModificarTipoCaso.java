@@ -6,7 +6,7 @@
 package Interfaces.ABMTipoCaso;
 
 import Controller.ControladorABMTipoCaso;
-import DTO.DTOTipoCaso;
+import DTO.DTOsTipoCaso.DTOTipoCaso;
 import javax.swing.JOptionPane;
 
 

@@ -2,13 +2,11 @@
 package main;
 
 import DTO.DTOCriterio;
-import DTO.DTOFiltroTI;
-
-
-import DTO.DTOAgregarTipoInstancia;
-import DTO.DTOErrorMensajes;
-import DTO.DTOModificarTipoInstancia;
-import DTO.DTOVisualizarDatosTI;
+import DTO.DTOsTipoInstancia.DTOFiltroTI;
+import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
+import DTO.DTOsTipoInstancia.DTOErrorMensajes;
+import DTO.DTOsTipoInstancia.DTOModificarTipoInstancia;
+import DTO.DTOsTipoInstancia.DTOVisualizarDatosTI;
 import entidades.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

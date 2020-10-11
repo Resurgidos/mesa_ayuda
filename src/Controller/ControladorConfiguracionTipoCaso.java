@@ -1,7 +1,7 @@
 
 package Controller;
 
-import DTO.DTOTipoConfiguracionGrilla;
+import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
 import java.util.List;
 import main.ExpertoConfigurar;
 
@@ -17,7 +17,7 @@ public class ControladorConfiguracionTipoCaso {
         return expertoC.filtroConfiguracion(nombreConfiguracion);
     }
     
-    public String inputCodTipoCaso (String codCaso){    
+    public String inputCodTipoCaso (String codCaso){   //Método para buscar un código de tipo caso para dar de alta una configuración
         return expertoC.inputCodTipoCaso(codCaso);
     }
 }

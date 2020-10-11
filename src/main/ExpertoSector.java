@@ -1,5 +1,5 @@
 package main;
-import DTO.*;
+import DTO.DTOsSector.*;
 import entidades.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
