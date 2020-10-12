@@ -15,14 +15,14 @@ public class DTOAgregarConfiguracion {
     int nroConfiguracion;
     int codTipoCaso;
     String nombreTipoCaso;
-    Date fechaInicioVigencia;
+    Date fechaDesde;
 
     public void setCodTipoCaso(int codTipoCaso) {
         this.codTipoCaso = codTipoCaso;
     }
 
-    public void setFechaInicioVigencia(Date fechaInicioVigencia) {
-        this.fechaInicioVigencia = fechaInicioVigencia;
+    public void setFechaDesde(Date fechaInicioVigencia) {
+        this.fechaDesde = fechaInicioVigencia;
     }
 
     public void setNombreTipoCaso(String nombreTipoCaso) {
@@ -37,8 +37,8 @@ public class DTOAgregarConfiguracion {
         return codTipoCaso;
     }
 
-    public Date getFechaInicioVigencia() {
-        return fechaInicioVigencia;
+    public Date getFechaDesde() {
+        return fechaDesde;
     }
 
     public String getNombreTipoCaso() {

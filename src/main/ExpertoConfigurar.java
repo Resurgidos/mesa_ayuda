@@ -2,17 +2,121 @@
 package main;
 
 import DTO.DTOCriterio;
-import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
+import DTO.DTOsConfiguración.*;
 import java.util.ArrayList;
 import java.util.List;
 import entidades.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+
 
 public class ExpertoConfigurar {
-        
-    public void agregarConfiguracion(DTOTipoConfiguracionGrilla dtoTC){
          
+                
+    public DTOErroresMensajes agregarConfiguracion(DTOAgregarConfiguracion dtoAgregarConfig){
+        TipoCaso tc = new TipoCaso();
+        DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
+        ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
+        DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+        try{
+        FachadaPersistencia.getInstance().iniciarTransaccion();//Instanciaciones de objetos a usar      
+             
+        List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+                dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                dtoCrit.setOperacion("=");
+                dtoCrit.setValor(dtoAgregarConfig.getNroConfiguracion()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                validarCod.add(dtoCrit);
+        try{      
+            List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );
+             int verificar = 0;
+             for (Object x : objetoList) {  //Con este for verifico que no haya un código ya existente
+                 configTC = (ConfiguracionTipoCaso)x; //Si ya existe ese código, settea a verificar para validar y que muestre un mensaje
+                 verificar = configTC.getNroConfigTC();                
+                 dtoErrores.setVerificarError(verificar);
+                 
+                }if(dtoErrores.getVerificarError() == 0 ){  //Comprobamos que el código no existe. Si existe settea el mensaje
+                    if(dtoAgregarConfig.getNroConfiguracion() == 0){ //Verificamos que el codigo no sea cero, si es 0 Settea error
+                                    dtoErrores.setVerificarError(1);
+                                    dtoErrores.setErrorMensaje("El Código no esta permitido");                            
+                             }else{
+                                dtoErrores = validarFecha(dtoAgregarConfig.getFechaDesde());
+                                    if(dtoErrores.getVerificarError()==0){
+                                        
+                                        dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                                        dtoCrit.setOperacion("=");
+                                        dtoCrit.setValor(dtoAgregarConfig.getCodTipoCaso()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                                        listadtoCrit.add(dtoCrit);
+
+
+                                        //Busco el sector que ingrese por la interfaz y luego se lo asigno al Tipo Instancia que estoy creando
+                                        List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
+                                         for (Object x : objetoList3) {
+                                             tc = (TipoCaso)x ;
+                                             configTC.setTipoCaso(tc);
+                                            }  
+
+                                        //Asigno al tipo instancia que estoy creando el código y el nombre
+                                        configTC.setNroConfigTC(dtoAgregarConfig.getNroConfiguracion());
+
+                                        Date fecha = dtoAgregarConfig.getFechaDesde();
+                                        SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy");
+                                        String fechaInicio = objSDF.format(fecha);
+
+                                        configTC.setFechaInicioVigencia(objSDF.parse(fechaInicio));                       
+                                        configTC.setFechaFinVigencia(null);
+                                        configTC.setFechaVerificacion(null);
+                                        FachadaPersistencia.getInstance().guardar(configTC);        
+                                  
+                    
+                                    }}    }else{
+                     dtoErrores.setErrorMensaje("El código ya existe");  //Muestra el mensaje si el código está existente
+                     }
+                }catch(Exception e){
+                        System.out.println("No se pudo registrar la configuración de tipo caso"); 
+                 }    
+            }catch(Exception e){
+                    System.out.println("No se pudo encontrar la configuración de tipo caso");                
+        }
+        return dtoErrores;
     }
-    
+    public DTOErroresMensajes validarFecha(Date fechaDesde){
+        ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
+        DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
+        Date fechaactual = new Date(System.currentTimeMillis());
+        
+        if(fechaDesde.after(fechaactual)){
+            DTOCriterio dtoCrit = new DTOCriterio();        
+            List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+               
+                dtoCrit.setAtributo("fechaInicioVigencia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                dtoCrit.setOperacion("=");
+                dtoCrit.setValor(""); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                validarCod.add(dtoCrit);
+       
+            List datosFachada = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );
+            for(Object x: datosFachada){
+                configTC = (ConfiguracionTipoCaso)x;
+                System.out.println("Hasta aca llega");
+                if(configTC.getFechaFinVigencia() != null){   
+                    
+                    if(fechaDesde.before(configTC.getFechaInicioVigencia())){
+                        System.out.println("hay una fecha anterior");
+                        dtoErrores.setErrorMensaje("Fecha No permitida, ingrese otra");
+                        dtoErrores.setVerificarError(1);                       
+                    } 
+                }
+            }
+           
+        }else{
+            dtoErrores.setErrorMensaje("Debe ser una fecha posterior a la actual");
+            dtoErrores.setVerificarError(1); 
+        }
+        return dtoErrores;
+    }
     public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(String nombreConfiguracion){
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia

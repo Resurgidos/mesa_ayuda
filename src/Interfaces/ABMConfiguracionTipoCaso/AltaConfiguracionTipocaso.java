@@ -7,6 +7,7 @@ package Interfaces.ABMConfiguracionTipoCaso;
 
 import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOAgregarConfiguracion;
+import DTO.DTOsConfiguración.DTOErroresMensajes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
     ControladorConfiguracionTipoCaso controlador = new ControladorConfiguracionTipoCaso();
-    
+    DTOErroresMensajes dtoE = new DTOErroresMensajes();
 
 
     /**
@@ -38,14 +39,12 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         inputNombreTipoCaso = new javax.swing.JTextField();
         volverABM = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        inputInicioVigencia = new javax.swing.JTextField();
         confirmarAgregar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -54,9 +53,8 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         inputCodTipoCaso1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         errorMensaje = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-
-        jFormattedTextField1.setText("jFormattedTextField1");
+        fechaDesde = new com.toedter.calendar.JDateChooser();
+        MensajeError = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,24 +108,6 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha Inicio Vigencia:");
-
-        inputInicioVigencia.setBackground(new java.awt.Color(255, 255, 255));
-        inputInicioVigencia.setBorder(null);
-        inputInicioVigencia.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                inputInicioVigenciaFocusLost(evt);
-            }
-        });
-        inputInicioVigencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputInicioVigenciaActionPerformed(evt);
-            }
-        });
-        inputInicioVigencia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputInicioVigenciaKeyTyped(evt);
-            }
-        });
 
         confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
         confirmarAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -203,6 +183,25 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         errorMensaje.setForeground(new java.awt.Color(255, 0, 51));
         errorMensaje.setText("  ");
 
+        fechaDesde.setBackground(new java.awt.Color(204, 204, 204));
+        fechaDesde.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                fechaDesdeInputMethodTextChanged(evt);
+            }
+        });
+        fechaDesde.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaDesdePropertyChange(evt);
+            }
+        });
+        fechaDesde.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fechaDesdeKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -211,27 +210,25 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(inputCodTipoCaso1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
-                            .addComponent(inputInicioVigencia, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputNombreTipoCaso, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputNumConfiCaso, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(errorMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(fechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(inputCodTipoCaso1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(inputNumConfiCaso, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(errorMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(inputNombreTipoCaso, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -252,23 +249,19 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 .addComponent(inputNombreTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(errorMensaje)
+                    .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputInicioVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(errorMensaje)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(confirmarAgregar)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(volverABM)
-                        .addGap(24, 24, 24))))
+                .addComponent(jLabel4)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(volverABM)
+                    .addComponent(confirmarAgregar))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -302,47 +295,52 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         ABMConfiguracionTipoCaso abmConf = new ABMConfiguracionTipoCaso();
         abmConf.setVisible(true);
         abmConf.tablaConfiguracion("");
-        abmConf.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_volverABMActionPerformed
-
-    private void inputInicioVigenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputInicioVigenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputInicioVigenciaActionPerformed
-
-    private void inputInicioVigenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputInicioVigenciaKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputInicioVigenciaKeyTyped
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
         //Método para agregar un Tipo de Instancia
+       
         try {
             if (!inputNumConfiCaso.getText().isEmpty()) { 
                 if (!inputCodTipoCaso1.getText().isEmpty()) {
                    if (!inputNombreTipoCaso.getText().isEmpty()) {
                         if(!inputNombreTipoCaso.getText().isEmpty()){
-                            int validacion = validarFecha(inputNombreTipoCaso.getText());
-                            if(validacion==1){
-                                DTOAgregarConfiguracion dtoAgregar = new DTOAgregarConfiguracion();
+                            //int validacion = validarFecha(inputNombreTipoCaso.getText());
+                            //if(validacion==1){
+                             do{
+                                DTOAgregarConfiguracion dtoAgregar = new DTOAgregarConfiguracion();                             
                                 dtoAgregar.setNroConfiguracion(Integer.parseInt(inputNumConfiCaso.getText()));
                                 dtoAgregar.setCodTipoCaso(Integer.parseInt(inputCodTipoCaso1.getText()));
                                 dtoAgregar.setNombreTipoCaso(inputNombreTipoCaso.getText()); 
-                                
+                                dtoAgregar.setFechaDesde(fechaDesde.getDate());
+                                dtoE = controlador.agregarConfiguracion(dtoAgregar);
+                               /* SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy"); // La cadena de formato de fecha se pasa como un argumento al objeto 
+                                String fechaFin = objSDF.format(fechaInicioConfiguracion.getDateFormatString());
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");            
-                                Date fechaInicio= dateFormat.parse(inputInicioVigencia.getText());
-                                dateFormat.applyPattern("yyyy/MM/dd");
+                                Date fechaInicio= dateFormat.parse(fechaInicioConfiguracion.getDate().toString());                              
                                 String fechaBase = dateFormat.format(fechaInicio);
-                                Date fechaBaseDatos = dateFormat.parse(fechaBase);
-                                
-                                System.out.println(fechaBaseDatos);
-                             
-                                dtoAgregar.setFechaInicioVigencia(fechaBaseDatos);       
+                                Date fechaBaseDatos = dateFormat.parse(fechaBase);*/
                                 
                                 
+                                /*SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy");
+                                String fechaFin = objSDF.format(fechaInicioConfiguracion.getDate());
+                                dtoAgregar.setFechaDesde(objSDF.parse(fechaFin));    */
                                 
-                            }else{
-                                errorMensaje.setText("Ingrese una fecha valida");
-                            }
-                        }else{
+                                if(dtoE.getVerificarError() == 0){
+                                        JOptionPane.showMessageDialog(this, "La configuración se grabo exitosamente");
+                                        ABMConfiguracionTipoCaso abmC = new ABMConfiguracionTipoCaso();
+                                        abmC.setVisible(true);
+                                        this.setVisible(false);
+                                }else{
+                                    MensajeError.setText(dtoE.getErrorMensaje());
+                                    dtoE.setVerificarError(0);
+                                }
+                           
+                             }while(dtoE.getVerificarError()!=0);
+                                     
+                                     
+                                     }else{
                             JOptionPane.showMessageDialog(this, "Por favor ingrese una Fecha de Inicio", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                         }
                    }else{
@@ -371,8 +369,8 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         
     }
     
-    public int validarFecha(String inputNombreTipoCaso){
-        //        VALIDACION DE FECHA       
+   /* public int validarFecha(String inputNombreTipoCaso){
+    /*    //        VALIDACION DE FECHA       
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");            
         Date fechaInicio=null;
         int bandera = 0;
@@ -381,7 +379,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         try {
             
             
-            fechaInicio = dateFormat.parse(inputInicioVigencia.getText());
+            fechaInicio = dateFormat.parse(fechaInicioConfiguracion.getDateFormatString());
             System.out.println(fechaInicio);
             
             int dia = fechaInicio.getDate();
@@ -416,7 +414,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         }
         
         return bandera;
-    }
+    }*/
     
     
     private void inputNumConfiCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNumConfiCasoActionPerformed
@@ -439,9 +437,19 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_inputCodTipoCaso1FocusLost
 
-    private void inputInicioVigenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputInicioVigenciaFocusLost
-//        no se usa
-    }//GEN-LAST:event_inputInicioVigenciaFocusLost
+    private void fechaDesdeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaDesdeKeyTyped
+        //
+    }//GEN-LAST:event_fechaDesdeKeyTyped
+
+    private void fechaDesdeInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_fechaDesdeInputMethodTextChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_fechaDesdeInputMethodTextChanged
+
+    private void fechaDesdePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaDesdePropertyChange
+        
+       
+    }//GEN-LAST:event_fechaDesdePropertyChange
 
     /**
      * @param args the command line arguments
@@ -479,14 +487,13 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField MensajeError;
     private javax.swing.JButton confirmarAgregar;
     private javax.swing.JLabel errorMensaje;
+    private com.toedter.calendar.JDateChooser fechaDesde;
     private javax.swing.JTextField inputCodTipoCaso1;
-    private javax.swing.JTextField inputInicioVigencia;
     private javax.swing.JTextField inputNombreTipoCaso;
     private javax.swing.JTextField inputNumConfiCaso;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
