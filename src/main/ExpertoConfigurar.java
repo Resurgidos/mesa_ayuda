@@ -92,19 +92,13 @@ public class ExpertoConfigurar {
             DTOCriterio dtoCrit = new DTOCriterio();        
             List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
                
-                dtoCrit.setAtributo("fechaInicioVigencia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-                dtoCrit.setOperacion("=");
-                dtoCrit.setValor(""); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-                validarCod.add(dtoCrit);
+             
        
             List datosFachada = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );
             for(Object x: datosFachada){
-                configTC = (ConfiguracionTipoCaso)x;
-                System.out.println("Hasta aca llega");
-                if(configTC.getFechaFinVigencia() != null){   
-                    
-                    if(fechaDesde.before(configTC.getFechaInicioVigencia())){
-                        System.out.println("hay una fecha anterior");
+                configTC = (ConfiguracionTipoCaso)x;                
+                if(configTC.getFechaFinVigencia() == null){                       
+                    if(fechaDesde.before(configTC.getFechaInicioVigencia())){                        
                         dtoErrores.setErrorMensaje("Fecha No permitida, ingrese otra");
                         dtoErrores.setVerificarError(1);                       
                     } 
