@@ -8,9 +8,8 @@ package Interfaces.ABMConfiguracionTipoCaso;
 import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOAgregarConfiguracion;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.awt.Color;
+
 
 import javax.swing.JOptionPane;
 
@@ -28,6 +27,8 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
      */
     public AltaConfiguracionTipocaso() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Alta configuración Tipo Caso");
     }
 
     /**
@@ -202,6 +203,10 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             }
         });
 
+        MensajeError.setEditable(false);
+        MensajeError.setBackground(new java.awt.Color(204, 204, 204));
+        MensajeError.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -251,17 +256,17 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(errorMensaje)
-                    .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(volverABM)
                     .addComponent(confirmarAgregar))
-                .addGap(24, 24, 24))
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -272,7 +277,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -333,6 +338,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                                         abmC.setVisible(true);
                                         this.setVisible(false);
                                 }else{
+                                    MensajeError.setForeground(Color.red);
                                     MensajeError.setText(dtoE.getErrorMensaje());
                                     dtoE.setVerificarError(0);
                                 }
@@ -361,9 +367,10 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
     public void MostrarTipoCasoInput(String codCaso){
         String nombreTCaso = controlador.inputCodTipoCaso(codCaso);     
         if(nombreTCaso == ""){
-            JOptionPane.showMessageDialog(this, "Ingrese un Código de Tipo Caso VALIDO", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese un Código de Tipo Caso VÁLIDO", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             inputNombreTipoCaso.setText("");
         }else{
+            inputNombreTipoCaso.setForeground(Color.gray);
             inputNombreTipoCaso.setText(nombreTCaso);
         }
         

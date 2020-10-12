@@ -97,10 +97,12 @@ public class ExpertoConfigurar {
             List datosFachada = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );
             for(Object x: datosFachada){
                 configTC = (ConfiguracionTipoCaso)x;                
-                if(configTC.getFechaFinVigencia() == null){                       
-                    if(fechaDesde.before(configTC.getFechaInicioVigencia())){                        
-                        dtoErrores.setErrorMensaje("Fecha No permitida, ingrese otra");
-                        dtoErrores.setVerificarError(1);                       
+                if(configTC.getFechaFinVigencia() == null){
+                    if(configTC.getFechaVerificacion() != null){
+                        if(fechaDesde.before(configTC.getFechaInicioVigencia())){                        
+                            dtoErrores.setErrorMensaje("Fecha No permitida, ingrese otra");
+                            dtoErrores.setVerificarError(1);   
+                        }
                     } 
                 }
             }
