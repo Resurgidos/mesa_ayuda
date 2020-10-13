@@ -174,4 +174,25 @@ public class ExpertoConfigurar {
         }
 
     }
+    public DTOModificarConf buscarPorNumConfig(int codSeleccionado){ 
+        FachadaPersistencia.getInstance().iniciarTransaccion();  
+        DTOCriterio dtoCrit = new DTOCriterio(); //Este DTO es el encargado de comunicarse con Hibernate y traernos las cosas de la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+        DTOModificarConf dtoMod = new DTOModificarConf();
+        dtoCrit.setAtributo("nroConfigTC");  
+        dtoCrit.setOperacion("=");
+        dtoCrit.setValor(codSeleccionado); 
+        listadtoCrit.add(dtoCrit);
+        List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+        
+        for (Object x : objetoList) {
+            ConfiguracionTipoCaso configCaso = (ConfiguracionTipoCaso)x;
+            dtoMod.setNroConfiguracion(configCaso.getNroConfigTC());
+            dtoMod.setCodTipoCaso(configCaso.getTipoCaso().getCodTipoCaso());
+            dtoMod.setNombreTipoCaso(configCaso.getTipoCaso().getNombreTipoCaso());
+            dtoMod.setFechaDesde(configCaso.getFechaInicioVigencia());
+        }       
+        
+        return dtoMod;
+    }
 }

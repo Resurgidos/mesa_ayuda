@@ -46,22 +46,20 @@
               <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="confirmarAgregar" min="-2" pref="134" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="volverABMAgregar" min="-2" pref="134" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="outnombSec" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputcodSec" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputnombTI" alignment="0" min="-2" pref="367" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="confirmarAgregar" min="-2" pref="134" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="volverABMAgregar" min="-2" pref="134" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="outNombreTipoCaso" alignment="0" max="32767" attributes="0"/>
+                      <Component id="inputCodTipoCasoModif" alignment="0" pref="367" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="inputcodTI12" alignment="0" min="-2" pref="367" max="-2" attributes="0"/>
+                      <Component id="inputNumConfMod" alignment="0" pref="367" max="32767" attributes="0"/>
+                      <Component id="inputFechaDesdeModif" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -74,19 +72,19 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="inputcodTI12" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="inputNumConfMod" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="inputnombTI" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="inputCodTipoCasoModif" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="inputcodSec" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="outNombreTipoCaso" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="outnombSec" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="inputFechaDesdeModif" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="confirmarAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -112,7 +110,7 @@
             <Property name="text" type="java.lang.String" value="Nombre Tipo Caso:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputnombTI">
+        <Component class="javax.swing.JTextField" name="inputCodTipoCasoModif">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -122,7 +120,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputnombTIKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputCodTipoCasoModifKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -139,8 +137,9 @@
             <Property name="text" type="java.lang.String" value="Cod. Tipo Caso: (PONER LOGO DE LUPA)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputcodSec">
+        <Component class="javax.swing.JTextField" name="outNombreTipoCaso">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -149,9 +148,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputcodSecFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputcodSecActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputcodSecKeyTyped"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="outNombreTipoCasoFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outNombreTipoCasoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="outNombreTipoCasoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="volverABMAgregar">
@@ -195,7 +194,7 @@
             <Property name="text" type="java.lang.String" value="Fecha Desde:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="outnombSec">
+        <Component class="javax.swing.JTextField" name="inputNumConfMod">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -206,23 +205,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outnombSecActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="outnombSecKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="inputcodTI12">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputcodTI12ActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputcodTI12KeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNumConfModActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputNumConfModKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="confirmarAgregar">
@@ -309,6 +293,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xfa;m. Configuraci&#xf3;n Tipo Caso:"/>
           </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="inputFechaDesdeModif">
         </Component>
       </SubComponents>
     </Container>

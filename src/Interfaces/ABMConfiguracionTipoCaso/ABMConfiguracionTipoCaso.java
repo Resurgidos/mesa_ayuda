@@ -373,49 +373,30 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
     private void ModificarConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarConfiguracionActionPerformed
         //Método para modificar
-     /*   int numTabTI = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabTI
-        if (numTabTI == -1) {
+        int filaSeleccionada = tablaConfiguracionCaso.getSelectedRow();
+        if (filaSeleccionada == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
-        } else {
+        }else {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if (tablaConfiguracionCaso.getValueAt(i, 4) != null) {
+                if (tablaConfiguracionCaso.getValueAt(i, 3) != null) {
                     ErrorMensaje.setForeground(Color.RED);
-                    ErrorMensaje.setText("El Tipo instancia esta dado de baja, no se puede modificar");
-                } else {
-                    if (numTabTI == i) { //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
-
-                        dtoTI.setCodTipoInstancia((int) tablaTI.getValueAt(i, 0));
-                        dtoTI.setNombreTipoInstancia((String) tablaTI.getValueAt(i, 1));
-
-                        controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
-                        dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());
-
-                        String sec = tablaTI.getValueAt(i, 2).toString();
-                        List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
-                        for (int j = 0; j < listamod.size(); j++) {
-                            DTOTipoInstancia tI = (DTOTipoInstancia) listamod.get(j);
-                            dtoTI.setCodSector(tI.getCodSector());
-                        }
-                        controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
-                        String tt = tablaTI.getValueAt(i, 3).toString();
-                        List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
-                        for (int j = 0; j < lista.size(); j++) {
-                            DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(j);
-                            dtoTI.setCodTipoTarea(tI.getCodTipoTarea());
-
-                        }
-                        dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());
-
-                        System.out.println(dtoTI.getNombreSector());
-                        ModificarTipoInstancia mod = new ModificarTipoInstancia(dtoTI);
+                    ErrorMensaje.setText("El Configurar Caso seleccionado está dado de baja, no se puede modificar");
+                }else if (tablaConfiguracionCaso.getValueAt(i, 4) != null){
+                    ErrorMensaje.setForeground(Color.RED);
+                    ErrorMensaje.setText("El Configurar Caso seleccionado ya está verificado, no se puede modificar");
+                }else {
+                    if (filaSeleccionada == i) {              
+                        int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 0);  
+                        ModificarConfigTipoCaso mod = new ModificarConfigTipoCaso(codConfSelecc);                      
                         mod.setVisible(true);
                         this.setVisible(false);
                     }
 
                 }
+
             }
-        }*/
+        }
     }//GEN-LAST:event_ModificarConfiguracionActionPerformed
 
     private void BajaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaConfiguracionActionPerformed
