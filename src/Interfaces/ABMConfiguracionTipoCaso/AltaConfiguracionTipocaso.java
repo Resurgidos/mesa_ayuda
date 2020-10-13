@@ -54,8 +54,8 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         inputCodTipoCaso1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         errorMensaje = new javax.swing.JLabel();
-        fechaDesde = new com.toedter.calendar.JDateChooser();
         MensajeError = new javax.swing.JTextField();
+        fechaDesde = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -184,25 +184,6 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         errorMensaje.setForeground(new java.awt.Color(255, 0, 51));
         errorMensaje.setText("  ");
 
-        fechaDesde.setBackground(new java.awt.Color(204, 204, 204));
-        fechaDesde.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                fechaDesdeInputMethodTextChanged(evt);
-            }
-        });
-        fechaDesde.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                fechaDesdePropertyChange(evt);
-            }
-        });
-        fechaDesde.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fechaDesdeKeyTyped(evt);
-            }
-        });
-
         MensajeError.setEditable(false);
         MensajeError.setBackground(new java.awt.Color(204, 204, 204));
         MensajeError.setBorder(null);
@@ -215,7 +196,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,9 +235,9 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 .addComponent(inputNombreTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(errorMensaje)
                     .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
