@@ -168,6 +168,7 @@ public class ExpertoConfigurar {
         
         if(objetoList.size() > 0){
             TipoCaso tipoCaso = (TipoCaso) objetoList.get(0);        
+            if(tipoCaso.getFechaFinVigenciaTipoCaso() != null) return "El tipo de caso ingresado está dado de baja";
             return tipoCaso.getNombreTipoCaso();     
         }else {
             return "No existe el Tipo Caso Ingresado";
@@ -194,5 +195,50 @@ public class ExpertoConfigurar {
         }       
         
         return dtoMod;
+    }
+    
+    public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
+        TipoCaso tipoCaso = new TipoCaso();
+        ConfiguracionTipoCaso configTipo = new ConfiguracionTipoCaso();
+        DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
+        
+        try{
+            FachadaPersistencia.getInstance().iniciarTransaccion();    
+            
+            DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+            List<DTOCriterio> listadtoCrit = new ArrayList<>();
+            dtoCrit.setAtributo("nroConfigTC");  
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(dtoModificarConfig.getNroConfiguracion()); 
+            
+            listadtoCrit.add(dtoCrit);
+            
+            try{
+                List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+                for (Object x : objetoList){
+                    configTipo = (ConfiguracionTipoCaso)x;                 
+                 
+                    dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                    dtoCrit.setOperacion("=");
+                    dtoCrit.setValor(dtoModificarConfig.getCodTipoCaso()); 
+                    listadtoCrit.add(dtoCrit);
+                    
+                    List tipoCasoMof = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
+                    for (Object h : tipoCasoMof) {
+                        tipoCaso = (TipoCaso)h ;
+                        configTipo.setTipoCaso(tipoCaso);
+                    }                      
+                  
+                    configTipo.setFechaInicioVigencia(dtoModificarConfig.getFechaDesde());
+                    FachadaPersistencia.getInstance().modificar(configTipo);  
+                } 
+            }catch(Exception e){
+                System.out.println("No se pudo modificar el TipoCaso"); 
+            }    
+        }catch(Exception e){
+               System.out.println("No se pudo encontrar el TipoCaso");                
+        }
+          
+       return dtoErrores;
     }
 }

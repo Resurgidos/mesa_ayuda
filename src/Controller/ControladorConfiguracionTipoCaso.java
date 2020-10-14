@@ -1,12 +1,10 @@
 
 package Controller;
 
-import DTO.DTOCriterio;
 import DTO.DTOsConfiguración.DTOAgregarConfiguracion;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import main.ExpertoConfigurar;
@@ -35,5 +33,9 @@ public class ControladorConfiguracionTipoCaso {
     
     public DTOModificarConf buscarPorNumConfig(int codSeleccionado){ 
         return expertoC.buscarPorNumConfig(codSeleccionado);       
+    }
+    
+    public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
+       return expertoC.modificarConfiguracion(dtoModificarConfig);
     }
 }

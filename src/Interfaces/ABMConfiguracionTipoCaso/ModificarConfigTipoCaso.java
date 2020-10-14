@@ -8,6 +8,9 @@ package Interfaces.ABMConfiguracionTipoCaso;
 import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +30,10 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         DTOModificarConf dtoModificar = control.buscarPorNumConfig(codSeleccionado);
         inicializarDatos(dtoModificar);
     }
+
+    private ModificarConfigTipoCaso() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     public void inicializarDatos (DTOModificarConf dtoModificar){
@@ -34,6 +41,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         inputNumConfMod.setText(Integer.toString(dtoModificar.getNroConfiguracion()));
         inputCodTipoCasoModif.setText(Integer.toString(dtoModificar.getCodTipoCaso()));
         outNombreTipoCaso.setForeground(Color.GRAY);
+        inputNumConfMod.setForeground(Color.GRAY);
         outNombreTipoCaso.setText(dtoModificar.getNombreTipoCaso());
         inputFechaDesdeModif.setDate(dtoModificar.getFechaDesde());
     }
@@ -50,7 +58,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         volverABMAgregar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         inputNumConfMod = new javax.swing.JTextField();
-        confirmarAgregar = new javax.swing.JButton();
+        confirmarModificar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -67,6 +75,11 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
 
         inputCodTipoCasoModif.setBackground(new java.awt.Color(255, 255, 255));
         inputCodTipoCasoModif.setBorder(null);
+        inputCodTipoCasoModif.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputCodTipoCasoModifFocusLost(evt);
+            }
+        });
         inputCodTipoCasoModif.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 inputCodTipoCasoModifKeyTyped(evt);
@@ -130,17 +143,17 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
-        confirmarAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        confirmarAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        confirmarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
-        confirmarAgregar.setMnemonic('c');
-        confirmarAgregar.setText("Modificar");
-        confirmarAgregar.setBorder(null);
-        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
+        confirmarModificar.setBackground(new java.awt.Color(204, 204, 204));
+        confirmarModificar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        confirmarModificar.setForeground(new java.awt.Color(0, 0, 0));
+        confirmarModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
+        confirmarModificar.setMnemonic('c');
+        confirmarModificar.setText("Modificar");
+        confirmarModificar.setBorder(null);
+        confirmarModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarAgregarActionPerformed(evt);
+                confirmarModificarActionPerformed(evt);
             }
         });
 
@@ -179,21 +192,25 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1)
+                            .addComponent(outNombreTipoCaso)
+                            .addComponent(inputCodTipoCasoModif, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                            .addComponent(jLabel3)
+                            .addComponent(inputNumConfMod, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                            .addComponent(inputFechaDesdeModif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(outNombreTipoCaso)
-                    .addComponent(inputCodTipoCasoModif, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(inputNumConfMod, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                    .addComponent(inputFechaDesdeModif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,11 +232,11 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputFechaDesdeModif, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmarAgregar)
-                    .addComponent(volverABMAgregar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(volverABMAgregar)
+                    .addComponent(confirmarModificar))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -239,19 +256,19 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     private void inputCodTipoCasoModifKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCodTipoCasoModifKeyTyped
 
         //Declaramos una variable y asignamos un evento
-        char car = evt.getKeyChar();
+//        char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
-        }
+//        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+//            evt.consume();
+//            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
+//        }
     }//GEN-LAST:event_inputCodTipoCasoModifKeyTyped
 
     private void outNombreTipoCasoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_outNombreTipoCasoFocusLost
-        if (!outNombreTipoCaso.getText().isEmpty()) {
-            MostrarSectorFil(outNombreTipoCaso.getText());
-        }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
+//        if (!outNombreTipoCaso.getText().isEmpty()) {
+//            MostrarSectorFil(outNombreTipoCaso.getText());
+//        }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_outNombreTipoCasoFocusLost
 
     private void outNombreTipoCasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outNombreTipoCasoActionPerformed
@@ -264,10 +281,9 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
 
     private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
         //Botón para volver al menú de TipoInstancia
-        ABMTipoInstancia abmTI = new ABMTipoInstancia();
-
-        abmTI.setVisible(true);
-        abmTI.tablaTI("");
+        ABMConfiguracionTipoCaso abmConfig = new ABMConfiguracionTipoCaso();
+        abmConfig.setVisible(true);
+        abmConfig.tablaConfiguracion("");
         this.setVisible(false);
     }//GEN-LAST:event_volverABMAgregarActionPerformed
 
@@ -279,55 +295,44 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNumConfModKeyTyped
 
-    private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
-        //Método para agregar un Tipo de Instancia
-        try {
-            if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código
-                if (!inputCodTipoCasoModif.getText().isEmpty()) {//Para que el nombre del TI no este vacio
-                    if (!outNombreTipoCaso.getText().isEmpty()) { //Para que no sea vacio el cod de sector
-                        if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
-                            do{
-                                DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
-                                dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
-                                dtoAgregar.setNombreTipoInstancia(inputCodTipoCasoModif.getText());
-                                dtoAgregar.setCodSector(Integer.parseInt(outNombreTipoCaso.getText()));
-                                dtoAgregar.setNombreSector(outnombSec.getText());
-                                dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-                                dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-                                control.agregarTipoInstancia(dtoAgregar);
+    private void confirmarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarModificarActionPerformed
+        //Método para modificar una Configuracion tipo caso
+        DTOModificarConf dtoModificar = new DTOModificarConf();
+        dtoModificar.setNroConfiguracion(Integer.parseInt(inputNumConfMod.getText()));
+        dtoModificar.setCodTipoCaso(Integer.parseInt(inputCodTipoCasoModif.getText()));
+        dtoModificar.setNombreTipoCaso(outNombreTipoCaso.getText());
+        dtoModificar.setFechaDesde(inputFechaDesdeModif.getDate());
+        control.modificarConfiguracion(dtoModificar);
+        
 
-                                if(dtoTI.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
-                                    ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector
-                                    JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
-                                    volver.setVisible(true);
-                                    volver.tablaTI("");
-                                    this.setVisible(false);
-                                }else{
-                                    JOptionPane.showMessageDialog(this,dtoTI.getErrorMensaje());
-                                    System.out.println("acá esta el error, en registro de sector en validar");
-                                    dtoTI.setVerificarError(0);
-                                } }while(dtoTI.getVerificarError() != 0);
+        ABMConfiguracionTipoCaso abmConfig = new ABMConfiguracionTipoCaso();
+        abmConfig.tablaConfiguracion("");
+        JOptionPane.showMessageDialog(null,"La Configuración de Tipo Caso fue modificado con éxito");
+        abmConfig.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_confirmarModificarActionPerformed
 
-                                //y un chatch en el caso que no se pueda crear el Tipo Instancia
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                            }
+    private void inputCodTipoCasoModifFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCodTipoCasoModifFocusLost
+        //pierde el foco en el input codigo
+        if (!inputCodTipoCasoModif.getText().isEmpty()) {
+            MostrarTipoCasoInput(inputCodTipoCasoModif.getText());
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_inputCodTipoCasoModifFocusLost
 
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }
-    }//GEN-LAST:event_confirmarAgregarActionPerformed
-
+    private void MostrarTipoCasoInput(String text) {
+        String nombreTCaso = control.inputCodTipoCaso(text);     
+        if(nombreTCaso == ""){
+            JOptionPane.showMessageDialog(this, "Ingrese un Código de Tipo Caso VÁLIDO", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            outNombreTipoCaso.setText("");
+        }else{
+            outNombreTipoCaso.setForeground(Color.gray);
+            outNombreTipoCaso.setText(nombreTCaso);
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -365,7 +370,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton confirmarAgregar;
+    private javax.swing.JButton confirmarModificar;
     private javax.swing.JTextField inputCodTipoCasoModif;
     private com.toedter.calendar.JDateChooser inputFechaDesdeModif;
     private javax.swing.JTextField inputNumConfMod;
@@ -379,4 +384,6 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     private javax.swing.JTextField outNombreTipoCaso;
     private javax.swing.JButton volverABMAgregar;
     // End of variables declaration//GEN-END:variables
+
+   
 }
