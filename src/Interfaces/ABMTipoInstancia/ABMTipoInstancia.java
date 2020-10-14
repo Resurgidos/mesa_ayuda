@@ -23,7 +23,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
         setTitle("ABM Tipo Instancia");
-        tablaTI("");
+        tablaTI("","");
         tablaTI.fireTableDataChanged();
     }
 
@@ -36,8 +36,6 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        filBusqueda = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         AgregarTI = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaTipoInstancia = new javax.swing.JTable();
@@ -46,6 +44,12 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         BajaTI = new javax.swing.JButton();
         ErrorMensaje = new javax.swing.JTextField();
         botonMostrarDatos = new javax.swing.JButton();
+        filBusquedaNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        filBusquedaCod = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -72,25 +76,6 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("TIPO INSTANCIA");
 
-        filBusqueda.setBackground(new java.awt.Color(255, 255, 255));
-        filBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filBusquedaActionPerformed(evt);
-            }
-        });
-        filBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                filBusquedaKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                filBusquedaKeyReleased(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
-
         AgregarTI.setBackground(new java.awt.Color(119, 148, 166));
         AgregarTI.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         AgregarTI.setForeground(new java.awt.Color(0, 0, 0));
@@ -112,10 +97,6 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addGap(77, 77, 77)
-                .addComponent(filBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AgregarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -129,11 +110,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AgregarTI)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(filBusqueda)))))
+                        .addComponent(AgregarTI)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -234,6 +211,50 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             }
         });
 
+        filBusquedaNombre.setBackground(new java.awt.Color(255, 255, 255));
+        filBusquedaNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filBusquedaNombreActionPerformed(evt);
+            }
+        });
+        filBusquedaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                filBusquedaNombreKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filBusquedaNombreKeyReleased(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+
+        filBusquedaCod.setBackground(new java.awt.Color(255, 255, 255));
+        filBusquedaCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filBusquedaCodActionPerformed(evt);
+            }
+        });
+        filBusquedaCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                filBusquedaCodKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filBusquedaCodKeyReleased(evt);
+            }
+        });
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Cod. Tipo Instancia");
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Nombre Tipo Instancia");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -243,39 +264,63 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(filBusquedaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(9, 9, 9)
+                        .addComponent(filBusquedaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addGap(61, 61, 61))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(662, 662, 662)
-                                            .addComponent(ModificarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jButton3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(BajaTI, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(666, 666, 666)
-                                        .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(27, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(662, 662, 662)
+                                    .addComponent(ModificarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButton3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BajaTI, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(666, 666, 666)
+                                .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(filBusquedaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(filBusquedaCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonMostrarDatos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ModificarTI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -300,8 +345,14 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void tablaTI(String filTipoInstancia) { //Método de la tabla que se muestra en la interfaz
-        List<DTOFiltroTI> lista = controlTI.filtroTI(filTipoInstancia);
+    public void tablaTI(String filTipoInstanciaNomb,String filTipoInstanciaCod) { //Método de la tabla que se muestra en la interfaz
+    List<DTOFiltroTI> lista;
+        if(filTipoInstanciaCod == ""){
+            filTipoInstanciaCod = "0";
+            lista = controlTI.filtroTINombreTI(filTipoInstanciaNomb);
+        }else{
+            lista = controlTI.filtroTICodTI(filTipoInstanciaCod);
+        }
         tablaTI = new DefaultTableModel();
         tablaTipoInstancia.setModel(tablaTI);
         tablaTI.addColumn("Cod. Tipo Instancia");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
@@ -327,9 +378,9 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
         }
     }
-    private void filBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusquedaActionPerformed
+    private void filBusquedaCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusquedaCodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_filBusquedaActionPerformed
+    }//GEN-LAST:event_filBusquedaCodActionPerformed
 
     private void AgregarTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarTIActionPerformed
         //Metodo para agregar un Tipo instancia
@@ -359,7 +410,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 } else {
                     if (numTabTI == i) { //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
                         
-                        int codTIModi = (int)tablaTI.getValueAt(i, 0);  
+                        int codTIModi = (int)tablaTI.getValueAt(i, Integer.parseInt(""));  
                         //la "i" es la fila y el 0 la columna de la tabla
                        
                         System.out.println("Es la interfaz");    
@@ -402,18 +453,18 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                             controlTI.bajaTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));
                             JOptionPane.showMessageDialog(this, "Sector Dado de baja");
                         }
-                        tablaTI("");
+                        tablaTI("","");
                     }
                 }
             }
         }
     }//GEN-LAST:event_BajaTIActionPerformed
 
-    private void filBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaKeyPressed
+    private void filBusquedaCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaCodKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            tablaTI(filBusqueda.getText());
+            tablaTI("",filBusquedaCod.getText());
         }
-    }//GEN-LAST:event_filBusquedaKeyPressed
+    }//GEN-LAST:event_filBusquedaCodKeyPressed
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
         //Método Mostrar datos de TipoInstancia
@@ -436,13 +487,26 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
-    private void filBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaKeyReleased
-        tablaTI(filBusqueda.getText());
-    }//GEN-LAST:event_filBusquedaKeyReleased
+    private void filBusquedaCodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaCodKeyReleased
+        tablaTI("", filBusquedaCod.getText());
+    }//GEN-LAST:event_filBusquedaCodKeyReleased
 
     private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ErrorMensajeActionPerformed
+
+    private void filBusquedaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusquedaNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filBusquedaNombreActionPerformed
+
+    private void filBusquedaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaNombreKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) 
+            tablaTI(filBusquedaNombre.getText(),"");
+    }//GEN-LAST:event_filBusquedaNombreKeyPressed
+
+    private void filBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaNombreKeyReleased
+        tablaTI(filBusquedaNombre.getText(),"");
+    }//GEN-LAST:event_filBusquedaNombreKeyReleased
 
     public static void main(String args[]) {
 
@@ -459,11 +523,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     private javax.swing.JTextField ErrorMensaje;
     private javax.swing.JButton ModificarTI;
     private javax.swing.JButton botonMostrarDatos;
-    private javax.swing.JTextField filBusqueda;
+    private javax.swing.JTextField filBusquedaCod;
+    private javax.swing.JTextField filBusquedaNombre;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

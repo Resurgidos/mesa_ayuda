@@ -42,11 +42,11 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
     public DTOVisualizarDatosTI inicializarDatosMostrar(DTOVisualizarDatosTI dtoVisu){
         //Corresponde a Tipo Instancia
-        verCodTI.setForeground(Color.GRAY);
+        verCodTI.setForeground(Color.black);
         verCodTI.setText(Integer.toString(dtoVisu.getCodTipoInstancia()));
-        verNombTI.setForeground(Color.GRAY);
+        verNombTI.setForeground(Color.black);
         verNombTI.setText(dtoVisu.getNombreTipoInstancia());  
-        verFechaFinTI.setForeground(Color.GRAY);
+        verFechaFinTI.setForeground(Color.black);
         if(dtoVisu.getFechaHoraFinVigenciaTipoInstancia()== null){
             verFechaFinTI.setText("Vigente");
         }else{
@@ -56,11 +56,11 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
             verFechaFinTI.setText(fechaString);
         }
         //Correspondiente a Sector
-        verCodSec.setForeground(Color.GRAY);
+        verCodSec.setForeground(Color.black);
         verCodSec.setText(Integer.toString(dtoVisu.getCodSector()));
-        verNombSec.setForeground(Color.GRAY);
+        verNombSec.setForeground(Color.black);
         verNombSec.setText(dtoVisu.getNombreSector());    
-        verFechaFinSec.setForeground(Color.GRAY);
+        verFechaFinSec.setForeground(Color.black);
         if(dtoVisu.getFechaHoraFinVigenciaSector()== null){
             verFechaFinSec.setText("Vigente");
         }else{
@@ -70,11 +70,11 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
             verFechaFinSec.setText(fechaString);
         }
         //Correspondiente a Tipo Tarea
-        verCodTT.setForeground(Color.GRAY);
+        verCodTT.setForeground(Color.black);
         verCodTT.setText(Integer.toString(dtoVisu.getCodTipoTarea()));
-        verNombTT.setForeground(Color.GRAY);
+        verNombTT.setForeground(Color.black);
         verNombTT.setText(dtoVisu.getNombreTipoTarea()); 
-        verFechaFinTT.setForeground(Color.GRAY);
+        verFechaFinTT.setForeground(Color.black);
         if(dtoVisu.getFechaHoraFinVigenciaTipoTarea()== null){
             verFechaFinTT.setText("Vigente");
         }else{
@@ -158,7 +158,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelcodver.setText("Cod. Tipo Instancia:");
 
         verCodTI.setEditable(false);
-        verCodTI.setBackground(new java.awt.Color(255, 255, 255));
+        verCodTI.setBackground(new java.awt.Color(153, 153, 153));
         verCodTI.setBorder(null);
         verCodTI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +177,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelnombver.setText("Nombre Tipo Instancia:");
 
         verNombTI.setEditable(false);
-        verNombTI.setBackground(new java.awt.Color(255, 255, 255));
+        verNombTI.setBackground(new java.awt.Color(153, 153, 153));
         verNombTI.setBorder(null);
         verNombTI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -191,7 +191,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelFechaFinver.setText("Fecha Fin Vigencia :");
 
         verFechaFinTI.setEditable(false);
-        verFechaFinTI.setBackground(new java.awt.Color(255, 255, 255));
+        verFechaFinTI.setBackground(new java.awt.Color(153, 153, 153));
         verFechaFinTI.setBorder(null);
         verFechaFinTI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -205,7 +205,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelcodver1.setText("Cod. Tipo Tarea:");
 
         verCodTT.setEditable(false);
-        verCodTT.setBackground(new java.awt.Color(255, 255, 255));
+        verCodTT.setBackground(new java.awt.Color(153, 153, 153));
         verCodTT.setBorder(null);
         verCodTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,7 +224,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelnombver1.setText("Nombre Tipo Tarea:");
 
         verNombTT.setEditable(false);
-        verNombTT.setBackground(new java.awt.Color(255, 255, 255));
+        verNombTT.setBackground(new java.awt.Color(153, 153, 153));
         verNombTT.setBorder(null);
         verNombTT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -238,7 +238,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelFechaFinver1.setText("Fecha Fin Vigencia :");
 
         verFechaFinTT.setEditable(false);
-        verFechaFinTT.setBackground(new java.awt.Color(255, 255, 255));
+        verFechaFinTT.setBackground(new java.awt.Color(153, 153, 153));
         verFechaFinTT.setBorder(null);
         verFechaFinTT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -252,7 +252,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelcodver2.setText("Cod. Sector:");
 
         verCodSec.setEditable(false);
-        verCodSec.setBackground(new java.awt.Color(255, 255, 255));
+        verCodSec.setBackground(new java.awt.Color(153, 153, 153));
         verCodSec.setBorder(null);
         verCodSec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,7 +271,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelnombver2.setText("Nombre Sector:");
 
         verNombSec.setEditable(false);
-        verNombSec.setBackground(new java.awt.Color(255, 255, 255));
+        verNombSec.setBackground(new java.awt.Color(153, 153, 153));
         verNombSec.setBorder(null);
         verNombSec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -285,7 +285,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         labelFechaFinver2.setText("Fecha Fin Vigencia :");
 
         verFechaFinSec.setEditable(false);
-        verFechaFinSec.setBackground(new java.awt.Color(255, 255, 255));
+        verFechaFinSec.setBackground(new java.awt.Color(153, 153, 153));
         verFechaFinSec.setBorder(null);
         verFechaFinSec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -325,11 +325,10 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
                             .addComponent(labelcodver2)
                             .addComponent(labelnombver2)
                             .addComponent(labelFechaFinver2)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(verFechaFinSec, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(verNombSec, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(verCodSec, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(verNombTI)))
+                            .addComponent(verFechaFinSec, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(verNombTI)
+                            .addComponent(verCodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(verNombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(345, 345, 345)
                         .addComponent(labelcodver1))

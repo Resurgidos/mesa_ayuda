@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/julie/Documents/Diseño/src/Interfaces/ABMConfiguracionTipoCaso/ModificarConfigTipoCaso.java</file>
-            <file>file:/C:/Users/julie/Documents/Diseño/src/Interfaces/ABMTipoInstancia/ModificarTipoInstancia.java</file>
-            <file>file:/C:/Users/julie/Documents/Diseño/src/main/ExpertoConfigurar.java</file>
-            <file>file:/C:/Users/julie/Documents/Diseño/src/Interfaces/ABMConfiguracionTipoCaso/ABMConfiguracionTipoCaso.java</file>
-            <file>file:/C:/Users/julie/Documents/Diseño/src/DTO/DTOsConfiguración/DTOModificarConf.java</file>
-            <file>file:/C:/Users/julie/Documents/Diseño/src/Controller/ControladorConfiguracionTipoCaso.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMConfiguracionTipoCaso/AltaConfiguracionTipocaso.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMTipoInstancia/AgregarTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Controller/ControladorABMTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMTipoInstancia/ABMTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/main/ExpertoTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMTipoInstancia/ModificarTipoInstancia.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/main/ExpertoSector.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Controller/ControladorABMSector.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/PRoyecto%20diseño/src/Interfaces/ABMSector/ABMSector.java</file>
         </group>
     </open-files>
 </project-private>

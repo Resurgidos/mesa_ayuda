@@ -21,24 +21,27 @@ public class ControladorABMTipoInstancia {
          expertoTI.bajaTipoInstancia(codTipoInstancia);
     }
     //Método para filtrar los Tipo Instancia en la tabla de la interfaz pasando el código o el nombre del Ti 
-    public List<DTOFiltroTI> filtroTI(String filTipoInstancia){
-        return expertoTI.filtroTI(filTipoInstancia);
+    public List<DTOFiltroTI> filtroTINombreTI(String filTipoInstanciaNom){
+        return expertoTI.filtroTINombreTI(filTipoInstanciaNom);
+    }
+    public List<DTOFiltroTI> filtroTICodTI(String filTipoInstanciaCod){
+        return expertoTI.filtroTICodTI(filTipoInstanciaCod);
     }
     //Método para buscar los datos de un Tipo Instancia pasando el código para modificarla
-    public DTOModificarTipoInstancia buscarPorCodTipoInstancia(int filTipoInstancia){ //Método para buscar el nombre TipoInstancia y devolver el nombre a pantalla
-        return expertoTI.buscarPorCodTipoInstancia(filTipoInstancia);       
+    public DTOModificarTipoInstancia buscarPorCodTipoInstancia(int codTipoInstancia){ //Método para buscar el nombre TipoInstancia y devolver el nombre a pantalla
+        return expertoTI.buscarPorCodTipoInstancia(codTipoInstancia);       
     }
     //Método para buscar los datos de un Tipo Instancia pasando el código
     public DTOVisualizarDatosTI visualizarDatosTipoInstancia(int codTipoInstancia){ //Buscamos por codigo los datos para mostrar las cosas en la pantalla
         return expertoTI.visualizarDatosTipoInstancia(codTipoInstancia);
     }
     //Método para buscar los datos de un Sector pasando el código
-    public String buscarNombSector(String filSector){ //Método para buscar el nombre Sector y devolver el nombre a pantalla
-       return expertoTI.buscarNombSector(filSector); 
+    public String buscarNombSector(int codSector){ //Método para buscar el nombre Sector y devolver el nombre a pantalla
+       return expertoTI.buscarNombSector(codSector); 
     }
     //Método para buscar los datos de un Sector pasando el código
-    public String buscarNombTipoTarea(String filTipoTarea){ //Método para buscar el nombre TipoTarea y devolver el nombre a pantalla
-       return expertoTI.buscarNombTipoTarea(filTipoTarea); 
+    public String buscarNombTipoTarea(int codTipoTarea){ //Método para buscar el nombre TipoTarea y devolver el nombre a pantalla
+       return expertoTI.buscarNombTipoTarea(codTipoTarea); 
     }
    /* public List<DTOAgregarTipoInstancia> filtradoSector(String filSector){
        return expertoTI.filtradoSector(filSector); 

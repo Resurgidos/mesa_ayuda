@@ -186,7 +186,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         jLabel7.setText("Nombre Sector:");
 
         outnombSec.setEditable(false);
-        outnombSec.setBackground(new java.awt.Color(255, 255, 255));
+        outnombSec.setBackground(new java.awt.Color(153, 153, 153));
         outnombSec.setBorder(null);
         outnombSec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +205,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         jLabel8.setText("Nombre Tipo Tarea:");
 
         outnombTT.setEditable(false);
-        outnombTT.setBackground(new java.awt.Color(255, 255, 255));
+        outnombTT.setBackground(new java.awt.Color(153, 153, 153));
         outnombTT.setBorder(null);
         outnombTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +317,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                             ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
                             JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
                             volver.setVisible(true);
-                            volver.tablaTI("");
+                            volver.tablaTI("","");
                             this.setVisible(false);
                             
                         }else{
@@ -392,7 +392,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         ABMTipoInstancia abmTI = new ABMTipoInstancia();
        
         abmTI.setVisible(true);
-        abmTI.tablaTI("");
+        abmTI.tablaTI("","");
         this.setVisible(false);
     }//GEN-LAST:event_volverABMAgregarActionPerformed
 
@@ -429,7 +429,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void inputcodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodSecActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputcodSecActionPerformed
-    public void MostrarSectorFil(String filSector){
+    public void MostrarSectorFil(int filSector){
 //        if(filSector){
 //        }
       /* List<DTOTipoInstancia> lista = control.filtradoSector(filSector);
@@ -440,18 +440,23 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
       String nombreSector = control.buscarNombSector(filSector);
       if(nombreSector == "No se encontro el Sector"){
            outnombSec.setText("");
-           outnombSec.setForeground(Color.GRAY);
+           outnombSec.setForeground(Color.red);
            outnombSec.setText(nombreSector);
            JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");    
+       }else if(nombreSector == "El Sector ingresado esta dado de Baja"){
+           outnombSec.setText("");
+           outnombSec.setForeground(Color.red);
+           outnombSec.setText(nombreSector);
+           JOptionPane.showMessageDialog(this, nombreSector);
        }else{
       outnombSec.setText("");
-      outnombSec.setForeground(Color.GRAY);
+      outnombSec.setForeground(Color.black);
       outnombSec.setText(nombreSector);
       }
     }
     private void inputcodSecFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodSecFocusLost
       if (!inputcodSec.getText().isEmpty()) {
-       MostrarSectorFil(inputcodSec.getText());
+       MostrarSectorFil(Integer.parseInt(inputcodSec.getText()));
          }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
                                                        
      
@@ -459,11 +464,11 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
     private void inputcodTTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodTTFocusLost
          if (!inputcodTT.getText().isEmpty()) {
-        MostrarTTFil(inputcodTT.getText());       
+        MostrarTTFil(Integer.parseInt(inputcodTT.getText()));       
         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_inputcodTTFocusLost
 
-    public void MostrarTTFil(String nombreTT){
+    public void MostrarTTFil(int nombreTT){
      /*  List<DTOTipoInstancia> lista = control.filtradoTT(nombreTT);
         for (int i = 0; i < lista.size(); i++) {
            DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
@@ -473,11 +478,17 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         String nombreTipoT = control.buscarNombTipoTarea(nombreTT);
         if(nombreTipoT == "No se encontro el TipoTarea"){
            outnombTT.setText("");
-           outnombTT.setText(nombreTT);
+            outnombTT.setForeground(Color.red);
+           outnombTT.setText(nombreTipoT);
            JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");    
+       }else if(nombreTipoT == "El Tipo Tarea ingresado esta dado de Baja"){
+            outnombTT.setText("");
+            outnombTT.setForeground(Color.red);
+            outnombTT.setText(nombreTipoT);
+           JOptionPane.showMessageDialog(this, nombreTipoT);    
        }else{
         outnombTT.setText("");
-        outnombTT.setForeground(Color.GRAY);
+        outnombTT.setForeground(Color.black);
         outnombTT.setText(nombreTipoT);
         }
     }

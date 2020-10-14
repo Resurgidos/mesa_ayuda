@@ -41,10 +41,10 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         inputcodTImod.setText(Integer.toString(dtoModificar.getCodTipoInstancia()));
         inputnombTImod.setText(dtoModificar.getNombreTipoInstancia());
         inputcodSecmod.setText(Integer.toString(dtoModificar.getCodSector()));
-        outnombSecmod.setForeground(Color.GRAY);
+        outnombSecmod.setForeground(Color.black);
         outnombSecmod.setText(dtoModificar.getNombreSector());
         inputcodTTmod.setText(Integer.toString(dtoModificar.getCodTipoTarea()));
-        outnombTTmod.setForeground(Color.GRAY);
+        outnombTTmod.setForeground(Color.black);
         outnombTTmod.setText(dtoModificar.getNombreTipoTarea());
         inputnombTImod.selectAll();
         inputnombTImod.requestFocus();
@@ -111,7 +111,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jLabel7.setText("Nombre Sector:");
 
         outnombSecmod.setEditable(false);
-        outnombSecmod.setBackground(new java.awt.Color(255, 255, 255));
+        outnombSecmod.setBackground(new java.awt.Color(153, 153, 153));
         outnombSecmod.setBorder(null);
         outnombSecmod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +135,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jLabel8.setText("Nombre Tipo Tarea:");
 
         inputcodTImod.setEditable(false);
-        inputcodTImod.setBackground(new java.awt.Color(255, 255, 255));
+        inputcodTImod.setBackground(new java.awt.Color(153, 153, 153));
         inputcodTImod.setBorder(null);
         inputcodTImod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +149,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         });
 
         outnombTTmod.setEditable(false);
-        outnombTTmod.setBackground(new java.awt.Color(255, 255, 255));
+        outnombTTmod.setBackground(new java.awt.Color(153, 153, 153));
         outnombTTmod.setBorder(null);
         outnombTTmod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,7 +355,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     private void outnombTTmodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_outnombTTmodKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_outnombTTmodKeyTyped
-     public void MostrarSectorFil(String codSecModi){
+     public void MostrarSectorFil(int codSecModi){
        /*List<DTOAgregarTipoInstancia> lista = control.filtradoSector(codSecModi);
         for (int i = 0; i < lista.size(); i++) {
            DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
@@ -364,12 +364,18 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         }*/
        String nombreSector = control.buscarNombSector(codSecModi);
        if(nombreSector == "No se encontro el Sector"){
-           outnombSecmod.setText("");
-           outnombSecmod.setText(nombreSector);
+            outnombSecmod.setText("");
+            outnombSecmod.setForeground(Color.red);
+            outnombSecmod.setText(nombreSector);
            JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");    
+       }else if(nombreSector == "El Sector ingresado esta dado de Baja"){
+           outnombSecmod.setText("");
+           outnombSecmod.setForeground(Color.red);
+           outnombSecmod.setText(nombreSector);
+           JOptionPane.showMessageDialog(this, nombreSector); 
        }else{
          outnombSecmod.setText("");
-         outnombSecmod.setForeground(Color.GRAY);
+         outnombSecmod.setForeground(Color.black);
          outnombSecmod.setText(nombreSector);
         }
     }
@@ -384,7 +390,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputnombTImodKeyTyped
-    public void MostrarTTFil(String codTTModi){
+    public void MostrarTTFil(int codTTModi){
        /*List<DTOAgregarTipoInstancia> lista = control.filtradoTT(codTTModi);
         for (int i = 0; i < lista.size(); i++) {
            DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
@@ -395,11 +401,17 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
        String nombreTT = control.buscarNombTipoTarea(codTTModi);
        if(nombreTT == "No se encontro el TipoTarea"){
            outnombTTmod.setText("");
+           outnombTTmod.setForeground(Color.red);
            outnombTTmod.setText(nombreTT);
            JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");    
+       }else if(nombreTT == "El Tipo Tarea ingresado esta dado de Baja"){
+           outnombTTmod.setText("");
+           outnombTTmod.setForeground(Color.red);
+           outnombTTmod.setText(nombreTT);
+           JOptionPane.showMessageDialog(this, nombreTT);    
        }else{
          outnombTTmod.setText("");
-         outnombTTmod.setForeground(Color.GRAY);
+         outnombTTmod.setForeground(Color.black);
          outnombTTmod.setText(nombreTT);
        }
     }
@@ -430,7 +442,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         control.modificarTipoInstancia(dtoModificar);
 
         ABMTipoInstancia abmti = new ABMTipoInstancia();
-        abmti.tablaTI("");
+        abmti.tablaTI("","");
         JOptionPane.showMessageDialog(null,"El tipoInstancia fue modificado con éxito");
         abmti.setVisible(true);
         this.setVisible(false);
@@ -448,7 +460,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         // TODO add your handling code here:
         
          if (!inputcodSecmod.getText().isEmpty()){
-            MostrarSectorFil(inputcodSecmod.getText());
+            MostrarSectorFil(Integer.parseInt(inputcodSecmod.getText()));
         }
          else{
              JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -460,7 +472,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     private void inputcodTTmodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodTTmodFocusLost
      
         if (!inputcodTTmod.getText().isEmpty()){
-        MostrarTTFil(inputcodTTmod.getText());
+        MostrarTTFil(Integer.parseInt(inputcodTTmod.getText()));
          }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
 
     
