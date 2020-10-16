@@ -98,7 +98,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AgregarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AgregarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
         jPanel2Layout.setVerticalGroup(
@@ -282,17 +282,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(662, 662, 662)
-                                    .addComponent(ModificarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BajaTI, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(666, 666, 666)
-                                .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(562, 562, 562)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ModificarTI, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BajaTI, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(662, 662, 662)
+                                .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,15 +345,17 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
     public void tablaTI(String filTipoInstanciaNomb,String filTipoInstanciaCod) { //Método de la tabla que se muestra en la interfaz
         
-        System.out.println("nombre"+ filTipoInstanciaNomb);
-        System.out.println("cod"+ filTipoInstanciaCod);
+       
         List<DTOFiltroTI> lista = null;
         if(filTipoInstanciaCod == ""){
             filTipoInstanciaCod = "0";
             lista = controlTI.filtroTINombreTI(filTipoInstanciaNomb);
         }else {
-            
+            try{
             lista = controlTI.filtroTICodTI(Integer.parseInt(filTipoInstanciaCod));
+            }catch(Exception e){
+            lista = controlTI.filtroTICodTI(0);
+            }
         }
         tablaTI = new DefaultTableModel();
         tablaTipoInstancia.setModel(tablaTI);
@@ -369,7 +369,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         tablaTipoInstancia.getTableHeader().setBackground(new Color(172, 202, 221));
 
         tablaTipoInstancia.setAutoCreateRowSorter(true);
-//        tablaTipoInstancia.getRowSorter().toggleSortOrder(1);
+//        
 
         for (int i = 0; i < lista.size(); i++) {
             Vector fil = new Vector();
@@ -379,8 +379,8 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             fil.add(lista.get(i).getNombreTipoTarea());
             fil.add(lista.get(i).getFechaHoraFinVigenciaTI());
             tablaTI.addRow(fil);
-
         }
+     //   tablaTipoInstancia.getRowSorter().toggleSortOrder(0);
     }
     private void filBusquedaCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusquedaCodActionPerformed
         // TODO add your handling code here:
@@ -414,7 +414,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                 } else {
                     if (numTabTI == i) { //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
                         
-                        int codTIModi = (int)tablaTI.getValueAt(i, Integer.parseInt(""));  
+                        int codTIModi = (int)tablaTI.getValueAt(i, 0);  
                         //la "i" es la fila y el 0 la columna de la tabla
                        
                         System.out.println("Es la interfaz");    
@@ -466,6 +466,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
     private void filBusquedaCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaCodKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            filBusquedaNombre.setText("");
             tablaTI("",filBusquedaCod.getText());
         }
     }//GEN-LAST:event_filBusquedaCodKeyPressed
@@ -494,6 +495,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     private void filBusquedaCodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaCodKeyReleased
+        filBusquedaNombre.setText("");
         tablaTI("", filBusquedaCod.getText());
     }//GEN-LAST:event_filBusquedaCodKeyReleased
 
@@ -507,10 +509,12 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
     private void filBusquedaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaNombreKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) 
+            filBusquedaCod.setText("");
             tablaTI(filBusquedaNombre.getText(),"");
     }//GEN-LAST:event_filBusquedaNombreKeyPressed
 
     private void filBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaNombreKeyReleased
+        filBusquedaCod.setText("");
         tablaTI(filBusquedaNombre.getText(),"");
     }//GEN-LAST:event_filBusquedaNombreKeyReleased
 

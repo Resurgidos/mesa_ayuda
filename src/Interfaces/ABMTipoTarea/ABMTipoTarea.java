@@ -40,7 +40,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         TipoTareaTabla.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         TipoTareaTabla.getTableHeader().setBackground(new Color(172, 202, 221));
         TipoTareaTabla.setAutoCreateRowSorter(true);
-        TipoTareaTabla.getRowSorter().toggleSortOrder(1);
+        
        
         for (int i = 0; i < lista.size(); i++) {
             Vector ejemplo = new Vector();
@@ -49,7 +49,8 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             ejemplo.add(lista.get(i).getDescripcionTipoTarea());
             ejemplo.add(lista.get(i).getFechaHoraFinVigenciaTipoTarea());
             tablaTipoTarea.addRow( ejemplo);
-        }   
+        } 
+        TipoTareaTabla.getRowSorter().toggleSortOrder(0);
     } 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -59,7 +59,7 @@
                       <Component id="verNombSec" alignment="0" max="32767" attributes="0"/>
                       <Component id="verCodSec" alignment="0" max="32767" attributes="0"/>
                       <Component id="verNombTI" alignment="0" max="32767" attributes="0"/>
-                      <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonContinuar" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="24" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -68,7 +68,7 @@
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="confirmarAgregar" min="-2" pref="134" max="-2" attributes="0"/>
+                          <Component id="verificarConf" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -111,7 +111,7 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="botonContinuar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="confirmarAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="verificarConf" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               </Group>
@@ -428,7 +428,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="confirmarAgregar">
+        <Component class="javax.swing.JButton" name="verificarConf">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -452,7 +452,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarAgregarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verificarConfActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

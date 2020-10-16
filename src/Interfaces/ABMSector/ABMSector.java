@@ -303,7 +303,7 @@ public class ABMSector extends javax.swing.JFrame {
             tablaSectores.addRow( ejemplo);   
         }
         
-        tablaSector.getRowSorter().toggleSortOrder(1);
+        tablaSector.getRowSorter().toggleSortOrder(0);
        
     }
     

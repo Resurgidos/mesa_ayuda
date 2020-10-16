@@ -16,6 +16,8 @@ public class EditarRenglon extends javax.swing.JFrame {
      */
     public EditarRenglon() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Editar Renglón");
     }
 
     /**
@@ -230,10 +232,10 @@ public class EditarRenglon extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+      /*  if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_verCodSecKeyTyped
 
     private void verNombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombSecKeyTyped
@@ -242,10 +244,10 @@ public class EditarRenglon extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+     /*   if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_verNombSecKeyTyped
 
     private void verFechaFinSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verFechaFinSecKeyTyped
@@ -258,9 +260,9 @@ public class EditarRenglon extends javax.swing.JFrame {
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         //Botón para volver al menú de sector
-        ABMSector abm = new ABMSector();
+   /*     ABMSector abm = new ABMSector();
         abm.setVisible(false);
-        this.setVisible(false);
+        this.setVisible(false);*/
     }//GEN-LAST:event_botonContinuarActionPerformed
 
     /**

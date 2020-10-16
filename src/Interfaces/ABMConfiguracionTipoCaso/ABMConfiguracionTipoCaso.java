@@ -48,7 +48,6 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         tablaConfiguracionCaso = new javax.swing.JTable();
         botonVolver = new javax.swing.JButton();
         ModificarConfiguracion = new javax.swing.JButton();
-        BajaConfiguracion = new javax.swing.JButton();
         ErrorMensaje = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         textTitulo = new javax.swing.JLabel();
@@ -133,20 +132,6 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        BajaConfiguracion.setBackground(new java.awt.Color(204, 204, 204));
-        BajaConfiguracion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        BajaConfiguracion.setForeground(new java.awt.Color(0, 0, 0));
-        BajaConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_delete_black_18dp.png"))); // NOI18N
-        BajaConfiguracion.setMnemonic('b');
-        BajaConfiguracion.setText("Dar baja");
-        BajaConfiguracion.setBorder(null);
-        BajaConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BajaConfiguracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BajaConfiguracionActionPerformed(evt);
-            }
-        });
-
         ErrorMensaje.setEditable(false);
         ErrorMensaje.setBackground(new java.awt.Color(204, 204, 204));
         ErrorMensaje.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -208,8 +193,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 .addComponent(filtroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(AgregarCTC, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(AgregarCTC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
         jPanel5Layout.setVerticalGroup(
@@ -275,25 +260,21 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonVolver)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(205, 205, 205)
-                            .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(botonVolver)
+                        .addGap(383, 383, 383)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonTrabajarRenglo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 483, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(botonTrabajarRenglo, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                    .addComponent(botonVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BajaConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                            .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,19 +282,21 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonMostrarDatos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ModificarConfiguracion)
-                    .addComponent(botonVerificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BajaConfiguracion)
-                    .addComponent(botonVolver)
-                    .addComponent(botonTrabajarRenglo))
+                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonVolver, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(botonVerificar)
+                                .addComponent(botonMostrarDatos))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(botonTrabajarRenglo))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addComponent(ModificarConfiguracion))))
                 .addGap(12, 12, 12))
         );
 
@@ -399,40 +382,6 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ModificarConfiguracionActionPerformed
 
-    private void BajaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaConfiguracionActionPerformed
-        //Método para eliminar
-     /*   int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-        if (numTabSec == -1) {
-            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para dar de baja");
-
-        } else {
-            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
-                    if (tablaConfiguracionCaso.getValueAt(i, 4) != null) {
-                        ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-                        ErrorMensaje.setText("El sector elegido ya esta dado de baja");
-                    } else {
-                        dtoTI.setCodTipoInstancia((int) tablaConfiguracionCaso.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
-                        int j = JOptionPane.showConfirmDialog(this,
-                            ""
-                            + "¿Estas seguro que confirmar la baja? \n\n"
-                            + "Cod Tipo Instancia: " + (int) tablaConfiguracionCaso.getValueAt(i, 0) + "\n"
-                            + "Nombre Tipo Instancia: " + tablaConfiguracionCaso.getValueAt(i, 1) + "\n"
-                            + "Nombre Sector: " + tablaConfiguracionCaso.getValueAt(i, 2) + "\n"
-                            + "Nombre Tipo Tarea: " + tablaConfiguracionCaso.getValueAt(i, 3) + "\n\n",
-                            "Dar de Baja Tipo Instancia", JOptionPane.YES_NO_OPTION);
-                        if (j == 0) {
-                            controlTI.bajaTipoInstancia(dtoTI);
-                            JOptionPane.showMessageDialog(this, "Sector Dado de baja");
-                        }
-                        tablaTI("");
-                    }
-                }
-            }
-        }*/
-    }//GEN-LAST:event_BajaConfiguracionActionPerformed
-
     private void filtroBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroBusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_filtroBusquedaActionPerformed
@@ -455,7 +404,10 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarCTCActionPerformed
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
-        //Método Mostrar datos de Sector
+        VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(0);
+        verVerifica.setVisible(true);
+        this.setVisible(false);
+//Método Mostrar datos de Sector
      /*   int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
@@ -505,11 +457,16 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     private void botonTrabajarRengloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrabajarRengloActionPerformed
-        // TODO add your handling code here:
+        TrabajarRenglones TConReng = new TrabajarRenglones();
+        TConReng.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonTrabajarRengloActionPerformed
 
     private void botonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerificarActionPerformed
-        // TODO add your handling code here:
+        VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(1);
+        verVerifica.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_botonVerificarActionPerformed
 
     private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
@@ -553,7 +510,6 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarCTC;
-    private javax.swing.JButton BajaConfiguracion;
     private javax.swing.JTextField ErrorMensaje;
     private javax.swing.JButton ModificarConfiguracion;
     private javax.swing.JButton botonMostrarDatos;

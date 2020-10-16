@@ -14,8 +14,20 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
     /**
      * Creates new form VerDatosConfiguracion
      */
-    public VerDatosConfiguracion() {
+    public VerDatosConfiguracion(int verificaOVerdatos) {
         initComponents();
+        setLocationRelativeTo(null);
+        if(verificaOVerdatos == 1){
+            setTitle("Verificar Configuración de Tipo Caso");
+            verificarConf.setVisible(true);
+        }else if(verificaOVerdatos == 0){
+            setTitle("Ver Configuración de Tipo Caso");
+            verificarConf.setVisible(false);
+        }
+    }
+
+    private VerDatosConfiguracion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -46,7 +58,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        confirmarAgregar = new javax.swing.JButton();
+        verificarConf = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -237,17 +249,17 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
                     .addContainerGap(73, Short.MAX_VALUE)))
         );
 
-        confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
-        confirmarAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        confirmarAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        confirmarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
-        confirmarAgregar.setMnemonic('c');
-        confirmarAgregar.setText("Verificar");
-        confirmarAgregar.setBorder(null);
-        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
+        verificarConf.setBackground(new java.awt.Color(204, 204, 204));
+        verificarConf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        verificarConf.setForeground(new java.awt.Color(0, 0, 0));
+        verificarConf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
+        verificarConf.setMnemonic('c');
+        verificarConf.setText("Verificar");
+        verificarConf.setBorder(null);
+        verificarConf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verificarConf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarAgregarActionPerformed(evt);
+                verificarConfActionPerformed(evt);
             }
         });
 
@@ -271,14 +283,14 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
                     .addComponent(verNombSec)
                     .addComponent(verCodSec)
                     .addComponent(verNombTI)
-                    .addComponent(botonContinuar))
+                    .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verificarConf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(212, 212, 212))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -315,7 +327,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonContinuar)
-                    .addComponent(confirmarAgregar))
+                    .addComponent(verificarConf))
                 .addGap(12, 12, 12))
         );
 
@@ -339,8 +351,8 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         //Botón para volver al menú de sector
-        ABMTipoInstancia abm = new ABMTipoInstancia();
-        abm.setVisible(false);
+        ABMConfiguracionTipoCaso abm = new ABMConfiguracionTipoCaso();
+        abm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonContinuarActionPerformed
 
@@ -354,10 +366,10 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+      /*  if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_verCodTIKeyTyped
 
     private void verCodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodSecActionPerformed
@@ -374,10 +386,10 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+     /*   if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_verNombTIKeyTyped
 
     private void verNombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombSecKeyTyped
@@ -388,9 +400,9 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_verFechaFinTIKeyTyped
 
-    private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
+    private void verificarConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarConfActionPerformed
         //Método para agregar un Tipo de Instancia
-        try {
+     /*   try {
             if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código
                 if (!inputnombTI.getText().isEmpty()) {//Para que el nombre del TI no este vacio
                     if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
@@ -434,8 +446,8 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
-            }
-    }//GEN-LAST:event_confirmarAgregarActionPerformed
+            }*/
+    }//GEN-LAST:event_verificarConfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,7 +486,6 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonContinuar;
-    private javax.swing.JButton confirmarAgregar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -493,5 +504,6 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
     private javax.swing.JTextField verFechaFinTI;
     private javax.swing.JTextField verNombSec;
     private javax.swing.JTextField verNombTI;
+    private javax.swing.JButton verificarConf;
     // End of variables declaration//GEN-END:variables
 }

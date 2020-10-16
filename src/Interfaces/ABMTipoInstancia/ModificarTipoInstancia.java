@@ -7,6 +7,7 @@ package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
 import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
+import DTO.DTOsTipoInstancia.DTOErrorMensajes;
 import DTO.DTOsTipoInstancia.DTOModificarTipoInstancia;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
@@ -22,7 +23,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     /**
      * Creates new form ModificarTipoInstancia
      */
-    
+    DTOErrorMensajes dtoError = new DTOErrorMensajes();
     ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
     public ModificarTipoInstancia(int codTIModi) {
         initComponents();
@@ -95,7 +96,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,26 +255,25 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
-                        .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(inputcodTTmod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                        .addComponent(outnombSecmod, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputcodSecmod, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputnombTImod, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputcodTImod, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(outnombTTmod)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputcodTTmod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                    .addComponent(outnombSecmod, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputcodSecmod, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputnombTImod, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputcodTImod, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outnombTTmod))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,20 +432,40 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
     private void confirmarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarModificarActionPerformed
         //Método para agregar un Tipo de Instancia
-        DTOModificarTipoInstancia dtoModificar = new DTOModificarTipoInstancia();
-        dtoModificar.setCodTipoInstancia(Integer.parseInt(inputcodTImod.getText()));
-        dtoModificar.setNombreTipoInstancia(inputnombTImod.getText());
-        dtoModificar.setCodSector(Integer.parseInt(inputcodSecmod.getText()));
-        dtoModificar.setNombreSector(outnombSecmod.getText());
-        dtoModificar.setCodTipoTarea(Integer.parseInt(inputcodTTmod.getText()));
-        dtoModificar.setNombreTipoTarea(outnombTTmod.getText());
-        control.modificarTipoInstancia(dtoModificar);
+         if (!inputnombTImod.getText().isEmpty()) {
+             if (!inputcodSecmod.getText().isEmpty()) { //Para que no sea vacio el cod de sector
+                         if (!inputcodTTmod.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
+                                do{
+                                    DTOModificarTipoInstancia dtoModificar = new DTOModificarTipoInstancia();
+                                    dtoModificar.setCodTipoInstancia(Integer.parseInt(inputcodTImod.getText()));
+                                    dtoModificar.setNombreTipoInstancia(inputnombTImod.getText());
+                                    dtoModificar.setCodSector(Integer.parseInt(inputcodSecmod.getText()));
+                                    dtoModificar.setNombreSector(outnombSecmod.getText());
+                                    dtoModificar.setCodTipoTarea(Integer.parseInt(inputcodTTmod.getText()));
+                                    dtoModificar.setNombreTipoTarea(outnombTTmod.getText());
+                                    dtoError = control.modificarTipoInstancia(dtoModificar);
 
-        ABMTipoInstancia abmti = new ABMTipoInstancia();
-        abmti.tablaTI("","");
-        JOptionPane.showMessageDialog(null,"El tipoInstancia fue modificado con éxito");
-        abmti.setVisible(true);
-        this.setVisible(false);
+                                    if(dtoError.getVerificarError()== 0){
+                                        ABMTipoInstancia abmti = new ABMTipoInstancia();
+                                        abmti.tablaTI("","");
+                                        JOptionPane.showMessageDialog(null,"El tipoInstancia fue modificado con éxito");
+                                        abmti.setVisible(true);
+                                        this.setVisible(false); 
+                                         }else{
+                                        JOptionPane.showMessageDialog(this,dtoError.getErrorMensaje());                           
+                                        dtoError.setVerificarError(0);
+                                }}while(dtoError.getVerificarError() != 0);
+                         } else {
+                        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                     }
+                      
+                       } else {
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }           
+                         
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }                
     }//GEN-LAST:event_confirmarModificarActionPerformed
 
     private void inputcodTTmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTTmodActionPerformed
@@ -466,14 +486,16 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }
                                                    
-        ///lost
+        
     }//GEN-LAST:event_inputcodSecmodFocusLost
 
     private void inputcodTTmodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodTTmodFocusLost
      
         if (!inputcodTTmod.getText().isEmpty()){
+       
         MostrarTTFil(Integer.parseInt(inputcodTTmod.getText()));
-         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
+         }else{
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
 
     
     }//GEN-LAST:event_inputcodTTmodFocusLost

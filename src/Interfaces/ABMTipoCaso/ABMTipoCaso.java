@@ -296,7 +296,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
       
        
         tablaTipoCasos.setAutoCreateRowSorter(true);
-        tablaTipoCasos.getRowSorter().toggleSortOrder(1);
+      
         for (int i = 0; i < lista.size(); i++) {
             Vector ejemplo = new Vector();
             ejemplo.add(lista.get(i).getCodTipoCaso());
@@ -304,8 +304,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             ejemplo.add(lista.get(i).getFechaFinVigenciaTipoCaso());
             tablaTipoCaso.addRow(ejemplo);
         }
-        
-//        tablaTipoCasos.getRowSorter().toggleSortOrder(0);
+        tablaTipoCasos.getRowSorter().toggleSortOrder(0);
 
     }
 

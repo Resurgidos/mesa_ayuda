@@ -16,6 +16,8 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
      */
     public PrevisualizarRenglon() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Previsualizar Renglón");
     }
 
     /**
@@ -28,37 +30,42 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        verFechaFinSec = new javax.swing.JTextField();
-        verDescSec = new javax.swing.JTextField();
+        verNombTI = new javax.swing.JTextField();
+        verCodTI = new javax.swing.JTextField();
         labeldescver = new javax.swing.JLabel();
         botonContinuar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         labelTituloMostrar = new javax.swing.JLabel();
         labelcodver = new javax.swing.JLabel();
-        verCodSec = new javax.swing.JTextField();
+        verCodOrden = new javax.swing.JTextField();
         labelnombver = new javax.swing.JLabel();
-        verNombSec = new javax.swing.JTextField();
+        verMinMax = new javax.swing.JTextField();
         labelFechaFinver = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        verFechaFinSec.setEditable(false);
-        verFechaFinSec.setBackground(new java.awt.Color(255, 255, 255));
-        verFechaFinSec.setBorder(null);
-        verFechaFinSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        verNombTI.setEditable(false);
+        verNombTI.setBackground(new java.awt.Color(153, 153, 153));
+        verNombTI.setBorder(null);
+        verNombTI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verFechaFinSecKeyTyped(evt);
+                verNombTIKeyTyped(evt);
             }
         });
 
-        verDescSec.setEditable(false);
-        verDescSec.setBackground(new java.awt.Color(255, 255, 255));
-        verDescSec.setBorder(null);
-        verDescSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        verCodTI.setEditable(false);
+        verCodTI.setBackground(new java.awt.Color(153, 153, 153));
+        verCodTI.setBorder(null);
+        verCodTI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verCodTIActionPerformed(evt);
+            }
+        });
+        verCodTI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verDescSecKeyTyped(evt);
+                verCodTIKeyTyped(evt);
             }
         });
 
@@ -110,17 +117,17 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
         labelcodver.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver.setText("Orden TipoCasoTipoInstancia");
 
-        verCodSec.setEditable(false);
-        verCodSec.setBackground(new java.awt.Color(255, 255, 255));
-        verCodSec.setBorder(null);
-        verCodSec.addActionListener(new java.awt.event.ActionListener() {
+        verCodOrden.setEditable(false);
+        verCodOrden.setBackground(new java.awt.Color(153, 153, 153));
+        verCodOrden.setBorder(null);
+        verCodOrden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verCodSecActionPerformed(evt);
+                verCodOrdenActionPerformed(evt);
             }
         });
-        verCodSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        verCodOrden.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verCodSecKeyTyped(evt);
+                verCodOrdenKeyTyped(evt);
             }
         });
 
@@ -129,12 +136,12 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
         labelnombver.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver.setText("Minutos Máxima Resolución:");
 
-        verNombSec.setEditable(false);
-        verNombSec.setBackground(new java.awt.Color(255, 255, 255));
-        verNombSec.setBorder(null);
-        verNombSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        verMinMax.setEditable(false);
+        verMinMax.setBackground(new java.awt.Color(153, 153, 153));
+        verMinMax.setBorder(null);
+        verMinMax.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verNombSecKeyTyped(evt);
+                verMinMaxKeyTyped(evt);
             }
         });
 
@@ -150,22 +157,22 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verDescSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verNombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(verNombTI, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(verCodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(verMinMax, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
+                            .addGap(34, 34, 34)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(labelcodver)
-                                .addComponent(verCodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(verCodOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(labeldescver)
                                 .addComponent(labelFechaFinver)
                                 .addComponent(labelnombver)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(botonContinuar))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                            .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,22 +181,22 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelcodver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verCodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(verCodOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(labelnombver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verNombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(verMinMax, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(labeldescver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verDescSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(verCodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(labelFechaFinver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 21, Short.MAX_VALUE)
+                .addComponent(verNombTI, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(botonContinuar)
-                .addContainerGap())
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -206,48 +213,51 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void verFechaFinSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verFechaFinSecKeyTyped
+    private void verNombTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombTIKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_verFechaFinSecKeyTyped
+    }//GEN-LAST:event_verNombTIKeyTyped
 
-    private void verDescSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verDescSecKeyTyped
+    private void verCodTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verCodTIKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_verDescSecKeyTyped
+    }//GEN-LAST:event_verCodTIKeyTyped
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
-        //Botón para volver al menú de sector
-        ABMSector abm = new ABMSector();
-        abm.setVisible(false);
+        TrabajarRenglones abmConf = new TrabajarRenglones();
+        abmConf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonContinuarActionPerformed
 
-    private void verNombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombSecKeyTyped
+    private void verMinMaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verMinMaxKeyTyped
 
         //Declaramos una variable y asignamos un evento
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+     /*   if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_verNombSecKeyTyped
+        }*/
+    }//GEN-LAST:event_verMinMaxKeyTyped
 
-    private void verCodSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verCodSecKeyTyped
+    private void verCodOrdenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verCodOrdenKeyTyped
 
         //Declaramos una variable y asignamos un evento
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+       /* if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_verCodSecKeyTyped
+        }*/
+    }//GEN-LAST:event_verCodOrdenKeyTyped
 
-    private void verCodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodSecActionPerformed
+    private void verCodOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodOrdenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_verCodSecActionPerformed
+    }//GEN-LAST:event_verCodOrdenActionPerformed
+
+    private void verCodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodTIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verCodTIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,9 +303,9 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
     private javax.swing.JLabel labelcodver;
     private javax.swing.JLabel labeldescver;
     private javax.swing.JLabel labelnombver;
-    private javax.swing.JTextField verCodSec;
-    private javax.swing.JTextField verDescSec;
-    private javax.swing.JTextField verFechaFinSec;
-    private javax.swing.JTextField verNombSec;
+    private javax.swing.JTextField verCodOrden;
+    private javax.swing.JTextField verCodTI;
+    private javax.swing.JTextField verMinMax;
+    private javax.swing.JTextField verNombTI;
     // End of variables declaration//GEN-END:variables
 }

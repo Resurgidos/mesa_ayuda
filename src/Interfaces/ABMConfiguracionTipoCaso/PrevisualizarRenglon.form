@@ -46,15 +46,15 @@
               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="verFechaFinSec" alignment="1" min="-2" pref="355" max="-2" attributes="0"/>
-                      <Component id="verDescSec" alignment="1" min="-2" pref="355" max="-2" attributes="0"/>
-                      <Component id="verNombSec" alignment="1" min="-2" pref="355" max="-2" attributes="0"/>
+                      <Component id="verNombTI" alignment="1" min="-2" pref="355" max="-2" attributes="0"/>
+                      <Component id="verCodTI" alignment="1" min="-2" pref="355" max="-2" attributes="0"/>
+                      <Component id="verMinMax" alignment="1" min="-2" pref="355" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="labelcodver" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="verCodSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
+                                  <Component id="verCodOrden" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
                                   <Component id="labeldescver" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="labelFechaFinver" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="labelnombver" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -62,11 +62,11 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
+                              <Component id="botonContinuar" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,53 +77,54 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="labelcodver" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="verCodSec" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="verCodOrden" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="labelnombver" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="verNombSec" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="verMinMax" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="labeldescver" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="verDescSec" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="verCodTI" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="labelFechaFinver" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="verFechaFinSec" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" pref="21" max="32767" attributes="0"/>
+                  <Component id="verNombTI" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="verFechaFinSec">
+        <Component class="javax.swing.JTextField" name="verNombTI">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verFechaFinSecKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verNombTIKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="verDescSec">
+        <Component class="javax.swing.JTextField" name="verCodTI">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verDescSecKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verCodTIActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verCodTIKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labeldescver">
@@ -223,19 +224,19 @@
             <Property name="text" type="java.lang.String" value="Orden TipoCasoTipoInstancia"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="verCodSec">
+        <Component class="javax.swing.JTextField" name="verCodOrden">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verCodSecActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verCodSecKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verCodOrdenActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verCodOrdenKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelnombver">
@@ -252,18 +253,18 @@
             <Property name="text" type="java.lang.String" value="Minutos M&#xe1;xima Resoluci&#xf3;n:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="verNombSec">
+        <Component class="javax.swing.JTextField" name="verMinMax">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verNombSecKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="verMinMaxKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelFechaFinver">
