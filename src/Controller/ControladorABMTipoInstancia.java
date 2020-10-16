@@ -24,7 +24,7 @@ public class ControladorABMTipoInstancia {
     public List<DTOFiltroTI> filtroTINombreTI(String filTipoInstanciaNom){
         return expertoTI.filtroTINombreTI(filTipoInstanciaNom);
     }
-    public List<DTOFiltroTI> filtroTICodTI(String filTipoInstanciaCod){
+    public List<DTOFiltroTI> filtroTICodTI(int filTipoInstanciaCod){
         return expertoTI.filtroTICodTI(filTipoInstanciaCod);
     }
     //Método para buscar los datos de un Tipo Instancia pasando el código para modificarla

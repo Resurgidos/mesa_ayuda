@@ -346,12 +346,16 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void tablaTI(String filTipoInstanciaNomb,String filTipoInstanciaCod) { //Método de la tabla que se muestra en la interfaz
-    List<DTOFiltroTI> lista;
+        
+        System.out.println("nombre"+ filTipoInstanciaNomb);
+        System.out.println("cod"+ filTipoInstanciaCod);
+        List<DTOFiltroTI> lista = null;
         if(filTipoInstanciaCod == ""){
             filTipoInstanciaCod = "0";
             lista = controlTI.filtroTINombreTI(filTipoInstanciaNomb);
-        }else{
-            lista = controlTI.filtroTICodTI(filTipoInstanciaCod);
+        }else {
+            
+            lista = controlTI.filtroTICodTI(Integer.parseInt(filTipoInstanciaCod));
         }
         tablaTI = new DefaultTableModel();
         tablaTipoInstancia.setModel(tablaTI);
@@ -365,7 +369,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         tablaTipoInstancia.getTableHeader().setBackground(new Color(172, 202, 221));
 
         tablaTipoInstancia.setAutoCreateRowSorter(true);
-        tablaTipoInstancia.getRowSorter().toggleSortOrder(1);
+//        tablaTipoInstancia.getRowSorter().toggleSortOrder(1);
 
         for (int i = 0; i < lista.size(); i++) {
             Vector fil = new Vector();
@@ -469,13 +473,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
         //Método Mostrar datos de TipoInstancia
         int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+        System.out.println(tablaTI.getValueAt(numTabSec, 0));
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");
-        } else {
+        } else  {
             for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
-
+//                System.out.println(tablaTI.getValueAt(i, 0));
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
+                    System.out.println(tablaTI.getValueAt(i, 0));
                     int codTIMostrar = (int) tablaTI.getValueAt(i, 0);
                     VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(codTIMostrar);
                     mostrar.setVisible(true);

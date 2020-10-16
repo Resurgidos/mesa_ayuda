@@ -228,21 +228,15 @@ public class ExpertoTipoInstancia {
         return dtoVisualizar;
     }
     
-    public List<DTOFiltroTI> filtroTICodTI(String filTipoInstanciaCod){//Filtro la tabla por nombre de tipo instancia
+    public List<DTOFiltroTI> filtroTICodTI(int filTipoInstanciaCod){//Filtro la tabla por nombre de tipo instancia
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
-        try{
-         if(filTipoInstanciaCod != ""){
+        
             dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-            dtoCrit.setOperacion("=");
-            dtoCrit.setValor(Integer.parseInt(filTipoInstanciaCod)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setOperacion(">=");
+            dtoCrit.setValor(filTipoInstanciaCod); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
-         }}catch(Exception e) {
-            dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-            dtoCrit.setOperacion(">");
-            dtoCrit.setValor(0); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-            listadtoCrit.add(dtoCrit);
-         } 
+         
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
         List<DTOFiltroTI> dtoList = new ArrayList<>();
         
@@ -267,7 +261,7 @@ public class ExpertoTipoInstancia {
         
             dtoCrit.setAtributo("nombreTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("like");
-            dtoCrit.setValor(filTipoInstancia); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor("%"+filTipoInstancia+"%"); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);       
            
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
