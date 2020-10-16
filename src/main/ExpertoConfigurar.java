@@ -6,7 +6,6 @@ import DTO.DTOsConfiguración.*;
 import java.util.ArrayList;
 import java.util.List;
 import entidades.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -240,5 +239,8 @@ public class ExpertoConfigurar {
         }
           
        return dtoErrores;
+    }
+    public DTODatosConfiguracion visualizarDatosYVerificar(){
+      return null;  
     }
 }

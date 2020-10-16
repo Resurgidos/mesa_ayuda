@@ -404,9 +404,27 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarCTCActionPerformed
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
-        VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(0);
-        verVerifica.setVisible(true);
-        this.setVisible(false);
+       int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+       
+        if (numTabSec == -1) {
+            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
+        } else  {
+            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
+//                
+                if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
+                    int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 0));
+                    VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(0, codConfMostrar );
+                    verVerifica.setVisible(true);
+                    this.setVisible(false);
+                }
+            }
+        
+        
+        }
+        
+       
+        
 //Método Mostrar datos de Sector
      /*   int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
@@ -463,10 +481,24 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_botonTrabajarRengloActionPerformed
 
     private void botonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerificarActionPerformed
-        VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(1);
-        verVerifica.setVisible(true);
-        this.setVisible(false);
+        int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
+       
+        if (numTabSec == -1) {
+            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
+        } else  {
+            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
+//                
+                if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
+                    int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 0));
+                    VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(1, codConfMostrar );
+                    verVerifica.setVisible(true);
+                    this.setVisible(false);
+                }
+            }
         
+        
+        }
     }//GEN-LAST:event_botonVerificarActionPerformed
 
     private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
