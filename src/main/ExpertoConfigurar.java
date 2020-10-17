@@ -6,8 +6,11 @@ import DTO.DTOsConfiguración.*;
 import java.util.ArrayList;
 import java.util.List;
 import entidades.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 
 
@@ -62,14 +65,16 @@ public class ExpertoConfigurar {
                                         configTC.setNroConfigTC(dtoAgregarConfig.getNroConfiguracion());
 
                                         Date fecha = dtoAgregarConfig.getFechaDesde();
-                                        SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy");
+                                        SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
                                         String fechaInicio = objSDF.format(fecha);
 
                                         configTC.setFechaInicioVigencia(objSDF.parse(fechaInicio));                       
                                         configTC.setFechaFinVigencia(null);
                                         configTC.setFechaVerificacion(null);
-                                        FachadaPersistencia.getInstance().guardar(configTC);        
-                                  
+                                        FachadaPersistencia.getInstance().guardar(configTC); 
+                                        
+                                        
+                                        
                     
                                     }}    }else{
                      dtoErrores.setErrorMensaje("El código ya existe");  //Muestra el mensaje si el código está existente
@@ -82,27 +87,217 @@ public class ExpertoConfigurar {
         }
         return dtoErrores;
     }
+    public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
+        TipoCaso tipoCaso = new TipoCaso();
+        ConfiguracionTipoCaso configTipo = new ConfiguracionTipoCaso();
+        DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
+        
+        try{
+            FachadaPersistencia.getInstance().iniciarTransaccion();    
+            
+            DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+            List<DTOCriterio> listadtoCrit = new ArrayList<>();
+            dtoCrit.setAtributo("nroConfigTC");  
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(dtoModificarConfig.getNroConfiguracion()); 
+            
+            listadtoCrit.add(dtoCrit);
+            
+            try{
+                List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+                for (Object x : objetoList){
+                    configTipo = (ConfiguracionTipoCaso)x;                 
+                 
+                    dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                    dtoCrit.setOperacion("=");
+                    dtoCrit.setValor(dtoModificarConfig.getCodTipoCaso()); 
+                    listadtoCrit.add(dtoCrit);
+                    
+                    List tipoCasoMof = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
+                    for (Object h : tipoCasoMof) {
+                        tipoCaso = (TipoCaso)h ;
+                        configTipo.setTipoCaso(tipoCaso);
+                    }                      
+                  
+                    configTipo.setFechaInicioVigencia(dtoModificarConfig.getFechaDesde());
+                    FachadaPersistencia.getInstance().modificar(configTipo);  
+                } 
+            }catch(Exception e){
+                System.out.println("No se pudo modificar el TipoCaso"); 
+            }    
+        }catch(Exception e){
+               System.out.println("No se pudo encontrar el TipoCaso");                
+        }
+          
+       return dtoErrores;
+    }
+    public DTOVisualizarVerificar visualizarDatosYVerificar(int numConf){
+        DTOVisualizarVerificar dtoVisu = new DTOVisualizarVerificar();
+        DTOCriterio dtoCrit = new DTOCriterio();
+        DTORenglones dtoRenglones = new DTORenglones();
+        FachadaPersistencia.getInstance().iniciarTransaccion();//Instanciaciones de objetos a usar      
+             
+        List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+                dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                dtoCrit.setOperacion("=");
+                dtoCrit.setValor(numConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                validarCod.add(dtoCrit);
+        List datosFachada = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );
+        
+        for(Object x : datosFachada){
+           ConfiguracionTipoCaso llenado = (ConfiguracionTipoCaso) x;
+            
+            dtoVisu.setNroConfigTipoCaso(llenado.getNroConfigTC());
+            dtoVisu.setCodTipoCaso(llenado.getTipoCaso().getCodTipoCaso());
+            dtoVisu.setNombreTipoCaso(llenado.getTipoCaso().getNombreTipoCaso());
+            dtoVisu.setFechaInicioVig(llenado.getFechaInicioVigencia());
+            dtoVisu.setFechaFinVig(llenado.getFechaFinVigencia());
+            dtoVisu.setFechaVerificacion(llenado.getFechaVerificacion());
+            
+            for (int i = 0; i < llenado.getTipoCtipoIns().size(); i++) { //Lleno la lista del dto con los renglones asignados
+                dtoRenglones.setOrdenTCTI(llenado.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
+                dtoRenglones.setMinutosMAXReso(llenado.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
+                dtoRenglones.setCodTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
+                dtoRenglones.setNombreTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());               
+                dtoVisu.addRenglones(dtoRenglones);                
+            }           
+        }
+        
+      return dtoVisu;  
+    }
+      
+    public DTOErroresMensajes verificarConfiguracion(int numConf){
+        Date fechaactual = new Date(System.currentTimeMillis());
+        ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();       
+        DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
+        DTOCriterio dtoCrit = new DTOCriterio();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+        List<DTOCriterio> busquedaConf = new ArrayList<>();
+        int codTC = 0;
+        Date fechaIVaVerificar = null;
+        
+            dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(numConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+            for(Object x : objetoList){
+                configTC = (ConfiguracionTipoCaso) x;
+                fechaIVaVerificar = configTC.getFechaInicioVigencia();
+                codTC  = configTC.getTipoCaso().getCodTipoCaso();                    
+            }
+                      
+            List objetoList1 = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",busquedaConf);
+            for(Object x:objetoList1){
+                configTC = (ConfiguracionTipoCaso) x;
+                if(configTC.getFechaFinVigencia() == null){
+                    if(configTC.getFechaVerificacion() != null){
+                        if(configTC.getTipoCaso().getCodTipoCaso() == codTC){
+                            if(fechaIVaVerificar.before(configTC.getFechaInicioVigencia())){
+                                dtoErrores.setVerificarError(1);
+                                dtoErrores.setErrorMensaje("La fechaDesde ingresada debe ser mayor a la fechaInicioVigencia de la configuración anterior verificada");
+                                return dtoErrores;
+                            }
+                        }
+                    }
+                }
+            }
+            if(fechaIVaVerificar.before(fechaactual)){
+                dtoErrores.setVerificarError(1);
+                dtoErrores.setErrorMensaje("La fechaInicioVigencia debe ser mayor a la fechaActual");
+                return dtoErrores;
+            }
+            dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(numConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            List objetoList2 = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+            for(Object x : objetoList2){
+                configTC = (ConfiguracionTipoCaso) x;
+                configTC.setFechaVerificacion(fechaactual);
+            }
+            cerrarconfiguraciónanterior(numConf);
+               
+        return dtoErrores;
+    }
+    public void cerrarconfiguraciónanterior(int numConf) {
+        ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();       
+        DTOCriterio dtoCrit = new DTOCriterio();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+        List<DTOCriterio> busquedaConf = new ArrayList<>(); 
+        int codTC = 0;
+        Date fechaIVaVerificar = null;
+        try{
+        dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(numConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+            List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+            
+            for(Object x : objetoList){
+                configTC = (ConfiguracionTipoCaso) x;              
+                codTC  = configTC.getTipoCaso().getCodTipoCaso(); 
+                fechaIVaVerificar = configTC.getFechaInicioVigencia();
+            }
+                      
+            List objetoList1 = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",busquedaConf);
+            for(Object x:objetoList1){
+                configTC = (ConfiguracionTipoCaso) x;
+                if(configTC.getFechaFinVigencia() == null){
+                    if(configTC.getFechaVerificacion() != null){
+                        if(configTC.getTipoCaso().getCodTipoCaso() == codTC){
+                            
+                           SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+                           String fechaEstablecer = objSDF.format(fechaIVaVerificar);
+                            int anio=0,mes=0,dia = 0,hora=0,minuto=0,segundo=0;
+                                try {
+                                     String fechaEntera = fechaEstablecer;                                                          
+                                     Date miFecha = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").parse(fechaEntera);
+
+                                     Calendar calendario = Calendar.getInstance();                                                         
+                                     calendario.setTime(miFecha);
+
+                                      anio = calendario.get(Calendar.YEAR);
+                                      mes = calendario.get(Calendar.MONTH);                                                      
+                                      dia = calendario.get(Calendar.DAY_OF_MONTH);                                                          
+                                      hora = calendario.get(Calendar.HOUR_OF_DAY);                                                            
+                                      minuto = calendario.get(Calendar.MINUTE);
+                                                calendario.add(minuto, -1);
+                                      segundo = calendario.get(59);
+                                     
+                                 } catch (ParseException ex) {
+                                     System.out.println("No se pudo armar la fecha");
+                                 }     
+                                
+                           configTC.setFechaFinVigencia(objSDF.parse((dia+"/"+mes+"/"+anio+"-"+hora+":"+minuto+":"+segundo)));
+                           JOptionPane.showMessageDialog(null, fechaEstablecer);
+                        }
+                    }
+                }
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Algo fallo");
+        }
+    }
     public DTOErroresMensajes validarFecha(Date fechaDesde){
         ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
         DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
         Date fechaactual = new Date(System.currentTimeMillis());
         
-        if(fechaDesde.after(fechaactual)){
-            DTOCriterio dtoCrit = new DTOCriterio();        
+        if(fechaDesde.after(fechaactual)){                   
             List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
-               
              
        
             List datosFachada = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );
             for(Object x: datosFachada){
                 configTC = (ConfiguracionTipoCaso)x;                
                 if(configTC.getFechaFinVigencia() == null){
-                    if(configTC.getFechaVerificacion() != null){
+                  //  if(configTC.getFechaVerificacion() != null){
                         if(fechaDesde.before(configTC.getFechaInicioVigencia())){                        
                             dtoErrores.setErrorMensaje("Fecha No permitida, ingrese otra");
                             dtoErrores.setVerificarError(1);   
                         }
-                    } 
+                  //  } 
                 }
             }
            
@@ -196,51 +391,5 @@ public class ExpertoConfigurar {
         return dtoMod;
     }
     
-    public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
-        TipoCaso tipoCaso = new TipoCaso();
-        ConfiguracionTipoCaso configTipo = new ConfiguracionTipoCaso();
-        DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
-        
-        try{
-            FachadaPersistencia.getInstance().iniciarTransaccion();    
-            
-            DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
-            List<DTOCriterio> listadtoCrit = new ArrayList<>();
-            dtoCrit.setAtributo("nroConfigTC");  
-            dtoCrit.setOperacion("=");
-            dtoCrit.setValor(dtoModificarConfig.getNroConfiguracion()); 
-            
-            listadtoCrit.add(dtoCrit);
-            
-            try{
-                List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
-                for (Object x : objetoList){
-                    configTipo = (ConfiguracionTipoCaso)x;                 
-                 
-                    dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-                    dtoCrit.setOperacion("=");
-                    dtoCrit.setValor(dtoModificarConfig.getCodTipoCaso()); 
-                    listadtoCrit.add(dtoCrit);
-                    
-                    List tipoCasoMof = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
-                    for (Object h : tipoCasoMof) {
-                        tipoCaso = (TipoCaso)h ;
-                        configTipo.setTipoCaso(tipoCaso);
-                    }                      
-                  
-                    configTipo.setFechaInicioVigencia(dtoModificarConfig.getFechaDesde());
-                    FachadaPersistencia.getInstance().modificar(configTipo);  
-                } 
-            }catch(Exception e){
-                System.out.println("No se pudo modificar el TipoCaso"); 
-            }    
-        }catch(Exception e){
-               System.out.println("No se pudo encontrar el TipoCaso");                
-        }
-          
-       return dtoErrores;
-    }
-    public DTODatosConfiguracion visualizarDatosYVerificar(){
-      return null;  
-    }
+    
 }

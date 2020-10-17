@@ -178,7 +178,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         BajaTI.setForeground(new java.awt.Color(0, 0, 0));
         BajaTI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_delete_black_18dp.png"))); // NOI18N
         BajaTI.setMnemonic('b');
-        BajaTI.setText("Dar baja");
+        BajaTI.setText("Dar Baja");
         BajaTI.setBorder(null);
         BajaTI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BajaTI.addActionListener(new java.awt.event.ActionListener() {

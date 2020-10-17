@@ -409,7 +409,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/baseline_edit_black_18dp.png"/>
+              <Image iconType="3" name="/Imagenes/editar_renglon.png"/>
             </Property>
             <Property name="mnemonic" type="int" value="109"/>
             <Property name="text" type="java.lang.String" value="Trabajar con renglones"/>
@@ -436,7 +436,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/baseline_visibility_black_18dp.png"/>
+              <Image iconType="3" name="/Imagenes/verificar_renglon.png"/>
             </Property>
             <Property name="mnemonic" type="int" value="100"/>
             <Property name="text" type="java.lang.String" value="Verificar Configuraci&#xf3;n"/>

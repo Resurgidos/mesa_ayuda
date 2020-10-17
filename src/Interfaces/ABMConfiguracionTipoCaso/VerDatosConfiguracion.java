@@ -1,21 +1,101 @@
 
 package Interfaces.ABMConfiguracionTipoCaso;
 
-public class VerDatosConfiguracion extends javax.swing.JFrame {
+import Controller.ControladorConfiguracionTipoCaso;
+import DTO.DTOsConfiguración.DTOErroresMensajes;
+import DTO.DTOsConfiguración.DTORenglones;
+import DTO.DTOsConfiguración.DTOVisualizarVerificar;
+import java.awt.Color;
+import java.awt.Font;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-   
+public class VerDatosConfiguracion extends javax.swing.JFrame {
+    
+    DTOErroresMensajes dtoError = new DTOErroresMensajes();
+    DTOVisualizarVerificar dtoVisuV = new DTOVisualizarVerificar();
+    ControladorConfiguracionTipoCaso control = new ControladorConfiguracionTipoCaso();
+    DefaultTableModel tablaVisualizarConf;
+    int numConfVerificar = 0;
+    
+    
     public VerDatosConfiguracion(int verificaOVerdatos, int codConf) {
         initComponents();
         setLocationRelativeTo(null);
         if(verificaOVerdatos == 1){
             setTitle("Verificar Configuración de Tipo Caso");
             verificarConf.setVisible(true);
+            numConfVerificar = codConf;
         }else if(verificaOVerdatos == 0){
             setTitle("Ver Configuración de Tipo Caso");
             verificarConf.setVisible(false);
         }
+        dtoVisuV = control.visualizarDatosYVerificar(codConf);
+        inicializarDatos(dtoVisuV);
     }
+    
+    public void inicializarDatos(DTOVisualizarVerificar dtovisu){ //Método para inicializar los datos en la Interfaz
+        DateFormat df = new SimpleDateFormat();
+        verConfTC.setText(Integer.toString(dtovisu.getNroConfigTipoCaso()));
+        verCodTipoCaso.setText(Integer.toString(dtovisu.getCodTipoCaso()));
+        verNombTC.setText(dtovisu.getNombreTipoCaso());
+        
+       
+        Date fechaIV = dtovisu.getFechaInicioVig();
+        String fechaInicioV = df.format(fechaIV);            
+        verFIV.setText(fechaInicioV);
+        
+        if(dtovisu.getFechaFinVig() == null){
+            verFFV.setText("null");
+        }else{
+        Date fechaFV = dtovisu.getFechaFinVig();
+        String fechaFinV = df.format(fechaFV);        
+        verFFV.setText(fechaFinV);
+        }
+        if(dtovisu.getFechaVerificacion() == null){
+            verFV.setText("Sin verificar");
+        }else{
+        Date fechaV = dtovisu.getFechaVerificacion();
+        String fechaVer = df.format(fechaV);  
+        verFV.setText(fechaVer);
+        }
+      //  tablaVisualizarConf(dtovisu);
+        
+    }
+    public void tablaVisualizarConf(DTOVisualizarVerificar dtovisuTabla) { //Método de la tabla que se muestra en la interfaz de los renglones de la configuración
+        
+        
+        List<DTORenglones> lista = dtovisuTabla.getRenglones();
+        tablaVisualizarConf = new DefaultTableModel();
+        tablaRenglon.setModel(tablaVisualizarConf);
+        
+        tablaVisualizarConf.addColumn("Orden TCTI");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
+        tablaVisualizarConf.addColumn("Minutos Max");//que Luego esta tabla le setteamos para mostrar en modelo de la interfaz
+        tablaVisualizarConf.addColumn("Cod. Tipo Instancia");
+        tablaVisualizarConf.addColumn("Nomb. Tipo Instancia");      
 
+        tablaRenglon.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tablaRenglon.getTableHeader().setBackground(new Color(172, 202, 221));
+
+        tablaRenglon.setAutoCreateRowSorter(true);
+        tablaRenglon.getRowSorter().toggleSortOrder(1);
+
+       for (int i = 0; i < lista.size(); i++) {
+            Vector fil = new Vector();
+            fil.add(lista.get(i).ordenTCTI);
+            fil.add(lista.get(i).minutosMAXReso);
+            fil.add(lista.get(i).codTI);
+            fil.add(lista.get(i).nombreTI);           
+            tablaVisualizarConf.addRow(fil);
+        }
+       //PONER PARA ORDENAR POR ORDEN ACA!
+       
+    }
     private VerDatosConfiguracion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -30,50 +110,50 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        verFechaFinSec = new javax.swing.JTextField();
-        botonContinuar = new javax.swing.JButton();
+        verFV = new javax.swing.JTextField();
+        botonVolverABM = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         labelTituloMostrar = new javax.swing.JLabel();
+        verificarConf = new javax.swing.JButton();
         labelcodver = new javax.swing.JLabel();
-        verCodTI = new javax.swing.JTextField();
+        verConfTC = new javax.swing.JTextField();
         labelcodver2 = new javax.swing.JLabel();
         labelnombver = new javax.swing.JLabel();
-        verCodSec = new javax.swing.JTextField();
-        verNombTI = new javax.swing.JTextField();
+        verFIV = new javax.swing.JTextField();
+        verCodTipoCaso = new javax.swing.JTextField();
         labelnombver2 = new javax.swing.JLabel();
         labelFechaFinver = new javax.swing.JLabel();
-        verNombSec = new javax.swing.JTextField();
-        verFechaFinTI = new javax.swing.JTextField();
+        verFFV = new javax.swing.JTextField();
+        verNombTC = new javax.swing.JTextField();
         labelFechaFinver2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        verificarConf = new javax.swing.JButton();
+        tablaRenglon = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        verFechaFinSec.setEditable(false);
-        verFechaFinSec.setBackground(new java.awt.Color(255, 255, 255));
-        verFechaFinSec.setBorder(null);
-        verFechaFinSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        verFV.setEditable(false);
+        verFV.setBackground(new java.awt.Color(255, 255, 255));
+        verFV.setBorder(null);
+        verFV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verFechaFinSecKeyTyped(evt);
+                verFVKeyTyped(evt);
             }
         });
 
-        botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
-        botonContinuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonContinuar.setForeground(new java.awt.Color(0, 0, 0));
-        botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
-        botonContinuar.setMnemonic('v');
-        botonContinuar.setText("Volver");
-        botonContinuar.setBorder(null);
-        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+        botonVolverABM.setBackground(new java.awt.Color(204, 204, 204));
+        botonVolverABM.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonVolverABM.setForeground(new java.awt.Color(0, 0, 0));
+        botonVolverABM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
+        botonVolverABM.setMnemonic('v');
+        botonVolverABM.setText("Volver");
+        botonVolverABM.setBorder(null);
+        botonVolverABM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonVolverABM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonContinuarActionPerformed(evt);
+                botonVolverABMActionPerformed(evt);
             }
         });
 
@@ -84,6 +164,20 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_visibility_black_18dp.png"))); // NOI18N
         labelTituloMostrar.setText("DATOS CONFIGURACIÓN TIPO CASO");
 
+        verificarConf.setBackground(new java.awt.Color(204, 204, 204));
+        verificarConf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        verificarConf.setForeground(new java.awt.Color(0, 0, 0));
+        verificarConf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
+        verificarConf.setMnemonic('c');
+        verificarConf.setText("Verificar");
+        verificarConf.setBorder(null);
+        verificarConf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verificarConf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verificarConfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -91,14 +185,18 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(labelTituloMostrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(verificarConf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(labelTituloMostrar)
-                .addGap(29, 29, 29))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTituloMostrar)
+                    .addComponent(verificarConf))
+                .addGap(25, 25, 25))
         );
 
         labelcodver.setBackground(new java.awt.Color(0, 0, 0));
@@ -106,17 +204,17 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         labelcodver.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver.setText("Núm. Configuración Tipo Caso:");
 
-        verCodTI.setEditable(false);
-        verCodTI.setBackground(new java.awt.Color(255, 255, 255));
-        verCodTI.setBorder(null);
-        verCodTI.addActionListener(new java.awt.event.ActionListener() {
+        verConfTC.setEditable(false);
+        verConfTC.setBackground(new java.awt.Color(255, 255, 255));
+        verConfTC.setBorder(null);
+        verConfTC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verCodTIActionPerformed(evt);
+                verConfTCActionPerformed(evt);
             }
         });
-        verCodTI.addKeyListener(new java.awt.event.KeyAdapter() {
+        verConfTC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verCodTIKeyTyped(evt);
+                verConfTCKeyTyped(evt);
             }
         });
 
@@ -130,26 +228,26 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         labelnombver.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver.setText("Cod. Tipo Caso:");
 
-        verCodSec.setEditable(false);
-        verCodSec.setBackground(new java.awt.Color(255, 255, 255));
-        verCodSec.setBorder(null);
-        verCodSec.addActionListener(new java.awt.event.ActionListener() {
+        verFIV.setEditable(false);
+        verFIV.setBackground(new java.awt.Color(255, 255, 255));
+        verFIV.setBorder(null);
+        verFIV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verCodSecActionPerformed(evt);
+                verFIVActionPerformed(evt);
             }
         });
-        verCodSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        verFIV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verCodSecKeyTyped(evt);
+                verFIVKeyTyped(evt);
             }
         });
 
-        verNombTI.setEditable(false);
-        verNombTI.setBackground(new java.awt.Color(255, 255, 255));
-        verNombTI.setBorder(null);
-        verNombTI.addKeyListener(new java.awt.event.KeyAdapter() {
+        verCodTipoCaso.setEditable(false);
+        verCodTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        verCodTipoCaso.setBorder(null);
+        verCodTipoCaso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verNombTIKeyTyped(evt);
+                verCodTipoCasoKeyTyped(evt);
             }
         });
 
@@ -163,21 +261,21 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         labelFechaFinver.setForeground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setText("Nombre Tipo Caso :");
 
-        verNombSec.setEditable(false);
-        verNombSec.setBackground(new java.awt.Color(255, 255, 255));
-        verNombSec.setBorder(null);
-        verNombSec.addKeyListener(new java.awt.event.KeyAdapter() {
+        verFFV.setEditable(false);
+        verFFV.setBackground(new java.awt.Color(255, 255, 255));
+        verFFV.setBorder(null);
+        verFFV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verNombSecKeyTyped(evt);
+                verFFVKeyTyped(evt);
             }
         });
 
-        verFechaFinTI.setEditable(false);
-        verFechaFinTI.setBackground(new java.awt.Color(255, 255, 255));
-        verFechaFinTI.setBorder(null);
-        verFechaFinTI.addKeyListener(new java.awt.event.KeyAdapter() {
+        verNombTC.setEditable(false);
+        verNombTC.setBackground(new java.awt.Color(255, 255, 255));
+        verNombTC.setBorder(null);
+        verNombTC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                verFechaFinTIKeyTyped(evt);
+                verNombTCKeyTyped(evt);
             }
         });
 
@@ -189,7 +287,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RENGLÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaRenglon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -216,7 +314,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaRenglon);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -239,20 +337,6 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
                     .addContainerGap(73, Short.MAX_VALUE)))
         );
 
-        verificarConf.setBackground(new java.awt.Color(204, 204, 204));
-        verificarConf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        verificarConf.setForeground(new java.awt.Color(0, 0, 0));
-        verificarConf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
-        verificarConf.setMnemonic('c');
-        verificarConf.setText("Verificar");
-        verificarConf.setBorder(null);
-        verificarConf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        verificarConf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verificarConfActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -261,27 +345,22 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(verCodTI, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                    .addComponent(verConfTC, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
                     .addComponent(labelcodver)
                     .addComponent(labelnombver)
                     .addComponent(labelFechaFinver)
-                    .addComponent(verFechaFinTI)
+                    .addComponent(verNombTC)
                     .addComponent(labelcodver2)
                     .addComponent(labelnombver2)
                     .addComponent(labelFechaFinver2)
-                    .addComponent(verFechaFinSec, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
-                    .addComponent(verNombSec)
-                    .addComponent(verCodSec)
-                    .addComponent(verNombTI)
-                    .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(verFV, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                    .addComponent(verFFV)
+                    .addComponent(verFIV)
+                    .addComponent(verCodTipoCaso)
+                    .addComponent(botonVolverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(verificarConf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(212, 212, 212))))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,32 +371,30 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(verCodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verConfTC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelnombver)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(verNombTI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verCodTipoCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13)
                         .addComponent(labelFechaFinver)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(verFechaFinTI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(verNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 21, Short.MAX_VALUE)
                         .addComponent(labelcodver2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(verCodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verFIV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelnombver2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(verNombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verFFV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelFechaFinver2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(verFV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonContinuar)
-                    .addComponent(verificarConf))
+                .addComponent(botonVolverABM)
                 .addGap(12, 12, 12))
         );
 
@@ -335,22 +412,22 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void verFechaFinSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verFechaFinSecKeyTyped
+    private void verFVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verFVKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_verFechaFinSecKeyTyped
+    }//GEN-LAST:event_verFVKeyTyped
 
-    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+    private void botonVolverABMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverABMActionPerformed
         //Botón para volver al menú de sector
         ABMConfiguracionTipoCaso abm = new ABMConfiguracionTipoCaso();
         abm.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_botonContinuarActionPerformed
+    }//GEN-LAST:event_botonVolverABMActionPerformed
 
-    private void verCodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodTIActionPerformed
+    private void verConfTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verConfTCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_verCodTIActionPerformed
+    }//GEN-LAST:event_verConfTCActionPerformed
 
-    private void verCodTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verCodTIKeyTyped
+    private void verConfTCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verConfTCKeyTyped
 
         //Declaramos una variable y asignamos un evento
         char car = evt.getKeyChar();
@@ -360,17 +437,17 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }*/
-    }//GEN-LAST:event_verCodTIKeyTyped
+    }//GEN-LAST:event_verConfTCKeyTyped
 
-    private void verCodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCodSecActionPerformed
+    private void verFIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verFIVActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_verCodSecActionPerformed
+    }//GEN-LAST:event_verFIVActionPerformed
 
-    private void verCodSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verCodSecKeyTyped
+    private void verFIVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verFIVKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_verCodSecKeyTyped
+    }//GEN-LAST:event_verFIVKeyTyped
 
-    private void verNombTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombTIKeyTyped
+    private void verCodTipoCasoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verCodTipoCasoKeyTyped
 
         //Declaramos una variable y asignamos un evento
         char car = evt.getKeyChar();
@@ -380,63 +457,38 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
         }*/
-    }//GEN-LAST:event_verNombTIKeyTyped
+    }//GEN-LAST:event_verCodTipoCasoKeyTyped
 
-    private void verNombSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombSecKeyTyped
+    private void verFFVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verFFVKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_verNombSecKeyTyped
+    }//GEN-LAST:event_verFFVKeyTyped
 
-    private void verFechaFinTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verFechaFinTIKeyTyped
+    private void verNombTCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verNombTCKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_verFechaFinTIKeyTyped
+    }//GEN-LAST:event_verNombTCKeyTyped
 
     private void verificarConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarConfActionPerformed
-        //Método para agregar un Tipo de Instancia
-     /*   try {
-            if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código
-                if (!inputnombTI.getText().isEmpty()) {//Para que el nombre del TI no este vacio
-                    if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
-                        if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
-                            do{
-                                DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
-                                dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
-                                dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
-                                dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
-                                dtoAgregar.setNombreSector(outnombSec.getText());
-                                dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-                                dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-                                control.agregarTipoInstancia(dtoAgregar);
+        //Método para verificar una configuración tipo caso
+           try {
+                    do{
+                                
+                        dtoError = control.verificarConfiguracion(numConfVerificar);
 
-                                if(dtoTI.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
-                                    ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector
-                                    JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
-                                    volver.setVisible(true);
-                                    volver.tablaTI("");
-                                    this.setVisible(false);
-                                }else{
-                                    JOptionPane.showMessageDialog(this,dtoTI.getErrorMensaje());
-                                    System.out.println("acá esta el error, en registro de sector en validar");
-                                    dtoTI.setVerificarError(0);
-                                } }while(dtoTI.getVerificarError() != 0);
-
-                                //y un chatch en el caso que no se pueda crear el Tipo Instancia
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                        if(dtoError.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
+                            ABMConfiguracionTipoCaso volver = new ABMConfiguracionTipoCaso(); //Oculto la pagina para dar de alta volviendo al menu de Sector
+                            JOptionPane.showMessageDialog(this, "La configuración TipoCaso fue verificada con éxito");
+                            volver.setVisible(true);                                   
+                            this.setVisible(false);
+                        }else{
+                            JOptionPane.showMessageDialog(this,dtoError.getErrorMensaje());                           
+                            dtoError.setVerificarError(0);
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                }
+                    }while(dtoError.getVerificarError() != 0);
 
+               //Si no puede verificar, salta el catch
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
-            }*/
+            }    
     }//GEN-LAST:event_verificarConfActionPerformed
 
     /**
@@ -475,12 +527,11 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonContinuar;
+    private javax.swing.JButton botonVolverABM;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelFechaFinver;
     private javax.swing.JLabel labelFechaFinver2;
     private javax.swing.JLabel labelTituloMostrar;
@@ -488,12 +539,13 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
     private javax.swing.JLabel labelcodver2;
     private javax.swing.JLabel labelnombver;
     private javax.swing.JLabel labelnombver2;
-    private javax.swing.JTextField verCodSec;
-    private javax.swing.JTextField verCodTI;
-    private javax.swing.JTextField verFechaFinSec;
-    private javax.swing.JTextField verFechaFinTI;
-    private javax.swing.JTextField verNombSec;
-    private javax.swing.JTextField verNombTI;
+    private javax.swing.JTable tablaRenglon;
+    private javax.swing.JTextField verCodTipoCaso;
+    private javax.swing.JTextField verConfTC;
+    private javax.swing.JTextField verFFV;
+    private javax.swing.JTextField verFIV;
+    private javax.swing.JTextField verFV;
+    private javax.swing.JTextField verNombTC;
     private javax.swing.JButton verificarConf;
     // End of variables declaration//GEN-END:variables
 }

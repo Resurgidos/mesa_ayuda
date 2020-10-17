@@ -5,6 +5,7 @@ import DTO.DTOsConfiguración.DTOAgregarConfiguracion;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
+import DTO.DTOsConfiguración.DTOVisualizarVerificar;
 import java.util.Date;
 import java.util.List;
 import main.ExpertoConfigurar;
@@ -19,10 +20,15 @@ public class ControladorConfiguracionTipoCaso {
     public DTOErroresMensajes validarFecha(Date fechaDesde){
         return expertoC.validarFecha(fechaDesde);
     }
-   /* public void agregarConfiguracion(DTOTipoConfiguracionGrilla dtoTC){
-       expertoC.agregarConfiguracion(dtoTC);
-    }*/
-    
+    public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
+       return expertoC.modificarConfiguracion(dtoModificarConfig);
+    }
+    public DTOVisualizarVerificar visualizarDatosYVerificar(int codConf){
+      return expertoC.visualizarDatosYVerificar(codConf);
+    }
+    public DTOErroresMensajes verificarConfiguracion(int numConf){
+        return expertoC.verificarConfiguracion(numConf);
+    }
     public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(String nombreConfiguracion){
         return expertoC.filtroConfiguracion(nombreConfiguracion);
     }
@@ -35,7 +41,5 @@ public class ControladorConfiguracionTipoCaso {
         return expertoC.buscarPorNumConfig(codSeleccionado);       
     }
     
-    public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
-       return expertoC.modificarConfiguracion(dtoModificarConfig);
-    }
+    
 }

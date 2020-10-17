@@ -245,7 +245,7 @@ public class ExpertoTipoInstancia {
             listadtoCrit.add(dtoCrit);
         }
 
-        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit);
         List<DTOFiltroTI> dtoList = new ArrayList<>();
         
         for (Object x : objetoList) {
@@ -262,17 +262,17 @@ public class ExpertoTipoInstancia {
         return dtoList;
     }
      
-     public List<DTOFiltroTI> filtroTINombreTI(String filTipoInstancia){ //Filtro la tabla por nombre de tipo instancia
+     public List<DTOFiltroTI> filtroTINombreTI(String filTipoInstanciaNomb){ //Filtro la tabla por nombre de tipo instancia
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
 
         
             dtoCrit.setAtributo("nombreTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("like");
-            dtoCrit.setValor("%"+filTipoInstancia+"%"); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor("%"+filTipoInstanciaNomb+"%"); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);       
            
-        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit);
         List<DTOFiltroTI> dtoList = new ArrayList<>();
         
         for (Object x : objetoList) {
