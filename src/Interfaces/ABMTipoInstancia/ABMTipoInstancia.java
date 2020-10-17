@@ -447,7 +447,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     //    dtoTI.setCodTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         int j = JOptionPane.showConfirmDialog(this,
                                 ""
-                                + "¿Estas seguro que confirmar la baja? \n\n"
+                                + "¿Estas seguro que desea dar de baja? \n\n"
                                 + "Cod Tipo Instancia: " + (int) tablaTipoInstancia.getValueAt(i, 0) + "\n"
                                 + "Nombre Tipo Instancia: " + tablaTipoInstancia.getValueAt(i, 1) + "\n"
                                 + "Nombre Sector: " + tablaTipoInstancia.getValueAt(i, 2) + "\n"
@@ -455,7 +455,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                                  "Dar de Baja Tipo Instancia", JOptionPane.YES_NO_OPTION);
                         if (j == 0) {
                             controlTI.bajaTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));
-                            JOptionPane.showMessageDialog(this, "Sector Dado de baja");
+                            JOptionPane.showMessageDialog(this, "Tipo Instancia dado de baja");
                         }
                         tablaTI("","");
                     }
