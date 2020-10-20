@@ -9,6 +9,7 @@ import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOAgregarConfiguracion;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.Calendar;
 
 
@@ -59,6 +60,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         errorMensaje = new javax.swing.JLabel();
         MensajeError = new javax.swing.JTextField();
         fechaDesde = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,8 +75,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
-        jLabel3.setText("Cod. Tipo Caso: ");
+        jLabel3.setText("Cod. Tipo Caso ");
 
         inputNombreTipoCaso.setEditable(false);
         inputNombreTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
@@ -182,6 +183,11 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 inputCodTipoCaso1ActionPerformed(evt);
             }
         });
+        inputCodTipoCaso1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputCodTipoCaso1KeyTyped(evt);
+            }
+        });
 
         errorMensaje.setBackground(new java.awt.Color(204, 204, 204));
         errorMensaje.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -193,6 +199,8 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         MensajeError.setBorder(null);
 
         fechaDesde.setDateFormatString("dd/MM/yyyy -  HH:mm:ss");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,7 +218,10 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                         .addComponent(inputCodTipoCaso1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel6))
                         .addComponent(inputNumConfiCaso, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,7 +243,9 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputNumConfiCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputCodTipoCaso1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -416,7 +429,15 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNumConfiCasoActionPerformed
 
     private void inputNumConfiCasoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNumConfiCasoKeyTyped
-        // TODO add your handling code here:
+       //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_inputNumConfiCasoKeyTyped
 
     private void inputCodTipoCaso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCodTipoCaso1ActionPerformed
@@ -444,6 +465,17 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_fechaDesdePropertyChange
+
+    private void inputCodTipoCaso1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCodTipoCaso1KeyTyped
+               //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_inputCodTipoCaso1KeyTyped
 
     /**
      * @param args the command line arguments
@@ -495,6 +527,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;

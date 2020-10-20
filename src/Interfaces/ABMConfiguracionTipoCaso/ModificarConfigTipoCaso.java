@@ -9,6 +9,7 @@ import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -30,6 +31,8 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         setTitle("Modificar Configuración Tipo Caso");
         DTOModificarConf dtoModificar = control.buscarPorNumConfig(codSeleccionado);
         inicializarDatos(dtoModificar);
+        inputCodTipoCasoModif.selectAll();
+        inputCodTipoCasoModif.requestFocus();
     }
 
     private ModificarConfigTipoCaso() {
@@ -65,6 +68,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         inputFechaDesdeModif = new com.toedter.calendar.JDateChooser();
         MensajeError = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,7 +95,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Cod. Tipo Caso: (PONER LOGO DE LUPA)");
+        jLabel3.setText("Cod. Tipo Caso");
 
         outNombreTipoCaso.setEditable(false);
         outNombreTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
@@ -192,6 +196,8 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         MensajeError.setBackground(new java.awt.Color(204, 204, 204));
         MensajeError.setBorder(null);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -207,7 +213,10 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(outNombreTipoCaso)
                             .addComponent(inputCodTipoCasoModif, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4))
                             .addComponent(inputNumConfMod, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                             .addComponent(inputFechaDesdeModif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -230,9 +239,13 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputNumConfMod, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(9, 9, 9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputCodTipoCasoModif, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
@@ -267,14 +280,15 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
 
     private void inputCodTipoCasoModifKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCodTipoCasoModifKeyTyped
 
-        //Declaramos una variable y asignamos un evento
-//        char car = evt.getKeyChar();
+     //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
 
         //Condicion
-//        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
-//            evt.consume();
-//            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
-//        }
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_inputCodTipoCasoModifKeyTyped
 
     private void outNombreTipoCasoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_outNombreTipoCasoFocusLost
@@ -411,6 +425,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
