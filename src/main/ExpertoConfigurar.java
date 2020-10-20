@@ -188,14 +188,16 @@ public class ExpertoConfigurar {
             }
                       
             List objetoList1 = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",busquedaConf);
-            for(Object x:objetoList1){
-                configTC = (ConfiguracionTipoCaso) x;
-                if(configTC.getFechaFinVigencia() == null){
-                    if(configTC.getFechaVerificacion() != null){
-                        if(configTC.getTipoCaso().getCodTipoCaso() == codTC){
-                            if(fechaIVaVerificar.before(configTC.getFechaInicioVigencia())){
+                ConfiguracionTipoCaso configTipoCaso = new ConfiguracionTipoCaso();       
+                for(Object x:objetoList1){
+                configTipoCaso = (ConfiguracionTipoCaso) x;
+                System.out.println(configTipoCaso);
+                if(configTipoCaso.getFechaFinVigencia() == null){
+                    if(configTipoCaso.getFechaVerificacion() != null){
+                        if(configTipoCaso.getTipoCaso().getCodTipoCaso() == codTC){
+                            if(fechaIVaVerificar.before(configTipoCaso.getFechaInicioVigencia())){
                                 dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("La fechaDesde ingresada debe ser mayor a la fechaInicioVigencia de la configuración anterior verificada");
+                                dtoErrores.setErrorMensaje("La fechaDesde ingresada debe ser mayor a la fechaInicioVigencia de la configuración anterior verificada");                               
                                 return dtoErrores;
                             }
                         }
@@ -207,6 +209,14 @@ public class ExpertoConfigurar {
                 dtoErrores.setErrorMensaje("La fechaInicioVigencia debe ser mayor a la fechaActual");
                 return dtoErrores;
             }
+            
+            int pruebaFecha = 0; 
+            pruebaFecha = cerrarconfiguraciónanterior(numConf);
+            if(pruebaFecha !=0){
+                dtoErrores.setVerificarError(1);
+                dtoErrores.setErrorMensaje("ErrorFecha");    
+                return dtoErrores;
+            }  
             dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("=");
             dtoCrit.setValor(numConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
@@ -216,11 +226,9 @@ public class ExpertoConfigurar {
                 configTC = (ConfiguracionTipoCaso) x;
                 configTC.setFechaVerificacion(fechaactual);
             }
-            cerrarconfiguraciónanterior(numConf);
-               
         return dtoErrores;
     }
-    public void cerrarconfiguraciónanterior(int numConf) {
+    public int cerrarconfiguraciónanterior(int numConf) {
         ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();       
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
@@ -241,43 +249,52 @@ public class ExpertoConfigurar {
             }
                       
             List objetoList1 = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",busquedaConf);
+            ConfiguracionTipoCaso configTipoCaso = new ConfiguracionTipoCaso();       
             for(Object x:objetoList1){
-                configTC = (ConfiguracionTipoCaso) x;
-                if(configTC.getFechaFinVigencia() == null){
-                    if(configTC.getFechaVerificacion() != null){
-                        if(configTC.getTipoCaso().getCodTipoCaso() == codTC){
+                configTipoCaso = (ConfiguracionTipoCaso) x;
+                if(configTipoCaso.getFechaFinVigencia() == null){
+                    if(configTipoCaso.getFechaVerificacion() != null){
+                        if(configTipoCaso.getTipoCaso().getCodTipoCaso() == codTC){
                             
                            SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
                            String fechaEstablecer = objSDF.format(fechaIVaVerificar);
-                            int anio=0,mes=0,dia = 0,hora=0,minuto=0,segundo=0;
+                         //  configTipoCaso.setFechaFinVigencia(objSDF.parse(fechaEstablecer));
+                               
+                           
+                                Calendar calendario = null;
                                 try {
                                      String fechaEntera = fechaEstablecer;                                                          
                                      Date miFecha = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").parse(fechaEntera);
 
-                                     Calendar calendario = Calendar.getInstance();                                                         
-                                     calendario.setTime(miFecha);
+                                      calendario = Calendar.getInstance();                                                         
+                                      calendario.setTime(miFecha);
 
-                                      anio = calendario.get(Calendar.YEAR);
-                                      mes = calendario.get(Calendar.MONTH);                                                      
-                                      dia = calendario.get(Calendar.DAY_OF_MONTH);                                                          
-                                      hora = calendario.get(Calendar.HOUR_OF_DAY);                                                            
-                                      minuto = calendario.get(Calendar.MINUTE);
-                                                calendario.add(minuto, -1);
-                                      segundo = calendario.get(59);
-                                     
+                                      calendario.add(Calendar.YEAR, 0);
+                                      calendario.add(Calendar.MONTH,0);                                                      
+                                      calendario.add(Calendar.DAY_OF_MONTH,0);                                                          
+                                      calendario.add(Calendar.HOUR_OF_DAY,0);                                                            
+                                      calendario.add(Calendar.MINUTE,-1);
+                                      calendario.set(Calendar.SECOND, 59);
+                                      calendario.add(Calendar.SECOND, 0);
+                                       if(configTipoCaso.getNroConfigTC() == numConf){
+                                        configTipoCaso.setFechaFinVigencia(null);
+                                          }   
+                                     configTipoCaso.setFechaFinVigencia(calendario.getTime());
                                  } catch (ParseException ex) {
                                      System.out.println("No se pudo armar la fecha");
                                  }     
                                 
-                           configTC.setFechaFinVigencia(objSDF.parse((dia+"/"+mes+"/"+anio+"-"+hora+":"+minuto+":"+segundo)));
-                           JOptionPane.showMessageDialog(null, fechaEstablecer);
+                           
+                           
+                          
                         }
                     }
                 }
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Algo fallo");
+        }catch(Exception e){           
+            return 1;
         }
+        return 0;
     }
     public DTOErroresMensajes validarFecha(Date fechaDesde){
         ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();

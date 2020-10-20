@@ -85,7 +85,7 @@
                           <Component id="labelFechaFinver" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="verNombTC" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" pref="21" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="labelcodver2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="verFIV" min="-2" pref="30" max="-2" attributes="0"/>
