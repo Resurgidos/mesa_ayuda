@@ -6,6 +6,7 @@
 package Interfaces.ABMConfiguracionTipoCaso;
 
 import Controller.ControladorConfiguracionTipoCaso;
+import DTO.DTOsConfiguración.DTOErroresMensajes;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
@@ -63,6 +64,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         inputFechaDesdeModif = new com.toedter.calendar.JDateChooser();
+        MensajeError = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +188,10 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Núm. Configuración Tipo Caso:");
 
+        MensajeError.setEditable(false);
+        MensajeError.setBackground(new java.awt.Color(204, 204, 204));
+        MensajeError.setBorder(null);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -211,6 +217,10 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,7 +242,9 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputFechaDesdeModif, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(volverABMAgregar)
                     .addComponent(confirmarModificar))
@@ -298,18 +310,35 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     private void confirmarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarModificarActionPerformed
         //Método para modificar una Configuracion tipo caso
         DTOModificarConf dtoModificar = new DTOModificarConf();
-        dtoModificar.setNroConfiguracion(Integer.parseInt(inputNumConfMod.getText()));
-        dtoModificar.setCodTipoCaso(Integer.parseInt(inputCodTipoCasoModif.getText()));
-        dtoModificar.setNombreTipoCaso(outNombreTipoCaso.getText());
-        dtoModificar.setFechaDesde(inputFechaDesdeModif.getDate());
-        control.modificarConfiguracion(dtoModificar);
-        
-
-        ABMConfiguracionTipoCaso abmConfig = new ABMConfiguracionTipoCaso();
-        abmConfig.tablaConfiguracion("");
-        JOptionPane.showMessageDialog(null,"La Configuración de Tipo Caso fue modificado con éxito");
-        abmConfig.setVisible(true);
-        this.setVisible(false);
+        DTOErroresMensajes dtoError = new DTOErroresMensajes();
+          
+            if(!inputCodTipoCasoModif.getText().isEmpty() ){
+                if(!outNombreTipoCaso.getText().isEmpty() ){
+                    do{
+                        dtoModificar.setNroConfiguracion(Integer.parseInt(inputNumConfMod.getText()));
+                        dtoModificar.setCodTipoCaso(Integer.parseInt(inputCodTipoCasoModif.getText()));
+                        dtoModificar.setNombreTipoCaso(outNombreTipoCaso.getText());
+                        dtoModificar.setFechaDesde(inputFechaDesdeModif.getDate());
+                        dtoError = control.modificarConfiguracion(dtoModificar);
+                        
+                        if(dtoError.getVerificarError() == 0){
+                            JOptionPane.showMessageDialog(this, "La Configuración se modificó con éxito");
+                            ABMConfiguracionTipoCaso abmC = new ABMConfiguracionTipoCaso();
+                            abmC.setVisible(true);
+                            this.setVisible(false);
+                        }else{
+                            MensajeError.setForeground(Color.red);
+                            MensajeError.setText(dtoError.getErrorMensaje());
+                            dtoError.setVerificarError(0);
+                        }
+                        
+                    }while(dtoError.getVerificarError()!=0);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            }    
     }//GEN-LAST:event_confirmarModificarActionPerformed
 
     private void inputCodTipoCasoModifFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCodTipoCasoModifFocusLost
@@ -323,8 +352,11 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
 
     private void MostrarTipoCasoInput(String text) {
         String nombreTCaso = control.inputCodTipoCaso(text);     
-        if(nombreTCaso == ""){
-            JOptionPane.showMessageDialog(this, "Ingrese un Código de Tipo Caso VÁLIDO", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        if(nombreTCaso == "El tipo de caso ingresado está dado de baja"){
+            JOptionPane.showMessageDialog(this, "El Tipo Caso está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            outNombreTipoCaso.setText("");
+        }else if (nombreTCaso == "No existe el Tipo Caso Ingresado"){
+            JOptionPane.showMessageDialog(this, "No existe el codigo del Tipo Caso Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             outNombreTipoCaso.setText("");
         }else{
             outNombreTipoCaso.setForeground(Color.gray);
@@ -370,6 +402,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField MensajeError;
     private javax.swing.JButton confirmarModificar;
     private javax.swing.JTextField inputCodTipoCasoModif;
     private com.toedter.calendar.JDateChooser inputFechaDesdeModif;
