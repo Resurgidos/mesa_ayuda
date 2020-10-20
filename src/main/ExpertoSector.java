@@ -39,7 +39,7 @@ public class ExpertoSector {
                                 }else{
                                     sector.setCodSector(dtoSec.getCodSector());
                                     sector.setNombreSector(dtoSec.getNombreSector());
-                                    sector.setDescripcionSector(dtoSec.getDescripcionSector());
+                                    sector.setDescripcionSector(dtoSec.getDescripcionSector());;
                                     FachadaPersistencia.getInstance().guardar(sector);            
                             }}else{
                                 dtoSec.setMensajeError("El código ya existe");        
@@ -98,7 +98,7 @@ public class ExpertoSector {
             
         
             // datos que Setteamos fecha y hora              
-            SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // La cadena de formato de fecha se pasa como un argumento al objeto 
+            SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy HH:mm"); // La cadena de formato de fecha se pasa como un argumento al objeto 
             String fechaFin = objSDF.format(fecha);    
 
                 List objetoList = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );        

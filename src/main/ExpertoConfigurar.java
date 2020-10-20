@@ -158,11 +158,11 @@ public class ExpertoConfigurar {
             dtoVisu.setFechaFinVig(llenado.getFechaFinVigencia());
             dtoVisu.setFechaVerificacion(llenado.getFechaVerificacion());
             
-            for (int i = 0; i < llenado.getListTipoCtipoIns().size(); i++) { //Lleno la lista del dto con los renglones asignados
-                dtoRenglones.setOrdenTCTI(llenado.getListTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
-                dtoRenglones.setMinutosMAXReso(llenado.getListTipoCtipoIns().get(i).getMinutosMaximoResolucion());
-                dtoRenglones.setCodTI(llenado.getListTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
-                dtoRenglones.setNombreTI(llenado.getListTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());               
+            for (int i = 0; i < llenado.getTipoCtipoIns().size(); i++) { //Lleno la lista del dto con los renglones asignados
+                dtoRenglones.setOrdenTCTI(llenado.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
+                dtoRenglones.setMinutosMAXReso(llenado.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
+                dtoRenglones.setCodTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
+                dtoRenglones.setNombreTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());               
                 dtoVisu.addRenglones(dtoRenglones);                
             }           
         }
@@ -430,13 +430,13 @@ public class ExpertoConfigurar {
         for (Object x : objetoList) {
             ConfiguracionTipoCaso configCaso = (ConfiguracionTipoCaso)x;
             dtoTrabajarRenglones.setCodConfSelecc(configCaso.getNroConfigTC());
-            for (int i = 0; i < configCaso.getListTipoCtipoIns().size(); i++) { //Lleno la lista del dto con los renglones asignados
+            for (int i = 0; i < configCaso.getTipoCtipoIns().size(); i++) { //Lleno la lista del dto con los renglones asignados
                 DTORenglones dtoRenglones = new DTORenglones();
                     
-                dtoRenglones.setOrdenTCTI(configCaso.getListTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
-                dtoRenglones.setMinutosMAXReso(configCaso.getListTipoCtipoIns().get(i).getMinutosMaximoResolucion());
-                dtoRenglones.setCodTI(configCaso.getListTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
-                dtoRenglones.setNombreTI(configCaso.getListTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());
+                dtoRenglones.setOrdenTCTI(configCaso.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
+                dtoRenglones.setMinutosMAXReso(configCaso.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
+                dtoRenglones.setCodTI(configCaso.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
+                dtoRenglones.setNombreTI(configCaso.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());
                 
                 
                 dtoTrabajarRenglones.addTipoCasoTipoInstancia(dtoRenglones);
@@ -468,13 +468,13 @@ public class ExpertoConfigurar {
             ConfiguracionTipoCaso configTipo = (ConfiguracionTipoCaso)x;   
             dtoVerRenglon.setNroConfig(configTipo.getNroConfigTC());
             
-            for (int i = 0; i < configTipo.getListTipoCtipoIns().size(); i++) {
+            for (int i = 0; i < configTipo.getTipoCtipoIns().size(); i++) {
                 
-                if(ordenTCTISelec == configTipo.getListTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia()){
-                    dtoVerRenglon.setOrdenTCTI(configTipo.getListTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
-                    dtoVerRenglon.setMinutosMAXReso(configTipo.getListTipoCtipoIns().get(i).getMinutosMaximoResolucion());
-                    dtoVerRenglon.setCodTI(configTipo.getListTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
-                    dtoVerRenglon.setNombreTI(configTipo.getListTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());
+                if(ordenTCTISelec == configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia()){
+                    dtoVerRenglon.setOrdenTCTI(configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
+                    dtoVerRenglon.setMinutosMAXReso(configTipo.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
+                    dtoVerRenglon.setCodTI(configTipo.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
+                    dtoVerRenglon.setNombreTI(configTipo.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());
                 }
                 
             }

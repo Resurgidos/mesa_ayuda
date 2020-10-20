@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `configuracion_tipocaso`;
 CREATE TABLE `configuracion_tipocaso` (
   `OIDConfiguracionTipoCaso` varchar(100) NOT NULL,
   `nroConfig` int(11) NOT NULL,
-  `fechaInicioVigencia` date DEFAULT NULL,
-  `fechaFinVigencia` date DEFAULT NULL,
-  `fechaVerificacion` date DEFAULT NULL,
+  `fechaInicioVigencia` datetime DEFAULT NULL,
+  `fechaFinVigencia` datetime DEFAULT NULL,
+  `fechaVerificacion` datetime DEFAULT NULL,
   `OIDTipoCaso` varchar(100) NOT NULL,
   PRIMARY KEY (`OIDConfiguracionTipoCaso`),
   KEY `configuracion_tipocaso_FK` (`OIDTipoCaso`),
@@ -56,7 +56,7 @@ CREATE TABLE `sector` (
   `codSector` int(11) NOT NULL,
   `nombreSector` varchar(100) NOT NULL,
   `descripcionSector` varchar(100) DEFAULT NULL,
-  `fechaHoraFinVigenciaSector` date DEFAULT NULL,
+  `fechaHoraFinVigenciaSector` datetime DEFAULT NULL,
   PRIMARY KEY (`OIDSector`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -81,7 +81,7 @@ CREATE TABLE `tipocaso` (
   `OIDTipoCaso` varchar(100) NOT NULL,
   `codTipoCaso` int(11) NOT NULL,
   `nombreTipoCaso` varchar(100) NOT NULL,
-  `fechaFinVigenciaTipoCaso` date DEFAULT NULL,
+  `fechaFinVigenciaTipoCaso` datetime DEFAULT NULL,
   PRIMARY KEY (`OIDTipoCaso`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -136,7 +136,7 @@ CREATE TABLE `tipoinstancia` (
   `OIDTipoInstancia` varchar(100) NOT NULL,
   `codTipoInstancia` int(11) NOT NULL,
   `nombreTipoInstancia` varchar(100) DEFAULT NULL,
-  `fechaHoraFinVigenciaTipoInstancia` date DEFAULT NULL,
+  `fechaHoraFinVigenciaTipoInstancia` datetime DEFAULT NULL,
   `OIDSector` varchar(100) NOT NULL,
   `OIDTipoTarea` varchar(100) NOT NULL,
   PRIMARY KEY (`OIDTipoInstancia`),
@@ -168,7 +168,7 @@ CREATE TABLE `tipotarea` (
   `codTipoTarea` int(11) NOT NULL,
   `nombreTipoTarea` varchar(100) NOT NULL,
   `descripcionTipoTarea` varchar(100) DEFAULT NULL,
-  `fechaHoraFinVigenciaTipoTarea` date DEFAULT NULL,
+  `fechaHoraFinVigenciaTipoTarea` datetime DEFAULT NULL,
   PRIMARY KEY (`OIDTipoTarea`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -195,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-29 11:39:22
+-- Dump completed on 2020-10-20 11:28:26

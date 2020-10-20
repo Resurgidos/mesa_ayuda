@@ -22,7 +22,7 @@
             <column name="descripcionTipoTarea"/>
         </property>
         
-        <property name="fechaHoraFinVigenciaTipoTarea" type="timestamp">
+        <property name="fechaHoraFinVigenciaTipoTarea" type="date">
             <column name="fechaHoraFinVigenciaTipoTarea"/>
         </property>
         

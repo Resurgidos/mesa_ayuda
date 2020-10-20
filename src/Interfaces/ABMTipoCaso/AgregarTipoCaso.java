@@ -3,8 +3,7 @@ package Interfaces.ABMTipoCaso;
 
 import Controller.ControladorABMTipoCaso;
 import DTO.DTOsTipoCaso.DTOTipoCaso;
-//import java.awt.event.KeyEvent;
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 
@@ -281,7 +280,7 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -292,7 +291,7 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACKSPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACK_SPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
         }

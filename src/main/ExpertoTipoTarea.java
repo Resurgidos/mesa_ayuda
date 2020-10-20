@@ -92,7 +92,7 @@ public class ExpertoTipoTarea {
             listadtoCrit.add(dtoCrit);
 
         // datos que Setteamos fecha y hora              
-        SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); 
+        SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy HH:mm"); 
         String fechaFin = objSDF.format(fecha);    
         
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit );        

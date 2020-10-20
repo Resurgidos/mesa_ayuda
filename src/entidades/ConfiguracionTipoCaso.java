@@ -60,22 +60,15 @@ public class ConfiguracionTipoCaso extends Entidad{
         this.tipoCaso = tipoCaso;
     }
 
-    public List<TipoCasoTipoInstancia> getListTipoCtipoIns() {
+    public List<TipoCasoTipoInstancia> getTipoCtipoIns() {
         return tipoCtipoIns;
     }
 
     public void setTipoCtipoIns(List<TipoCasoTipoInstancia> tipoCtipoIns) {
         this.tipoCtipoIns = tipoCtipoIns;
     }
-    
-    public void addTipoCasoTipoInstancia(TipoCasoTipoInstancia tcti) {
+     public void addTipoCasoTipoInstancia(TipoCasoTipoInstancia tcti) {
        tipoCtipoIns.add(tcti) ;
     }
-    
-    public void removeTipoCasoTipoInstancia(TipoCasoTipoInstancia tcti){
-        tipoCtipoIns.remove(tcti);
-    }
-    
-     
     
 }
