@@ -105,6 +105,9 @@ public class ExpertoConfigurar {
             
             try{
                 List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+                dtoErrores = validarFecha(dtoModificarConfig.getFechaDesde());
+                
+                
                 for (Object x : objetoList){
                     configTipo = (ConfiguracionTipoCaso)x;                 
                  
@@ -131,6 +134,7 @@ public class ExpertoConfigurar {
           
        return dtoErrores;
     }
+    
     public DTOVisualizarVerificar visualizarDatosYVerificar(int numConf){
         DTOVisualizarVerificar dtoVisu = new DTOVisualizarVerificar();
         DTOCriterio dtoCrit = new DTOCriterio();
@@ -406,6 +410,80 @@ public class ExpertoConfigurar {
         }       
         
         return dtoMod;
+    }
+    
+    public DTOTrabajarRenglones buscarRenglones(int codConfSelecc){ 
+        DTOTrabajarRenglones dtoTrabajarRenglones = new DTOTrabajarRenglones();
+        
+        DTOCriterio dtoCrit = new DTOCriterio();
+        
+        FachadaPersistencia.getInstance().iniciarTransaccion();    
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();
+        dtoCrit.setAtributo("nroConfigTC");  
+        dtoCrit.setOperacion("=");
+        dtoCrit.setValor(codConfSelecc); 
+        listadtoCrit.add(dtoCrit);
+
+
+        List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+
+        for (Object x : objetoList) {
+            ConfiguracionTipoCaso configCaso = (ConfiguracionTipoCaso)x;
+            dtoTrabajarRenglones.setCodConfSelecc(configCaso.getNroConfigTC());
+            for (int i = 0; i < configCaso.getTipoCtipoIns().size(); i++) { //Lleno la lista del dto con los renglones asignados
+                DTORenglones dtoRenglones = new DTORenglones();
+                    
+                dtoRenglones.setOrdenTCTI(configCaso.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
+                dtoRenglones.setMinutosMAXReso(configCaso.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
+                dtoRenglones.setCodTI(configCaso.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
+                dtoRenglones.setNombreTI(configCaso.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());
+                
+                
+                dtoTrabajarRenglones.addTipoCasoTipoInstancia(dtoRenglones);
+            }
+            
+        }
+    
+
+        return dtoTrabajarRenglones;                   
+    }
+    
+    public DTOVerRenglon verDatosRenglon(int nroConfigCaso, int ordenTCTISelec) {
+        
+        DTOVerRenglon dtoVerRenglon = new DTOVerRenglon();
+        DTOCriterio dtoCrit = new DTOCriterio();
+        FachadaPersistencia.getInstance().iniciarTransaccion();    
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();
+        dtoCrit.setAtributo("nroConfigTC");  
+        dtoCrit.setOperacion("=");
+        dtoCrit.setValor(nroConfigCaso); 
+        listadtoCrit.add(dtoCrit);
+
+
+        List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+        
+        for (Object x : objetoList){
+            
+            
+            ConfiguracionTipoCaso configTipo = (ConfiguracionTipoCaso)x;   
+            dtoVerRenglon.setNroConfig(configTipo.getNroConfigTC());
+            
+            for (int i = 0; i < configTipo.getTipoCtipoIns().size(); i++) {
+                
+                if(ordenTCTISelec == configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia()){
+                    dtoVerRenglon.setOrdenTCTI(configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
+                    dtoVerRenglon.setMinutosMAXReso(configTipo.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
+                    dtoVerRenglon.setCodTI(configTipo.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
+                    dtoVerRenglon.setNombreTI(configTipo.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());
+                }
+                
+            }
+        }       
+        
+        
+        
+        return dtoVerRenglon;
+        
     }
     
     

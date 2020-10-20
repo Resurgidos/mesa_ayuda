@@ -464,9 +464,27 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     private void botonTrabajarRengloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrabajarRengloActionPerformed
-        TrabajarRenglones TConReng = new TrabajarRenglones();
-        TConReng.setVisible(true);
-        this.setVisible(false);
+        int filaSeleccionada = tablaConfiguracionCaso.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+            ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
+        }else {
+            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
+                if (tablaConfiguracionCaso.getValueAt(i, 3) != null) {
+                    ErrorMensaje.setForeground(Color.RED);
+                    ErrorMensaje.setText("El Configurar Caso seleccionado está dado de baja, no se puede modificar");
+                }else {
+                    if (filaSeleccionada == i) {              
+                        int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 0);  
+                        TrabajarRenglones TConReng = new TrabajarRenglones(codConfSelecc);
+                        TConReng.setVisible(true);
+                        this.setVisible(false);
+                    }
+
+                }
+
+            }
+        }
     }//GEN-LAST:event_botonTrabajarRengloActionPerformed
 
     private void botonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerificarActionPerformed

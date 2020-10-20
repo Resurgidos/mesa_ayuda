@@ -5,6 +5,8 @@ import DTO.DTOsConfiguración.DTOAgregarConfiguracion;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
+import DTO.DTOsConfiguración.DTOTrabajarRenglones;
+import DTO.DTOsConfiguración.DTOVerRenglon;
 import DTO.DTOsConfiguración.DTOVisualizarVerificar;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +41,14 @@ public class ControladorConfiguracionTipoCaso {
     
     public DTOModificarConf buscarPorNumConfig(int codSeleccionado){ 
         return expertoC.buscarPorNumConfig(codSeleccionado);       
+    }
+    
+    public DTOTrabajarRenglones buscarRenglones(int codConfSelecc) {
+        return expertoC.buscarRenglones(codConfSelecc);
+    }
+
+    public DTOVerRenglon verDatosRenglon(int nroConfigCaso, int ordenTCTISelec) {
+        return expertoC.verDatosRenglon( nroConfigCaso, ordenTCTISelec);
     }
     
     
