@@ -22,7 +22,7 @@
             <column name="descripcionSector"/>
         </property>
         
-        <property name="fechaHoraFinVigenciaSector" type="date">
+        <property name="fechaHoraFinVigenciaSector" type="timestamp">
             <column name="fechaHoraFinVigenciaSector"/>
         </property>
         

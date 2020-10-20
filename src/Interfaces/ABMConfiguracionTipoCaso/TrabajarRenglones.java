@@ -35,7 +35,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         tablaConRenglones(dtorenglo.getTipoCtipoIns());
     }
 
-    private TrabajarRenglones() {
+    public TrabajarRenglones() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
