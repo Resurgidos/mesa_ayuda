@@ -141,7 +141,7 @@ public class ExpertoTipoCaso {
         listadtoCrit.add(dtoCrit);
         
         
-        SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy HH:mm"); // La cadena de formato de fecha se pasa como un argumento al objeto 
+        SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // La cadena de formato de fecha se pasa como un argumento al objeto 
         String fechaFin = objSDF.format(fecha); 
         
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit ); 
