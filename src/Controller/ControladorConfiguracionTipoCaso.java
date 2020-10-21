@@ -1,7 +1,7 @@
 
 package Controller;
 
-import DTO.DTOsConfiguración.DTOAgregarConfiguracion;
+import DTO.DTOsConfiguración.*;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
@@ -42,6 +42,15 @@ public class ControladorConfiguracionTipoCaso {
     public DTOModificarConf buscarPorNumConfig(int codSeleccionado){ 
         return expertoC.buscarPorNumConfig(codSeleccionado);       
     }
+    
+    public DTOErroresMensajes agregarRenglon(DTOAgregarRenglon dtoAR){
+        return expertoC.agregarRenglon(dtoAR);
+    }
+    
+    public String buscarNombTipoInstancia(int codTI){
+        return expertoC.buscarNombTipoInstancia(codTI);
+    }
+
     
     public DTOTrabajarRenglones buscarRenglones(int codConfSelecc) {
         return expertoC.buscarRenglones(codConfSelecc);

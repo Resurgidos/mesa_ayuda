@@ -23,16 +23,18 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     
     ControladorConfiguracionTipoCaso control = new ControladorConfiguracionTipoCaso();
     DefaultTableModel tablaRenglones;
-    /**
-     * Creates new form TrabajarRenglones
-     */
+    
+    
+    int codConfig = 0;
     public TrabajarRenglones(int codConfSelecc) {
+        
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Trabajar Renglones");
         DTOTrabajarRenglones dtorenglo = control.buscarRenglones(codConfSelecc);
         nroConfigCaso.setText(Integer.toString( dtorenglo.getCodConfSelecc()));
         tablaConRenglones(dtorenglo.getTipoCtipoIns());
+        codConfig = codConfSelecc;
     }
 
     public TrabajarRenglones() {
@@ -780,7 +782,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     private void btnAgregarRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarRenglonActionPerformed
         // Boton agregar renglon  
         
-        AgregarRenglon agregarRenglon = new AgregarRenglon( );
+        AgregarRenglon agregarRenglon = new AgregarRenglon(codConfig);
         agregarRenglon.setVisible(true);
         this.setVisible(false);
         

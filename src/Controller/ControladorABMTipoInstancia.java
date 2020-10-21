@@ -21,12 +21,11 @@ public class ControladorABMTipoInstancia {
          expertoTI.bajaTipoInstancia(codTipoInstancia);
     }
     //Método para filtrar los Tipo Instancia en la tabla de la interfaz pasando el código o el nombre del Ti 
-    public List<DTOFiltroTI> filtroTINombreTI(String filTipoInstanciaNom){
-        return expertoTI.filtroTINombreTI(filTipoInstanciaNom);
+   
+    public List<DTOFiltroTI> filtroTINombreTI2(int cod,String filTipoInstanciaNom){
+        return expertoTI.filtroTINombreTI2(cod,filTipoInstanciaNom);
     }
-    public List<DTOFiltroTI> filtroTICodTI(int filTipoInstanciaCod){
-        return expertoTI.filtroTICodTI(filTipoInstanciaCod);
-    }
+    
     //Método para buscar los datos de un Tipo Instancia pasando el código para modificarla
     public DTOModificarTipoInstancia buscarPorCodTipoInstancia(int codTipoInstancia){ //Método para buscar el nombre TipoInstancia y devolver el nombre a pantalla
         return expertoTI.buscarPorCodTipoInstancia(codTipoInstancia);       
@@ -43,12 +42,6 @@ public class ControladorABMTipoInstancia {
     public String buscarNombTipoTarea(int codTipoTarea){ //Método para buscar el nombre TipoTarea y devolver el nombre a pantalla
        return expertoTI.buscarNombTipoTarea(codTipoTarea); 
     }
-   /* public List<DTOAgregarTipoInstancia> filtradoSector(String filSector){
-       return expertoTI.filtradoSector(filSector); 
-    }
-    public List<DTOAgregarTipoInstancia> filtradoTT(String filTipoTarea){
-       return expertoTI.filtradoTT(filTipoTarea);
-      
-    }*/
+   
     
 }

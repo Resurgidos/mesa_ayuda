@@ -13,8 +13,6 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 
-
-
 public class ExpertoConfigurar {
          
                 
@@ -410,6 +408,95 @@ public class ExpertoConfigurar {
         }       
         
         return dtoMod;
+    }
+    
+    public DTOErroresMensajes agregarRenglon (DTOAgregarRenglon dtoAR){
+        TipoInstancia ti = new TipoInstancia();
+        TipoCasoTipoInstancia tcti = new TipoCasoTipoInstancia();
+        DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
+        ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
+        DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+                
+        FachadaPersistencia.getInstance().iniciarTransaccion();//Instanciaciones de objetos a usar      
+
+            List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+                dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                dtoCrit.setOperacion("=");
+                dtoCrit.setValor(dtoAR.getNumConfig()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                validarCod.add(dtoCrit);
+                   
+            List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );               
+                for (Object x : objetoList) {  //Con este for verifico que no haya un código ya existente
+                    configTC = (ConfiguracionTipoCaso)x; //Si ya existe ese código, settea a verificar para validar y que muestre un mensaje
+                        for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {                           
+                            if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoAR.getOrdenTCTI()){
+                                dtoErrores.setVerificarError(1);
+                                dtoErrores.setErrorMensaje("El orden de instancia ya está existente");
+                                return dtoErrores;
+                            }
+                        }
+                    }                   
+                    if(dtoAR.getOrdenTCTI() == 0){ //Verificamos que el codigo no sea cero, si es 0 Settea error
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El Código no esta permitido");                            
+                    }else{
+                        if(dtoErrores.getVerificarError()==0){
+                            dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+                            dtoCrit.setOperacion("=");
+                            dtoCrit.setValor(dtoAR.getCodTI()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+                            listadtoCrit.add(dtoCrit);
+
+                            List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+
+                            for (Object c : objetoList3) {
+                                ti = (TipoInstancia)c ;
+                                if(ti.getFechaHoraFinVigenciaTipoInstancia() != null){
+                                    dtoErrores.setVerificarError(1);
+                                    dtoErrores.setErrorMensaje("El TipoInstancia esta dado de baja");
+                                    return dtoErrores;
+                                }
+                            }  
+                            tcti.setOrdenTipoCasoTipoInstancia(dtoAR.getOrdenTCTI());
+                            tcti.setMinutosMaximoResolucion(dtoAR.getMinutosMAXReso());
+                            tcti.setTipoInstancia(ti);
+                            configTC.addTipoCasoTipoInstancia(tcti);
+                            JOptionPane.showMessageDialog(null, configTC.getTipoCtipoIns());
+                        }
+                        for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {
+                           if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoAR.getOrdenTCTI()){
+                               FachadaPersistencia.getInstance().guardar(configTC.getTipoCtipoIns().get(i)); 
+                           }
+                            
+                        }
+                        
+                    }
+                
+        return dtoErrores;
+    }
+    public String buscarNombTipoInstancia(int codTI){
+        DTOCriterio dtoCrit = new DTOCriterio();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();
+        TipoInstancia ti = new TipoInstancia();
+        
+            dtoCrit.setAtributo("codTipoInstancia"); 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(codTI);
+            listadtoCrit.add(dtoCrit);
+
+            List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+            
+            String nombreTI = null;
+            for (Object x : objetoList3) {
+                ti = (TipoInstancia)x ;
+                if(ti.getFechaHoraFinVigenciaTipoInstancia() == null){
+                    nombreTI = ti.getNombreTipoInstancia();
+                    return nombreTI;
+                }else{
+                    return "El TipoInstancia esta dado de baja";
+                }
+            }
+        return null;
     }
     
     public DTOTrabajarRenglones buscarRenglones(int codConfSelecc){ 

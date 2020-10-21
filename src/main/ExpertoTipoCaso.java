@@ -66,7 +66,7 @@ public class ExpertoTipoCaso {
             List<DTOCriterio> listadtoCrit = new ArrayList<>();
             dtoCrit.setAtributo("codTipoCaso");   
             dtoCrit.setOperacion("=");
-            dtoCrit.setValor(tipoCaso.getCodTipoCaso()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            dtoCrit.setValor(dtoTCaso.getCodTipoCaso()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);   
             try {
                 List objetoList = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );

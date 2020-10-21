@@ -184,7 +184,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 .addComponent(filtroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(AgregarCTC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -251,7 +251,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(botonVolver)
                         .addGap(383, 383, 383)
@@ -262,10 +262,9 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ErrorMensaje, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,72 +407,20 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     this.setVisible(false);
                 }
             }
-        
-        
         }
-        
-       
-        
-//Método Mostrar datos de Sector
-     /*   int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-        if (numTabSec == -1) {
-            ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");
-        } else {
-            for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-
-                if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
-
-                    System.out.println(tablaTI.getValueAt(i, 0));
-                    System.out.println(tablaTI.getValueAt(i, 1));
-
-                    dtoTI.setCodTipoInstancia((int) tablaTI.getValueAt(i, 0)); //Asigna codigo de tipo Instancia a dto
-                    dtoTI.setNombreTipoInstancia((String) tablaTI.getValueAt(i, 1));//Asigna nombre de tipo Instancia a dto
-                    dtoTI.setFechaHoraFinVigenciaTI((Date) tablaTI.getValueAt(i, 4));//Asigna fecha fin de TipoInstancia a dto
-
-                    //Inicio busqueda de sector
-                    controlTI.filtradoSector(tablaTI.getValueAt(i, 2).toString());
-                    String sec = tablaTI.getValueAt(i, 2).toString();
-                    List<DTOTipoInstancia> listamod = controlTI.filtradoSector(sec);
-                    for (int j = 0; j < listamod.size(); j++) {
-                        DTOTipoInstancia tI = (DTOTipoInstancia) listamod.get(j);
-                        dtoTI.setCodSector(tI.getCodSector()); //Asigna codigo de Sector a dto
-                        dtoTI.setFechaFinVigenciaSector(tI.getFechaFinVigenciaSector());//Asigna fecha fin de sector a dto
-                    }
-                    dtoTI.setNombreSector(tablaTI.getValueAt(i, 2).toString());//Asigna nombre a sector
-                    dtoTI.setNombreTipoTarea(tablaTI.getValueAt(i, 3).toString());//Asigna nombre a Tipo Tarea
-                    //Inicio busqueda de TipoTarea
-
-                    controlTI.filtradoTT(tablaTI.getValueAt(i, 3).toString());
-                    String tt = tablaTI.getValueAt(i, 3).toString();
-                    List<DTOTipoInstancia> lista = controlTI.filtradoTT(tt);
-                    for (int l = 0; l < lista.size(); l++) {
-                        DTOTipoInstancia tI = (DTOTipoInstancia) lista.get(l);
-                        dtoTI.setCodTipoTarea(tI.getCodTipoTarea());//Asigna codigo de tipo Tarea a dto
-                        dtoTI.setFechaFinVigenciaTT(tI.getFechaFinVigenciaTT());  //Asigna fecha fin de Tipo Tarea a dto
-
-                    }
-
-                    VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(dtoTI);
-                    mostrar.setVisible(true);
-
-                }
-
-            }
-        }*/
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     private void botonTrabajarRengloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrabajarRengloActionPerformed
         int filaSeleccionada = tablaConfiguracionCaso.getSelectedRow();
         if (filaSeleccionada == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
+            ErrorMensaje.setText("No ha seleccionado ningúna configuración para trabajar");
         }else {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if (tablaConfiguracionCaso.getValueAt(i, 3) != null) {
-                    ErrorMensaje.setForeground(Color.RED);
-                    ErrorMensaje.setText("El Configurar Caso seleccionado está dado de baja, no se puede modificar");
-                }else {
+                if(tablaConfiguracionCaso.getValueAt(i,4) != null){
+                ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+                ErrorMensaje.setText("La configuración seleccionada ya fue verificada, no se puede trabajar");
+              }else{  
                     if (filaSeleccionada == i) {              
                         int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 0);  
                         TrabajarRenglones TConReng = new TrabajarRenglones(codConfSelecc);
@@ -495,7 +442,10 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
         } else  {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-//                
+              if(tablaConfiguracionCaso.getValueAt(i,4) != null){
+                ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
+                ErrorMensaje.setText("La Configuración seleccionada ya está verificada");
+              }else{  
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
                     int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 0));
                     VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(1, codConfMostrar );
@@ -503,7 +453,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     this.setVisible(false);
                 }
             }
-        
+            }
         
         }
     }//GEN-LAST:event_botonVerificarActionPerformed

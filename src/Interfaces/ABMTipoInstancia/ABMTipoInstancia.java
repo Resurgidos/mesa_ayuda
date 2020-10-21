@@ -5,8 +5,7 @@ import DTO.DTOsTipoInstancia.DTOFiltroTI;
 import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.sql.Date;
+
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -235,6 +234,11 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
 
         filBusquedaCod.setBackground(new java.awt.Color(255, 255, 255));
+        filBusquedaCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                filBusquedaCodFocusLost(evt);
+            }
+        });
         filBusquedaCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filBusquedaCodActionPerformed(evt);
@@ -246,6 +250,9 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 filBusquedaCodKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                filBusquedaCodKeyTyped(evt);
             }
         });
 
@@ -347,16 +354,16 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         
        
         List<DTOFiltroTI> lista = null;
-        if(filTipoInstanciaCod == ""){
-            filTipoInstanciaCod = "0";
-            lista = controlTI.filtroTINombreTI(filTipoInstanciaNomb);
-        }else {
+         int cod;
             try{
-            lista = controlTI.filtroTICodTI(Integer.parseInt(filTipoInstanciaCod));
+             cod = Integer.parseInt(filTipoInstanciaCod);
             }catch(Exception e){
-            lista = controlTI.filtroTICodTI(0);
+              cod = 0;
             }
-        }
+        
+  
+            lista = controlTI.filtroTINombreTI2(cod,filTipoInstanciaNomb);
+        
         tablaTI = new DefaultTableModel();
         tablaTipoInstancia.setModel(tablaTI);
         tablaTI.addColumn("Cod. Tipo Instancia");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
@@ -380,7 +387,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             fil.add(lista.get(i).getFechaHoraFinVigenciaTI());
             tablaTI.addRow(fil);
         }
-     //   tablaTipoInstancia.getRowSorter().toggleSortOrder(0);
+       // tablaTipoInstancia.getRowSorter().toggleSortOrder(0);
     }
     private void filBusquedaCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusquedaCodActionPerformed
         // TODO add your handling code here:
@@ -465,10 +472,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_BajaTIActionPerformed
 
     private void filBusquedaCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaCodKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            filBusquedaNombre.setText("");
-            tablaTI("",filBusquedaCod.getText());
-        }
+
     }//GEN-LAST:event_filBusquedaCodKeyPressed
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
@@ -495,8 +499,8 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
     private void filBusquedaCodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaCodKeyReleased
-        filBusquedaNombre.setText("");
-        tablaTI("", filBusquedaCod.getText());
+       tablaTI(filBusquedaNombre.getText(), filBusquedaCod.getText());
+        
     }//GEN-LAST:event_filBusquedaCodKeyReleased
 
     private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
@@ -508,15 +512,21 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_filBusquedaNombreActionPerformed
 
     private void filBusquedaNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaNombreKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) 
-            filBusquedaCod.setText("");
-            tablaTI(filBusquedaNombre.getText(),"");
+ 
     }//GEN-LAST:event_filBusquedaNombreKeyPressed
 
     private void filBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaNombreKeyReleased
-        filBusquedaCod.setText("");
-        tablaTI(filBusquedaNombre.getText(),"");
+
+        tablaTI(filBusquedaNombre.getText(), filBusquedaCod.getText());
     }//GEN-LAST:event_filBusquedaNombreKeyReleased
+
+    private void filBusquedaCodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filBusquedaCodFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filBusquedaCodFocusLost
+
+    private void filBusquedaCodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filBusquedaCodKeyTyped
+       
+    }//GEN-LAST:event_filBusquedaCodKeyTyped
 
     public static void main(String args[]) {
 

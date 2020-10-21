@@ -70,5 +70,9 @@ public class ConfiguracionTipoCaso extends Entidad{
      public void addTipoCasoTipoInstancia(TipoCasoTipoInstancia tcti) {
        tipoCtipoIns.add(tcti) ;
     }
+     public void removeTCTI (TipoCasoTipoInstancia tipocasotipoinstancia){
+         tipoCtipoIns.remove(tipocasotipoinstancia);
+     }
+       
     
 }
