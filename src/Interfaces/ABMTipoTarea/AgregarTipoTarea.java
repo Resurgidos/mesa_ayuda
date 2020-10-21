@@ -14,6 +14,7 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agregar Tipo Tarea");
+        campocodigo.requestFocus();
     }
 
     @SuppressWarnings("unchecked")

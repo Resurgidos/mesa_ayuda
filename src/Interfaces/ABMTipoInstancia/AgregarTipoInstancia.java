@@ -8,22 +8,19 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class AgregarTipoInstancia extends javax.swing.JFrame {
-        DTOAgregarTipoInstancia dtoTI = new DTOAgregarTipoInstancia();
-        DTOErrorMensajes dtoErrores = new DTOErrorMensajes();
-        ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
-      
 
+    DTOAgregarTipoInstancia dtoTI = new DTOAgregarTipoInstancia();
+    DTOErrorMensajes dtoErrores = new DTOErrorMensajes();
+    ControladorABMTipoInstancia control = new ControladorABMTipoInstancia();
 
     public AgregarTipoInstancia() { //Constructor de la clase
-        
+
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agregar Tipo Instancia");
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,12 +49,11 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
         confirmarAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        confirmarAgregar.setForeground(new java.awt.Color(0, 0, 0));
         confirmarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
         confirmarAgregar.setMnemonic('c');
         confirmarAgregar.setText("Confirmar");
         confirmarAgregar.setBorder(null);
-        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarAgregarActionPerformed(evt);
@@ -67,7 +63,6 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(119, 148, 166));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_add_black_18dp.png"))); // NOI18N
         jLabel5.setText("AGREGAR TIPO INSTANCIA");
 
@@ -90,10 +85,8 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cod. Tipo Instancia:");
 
-        inputcodTI.setBackground(new java.awt.Color(255, 255, 255));
         inputcodTI.setBorder(null);
         inputcodTI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,10 +101,8 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre Tipo Instancia:");
 
-        inputnombTI.setBackground(new java.awt.Color(255, 255, 255));
         inputnombTI.setBorder(null);
         inputnombTI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -121,10 +112,8 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cod. Sector:");
 
-        inputcodSec.setBackground(new java.awt.Color(255, 255, 255));
         inputcodSec.setBorder(null);
         inputcodSec.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -144,12 +133,11 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         volverABMAgregar.setBackground(new java.awt.Color(204, 204, 204));
         volverABMAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        volverABMAgregar.setForeground(new java.awt.Color(0, 0, 0));
         volverABMAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         volverABMAgregar.setMnemonic('v');
         volverABMAgregar.setText("Volver");
         volverABMAgregar.setBorder(null);
-        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         volverABMAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMAgregarActionPerformed(evt);
@@ -158,10 +146,8 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cod. Tipo Tarea:");
 
-        inputcodTT.setBackground(new java.awt.Color(255, 255, 255));
         inputcodTT.setBorder(null);
         inputcodTT.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -181,7 +167,6 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Nombre Sector:");
 
         outnombSec.setEditable(false);
@@ -200,7 +185,6 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nombre Tipo Tarea:");
 
         outnombTT.setEditable(false);
@@ -294,46 +278,44 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
-       //Método para agregar un Tipo de Instancia 
-       try {
+        //Método para agregar un Tipo de Instancia 
+        try {
             if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código 
                 if (!inputnombTI.getText().isEmpty()) {//Para que el nombre del TI no este vacio
                     if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
-                         if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
-                    do{
-                            DTOAgregarTipoInstancia dtoAgregar = new DTOAgregarTipoInstancia();
-                            dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
-                            dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
-                            dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
-                            dtoAgregar.setNombreSector(outnombSec.getText());
-                            dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-                            dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-                            dtoErrores = control.agregarTipoInstancia(dtoAgregar);
+                        if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
+                            do {
+                                DTOAgregarTipoInstancia dtoAgregar = new DTOAgregarTipoInstancia();
+                                dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
+                                dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
+                                dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
+                                dtoAgregar.setNombreSector(outnombSec.getText());
+                                dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
+                                dtoAgregar.setNombreTipoTarea(outnombTT.getText());
+                                dtoErrores = control.agregarTipoInstancia(dtoAgregar);
 
-       
-       
-                            if(dtoErrores.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
-                            ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
-                            JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
-                            volver.setVisible(true);
-                            volver.tablaTI("","");
-                            this.setVisible(false);
-                            
-                        }else{
-                           JOptionPane.showMessageDialog(this,dtoErrores.getErrorMensaje());                           
-                           dtoErrores.setVerificarError(0);
-                       } }while(dtoErrores.getVerificarError() != 0);
-                        
-                      
-                   //y un chatch en el caso que no se pueda crear el Tipo Instancia
-                            } else {
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                     }
-                      
-                       } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                }
-                     } else {
+                                if (dtoErrores.getVerificarError() == 0) {//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
+                                    ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
+                                    JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
+                                    volver.setVisible(true);
+                                    volver.tablaTI("", "");
+                                    this.setVisible(false);
+
+                                } else {
+                                    JOptionPane.showMessageDialog(this, dtoErrores.getErrorMensaje());
+                                    dtoErrores.setVerificarError(0);
+                                }
+                            } while (dtoErrores.getVerificarError() != 0);
+
+                            //y un chatch en el caso que no se pueda crear el Tipo Instancia
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
@@ -345,7 +327,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_confirmarAgregarActionPerformed
 
-    
+
     private void inputcodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputcodTIActionPerformed
@@ -368,7 +350,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACK_SPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACK_SPACE) && (car == (char) KeyEvent.VK_SPACE)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -377,31 +359,32 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
     private void inputcodSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodSecKeyTyped
         //Declaramos una variable y asignamos un evento
-         char car = evt.getKeyChar();
+        char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACK_SPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales ni letras", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputcodSecKeyTyped
 
     private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
         //Botón para volver al menú de TipoInstancia
         ABMTipoInstancia abmTI = new ABMTipoInstancia();
-       
+
         abmTI.setVisible(true);
-        abmTI.tablaTI("","");
+        abmTI.tablaTI("", "");
         this.setVisible(false);
     }//GEN-LAST:event_volverABMAgregarActionPerformed
 
     private void inputcodTTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTTKeyTyped
-         char car = evt.getKeyChar();
+        //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
 
         //Condicion
-        if ((car < 'a'||  car > 'z') && (car < 'A' ||  car > 'Z') && (car < '0' || car > '9') && (car == (char) KeyEvent.VK_BACK_SPACE) && (car == (char) KeyEvent.VK_SPACE) ) {
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "El campo no admite caracteres especiales ni letras", "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputcodTTKeyTyped
 
@@ -410,7 +393,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_outnombSecKeyTyped
 
     private void inputcodTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTTActionPerformed
-       
+
     }//GEN-LAST:event_inputcodTTActionPerformed
 
     private void outnombTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outnombTTActionPerformed
@@ -428,69 +411,74 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void inputcodSecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodSecActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputcodSecActionPerformed
-    public void MostrarSectorFil(int filSector){
+    public void MostrarSectorFil(int filSector) {
 //        if(filSector){
 //        }
-      /* List<DTOTipoInstancia> lista = control.filtradoSector(filSector);
+        /* List<DTOTipoInstancia> lista = control.filtradoSector(filSector);
         for (int i = 0; i < lista.size(); i++) {
            DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombSec.setText(tI.getNombreSector());
         }*/
-      String nombreSector = control.buscarNombSector(filSector);
-      if(nombreSector == "No se encontro el Sector"){
-           outnombSec.setText("");
-           outnombSec.setForeground(Color.red);
-           outnombSec.setText(nombreSector);
-           JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");    
-       }else if(nombreSector == "El Sector ingresado esta dado de Baja"){
-           outnombSec.setText("");
-           outnombSec.setForeground(Color.red);
-           outnombSec.setText(nombreSector);
-           JOptionPane.showMessageDialog(this, nombreSector);
-       }else{
-      outnombSec.setText("");
-      outnombSec.setForeground(Color.black);
-      outnombSec.setText(nombreSector);
-      }
+        String nombreSector = control.buscarNombSector(filSector);
+        if (nombreSector == "No se encontro el Sector") {
+            outnombSec.setText("");
+            outnombSec.setForeground(Color.red);
+            outnombSec.setText(nombreSector);
+            JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");
+        } else if (nombreSector == "El Sector ingresado esta dado de Baja") {
+            outnombSec.setText("");
+            outnombSec.setForeground(Color.red);
+            outnombSec.setText(nombreSector);
+            JOptionPane.showMessageDialog(this, nombreSector);
+        } else {
+            outnombSec.setText("");
+            outnombSec.setForeground(Color.black);
+            outnombSec.setText(nombreSector);
+        }
     }
     private void inputcodSecFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodSecFocusLost
-      if (!inputcodSec.getText().isEmpty()) {
-       MostrarSectorFil(Integer.parseInt(inputcodSec.getText()));
-         }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
-                                                       
-     
+        if (!inputcodSec.getText().isEmpty()) {
+            MostrarSectorFil(Integer.parseInt(inputcodSec.getText()));
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_inputcodSecFocusLost
 
     private void inputcodTTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodTTFocusLost
-         if (!inputcodTT.getText().isEmpty()) {
-        MostrarTTFil(Integer.parseInt(inputcodTT.getText()));       
-        }else{JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);}
+        if (!inputcodTT.getText().isEmpty()) {
+            MostrarTTFil(Integer.parseInt(inputcodTT.getText()));
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código tipo tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_inputcodTTFocusLost
 
-    public void MostrarTTFil(int nombreTT){
-     /*  List<DTOTipoInstancia> lista = control.filtradoTT(nombreTT);
+    public void MostrarTTFil(int nombreTT) {
+        /*  List<DTOTipoInstancia> lista = control.filtradoTT(nombreTT);
         for (int i = 0; i < lista.size(); i++) {
            DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombTT.setText(tI.getNombreTipoTarea());
          }*/
-     
+
         String nombreTipoT = control.buscarNombTipoTarea(nombreTT);
-        if(nombreTipoT == "No se encontro el TipoTarea"){
-           outnombTT.setText("");
-            outnombTT.setForeground(Color.red);
-           outnombTT.setText(nombreTipoT);
-           JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");    
-       }else if(nombreTipoT == "El Tipo Tarea ingresado esta dado de Baja"){
+        if (nombreTipoT == "No se encontro el TipoTarea") {
             outnombTT.setText("");
             outnombTT.setForeground(Color.red);
             outnombTT.setText(nombreTipoT);
-           JOptionPane.showMessageDialog(this, nombreTipoT);    
-       }else{
-        outnombTT.setText("");
-        outnombTT.setForeground(Color.black);
-        outnombTT.setText(nombreTipoT);
+            JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");
+        } else if (nombreTipoT == "El Tipo Tarea ingresado esta dado de Baja") {
+            outnombTT.setText("");
+            outnombTT.setForeground(Color.red);
+            outnombTT.setText(nombreTipoT);
+            JOptionPane.showMessageDialog(this, nombreTipoT);
+        } else {
+            outnombTT.setText("");
+            outnombTT.setForeground(Color.black);
+            outnombTT.setText(nombreTipoT);
         }
     }
+
     /**
      * @param args the command line arguments
      */

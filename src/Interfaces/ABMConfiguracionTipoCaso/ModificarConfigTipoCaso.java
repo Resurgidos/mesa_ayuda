@@ -31,6 +31,8 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         setTitle("Modificar Configuración Tipo Caso");
         DTOModificarConf dtoModificar = control.buscarPorNumConfig(codSeleccionado);
         inicializarDatos(dtoModificar);
+        inputNumConfMod.setForeground(Color.black);
+        outNombreTipoCaso.setForeground(Color.black);
         inputCodTipoCasoModif.selectAll();
         inputCodTipoCasoModif.requestFocus();
     }
@@ -98,7 +100,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         jLabel3.setText("Cod. Tipo Caso");
 
         outNombreTipoCaso.setEditable(false);
-        outNombreTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        outNombreTipoCaso.setBackground(new java.awt.Color(153, 153, 153));
         outNombreTipoCaso.setBorder(null);
         outNombreTipoCaso.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -136,7 +138,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         jLabel7.setText("Fecha Desde:");
 
         inputNumConfMod.setEditable(false);
-        inputNumConfMod.setBackground(new java.awt.Color(255, 255, 255));
+        inputNumConfMod.setBackground(new java.awt.Color(153, 153, 153));
         inputNumConfMod.setBorder(null);
         inputNumConfMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,7 +247,6 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(9, 9, 9)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputCodTipoCasoModif, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
@@ -373,7 +374,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No existe el codigo del Tipo Caso Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             outNombreTipoCaso.setText("");
         }else{
-            outNombreTipoCaso.setForeground(Color.gray);
+            outNombreTipoCaso.setForeground(Color.black);
             outNombreTipoCaso.setText(nombreTCaso);
         }
     }

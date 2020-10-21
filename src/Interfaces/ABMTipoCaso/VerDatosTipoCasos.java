@@ -7,6 +7,7 @@ package Interfaces.ABMTipoCaso;
 
 
 import DTO.DTOsTipoCaso.DTOTipoCaso;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,9 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Datos Tipo Caso -" + dtoTipoCaso.getNombreTipoCaso() );
+        inputCodTipoCaso.setForeground(Color.black);
+        inputNomTipoCaso.setForeground(Color.black);
+        inputFechaTipoCaso.setForeground(Color.black);
         inputCodTipoCaso.setText(Integer.toString(dtoTipoCaso.getCodTipoCaso()));
         inputNomTipoCaso.setText(dtoTipoCaso.getNombreTipoCaso());
 //        System.out.println(dtoTipoCaso.getFechaFinVigenciaTipoCaso());
@@ -68,7 +72,6 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(119, 148, 166));
 
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        labelTituloMostrar.setForeground(new java.awt.Color(0, 0, 0));
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojonegro.png"))); // NOI18N
         labelTituloMostrar.setText("DATOS DE TIPO CASO");
 
@@ -91,11 +94,10 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
 
         labelcodver.setBackground(new java.awt.Color(0, 0, 0));
         labelcodver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelcodver.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver.setText("Cod. Tipo Caso:");
 
         inputCodTipoCaso.setEditable(false);
-        inputCodTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputCodTipoCaso.setBackground(new java.awt.Color(153, 153, 153));
         inputCodTipoCaso.setBorder(null);
         inputCodTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,11 +112,10 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
 
         labelnombver.setBackground(new java.awt.Color(0, 0, 0));
         labelnombver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelnombver.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver.setText("Nombre Tipo Caso:");
 
         inputNomTipoCaso.setEditable(false);
-        inputNomTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputNomTipoCaso.setBackground(new java.awt.Color(153, 153, 153));
         inputNomTipoCaso.setBorder(null);
         inputNomTipoCaso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -124,11 +125,10 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
 
         labelFechaFinver.setBackground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelFechaFinver.setForeground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setText("Fecha Fin Vigencia :");
 
         inputFechaTipoCaso.setEditable(false);
-        inputFechaTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputFechaTipoCaso.setBackground(new java.awt.Color(153, 153, 153));
         inputFechaTipoCaso.setBorder(null);
         inputFechaTipoCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,12 +143,11 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
 
         botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
         botonContinuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonContinuar.setForeground(new java.awt.Color(0, 0, 0));
         botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         botonContinuar.setMnemonic('v');
         botonContinuar.setText("Volver");
         botonContinuar.setBorder(null);
-        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);

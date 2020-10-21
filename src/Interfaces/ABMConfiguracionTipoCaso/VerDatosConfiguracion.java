@@ -41,10 +41,17 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
     
     public void inicializarDatos(DTOVisualizarVerificar dtovisu){ //Método para inicializar los datos en la Interfaz
         DateFormat df = new SimpleDateFormat();
+        verConfTC.setForeground(Color.black);
+        verCodTipoCaso.setForeground(Color.black);
+        verNombTC.setForeground(Color.black);
+        verFIV.setForeground(Color.black);
+        verFFV.setForeground(Color.black);
+        verFV.setForeground(Color.black);
+        
         verConfTC.setText(Integer.toString(dtovisu.getNroConfigTipoCaso()));
         verCodTipoCaso.setText(Integer.toString(dtovisu.getCodTipoCaso()));
         verNombTC.setText(dtovisu.getNombreTipoCaso());
-        
+
        
         Date fechaIV = dtovisu.getFechaInicioVig();
         String fechaInicioV = df.format(fechaIV);            
@@ -135,7 +142,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         verFV.setEditable(false);
-        verFV.setBackground(new java.awt.Color(255, 255, 255));
+        verFV.setBackground(new java.awt.Color(153, 153, 153));
         verFV.setBorder(null);
         verFV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -205,7 +212,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         labelcodver.setText("Núm. Configuración Tipo Caso:");
 
         verConfTC.setEditable(false);
-        verConfTC.setBackground(new java.awt.Color(255, 255, 255));
+        verConfTC.setBackground(new java.awt.Color(153, 153, 153));
         verConfTC.setBorder(null);
         verConfTC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +236,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         labelnombver.setText("Cod. Tipo Caso:");
 
         verFIV.setEditable(false);
-        verFIV.setBackground(new java.awt.Color(255, 255, 255));
+        verFIV.setBackground(new java.awt.Color(153, 153, 153));
         verFIV.setBorder(null);
         verFIV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +250,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         });
 
         verCodTipoCaso.setEditable(false);
-        verCodTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        verCodTipoCaso.setBackground(new java.awt.Color(153, 153, 153));
         verCodTipoCaso.setBorder(null);
         verCodTipoCaso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -262,7 +269,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         labelFechaFinver.setText("Nombre Tipo Caso :");
 
         verFFV.setEditable(false);
-        verFFV.setBackground(new java.awt.Color(255, 255, 255));
+        verFFV.setBackground(new java.awt.Color(153, 153, 153));
         verFFV.setBorder(null);
         verFFV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -271,7 +278,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         });
 
         verNombTC.setEditable(false);
-        verNombTC.setBackground(new java.awt.Color(255, 255, 255));
+        verNombTC.setBackground(new java.awt.Color(153, 153, 153));
         verNombTC.setBorder(null);
         verNombTC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

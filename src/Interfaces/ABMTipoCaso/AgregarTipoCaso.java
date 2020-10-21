@@ -15,6 +15,7 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agregar Tipo Caso");
+        inputCodTipoCaso.requestFocus();
     }
 
     

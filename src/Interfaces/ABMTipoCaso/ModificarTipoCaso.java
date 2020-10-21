@@ -7,6 +7,7 @@ package Interfaces.ABMTipoCaso;
 
 import Controller.ControladorABMTipoCaso;
 import DTO.DTOsTipoCaso.DTOTipoCaso;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 
@@ -28,7 +29,7 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         
         
         
-        
+        inputCodTipoCaso.setForeground(Color.black);
         inputCodTipoCaso.setText(Integer.toString(dtoTipoCasoModif.getCodTipoCaso()));
         inputnombreTipoCaso.setText(dtoTipoCasoModif.getNombreTipoCaso());
         inputnombreTipoCaso.selectAll();
@@ -135,7 +136,7 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         });
 
         inputCodTipoCaso.setEditable(false);
-        inputCodTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputCodTipoCaso.setBackground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

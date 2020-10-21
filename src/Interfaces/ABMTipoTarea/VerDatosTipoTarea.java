@@ -8,6 +8,7 @@ package Interfaces.ABMTipoTarea;
 import Interfaces.ABMSector.*;
 import DTO.DTOsSector.DTOSector;
 import DTO.DTOTipoTarea;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,9 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Datos Tipo Tarea");
+        verCodTipoTarea.setForeground(Color.black);
+        verNombTipoTarea.setForeground(Color.black);
+        verDescTipoTarea.setForeground(Color.black);
         verCodTipoTarea.setText(Integer.toString(dtoTipoTarea.getCodTipoTarea()));
         verNombTipoTarea.setText(dtoTipoTarea.getNombreTipoTarea());
         verDescTipoTarea.setText(dtoTipoTarea.getDescripcionTipoTarea());
@@ -71,17 +75,15 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
 
         labeldescver.setBackground(new java.awt.Color(0, 0, 0));
         labeldescver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labeldescver.setForeground(new java.awt.Color(0, 0, 0));
         labeldescver.setText("Descripción Tipo Tarea:");
 
         botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
         botonContinuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonContinuar.setForeground(new java.awt.Color(0, 0, 0));
         botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         botonContinuar.setMnemonic('v');
         botonContinuar.setText("Volver");
         botonContinuar.setBorder(null);
-        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);
@@ -91,7 +93,6 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(119, 148, 166));
 
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        labelTituloMostrar.setForeground(new java.awt.Color(0, 0, 0));
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojonegro.png"))); // NOI18N
         labelTituloMostrar.setText("DATOS TIPO TAREA");
 
@@ -114,11 +115,10 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
 
         labelcodver.setBackground(new java.awt.Color(0, 0, 0));
         labelcodver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelcodver.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver.setText("Cod. Tipo Tarea:");
 
         verCodTipoTarea.setEditable(false);
-        verCodTipoTarea.setBackground(new java.awt.Color(255, 255, 255));
+        verCodTipoTarea.setBackground(new java.awt.Color(153, 153, 153));
         verCodTipoTarea.setBorder(null);
         verCodTipoTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,11 +133,10 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
 
         labelnombver.setBackground(new java.awt.Color(0, 0, 0));
         labelnombver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelnombver.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver.setText("Nombre Tipo Tarea:");
 
         verNombTipoTarea.setEditable(false);
-        verNombTipoTarea.setBackground(new java.awt.Color(255, 255, 255));
+        verNombTipoTarea.setBackground(new java.awt.Color(153, 153, 153));
         verNombTipoTarea.setBorder(null);
         verNombTipoTarea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -147,11 +146,10 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
 
         labelFechaFinver.setBackground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelFechaFinver.setForeground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setText("Fecha Fin Vigencia :");
 
         verFechaFinTipoTarea.setEditable(false);
-        verFechaFinTipoTarea.setBackground(new java.awt.Color(255, 255, 255));
+        verFechaFinTipoTarea.setBackground(new java.awt.Color(153, 153, 153));
         verFechaFinTipoTarea.setBorder(null);
         verFechaFinTipoTarea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -159,8 +157,7 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
             }
         });
 
-        verDescTipoTarea.setEditable(false);
-        verDescTipoTarea.setBackground(new java.awt.Color(255, 255, 255));
+        verDescTipoTarea.setBackground(new java.awt.Color(153, 153, 153));
         verDescTipoTarea.setBorder(null);
         verDescTipoTarea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

@@ -6,6 +6,7 @@
 package Interfaces.ABMSector;
 
 import DTO.DTOsSector.DTOSector;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,9 @@ public class VerDatosSector extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Datos Sector");
+        verCodSec.setForeground(Color.black);
+        verNombSec.setForeground(Color.black);
+        verDescSec.setForeground(Color.black);
         verCodSec.setText(Integer.toString(dtoSec.getCodSector()));
         verNombSec.setText(dtoSec.getNombreSector());
         verDescSec.setText(dtoSec.getDescripcionSector());
@@ -69,17 +73,15 @@ public class VerDatosSector extends javax.swing.JFrame {
 
         labeldescver.setBackground(new java.awt.Color(0, 0, 0));
         labeldescver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labeldescver.setForeground(new java.awt.Color(0, 0, 0));
         labeldescver.setText("Descripción Sector:");
 
         botonContinuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonContinuar.setForeground(new java.awt.Color(0, 0, 0));
         botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         botonContinuar.setMnemonic('v');
         botonContinuar.setText("Volver");
         botonContinuar.setBorder(null);
         botonContinuar.setContentAreaFilled(false);
-        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);
@@ -89,7 +91,6 @@ public class VerDatosSector extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(119, 148, 166));
 
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        labelTituloMostrar.setForeground(new java.awt.Color(0, 0, 0));
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojonegro.png"))); // NOI18N
         labelTituloMostrar.setText("DATOS DE SECTOR");
 
@@ -112,11 +113,10 @@ public class VerDatosSector extends javax.swing.JFrame {
 
         labelcodver.setBackground(new java.awt.Color(0, 0, 0));
         labelcodver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelcodver.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver.setText("Cod. Sector:");
 
         verCodSec.setEditable(false);
-        verCodSec.setBackground(new java.awt.Color(255, 255, 255));
+        verCodSec.setBackground(new java.awt.Color(153, 153, 153));
         verCodSec.setBorder(null);
         verCodSec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,11 +131,10 @@ public class VerDatosSector extends javax.swing.JFrame {
 
         labelnombver.setBackground(new java.awt.Color(0, 0, 0));
         labelnombver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelnombver.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver.setText("Nombre Sector:");
 
         verNombSec.setEditable(false);
-        verNombSec.setBackground(new java.awt.Color(255, 255, 255));
+        verNombSec.setBackground(new java.awt.Color(153, 153, 153));
         verNombSec.setBorder(null);
         verNombSec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -145,11 +144,10 @@ public class VerDatosSector extends javax.swing.JFrame {
 
         labelFechaFinver.setBackground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelFechaFinver.setForeground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setText("Fecha Fin Vigencia :");
 
         verFechaFinSec.setEditable(false);
-        verFechaFinSec.setBackground(new java.awt.Color(255, 255, 255));
+        verFechaFinSec.setBackground(new java.awt.Color(153, 153, 153));
         verFechaFinSec.setBorder(null);
         verFechaFinSec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -158,7 +156,7 @@ public class VerDatosSector extends javax.swing.JFrame {
         });
 
         verDescSec.setEditable(false);
-        verDescSec.setBackground(new java.awt.Color(255, 255, 255));
+        verDescSec.setBackground(new java.awt.Color(153, 153, 153));
         verDescSec.setBorder(null);
         verDescSec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -184,9 +182,7 @@ public class VerDatosSector extends javax.swing.JFrame {
                                 .addComponent(verCodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(labeldescver)
                                 .addComponent(labelFechaFinver)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelnombver)
-                                    .addGap(258, 258, 258))))
+                                .addComponent(labelnombver)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(botonContinuar))))

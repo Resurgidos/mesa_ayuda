@@ -420,7 +420,14 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_inputcodSecmodActionPerformed
 
     private void inputcodSecmodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodSecmodKeyTyped
-        //Declaramos una variable y asignamos un evento
+          //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_inputcodSecmodKeyTyped
 
     private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
@@ -473,7 +480,14 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_inputcodTTmodActionPerformed
 
     private void inputcodTTmodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcodTTmodKeyTyped
-        // TODO add your handling code here:
+            //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_inputcodTTmodKeyTyped
 
     private void inputcodSecmodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputcodSecmodFocusLost

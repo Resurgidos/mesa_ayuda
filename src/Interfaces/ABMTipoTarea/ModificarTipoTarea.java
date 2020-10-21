@@ -2,6 +2,7 @@ package Interfaces.ABMTipoTarea;
 import Controller.ControladorABMTipoTarea;
 import DTO.DTOTipoTarea;
 import Interfaces.ABMTipoTarea.ABMTipoTarea;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class ModificarTipoTarea extends javax.swing.JFrame {
@@ -13,7 +14,7 @@ public class ModificarTipoTarea extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Modificar Tipo Tarea");
-        
+        inputCodtita.setForeground(Color.black);
         inputCodtita.setText(Integer.toString(dtotipotareamodificar.getCodTipoTarea()));
         inputnomtita.setText(dtotipotareamodificar.getNombreTipoTarea());
         inputDesctita.setText(dtotipotareamodificar.getDescripcionTipoTarea());
@@ -122,7 +123,7 @@ public class ModificarTipoTarea extends javax.swing.JFrame {
         });
 
         inputCodtita.setEditable(false);
-        inputCodtita.setBackground(new java.awt.Color(255, 255, 255));
+        inputCodtita.setBackground(new java.awt.Color(153, 153, 153));
         inputCodtita.setBorder(null);
         inputCodtita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

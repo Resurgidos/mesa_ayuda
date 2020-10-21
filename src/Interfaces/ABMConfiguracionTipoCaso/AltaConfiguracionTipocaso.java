@@ -31,6 +31,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Alta configuración Tipo Caso");
+        inputNombreTipoCaso.setForeground(Color.black);
     }
 
     /**
@@ -78,7 +79,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         jLabel3.setText("Cod. Tipo Caso ");
 
         inputNombreTipoCaso.setEditable(false);
-        inputNombreTipoCaso.setBackground(new java.awt.Color(255, 255, 255));
+        inputNombreTipoCaso.setBackground(new java.awt.Color(153, 153, 153));
         inputNombreTipoCaso.setBorder(null);
         inputNombreTipoCaso.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -243,9 +244,9 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputNumConfiCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputCodTipoCaso1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -370,7 +371,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ingrese un Código de Tipo Caso VÁLIDO", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             inputNombreTipoCaso.setText("");
         }else{
-            inputNombreTipoCaso.setForeground(Color.gray);
+            inputNombreTipoCaso.setForeground(Color.black);
             inputNombreTipoCaso.setText(nombreTCaso);
         }
         

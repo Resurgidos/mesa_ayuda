@@ -8,6 +8,7 @@ package Interfaces.ABMSector;
 import Controller.ControladorABMSector;
 import DTO.DTOsSector.DTOSector;
 import Interfaces.ABMSector.ABMSector;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,7 +27,7 @@ public class ModificarSector extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Modificar Sector");
-        
+        inputCodSec.setForeground(Color.black);
         inputCodSec.setText(Integer.toString(dtosectomodificar.getCodSector()));
         inputnomSec.setText(dtosectomodificar.getNombreSector());
         inputDesc.setText(dtosectomodificar.getDescripcionSector());
@@ -150,7 +151,7 @@ public class ModificarSector extends javax.swing.JFrame {
         });
 
         inputCodSec.setEditable(false);
-        inputCodSec.setBackground(new java.awt.Color(255, 255, 255));
+        inputCodSec.setBackground(new java.awt.Color(153, 153, 153));
         inputCodSec.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

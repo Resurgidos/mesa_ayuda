@@ -4,6 +4,7 @@ import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOAgregarRenglon;
 import DTO.DTOsConfiguración.DTOErroresMensajes;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 
@@ -14,11 +15,15 @@ public class AgregarRenglon extends javax.swing.JFrame {
     DTOErroresMensajes dtoE = new DTOErroresMensajes();
     ControladorConfiguracionTipoCaso controlador = new ControladorConfiguracionTipoCaso();
     int codConfig = 0;
+     
     public AgregarRenglon(int numConfig) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agregar Renglón");
         codConfig = numConfig; 
+        inputNumRenglon.requestFocus();
+        outNombTI.setForeground(Color.black);
+
     }
 
     private AgregarRenglon() {
@@ -102,6 +107,11 @@ public class AgregarRenglon extends javax.swing.JFrame {
         inputMinMax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputMinMaxActionPerformed(evt);
+            }
+        });
+        inputMinMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputMinMaxKeyTyped(evt);
             }
         });
 
@@ -285,7 +295,15 @@ public class AgregarRenglon extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNumRenglonActionPerformed
 
     private void inputNumRenglonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNumRenglonKeyTyped
-        // TODO add your handling code here:
+         //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_inputNumRenglonKeyTyped
 
     private void inputMinMaxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMinMaxFocusLost
@@ -312,6 +330,14 @@ public class AgregarRenglon extends javax.swing.JFrame {
 
     private void inputCodTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCodTIKeyTyped
         //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_inputCodTIKeyTyped
 
     private void volverABMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMActionPerformed
@@ -377,6 +403,18 @@ public class AgregarRenglon extends javax.swing.JFrame {
     private void outNombTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_outNombTIKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_outNombTIKeyTyped
+
+    private void inputMinMaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMinMaxKeyTyped
+         //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_inputMinMaxKeyTyped
 
     /**
      * @param args the command line arguments
