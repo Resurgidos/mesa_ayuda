@@ -50,7 +50,9 @@ public class ControladorConfiguracionTipoCaso {
     public String buscarNombTipoInstancia(int codTI){
         return expertoC.buscarNombTipoInstancia(codTI);
     }
-
+    public DTOErroresMensajes eliminarRenglon(int nroConfigCaso, int ordenTCTISelec){
+        return expertoC.eliminarRenglon(nroConfigCaso, ordenTCTISelec);
+    }
     
     public DTOTrabajarRenglones buscarRenglones(int codConfSelecc) {
         return expertoC.buscarRenglones(codConfSelecc);

@@ -461,19 +461,62 @@ public class ExpertoConfigurar {
                             tcti.setMinutosMaximoResolucion(dtoAR.getMinutosMAXReso());
                             tcti.setTipoInstancia(ti);
                             configTC.addTipoCasoTipoInstancia(tcti);
-                            JOptionPane.showMessageDialog(null, configTC.getTipoCtipoIns());
+                        //    FachadaPersistencia.getInstance().guardar(tcti);
+                            FachadaPersistencia.getInstance().guardar(configTC);
                         }
-                        for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {
-                           if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoAR.getOrdenTCTI()){
-                               FachadaPersistencia.getInstance().guardar(configTC.getTipoCtipoIns().get(i)); 
-                           }
-                            
-                        }
-                        
                     }
                 
         return dtoErrores;
     }
+    
+    public DTOErroresMensajes eliminarRenglon(int nroConfigCaso, int ordenTCTISelec){
+        DTOErroresMensajes dtoE = new DTOErroresMensajes();
+        TipoCasoTipoInstancia tcti;
+        ConfiguracionTipoCaso configTC;
+        DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
+        
+        FachadaPersistencia.getInstance().iniciarTransaccion();//Instanciaciones de objetos a usar      
+
+        List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
+            dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion("=");
+            dtoCrit.setValor(nroConfigCaso); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            validarCod.add(dtoCrit);
+                  
+        List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",validarCod );               
+        for (Object x : objetoList) {  //Con este for verifico que no haya un código ya existente
+            configTC = (ConfiguracionTipoCaso)x; //Si ya existe ese código, settea a verificar para validar y que muestre un mensaje
+            
+            if(configTC.getFechaVerificacion() == null){
+               
+                for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) { 
+                   
+                    if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == ordenTCTISelec){
+                            
+                            int j = JOptionPane.showConfirmDialog(null, "“Está seguro de que desea borrar el orden Nº "+ ordenTCTISelec+"“");
+                            if (j == 0){ 
+                            try{
+                                tcti = configTC.getTipoCtipoIns().get(i);
+                                configTC.removeTCTI(tcti);
+                                FachadaPersistencia.getInstance().guardar(configTC); 
+                            //    FachadaPersistencia.getInstance().delete(tcti);                              
+                            }catch(Exception e){
+                                dtoE.setVerificarError(1);
+                                dtoE.setErrorMensaje("Hubo un error al intentar eliminar el renglón");
+                                }
+                            }
+                        }
+                    }   
+                }
+            
+            
+        }
+        FachadaPersistencia.getInstance().finalizarTransaccion();
+        return dtoE;           
+    }
+    
+    
+    
     public String buscarNombTipoInstancia(int codTI){
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();

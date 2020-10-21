@@ -6,12 +6,14 @@
 package Interfaces.ABMConfiguracionTipoCaso;
 
 import Controller.ControladorConfiguracionTipoCaso;
+import DTO.DTOsConfiguración.DTOErroresMensajes;
 import DTO.DTOsConfiguración.DTORenglones;
 import DTO.DTOsConfiguración.DTOTrabajarRenglones;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,6 +37,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         nroConfigCaso.setText(Integer.toString( dtorenglo.getCodConfSelecc()));
         tablaConRenglones(dtorenglo.getTipoCtipoIns());
         codConfig = codConfSelecc;
+        tablaRenglones.fireTableDataChanged();
     }
 
     public TrabajarRenglones() {
@@ -84,7 +87,6 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(119, 148, 166));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_add_black_18dp.png"))); // NOI18N
         jLabel10.setText("AGREGAR CONFIGURACIÓN TIPO CASO");
 
@@ -106,9 +108,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RENGLÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RENGLÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
 
-        inputcodTI.setBackground(new java.awt.Color(255, 255, 255));
         inputcodTI.setBorder(null);
         inputcodTI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,15 +124,12 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Orden TCTI:");
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Minutos Máxima Iteracion: ");
 
-        inputcodTI2.setBackground(new java.awt.Color(255, 255, 255));
         inputcodTI2.setBorder(null);
         inputcodTI2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,10 +176,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Cod. Tipo Instancia:");
 
-        inputcodTI3.setBackground(new java.awt.Color(255, 255, 255));
         inputcodTI3.setBorder(null);
         inputcodTI3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,10 +192,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Nombre Tipo Instancia:");
 
-        inputcodTI4.setBackground(new java.awt.Color(255, 255, 255));
         inputcodTI4.setBorder(null);
         inputcodTI4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,12 +293,11 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         volverABMAgregar.setBackground(new java.awt.Color(204, 204, 204));
         volverABMAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        volverABMAgregar.setForeground(new java.awt.Color(0, 0, 0));
         volverABMAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         volverABMAgregar.setMnemonic('v');
         volverABMAgregar.setText("Volver");
         volverABMAgregar.setBorder(null);
-        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         volverABMAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMAgregarActionPerformed(evt);
@@ -313,12 +306,11 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         confirmarAgregar.setBackground(new java.awt.Color(204, 204, 204));
         confirmarAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        confirmarAgregar.setForeground(new java.awt.Color(0, 0, 0));
         confirmarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
         confirmarAgregar.setMnemonic('c');
         confirmarAgregar.setText("Confirmar");
         confirmarAgregar.setBorder(null);
-        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarAgregarActionPerformed(evt);
@@ -329,18 +321,16 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         volverABMAgregar3.setBackground(new java.awt.Color(204, 204, 204));
         volverABMAgregar3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        volverABMAgregar3.setForeground(new java.awt.Color(0, 0, 0));
         volverABMAgregar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         volverABMAgregar3.setMnemonic('v');
         volverABMAgregar3.setText("Volver");
         volverABMAgregar3.setBorder(null);
-        volverABMAgregar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverABMAgregar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         volverABMAgregar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMAgregar3ActionPerformed(evt);
@@ -349,17 +339,15 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         confirmarAgregar3.setBackground(new java.awt.Color(204, 204, 204));
         confirmarAgregar3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        confirmarAgregar3.setForeground(new java.awt.Color(0, 0, 0));
         confirmarAgregar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
         confirmarAgregar3.setMnemonic('c');
         confirmarAgregar3.setText("Confirmar");
         confirmarAgregar3.setBorder(null);
-        confirmarAgregar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarAgregar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel8.setBackground(new java.awt.Color(119, 148, 166));
 
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        labelTituloMostrar.setForeground(new java.awt.Color(0, 0, 0));
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojonegro.png"))); // NOI18N
         labelTituloMostrar.setText("TRABAJAR CON RENGLÓN");
 
@@ -381,9 +369,11 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         );
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RENGLÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Configuración a trabajar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel9.setForeground(new java.awt.Color(0, 0, 0));
 
-        btnAgregarRenglon.setBackground(new java.awt.Color(204, 204, 204));
+        btnAgregarRenglon.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarRenglon.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarRenglon.setText("Agregar");
         btnAgregarRenglon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,7 +410,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaTrabajarRenglon);
 
-        btnModificarRenglon.setBackground(new java.awt.Color(204, 204, 204));
+        btnModificarRenglon.setBackground(new java.awt.Color(255, 255, 255));
+        btnModificarRenglon.setForeground(new java.awt.Color(0, 0, 0));
         btnModificarRenglon.setText("Modificar");
         btnModificarRenglon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -428,7 +419,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
             }
         });
 
-        btnDarBajaRenglon.setBackground(new java.awt.Color(204, 204, 204));
+        btnDarBajaRenglon.setBackground(new java.awt.Color(255, 255, 255));
+        btnDarBajaRenglon.setForeground(new java.awt.Color(0, 0, 0));
         btnDarBajaRenglon.setText("Eliminar");
         btnDarBajaRenglon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -436,7 +428,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
             }
         });
 
-        botonMostrarDatos.setBackground(new java.awt.Color(204, 204, 204));
+        botonMostrarDatos.setBackground(new java.awt.Color(255, 255, 255));
+        botonMostrarDatos.setForeground(new java.awt.Color(0, 0, 0));
         botonMostrarDatos.setText("Mostrar Datos");
         botonMostrarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -479,7 +472,6 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Configuración a trabajar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nro. Configuración:");
 
         nroConfigCaso.setEditable(false);
@@ -734,15 +726,28 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
     private void btnDarBajaRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaRenglonActionPerformed
         int numTabSec = tablaTrabajarRenglon.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-       
+        DTOErroresMensajes dtoE = new DTOErroresMensajes();
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
+            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para eliminar");
         } else  {
             for (int i = 0; i < tablaTrabajarRenglon.getRowCount(); i++) { //Recorremos la tabla
 //                
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
-//                    
+                    int numConfig, nroOrden;
+                    numConfig = codConfig;
+                    nroOrden = (int)(tablaTrabajarRenglon.getValueAt(i, 0));
+                    dtoE = control.eliminarRenglon(numConfig, nroOrden);
+                if(dtoE.getVerificarError() == 0){
+                    JOptionPane.showMessageDialog(null, "Se elimino el renglón");
+                    TrabajarRenglones trabajar = new TrabajarRenglones(codConfig);
+                    this.setVisible(false);
+                    tablaRenglones.fireTableDataChanged();
+                    trabajar.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, dtoE.getErrorMensaje());
+                }  
+                    
                 }
             }       
         }

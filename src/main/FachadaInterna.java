@@ -83,11 +83,15 @@ public class FachadaInterna {
     }
 
     void guardar(Object objeto) {
-        HibernateUtil.getSession().save(objeto);
+        HibernateUtil.getSession().saveOrUpdate(objeto);
         HibernateUtil.getSession().flush();
     }
     void modificar(Object objeto){
          HibernateUtil.getSession().update(objeto);
+         HibernateUtil.getSession().flush();
+    }
+    void delete(Object objeto){
+         HibernateUtil.getSession().delete(objeto);
          HibernateUtil.getSession().flush();
     }
 
@@ -103,7 +107,6 @@ public class FachadaInterna {
         HibernateUtil.getSession().setFlushMode(FlushMode.NEVER);
         HibernateUtil.getSession().getTransaction().commit();
         HibernateUtil.getSession().close();
-        HibernateUtil.getSessionFactory().close();
     }
 
 }
