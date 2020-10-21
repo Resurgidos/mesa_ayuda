@@ -22,19 +22,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TrabajarRenglones extends javax.swing.JFrame {
 
-    
     ControladorConfiguracionTipoCaso control = new ControladorConfiguracionTipoCaso();
     DefaultTableModel tablaRenglones;
-    
-    
+
     int codConfig = 0;
+
     public TrabajarRenglones(int codConfSelecc) {
-        
+
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Trabajar Renglones");
         DTOTrabajarRenglones dtorenglo = control.buscarRenglones(codConfSelecc);
-        nroConfigCaso.setText(Integer.toString( dtorenglo.getCodConfSelecc()));
+        nroConfigCaso.setText(Integer.toString(dtorenglo.getCodConfSelecc()));
         tablaConRenglones(dtorenglo.getTipoCtipoIns());
         codConfig = codConfSelecc;
         tablaRenglones.fireTableDataChanged();
@@ -570,10 +569,10 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaConRenglones(List<DTORenglones> listaRenglones) {
-        
+
         tablaRenglones = new DefaultTableModel();
         tablaTrabajarRenglon.setModel(tablaRenglones);
-        
+
         tablaRenglones.addColumn("Orden TCTI");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
         tablaRenglones.addColumn("Minutos Max.");//que Luego esta tabla le setteamos para mostrar en modelo de la interfaz
         tablaRenglones.addColumn("Cod. Tipo Instancia");
@@ -585,20 +584,19 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         tablaTrabajarRenglon.setAutoCreateRowSorter(true);
         tablaTrabajarRenglon.getRowSorter().toggleSortOrder(1);
 
-       for (int i = 0; i < listaRenglones.size(); i++) {
+        for (int i = 0; i < listaRenglones.size(); i++) {
             Vector fil = new Vector();
             fil.add(listaRenglones.get(i).getOrdenTCTI());
             fil.add(listaRenglones.get(i).getMinutosMAXReso());
             fil.add(listaRenglones.get(i).getCodTI());
-            fil.add(listaRenglones.get(i).getNombreTI()); 
+            fil.add(listaRenglones.get(i).getNombreTI());
             tablaRenglones.addRow(fil);
-      }
+        }
     }
-    
-    
-    
+
+
     private void volverABMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMAgregarActionPerformed
-    /*    //Botón para volver al menú de TipoInstancia
+        /*    //Botón para volver al menú de TipoInstancia
         ABMTipoInstancia abmTI = new ABMTipoInstancia();
 
         abmTI.setVisible(true);
@@ -608,7 +606,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
         //Método para agregar un Tipo de Instancia
- /*       try {
+        /*       try {
             if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código
                 if (!inputnombTI.getText().isEmpty()) {//Para que el nombre del TI no este vacio
                     if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
@@ -665,7 +663,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         char car = evt.getKeyChar();
 
         //Condicion
-    /*    if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
+        /*    if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACKSPACE)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }*/
@@ -704,23 +702,23 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnModificarRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarRenglonActionPerformed
-         // Boton modificar renglon
+        // Boton modificar renglon
         int numTabSec = tablaTrabajarRenglon.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-       
+
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
-        } else  {
+        } else {
             for (int i = 0; i < tablaTrabajarRenglon.getRowCount(); i++) { //Recorremos la tabla
 //                
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
                     int codConfMostrar = (int) (tablaTrabajarRenglon.getValueAt(i, 0));
 
-                    ModificarRenglon modificarRenglon = new ModificarRenglon( );
+                    ModificarRenglon modificarRenglon = new ModificarRenglon();
                     modificarRenglon.setVisible(true);
                     this.setVisible(false);
                 }
-            }       
+            }
         }
     }//GEN-LAST:event_btnModificarRenglonActionPerformed
 
@@ -730,47 +728,54 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para eliminar");
-        } else  {
+        } else {
             for (int i = 0; i < tablaTrabajarRenglon.getRowCount(); i++) { //Recorremos la tabla
 //                
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
                     int numConfig, nroOrden;
                     numConfig = codConfig;
-                    nroOrden = (int)(tablaTrabajarRenglon.getValueAt(i, 0));
+                    nroOrden = (int) (tablaTrabajarRenglon.getValueAt(i, 0));
+                    JOptionPane.showConfirmDialog(this, ""
+                            + "¿Estas seguro que confirmar la baja? \n\n"
+                            + "Orden: " + (int) tablaTrabajarRenglon.getValueAt(i, 0) + "\n"
+                            + "Minutos: " + tablaTrabajarRenglon.getValueAt(i, 1) + "\n"
+                            + "Cod Tipo Instancia: " + tablaTrabajarRenglon.getValueAt(i, 2) + "\n"
+                            + "Nombre Tipo Instancia: " + tablaTrabajarRenglon.getValueAt(i, 3) + "\n\n",
+                             "Dar de baja renglon", JOptionPane.YES_NO_OPTION);
                     dtoE = control.eliminarRenglon(numConfig, nroOrden);
-                if(dtoE.getVerificarError() == 0){
-                    JOptionPane.showMessageDialog(null, "Se elimino el renglón");
-                    TrabajarRenglones trabajar = new TrabajarRenglones(codConfig);
-                    this.setVisible(false);
-                    tablaRenglones.fireTableDataChanged();
-                    trabajar.setVisible(true);
-                }else{
-                    JOptionPane.showMessageDialog(null, dtoE.getErrorMensaje());
-                }  
-                    
+                    if (dtoE.getVerificarError() == 0) {
+                        //    JOptionPane.showMessageDialog(null, "Se elimino el renglón");                
+                        TrabajarRenglones trabajar = new TrabajarRenglones(codConfig);
+                        this.setVisible(false);
+                        tablaRenglones.fireTableDataChanged();
+                        trabajar.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, dtoE.getErrorMensaje());
+                    }
+
                 }
-            }       
+            }
         }
     }//GEN-LAST:event_btnDarBajaRenglonActionPerformed
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
 //        Mostrar datos
         int numTabSec = tablaTrabajarRenglon.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-       
+
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
-        } else  {
+        } else {
             for (int i = 0; i < tablaTrabajarRenglon.getRowCount(); i++) { //Recorremos la tabla
 //                
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
                     int ordenTCTISelec = (int) (tablaTrabajarRenglon.getValueAt(i, 0));
 
-                    PrevisualizarRenglon verRenglon = new PrevisualizarRenglon( Integer.parseInt(nroConfigCaso.getText()), ordenTCTISelec);
+                    PrevisualizarRenglon verRenglon = new PrevisualizarRenglon(Integer.parseInt(nroConfigCaso.getText()), ordenTCTISelec);
                     verRenglon.setVisible(true);
                     this.setVisible(false);
                 }
-            }       
+            }
         }
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
@@ -786,11 +791,11 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
     private void btnAgregarRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarRenglonActionPerformed
         // Boton agregar renglon  
-        
+
         AgregarRenglon agregarRenglon = new AgregarRenglon(codConfig);
         agregarRenglon.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_btnAgregarRenglonActionPerformed
 
     /**
@@ -866,5 +871,4 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     private javax.swing.JButton volverABMAgregar3;
     // End of variables declaration//GEN-END:variables
 
-    
 }

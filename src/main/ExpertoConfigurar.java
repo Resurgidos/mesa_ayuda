@@ -493,8 +493,8 @@ public class ExpertoConfigurar {
                    
                     if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == ordenTCTISelec){
                             
-                            int j = JOptionPane.showConfirmDialog(null, "“Está seguro de que desea borrar el orden Nº "+ ordenTCTISelec+"“");
-                            if (j == 0){ 
+                         
+                            
                             try{
                                 tcti = configTC.getTipoCtipoIns().get(i);
                                 configTC.removeTCTI(tcti);
@@ -504,7 +504,7 @@ public class ExpertoConfigurar {
                                 dtoE.setVerificarError(1);
                                 dtoE.setErrorMensaje("Hubo un error al intentar eliminar el renglón");
                                 }
-                            }
+                            
                         }
                     }   
                 }
