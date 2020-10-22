@@ -186,8 +186,7 @@ public class ExpertoTipoInstancia {
         
             // datos que Setteamos fecha y hora              
             SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy - HH:mm"); // La cadena de formato de fecha se pasa como un argumento al objeto 
-            String fechaFin = objSDF.format(fecha);    
-            System.out.println(fechaFin);
+            String fechaFin = objSDF.format(fecha);              
                 List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );        
                 for(Object x : objetoList){
                     TipoInstancia ti = (TipoInstancia) x ;

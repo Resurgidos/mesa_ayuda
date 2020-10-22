@@ -246,10 +246,7 @@ public class ModificarSector extends javax.swing.JFrame {
         dtoSec.setCodSector(Integer.parseInt(inputCodSec.getText()));
         dtoSec.setNombreSector(nombSecnuevo);
         dtoSec.setDescripcionSector(descSecnuevo);
-         System.out.println(dtoSec.getCodSector());
-         System.out.println(dtoSec.getNombreSector());
-         System.out.println(dtoSec.getDescripcionSector());
-         control.modificarSector(dtoSec);
+        control.modificarSector(dtoSec);
 
         JOptionPane.showMessageDialog(this, "Se modifico con éxito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
 

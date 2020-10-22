@@ -455,10 +455,10 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
         }else {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if (tablaConfiguracionCaso.getValueAt(i, 3) != null) {
+                if (tablaConfiguracionCaso.getValueAt(i, 4) != "Vigente") {
                     ErrorMensaje.setForeground(Color.RED);
                     ErrorMensaje.setText("El Configurar Caso seleccionado está dado de baja, no se puede modificar");
-                }else if (tablaConfiguracionCaso.getValueAt(i, 4) != null){
+                }else if (tablaConfiguracionCaso.getValueAt(i, 5) != "Sin verificar"){
                     ErrorMensaje.setForeground(Color.RED);
                     ErrorMensaje.setText("El Configurar Caso seleccionado ya está verificado, no se puede modificar");
                 }else {
@@ -522,7 +522,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningúna configuración para trabajar");
         }else {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if(tablaConfiguracionCaso.getValueAt(i,4) != "Sin vigencia"){
+                if(tablaConfiguracionCaso.getValueAt(i,5) != "Sin verificar"){
                 ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                 ErrorMensaje.setText("La configuración seleccionada ya fue verificada, no se puede trabajar");
               }else{  
@@ -544,10 +544,10 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
        
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
+            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para Trabajar");
         } else  {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-              if(tablaConfiguracionCaso.getValueAt(i,4) == "Sin verificar"){
+              if(tablaConfiguracionCaso.getValueAt(i,5) != "Sin verificar"){
                 ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                 ErrorMensaje.setText("La Configuración seleccionada ya está verificada");
               }else{  

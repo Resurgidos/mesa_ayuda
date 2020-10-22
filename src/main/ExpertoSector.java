@@ -29,8 +29,7 @@ public class ExpertoSector {
                             Sector sec = (Sector)x;
                             verificar = sec.getCodSector(); 
                             dtoSec.setVerificarerror(verificar);
-                            }
-                            System.out.println(verificar);
+                            }                            
                             if(dtoSec.getVerificarerror() == 0 ){ //Verificamos que El codigo no se repita
                                 //Pasamos los parametros al Sector   
                                 if(dtoSec.getCodSector() == 0){ //Verificamos que el codigo no sea cero

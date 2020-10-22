@@ -29,7 +29,7 @@ public class ExpertoTipoTarea {
             verificar = tita.getCodTipoTarea(); 
             dtotipotarea.setVerificarError(verificar);
         }
-        System.out.println(verificar);
+        
         if(dtotipotarea.getVerificarError() == 0 ){ //Verificamos que El codigo no se repita  
         if(dtotipotarea.getCodTipoTarea() == 0){ 
 //Verificamos que el codigo no sea cero

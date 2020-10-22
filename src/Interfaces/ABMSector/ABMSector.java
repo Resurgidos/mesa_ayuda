@@ -365,7 +365,6 @@ public class ABMSector extends javax.swing.JFrame {
                     dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
                     dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
 
-                    System.out.println(dtosector.getCodSector());
                     ModificarSector mod = new ModificarSector(dtosector);
                     mod.setVisible(true);
                     this.setVisible(false);
@@ -431,15 +430,11 @@ public class ABMSector extends javax.swing.JFrame {
                 
                 if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
 
-                    System.out.println(tablaSectores.getValueAt(i, 0));
-                    System.out.println(tablaSectores.getValueAt(i, 1));
-
                     dtosector.setCodSector((int) tablaSectores.getValueAt(i, 0));
                     dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));
                     dtosector.setDescripcionSector((String) tablaSectores.getValueAt(i, 2));
                     dtosector.setFechaFinVigenciaSector((java.util.Date)tablaSectores.getValueAt(i, 3));
-                   
-                    System.out.println(dtosector.getCodSector());
+                                       
                     VerDatosSector mostrar = new VerDatosSector(dtosector);
                     mostrar.setVisible(true);
                     

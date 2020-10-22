@@ -370,8 +370,6 @@ public class ExpertoConfigurar {
 
     public String inputCodTipoCaso(String codCaso) {
         
-        System.out.println("input"+ codCaso);
-        
         FachadaPersistencia.getInstance().iniciarTransaccion();
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();
@@ -383,7 +381,7 @@ public class ExpertoConfigurar {
         
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
             
-        System.out.println(objetoList.size());
+        
         
         if(objetoList.size() > 0){
             TipoCaso tipoCaso = (TipoCaso) objetoList.get(0);        
