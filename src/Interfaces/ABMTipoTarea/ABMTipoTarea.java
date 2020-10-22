@@ -30,6 +30,27 @@ public class ABMTipoTarea extends javax.swing.JFrame {
     
     public void tablaTipoTarea(String cadenaFiltro){
         List<DTOTipoTarea> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
+         
+        
+        DTOTipoTarea[] ordenarTT = new DTOTipoTarea[lista.size()];
+        ordenarTT = lista.toArray(ordenarTT);
+        
+        
+        for (int i = 0; i < ordenarTT.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTT.length - 1; j++) { 
+                if (ordenarTT[j].getCodTipoTarea() > ordenarTT[j + 1].getCodTipoTarea()) {
+                   
+                    DTOTipoTarea temp = ordenarTT[j + 1];
+                    ordenarTT[j + 1] = ordenarTT[j];
+                    ordenarTT[j] = temp;
+                  
+                }
+            }
+        }
+        
+        
+        
         List prueba = null; 
         tablaTipoTarea = new DefaultTableModel();
         TipoTareaTabla.setModel(tablaTipoTarea);
@@ -42,15 +63,14 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         TipoTareaTabla.setAutoCreateRowSorter(true);
         
        
-        for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < ordenarTT.length; i++) {
             Vector ejemplo = new Vector();
-            ejemplo.add(lista.get(i).getCodTipoTarea());
-            ejemplo.add(lista.get(i).getNombreTipoTarea());
-            ejemplo.add(lista.get(i).getDescripcionTipoTarea());
-            ejemplo.add(lista.get(i).getFechaHoraFinVigenciaTipoTarea());
+            ejemplo.add(ordenarTT[i].getCodTipoTarea());
+            ejemplo.add(ordenarTT[i].getNombreTipoTarea());
+            ejemplo.add(ordenarTT[i].getDescripcionTipoTarea());
+            ejemplo.add(ordenarTT[i].getFechaHoraFinVigenciaTipoTarea());
             tablaTipoTarea.addRow( ejemplo);
         } 
-        TipoTareaTabla.getRowSorter().toggleSortOrder(0);
     } 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

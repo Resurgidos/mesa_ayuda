@@ -35,12 +35,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
 
         tablaTipoCaso("");
         tablaTipoCaso.fireTableDataChanged();
-//        tablaTipoCaso = new DefaultTableModel();
-//        tablaSector.setModel(tablaTipoCaso);
-//        tablaTipoCaso.addColumn("Cod.TipoCaso");
-//        tablaTipoCaso.addColumn("Nombre TipoCaso");
-//        tablaTipoCaso.addColumn("Fin Vigencia TipoCaso");
-//        tablaTipoCaso.addColumn("");
+
     }
 
     @SuppressWarnings("unchecked")
@@ -284,6 +279,24 @@ public class ABMTipoCaso extends javax.swing.JFrame {
 
     public void tablaTipoCaso(String cadenaFiltro) {
         List<DTOTipoCaso> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
+        
+        DTOTipoCaso[] ordenarTC = new DTOTipoCaso[lista.size()];
+        ordenarTC = lista.toArray(ordenarTC);
+        
+        
+        for (int i = 0; i < ordenarTC.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTC.length - 1; j++) { 
+                if (ordenarTC[j].getCodTipoCaso() > ordenarTC[j + 1].getCodTipoCaso()) {
+                   
+                    DTOTipoCaso temp = ordenarTC[j + 1];
+                    ordenarTC[j + 1] = ordenarTC[j];
+                    ordenarTC[j] = temp;
+                  
+                }
+            }
+        }
+        
         List prueba = null;
         tablaTipoCaso = new DefaultTableModel();
         tablaTipoCasos.setModel(tablaTipoCaso);
@@ -297,15 +310,13 @@ public class ABMTipoCaso extends javax.swing.JFrame {
        
         tablaTipoCasos.setAutoCreateRowSorter(true);
       
-        for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < ordenarTC.length; i++) {
             Vector ejemplo = new Vector();
-            ejemplo.add(lista.get(i).getCodTipoCaso());
-            ejemplo.add(lista.get(i).getNombreTipoCaso());
-            ejemplo.add(lista.get(i).getFechaFinVigenciaTipoCaso());
+            ejemplo.add(ordenarTC[i].getCodTipoCaso());
+            ejemplo.add(ordenarTC[i].getNombreTipoCaso());
+            ejemplo.add(ordenarTC[i].getFechaFinVigenciaTipoCaso());
             tablaTipoCaso.addRow(ejemplo);
         }
-        tablaTipoCasos.getRowSorter().toggleSortOrder(0);
-
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

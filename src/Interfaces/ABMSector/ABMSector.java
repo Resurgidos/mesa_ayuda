@@ -280,6 +280,25 @@ public class ABMSector extends javax.swing.JFrame {
     
     public void tablaSectores(String cadenaFiltro){
         List<DTOSector> lista = controlador.FiltradoMostrarDTO(cadenaFiltro);
+        
+        DTOSector[] ordenarS = new DTOSector[lista.size()];
+        ordenarS = lista.toArray(ordenarS);
+        
+        
+        for (int i = 0; i < ordenarS.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarS.length - 1; j++) { 
+                if (ordenarS[j].getCodSector() > ordenarS[j + 1].getCodSector()) {
+                   
+                    DTOSector temp = ordenarS[j + 1];
+                    ordenarS[j + 1] = ordenarS[j];
+                    ordenarS[j] = temp;
+                  
+                }
+            }
+        }
+        
+        
         List prueba = null; 
         tablaSectores = new DefaultTableModel();
         tablaSector.setModel(tablaSectores);
@@ -292,17 +311,15 @@ public class ABMSector extends javax.swing.JFrame {
         tablaSector.getTableHeader().setBackground(new Color(172, 202, 221));
         
      
-        for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < ordenarS.length; i++) {
             Vector ejemplo = new Vector();
-            ejemplo.add(lista.get(i).getCodSector());
-            ejemplo.add(lista.get(i).getNombreSector());
-            ejemplo.add(lista.get(i).getDescripcionSector());
-            ejemplo.add(lista.get(i).getFechaFinVigenciaSector());
+            ejemplo.add(ordenarS[i].getCodSector());
+            ejemplo.add(ordenarS[i].getNombreSector());
+            ejemplo.add(ordenarS[i].getDescripcionSector());
+            ejemplo.add(ordenarS[i].getFechaFinVigenciaSector());
             tablaSectores.addRow( ejemplo);   
         }
-        
-        tablaSector.getRowSorter().toggleSortOrder(0);
-       
+          
     }
     
     
@@ -338,9 +355,6 @@ public class ABMSector extends javax.swing.JFrame {
                     ErrorMensaje.setText("El sector esta dado de baja, no se puede modificar");
                 }else{
                 if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
-
-                    System.out.println(tablaSectores.getValueAt(i, 0));
-                    System.out.println(tablaSectores.getValueAt(i, 1));
 
                     dtosector.setCodSector((int) tablaSectores.getValueAt(i, 0));
                     dtosector.setNombreSector((String)tablaSectores.getValueAt(i, 1));

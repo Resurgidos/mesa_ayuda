@@ -6,6 +6,7 @@ import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Array;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -307,6 +308,22 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     
     public void tablaConfiguracion(String nombreConfi) { //Método de la tabla que se muestra en la interfaz
         List<DTOTipoConfiguracionGrilla> lista = controlador.filtroConfiguracion(nombreConfi);
+        DTOTipoConfiguracionGrilla[] ordenarCTC = new DTOTipoConfiguracionGrilla[lista.size()];
+        ordenarCTC = lista.toArray(ordenarCTC);
+        
+        
+        for (int i = 0; i < ordenarCTC.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarCTC.length - 1; j++) { 
+                if (ordenarCTC[j].getNroConfig() > ordenarCTC[j + 1].getNroConfig()) {
+                   
+                    DTOTipoConfiguracionGrilla temp = ordenarCTC[j + 1];
+                    ordenarCTC[j + 1] = ordenarCTC[j];
+                    ordenarCTC[j] = temp;
+                  
+                }
+            }
+        }
         tablaConfiguraciones = new DefaultTableModel();
         tablaConfiguracionCaso.setModel(tablaConfiguraciones);
         
@@ -320,15 +337,15 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         tablaConfiguracionCaso.getTableHeader().setBackground(new Color(172, 202, 221));
 
         tablaConfiguracionCaso.setAutoCreateRowSorter(true);
-        tablaConfiguracionCaso.getRowSorter().toggleSortOrder(1);
 
-       for (int i = 0; i < lista.size(); i++) {
+
+       for (int i = 0; i < ordenarCTC.length; i++) {
             Vector fil = new Vector();
-            fil.add(lista.get(i).getNroConfig());
-            fil.add(lista.get(i).getCodTipoCaso());
-            fil.add(lista.get(i).getFechaInicioVigencia());
-            fil.add(lista.get(i).getFechaFinVigencia());
-            fil.add(lista.get(i).getFechaVerificacion());
+            fil.add(ordenarCTC[i].getNroConfig());
+            fil.add(ordenarCTC[i].getCodTipoCaso());
+            fil.add(ordenarCTC[i].getFechaInicioVigencia());
+            fil.add(ordenarCTC[i].getFechaFinVigencia());
+            fil.add(ordenarCTC[i].getFechaVerificacion());
             tablaConfiguraciones.addRow(fil);
       }
     }

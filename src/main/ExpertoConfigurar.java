@@ -79,7 +79,8 @@ public class ExpertoConfigurar {
                      }
                 }catch(Exception e){
                         System.out.println("No se pudo registrar la configuración de tipo caso"); 
-                 }    
+                 } 
+            FachadaPersistencia.getInstance().finalizarTransaccion();
             }catch(Exception e){
                     System.out.println("No se pudo encontrar la configuración de tipo caso");                
         }
@@ -125,7 +126,8 @@ public class ExpertoConfigurar {
                 } 
             }catch(Exception e){
                 System.out.println("No se pudo modificar el TipoCaso"); 
-            }    
+            } 
+            FachadaPersistencia.getInstance().finalizarTransaccion();
         }catch(Exception e){
                System.out.println("No se pudo encontrar el TipoCaso");                
         }
@@ -138,7 +140,9 @@ public class ExpertoConfigurar {
         DTOCriterio dtoCrit = new DTOCriterio();
         DTORenglones dtoRenglones = new DTORenglones();
         FachadaPersistencia.getInstance().iniciarTransaccion();//Instanciaciones de objetos a usar      
-             
+        List<DTORenglones> renglones = null;  
+        
+        
         List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
                 dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                 dtoCrit.setOperacion("=");
@@ -161,10 +165,11 @@ public class ExpertoConfigurar {
                 dtoRenglones.setMinutosMAXReso(llenado.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
                 dtoRenglones.setCodTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
                 dtoRenglones.setNombreTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());               
-                dtoVisu.addRenglones(dtoRenglones);                
-            }           
+                renglones.add(dtoRenglones);                
+            } 
+            dtoVisu.setRenglones(renglones);
         }
-        
+      FachadaPersistencia.getInstance().finalizarTransaccion();  
       return dtoVisu;  
     }
       
@@ -386,7 +391,7 @@ public class ExpertoConfigurar {
         }else {
             return "No existe el Tipo Caso Ingresado";
         }
-
+        
     }
     public DTOModificarConf buscarPorNumConfig(int codSeleccionado){ 
         FachadaPersistencia.getInstance().iniciarTransaccion();  
@@ -406,7 +411,7 @@ public class ExpertoConfigurar {
             dtoMod.setNombreTipoCaso(configCaso.getTipoCaso().getNombreTipoCaso());
             dtoMod.setFechaDesde(configCaso.getFechaInicioVigencia());
         }       
-        
+        FachadaPersistencia.getInstance().finalizarTransaccion();
         return dtoMod;
     }
     
@@ -465,7 +470,7 @@ public class ExpertoConfigurar {
                             FachadaPersistencia.getInstance().guardar(configTC);
                         }
                     }
-                
+        FachadaPersistencia.getInstance().finalizarTransaccion();       
         return dtoErrores;
     }
     
@@ -503,8 +508,7 @@ public class ExpertoConfigurar {
                             }catch(Exception e){
                                 dtoE.setVerificarError(1);
                                 dtoE.setErrorMensaje("Hubo un error al intentar eliminar el renglón");
-                                }
-                            
+                            }
                         }
                     }   
                 }
@@ -574,7 +578,7 @@ public class ExpertoConfigurar {
             
         }
     
-
+        FachadaPersistencia.getInstance().finalizarTransaccion();
         return dtoTrabajarRenglones;                   
     }
     
@@ -611,7 +615,7 @@ public class ExpertoConfigurar {
         }       
         
         
-        
+        FachadaPersistencia.getInstance().finalizarTransaccion();
         return dtoVerRenglon;
         
     }

@@ -362,8 +362,24 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             }
         
   
-            lista = controlTI.filtroTINombreTI2(cod,filTipoInstanciaNomb);
+        lista = controlTI.filtroTINombreTI2(cod,filTipoInstanciaNomb);
         
+        DTOFiltroTI[] ordenarTI = new DTOFiltroTI[lista.size()];
+        ordenarTI = lista.toArray(ordenarTI);
+        
+        
+        for (int i = 0; i < ordenarTI.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTI.length - 1; j++) { 
+                if (ordenarTI[j].getCodTipoInstancia() > ordenarTI[j + 1].getCodTipoInstancia()) {
+                   
+                    DTOFiltroTI temp = ordenarTI[j + 1];
+                    ordenarTI[j + 1] = ordenarTI[j];
+                    ordenarTI[j] = temp;
+                  
+                }
+            }
+        }
         tablaTI = new DefaultTableModel();
         tablaTipoInstancia.setModel(tablaTI);
         tablaTI.addColumn("Cod. Tipo Instancia");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
@@ -378,16 +394,15 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         tablaTipoInstancia.setAutoCreateRowSorter(true);
 //        
 
-        for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < ordenarTI.length; i++) {
             Vector fil = new Vector();
-            fil.add(lista.get(i).getCodTipoInstancia());
-            fil.add(lista.get(i).getNombreTipoInstancia());
-            fil.add(lista.get(i).getNombreSector());
-            fil.add(lista.get(i).getNombreTipoTarea());
-            fil.add(lista.get(i).getFechaHoraFinVigenciaTI());
+            fil.add(ordenarTI[i].getCodTipoInstancia());
+            fil.add(ordenarTI[i].getNombreTipoInstancia());
+            fil.add(ordenarTI[i].getNombreSector());
+            fil.add(ordenarTI[i].getNombreTipoTarea());
+            fil.add(ordenarTI[i].getFechaHoraFinVigenciaTI());
             tablaTI.addRow(fil);
         }
-       // tablaTipoInstancia.getRowSorter().toggleSortOrder(0);
     }
     private void filBusquedaCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filBusquedaCodActionPerformed
         // TODO add your handling code here:

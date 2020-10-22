@@ -569,7 +569,23 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaConRenglones(List<DTORenglones> listaRenglones) {
-
+        DTORenglones[] ordenarTrabajarConRenglones = new DTORenglones[listaRenglones.size()];
+        ordenarTrabajarConRenglones = listaRenglones.toArray(ordenarTrabajarConRenglones);
+        
+        
+        for (int i = 0; i < ordenarTrabajarConRenglones.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTrabajarConRenglones.length - 1; j++) { 
+                if (ordenarTrabajarConRenglones[j].ordenTCTI > ordenarTrabajarConRenglones[j + 1].ordenTCTI) {
+                   
+                    DTORenglones temp = ordenarTrabajarConRenglones[j + 1];
+                    ordenarTrabajarConRenglones[j + 1] = ordenarTrabajarConRenglones[j];
+                    ordenarTrabajarConRenglones[j] = temp;
+                  
+                }
+            }
+        }
+        
         tablaRenglones = new DefaultTableModel();
         tablaTrabajarRenglon.setModel(tablaRenglones);
 
@@ -582,14 +598,14 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         tablaTrabajarRenglon.getTableHeader().setBackground(new Color(172, 202, 221));
 
         tablaTrabajarRenglon.setAutoCreateRowSorter(true);
-        tablaTrabajarRenglon.getRowSorter().toggleSortOrder(1);
+        
 
-        for (int i = 0; i < listaRenglones.size(); i++) {
+        for (int i = 0; i < ordenarTrabajarConRenglones.length; i++) {
             Vector fil = new Vector();
-            fil.add(listaRenglones.get(i).getOrdenTCTI());
-            fil.add(listaRenglones.get(i).getMinutosMAXReso());
-            fil.add(listaRenglones.get(i).getCodTI());
-            fil.add(listaRenglones.get(i).getNombreTI());
+            fil.add(ordenarTrabajarConRenglones[i].getOrdenTCTI());
+            fil.add(ordenarTrabajarConRenglones[i].getMinutosMAXReso());
+            fil.add(ordenarTrabajarConRenglones[i].getCodTI());
+            fil.add(ordenarTrabajarConRenglones[i].getNombreTI());
             tablaRenglones.addRow(fil);
         }
     }
