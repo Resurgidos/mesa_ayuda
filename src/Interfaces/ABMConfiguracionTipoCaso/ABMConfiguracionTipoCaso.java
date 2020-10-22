@@ -12,17 +12,13 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import main.Menu;
 
-/**
- *
- * @author leand
- */
+ 
 public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     
     DefaultTableModel tablaConfiguraciones;
     ControladorConfiguracionTipoCaso controlador = new ControladorConfiguracionTipoCaso();
     DTOTipoConfiguracionGrilla dtoConfi = new DTOTipoConfiguracionGrilla();
-
-    /** Creates new form ABMConfiguracionTipoCaso */
+   
     public ABMConfiguracionTipoCaso() {
         initComponents();
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
@@ -312,22 +308,20 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(filtroBusquedaNumConf)
-                                    .addComponent(jLabel2))
+                                .addComponent(jLabel2)
                                 .addGap(11, 11, 11))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
@@ -363,7 +357,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
-    public void tablaConfiguracion(String CodTC,String codNumConf) { //Método de la tabla que se muestra en la interfaz
+    public void tablaConfiguracion(String codTC,String codNumConf) { //Método de la tabla que se muestra en la interfaz
        
        
         
@@ -376,7 +370,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
          int codtc;   
             try{
-             codtc = Integer.parseInt(codNumConf);
+             codtc = Integer.parseInt(codTC);
             }catch(Exception e){
               codtc = 0;
             }    
@@ -414,27 +408,26 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         tablaConfiguracionCaso.getTableHeader().setReorderingAllowed(false);
  
         for(MouseListener listener : tablaConfiguracionCaso.getTableHeader().getMouseListeners()){
-        tablaConfiguracionCaso.getTableHeader().removeMouseListener(listener);
+            tablaConfiguracionCaso.getTableHeader().removeMouseListener(listener);
         }
 
-
-       for (int i = 0; i < ordenarCTC.length; i++) {
+        for (int i = 0; i < ordenarCTC.length; i++) {
             Vector fil = new Vector();
-            fil.add(ordenarCTC[i].getNroConfig());
-            fil.add(ordenarCTC[i].getCodTipoCaso());
-            fil.add(ordenarCTC[i].getNombreTipoCaso());
-            fil.add(ordenarCTC[i].getFechaInicioVigencia());
+        fil.add(ordenarCTC[i].getNroConfig());
+        fil.add(ordenarCTC[i].getCodTipoCaso());
+        fil.add(ordenarCTC[i].getNombreTipoCaso());
+        fil.add(ordenarCTC[i].getFechaInicioVigencia());
             if(ordenarCTC[i].getFechaFinVigencia() != null){
-            fil.add(ordenarCTC[i].getFechaFinVigencia());
+                fil.add(ordenarCTC[i].getFechaFinVigencia());   
             }else{
-            fil.add("Vigente");    
+                fil.add("Vigente");    
             }
             if(ordenarCTC[i].getFechaVerificacion()!= null){
-            fil.add(ordenarCTC[i].getFechaVerificacion());
+                fil.add(ordenarCTC[i].getFechaVerificacion());
             }else{
-            fil.add("Sin verificar");    
+                fil.add("Sin verificar");    
             }            
-            tablaConfiguraciones.addRow(fil);
+        tablaConfiguraciones.addRow(fil);
       }
     }
    
@@ -486,7 +479,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_filtroBusquedaNombTCKeyPressed
 
     private void filtroBusquedaNombTCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaNombTCKeyReleased
-       // tablaTI(filBusqueda.getText());
+        tablaConfiguracion(filtroBusquedaNombTC.getText(),filtroBusquedaNumConf.getText());
+
     }//GEN-LAST:event_filtroBusquedaNombTCKeyReleased
 
     private void AgregarCTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCTCActionPerformed

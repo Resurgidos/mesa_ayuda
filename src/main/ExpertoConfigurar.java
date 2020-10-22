@@ -328,7 +328,7 @@ public class ExpertoConfigurar {
         }*/
         return dtoErrores;
     }
-    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(int codNumConf, int codTC){
+    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(int codTC, int codNumConf ){
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
         
@@ -339,13 +339,6 @@ public class ExpertoConfigurar {
             dtoCrit.setValor(codNumConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
         }
-        /*if(codTC > 0){
-            dtoCrit = new DTOCriterio();
-            dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-            dtoCrit.setOperacion(">=");
-            dtoCrit.setValor(codTC); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-            listadtoCrit.add(dtoCrit);
-        }*/
         
         List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit);
         List<DTOTipoConfiguracionGrilla> dtoList = new ArrayList<>();
@@ -355,15 +348,18 @@ public class ExpertoConfigurar {
             
             ConfiguracionTipoCaso tc = (ConfiguracionTipoCaso) x;
             
-            dtoConfig.setNroConfig(tc.getNroConfigTC());         
-            dtoConfig.setCodTipoCaso(tc.getTipoCaso().getCodTipoCaso());
-            dtoConfig.setNombreTipoCaso(tc.getTipoCaso().getNombreTipoCaso());
-            dtoConfig.setFechaInicioVigencia(tc.getFechaInicioVigencia());
-            dtoConfig.setFechaFinVigencia(tc.getFechaFinVigencia());
-            dtoConfig.setFechaVerificacion(tc.getFechaVerificacion());
+                if(tc.getTipoCaso().getCodTipoCaso() >= codTC){
+                    
+                    dtoConfig.setNroConfig(tc.getNroConfigTC());         
+                    dtoConfig.setCodTipoCaso(tc.getTipoCaso().getCodTipoCaso());
+                    dtoConfig.setNombreTipoCaso(tc.getTipoCaso().getNombreTipoCaso());
+                    dtoConfig.setFechaInicioVigencia(tc.getFechaInicioVigencia());
+                    dtoConfig.setFechaFinVigencia(tc.getFechaFinVigencia());
+                    dtoConfig.setFechaVerificacion(tc.getFechaVerificacion());  
             
-            dtoList.add(dtoConfig);        
-        }
+                    dtoList.add(dtoConfig);
+                }
+            }
      
         return dtoList;  
     }
