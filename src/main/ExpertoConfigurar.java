@@ -339,13 +339,13 @@ public class ExpertoConfigurar {
             dtoCrit.setValor(codNumConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
         }
-        if(codTC > 0){
+        /*if(codTC > 0){
             dtoCrit = new DTOCriterio();
             dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion(">=");
             dtoCrit.setValor(codTC); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
-        }
+        }*/
         
         List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit);
         List<DTOTipoConfiguracionGrilla> dtoList = new ArrayList<>();
