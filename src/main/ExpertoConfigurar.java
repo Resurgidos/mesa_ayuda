@@ -328,23 +328,26 @@ public class ExpertoConfigurar {
         }*/
         return dtoErrores;
     }
-    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(String nombreConfiguracion){
+    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(int codNumConf, int codTC){
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
-
-        if(nombreConfiguracion.matches("[0-9]+") ) {//El matches es propia d ejava y evalua lo que hay entre parentesis
-//            dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-//            dtoCrit.setOperacion("=");
-//            dtoCrit.setValor(Integer.parseInt(nombreConfiguracion)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-//            listadtoCrit.add(dtoCrit);
-        }else{
-//            dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-//            dtoCrit.setOperacion("like");
-//            dtoCrit.setValor("%"+nombreConfiguracion+"%"); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-//            listadtoCrit.add(dtoCrit);       
+        
+        if(codNumConf > 0){
+             dtoCrit = new DTOCriterio();
+            dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion(">=");
+            dtoCrit.setValor(codNumConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
+        }
+        if(codTC > 0){
+            dtoCrit = new DTOCriterio();
+            dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
+            dtoCrit.setOperacion(">=");
+            dtoCrit.setValor(codTC); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
+            listadtoCrit.add(dtoCrit);
         }
         
-        List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+        List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit);
         List<DTOTipoConfiguracionGrilla> dtoList = new ArrayList<>();
         
         for (Object x : objetoList) {

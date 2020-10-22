@@ -41,7 +41,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
     }
     
     public void inicializarDatos(DTOVisualizarVerificar dtovisu){ //Método para inicializar los datos en la Interfaz
-        DateFormat df = new SimpleDateFormat();
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         verConfTC.setForeground(Color.black);
         verCodTipoCaso.setForeground(Color.black);
         verNombTC.setForeground(Color.black);

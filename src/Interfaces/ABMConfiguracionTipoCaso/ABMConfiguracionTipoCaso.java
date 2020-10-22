@@ -27,7 +27,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
         setTitle("ABM Configuracion De Tipo Caso");
-        tablaConfiguracion("");    
+        tablaConfiguracion("","");    
     }
 
     @SuppressWarnings("unchecked")
@@ -328,8 +328,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                                     .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -363,8 +363,25 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
-    public void tablaConfiguracion(String nombreConfi) { //Método de la tabla que se muestra en la interfaz
-        List<DTOTipoConfiguracionGrilla> lista = controlador.filtroConfiguracion(nombreConfi);
+    public void tablaConfiguracion(String CodTC,String codNumConf) { //Método de la tabla que se muestra en la interfaz
+       
+       
+        
+        List<DTOTipoConfiguracionGrilla> lista = null;
+         int codnumConf;
+            try{
+             codnumConf = Integer.parseInt(codNumConf);
+            }catch(Exception e){
+              codnumConf = 0;
+            }
+         int codtc;   
+            try{
+             codtc = Integer.parseInt(codNumConf);
+            }catch(Exception e){
+              codtc = 0;
+            }    
+        
+        lista = controlador.filtroConfiguracion(codtc,codnumConf);
         DTOTipoConfiguracionGrilla[] ordenarCTC = new DTOTipoConfiguracionGrilla[lista.size()];
         ordenarCTC = lista.toArray(ordenarCTC);
         
@@ -505,7 +522,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningúna configuración para trabajar");
         }else {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if(tablaConfiguracionCaso.getValueAt(i,4) != null){
+                if(tablaConfiguracionCaso.getValueAt(i,4) != "Sin vigencia"){
                 ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                 ErrorMensaje.setText("La configuración seleccionada ya fue verificada, no se puede trabajar");
               }else{  
@@ -559,7 +576,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     }//GEN-LAST:event_filtroBusquedaNumConfKeyPressed
 
     private void filtroBusquedaNumConfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaNumConfKeyReleased
-        // TODO add your handling code here:
+        tablaConfiguracion(filtroBusquedaNombTC.getText(), filtroBusquedaNumConf.getText());
     }//GEN-LAST:event_filtroBusquedaNumConfKeyReleased
 
     /**

@@ -383,7 +383,7 @@
               <Image iconType="3" name="/Imagenes/baseline_visibility_black_18dp.png"/>
             </Property>
             <Property name="mnemonic" type="int" value="100"/>
-            <Property name="text" type="java.lang.String" value="Mostrar"/>
+            <Property name="text" type="java.lang.String" value="Mostrar Datos"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

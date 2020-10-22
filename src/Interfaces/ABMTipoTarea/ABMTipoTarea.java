@@ -246,7 +246,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_visibility_black_18dp.png"))); // NOI18N
         jButton1.setMnemonic('d');
-        jButton1.setText("Mostrar");
+        jButton1.setText("Mostrar Datos");
         jButton1.setBorder(null);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +426,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                     dtotipotareamodificar.setCodTipoTarea((int) tablaTipoTarea.getValueAt(i, 0));
                     dtotipotareamodificar.setNombreTipoTarea((String)tablaTipoTarea.getValueAt(i, 1));
                     dtotipotareamodificar.setDescripcionTipoTarea((String) tablaTipoTarea.getValueAt(i, 2));
-                    dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea((Date)tablaTipoTarea.getValueAt(i, 3));
+                    dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea((java.util.Date)tablaTipoTarea.getValueAt(i, 3));
                     
                     System.out.println(dtotipotareamodificar.getCodTipoTarea());
                     VerDatosTipoTarea mostrar = new VerDatosTipoTarea(dtotipotareamodificar);

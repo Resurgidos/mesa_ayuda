@@ -31,8 +31,8 @@ public class ControladorConfiguracionTipoCaso {
     public DTOErroresMensajes verificarConfiguracion(int numConf){
         return expertoC.verificarConfiguracion(numConf);
     }
-    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(String nombreConfiguracion){
-        return expertoC.filtroConfiguracion(nombreConfiguracion);
+    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion( int codTC, int codNumConf){
+        return expertoC.filtroConfiguracion(codTC, codNumConf);
     }
     
     public String inputCodTipoCaso (String codCaso){   //Método para buscar un código de tipo caso para dar de alta una configuración

@@ -346,8 +346,6 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                     if (i == numTabTipoCaso) {
                         dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
                         dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
-                        System.out.println(dtoTipoCaso.getCodTipoCaso());
-                        System.out.println(dtoTipoCaso.getNombreTipoCaso());
                         ModificarTipoCaso modificarPantalla = new ModificarTipoCaso(dtoTipoCaso);
                         modificarPantalla.setVisible(true);
                         this.setVisible(false);
@@ -424,7 +422,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 if (i == numTabTipoCaso) {
                     dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));
                     dtoTipoCaso.setNombreTipoCaso((String) tablaTipoCasos.getValueAt(i, 1));
-                    dtoTipoCaso.setFechaFinVigenciaTipoCaso((Date) tablaTipoCasos.getValueAt(i, 2));
+                    dtoTipoCaso.setFechaFinVigenciaTipoCaso((java.util.Date) tablaTipoCasos.getValueAt(i, 2));
 
                     VerDatosTipoCasos verDatos = new VerDatosTipoCasos(dtoTipoCaso);
                     verDatos.setVisible(true);
