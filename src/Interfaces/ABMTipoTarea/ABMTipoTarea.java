@@ -5,6 +5,7 @@ import DTO.DTOTipoTarea;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseListener;
 import java.sql.Date;
 import java.util.List;
 import java.util.Vector;
@@ -60,7 +61,12 @@ public class ABMTipoTarea extends javax.swing.JFrame {
         tablaTipoTarea.addColumn("Fin Vigencia");
         TipoTareaTabla.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         TipoTareaTabla.getTableHeader().setBackground(new Color(172, 202, 221));
-        TipoTareaTabla.setAutoCreateRowSorter(true);
+  
+        TipoTareaTabla.getTableHeader().setReorderingAllowed(false);
+ 
+        for(MouseListener listener : TipoTareaTabla.getTableHeader().getMouseListeners()){
+        TipoTareaTabla.getTableHeader().removeMouseListener(listener);
+        }
         
        
         for (int i = 0; i < ordenarTT.length; i++) {

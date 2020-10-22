@@ -1,6 +1,7 @@
 
 package DTO.DTOsConfiguración;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class DTOVisualizarVerificar {
    public Date fechaInicioVig;
    public Date fechaFinVig;
    public Date fechaVerificacion;
-   public List<DTORenglones> renglones;
+   public List<DTORenglones> renglones = new ArrayList<>();
    
    
    public int getNroConfigTipoCaso() {

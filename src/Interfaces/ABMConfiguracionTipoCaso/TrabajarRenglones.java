@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaces.ABMConfiguracionTipoCaso;
 
 import Controller.ControladorConfiguracionTipoCaso;
@@ -11,6 +7,7 @@ import DTO.DTOsConfiguración.DTORenglones;
 import DTO.DTOsConfiguración.DTOTrabajarRenglones;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -68,7 +65,6 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         volverABMAgregar3 = new javax.swing.JButton();
-        confirmarAgregar3 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         labelTituloMostrar = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -336,14 +332,6 @@ public class TrabajarRenglones extends javax.swing.JFrame {
             }
         });
 
-        confirmarAgregar3.setBackground(new java.awt.Color(204, 204, 204));
-        confirmarAgregar3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        confirmarAgregar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
-        confirmarAgregar3.setMnemonic('c');
-        confirmarAgregar3.setText("Confirmar");
-        confirmarAgregar3.setBorder(null);
-        confirmarAgregar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
         jPanel8.setBackground(new java.awt.Color(119, 148, 166));
 
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -521,9 +509,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(volverABMAgregar3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(confirmarAgregar3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(39, 627, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -539,10 +525,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmarAgregar3)
-                    .addComponent(volverABMAgregar3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volverABMAgregar3)
                 .addContainerGap())
         );
 
@@ -597,7 +581,11 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         tablaTrabajarRenglon.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         tablaTrabajarRenglon.getTableHeader().setBackground(new Color(172, 202, 221));
 
-        tablaTrabajarRenglon.setAutoCreateRowSorter(true);
+        tablaTrabajarRenglon.getTableHeader().setReorderingAllowed(false);
+ 
+        for(MouseListener listener : tablaTrabajarRenglon.getTableHeader().getMouseListeners()){
+        tablaTrabajarRenglon.getTableHeader().removeMouseListener(listener);
+        }
         
 
         for (int i = 0; i < ordenarTrabajarConRenglones.length; i++) {
@@ -621,52 +609,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     }//GEN-LAST:event_volverABMAgregarActionPerformed
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
-        //Método para agregar un Tipo de Instancia
-        /*       try {
-            if (!inputcodTI.getText().isEmpty()) { //Para que no sea vacio código
-                if (!inputnombTI.getText().isEmpty()) {//Para que el nombre del TI no este vacio
-                    if (!inputcodSec.getText().isEmpty()) { //Para que no sea vacio el cod de sector
-                        if (!inputcodTT.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
-                            do{
-                                DTOTipoInstancia dtoAgregar = new DTOTipoInstancia();
-                                dtoAgregar.setCodTipoInstancia(Integer.parseInt(inputcodTI.getText()));
-                                dtoAgregar.setNombreTipoInstancia(inputnombTI.getText());
-                                dtoAgregar.setCodSector(Integer.parseInt(inputcodSec.getText()));
-                                dtoAgregar.setNombreSector(outnombSec.getText());
-                                dtoAgregar.setCodTipoTarea(Integer.parseInt(inputcodTT.getText()));
-                                dtoAgregar.setNombreTipoTarea(outnombTT.getText());
-                                control.agregarTipoInstancia(dtoAgregar);
-
-                                if(dtoTI.getVerificarError()== 0){//si el mensaje de error del dto es 0(no hubo error) grabamos los datos
-                                    ABMTipoInstancia volver = new ABMTipoInstancia(); //Oculto la pagina para dar de alta volviendo al menu de Sector
-                                    JOptionPane.showMessageDialog(this, "El Tipo Instancia fue creado con éxito");
-                                    volver.setVisible(true);
-                                    volver.tablaTI("");
-                                    this.setVisible(false);
-                                }else{
-                                    JOptionPane.showMessageDialog(this,dtoTI.getErrorMensaje());
-                                    System.out.println("acá esta el error, en registro de sector en validar");
-                                    dtoTI.setVerificarError(0);
-                                } }while(dtoTI.getVerificarError() != 0);
-
-                                //y un chatch en el caso que no se pueda crear el Tipo Instancia
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }*/
+       
     }//GEN-LAST:event_confirmarAgregarActionPerformed
 
     private void inputcodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcodTIActionPerformed
@@ -856,7 +799,6 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     private javax.swing.JButton btnDarBajaRenglon;
     private javax.swing.JButton btnModificarRenglon;
     private javax.swing.JButton confirmarAgregar;
-    private javax.swing.JButton confirmarAgregar3;
     private javax.swing.JTextField inputcodTI;
     private javax.swing.JTextField inputcodTI2;
     private javax.swing.JTextField inputcodTI3;

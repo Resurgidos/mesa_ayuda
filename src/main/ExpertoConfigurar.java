@@ -43,7 +43,7 @@ public class ExpertoConfigurar {
                                     dtoErrores.setVerificarError(1);
                                     dtoErrores.setErrorMensaje("El Código no esta permitido");                            
                              }else{
-                                dtoErrores = validarFecha(dtoAgregarConfig.getFechaDesde());
+                                dtoErrores = validarFecha(dtoAgregarConfig.getFechaDesde(),dtoAgregarConfig.getCodTipoCaso());
                                     if(dtoErrores.getVerificarError()==0){
                                         
                                         dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
@@ -63,7 +63,7 @@ public class ExpertoConfigurar {
                                         configTC.setNroConfigTC(dtoAgregarConfig.getNroConfiguracion());
 
                                         Date fecha = dtoAgregarConfig.getFechaDesde();
-                                        SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+                                        SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy");
                                         String fechaInicio = objSDF.format(fecha);
 
                                         configTC.setFechaInicioVigencia(objSDF.parse(fechaInicio));                       
@@ -104,7 +104,7 @@ public class ExpertoConfigurar {
             
             try{
                 List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
-                dtoErrores = validarFecha(dtoModificarConfig.getFechaDesde());
+                dtoErrores = validarFecha(dtoModificarConfig.getFechaDesde(), dtoModificarConfig.getCodTipoCaso());
                 
                 
                 for (Object x : objetoList){
@@ -138,9 +138,9 @@ public class ExpertoConfigurar {
     public DTOVisualizarVerificar visualizarDatosYVerificar(int numConf){
         DTOVisualizarVerificar dtoVisu = new DTOVisualizarVerificar();
         DTOCriterio dtoCrit = new DTOCriterio();
-        DTORenglones dtoRenglones = new DTORenglones();
+        
         FachadaPersistencia.getInstance().iniciarTransaccion();//Instanciaciones de objetos a usar      
-        List<DTORenglones> renglones = null;  
+        //List<DTORenglones> renglones = null;  
         
         
         List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
@@ -161,13 +161,13 @@ public class ExpertoConfigurar {
             dtoVisu.setFechaVerificacion(llenado.getFechaVerificacion());
             
             for (int i = 0; i < llenado.getTipoCtipoIns().size(); i++) { //Lleno la lista del dto con los renglones asignados
+                DTORenglones dtoRenglones = new DTORenglones();
                 dtoRenglones.setOrdenTCTI(llenado.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
                 dtoRenglones.setMinutosMAXReso(llenado.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
                 dtoRenglones.setCodTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
                 dtoRenglones.setNombreTI(llenado.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());               
-                renglones.add(dtoRenglones);                
-            } 
-            dtoVisu.setRenglones(renglones);
+                dtoVisu.addRenglones(dtoRenglones);
+            }            
         }
       FachadaPersistencia.getInstance().finalizarTransaccion();  
       return dtoVisu;  
@@ -263,7 +263,7 @@ public class ExpertoConfigurar {
                     if(configTipoCaso.getFechaVerificacion() != null){
                         if(configTipoCaso.getTipoCaso().getCodTipoCaso() == codTC){
                             
-                           SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+                           SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy");
                            String fechaEstablecer = objSDF.format(fechaIVaVerificar);
                          //  configTipoCaso.setFechaFinVigencia(objSDF.parse(fechaEstablecer));
                                
@@ -271,16 +271,16 @@ public class ExpertoConfigurar {
                                 Calendar calendario = null;
                                 try {
                                      String fechaEntera = fechaEstablecer;                                                          
-                                     Date miFecha = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").parse(fechaEntera);
+                                     Date miFecha = new SimpleDateFormat("dd/MM/yyyy").parse(fechaEntera);
 
                                       calendario = Calendar.getInstance();                                                         
                                       calendario.setTime(miFecha);
 
                                       calendario.add(Calendar.YEAR, 0);
                                       calendario.add(Calendar.MONTH,0);                                                      
-                                      calendario.add(Calendar.DAY_OF_MONTH,0);                                                          
+                                      calendario.add(Calendar.DAY_OF_MONTH,-1);                                                          
                                       calendario.add(Calendar.HOUR_OF_DAY,0);                                                            
-                                      calendario.add(Calendar.MINUTE,-1);
+                                      calendario.add(Calendar.MINUTE,0);
                                       calendario.set(Calendar.SECOND, 59);
                                       calendario.add(Calendar.SECOND, 0);
                                        if(configTipoCaso.getNroConfigTC() == numConf){
@@ -290,11 +290,7 @@ public class ExpertoConfigurar {
                                  } catch (ParseException ex) {
                                      System.out.println("No se pudo armar la fecha");
                                  }     
-                                
-                           
-                           
-                          
-                        }
+                            }
                     }
                 }
             }
@@ -303,12 +299,12 @@ public class ExpertoConfigurar {
         }
         return 0;
     }
-    public DTOErroresMensajes validarFecha(Date fechaDesde){
+    public DTOErroresMensajes validarFecha(Date fechaDesde, int codTipoCaso){
         ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();
         DTOErroresMensajes dtoErrores = new DTOErroresMensajes();
-        Date fechaactual = new Date(System.currentTimeMillis());
+     //   Date fechaactual = new Date(System.currentTimeMillis());
         
-        if(fechaDesde.after(fechaactual)){                   
+     //   if(fechaDesde.after(fechaactual)){                   
             List<DTOCriterio> validarCod = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
              
        
@@ -316,19 +312,20 @@ public class ExpertoConfigurar {
             for(Object x: datosFachada){
                 configTC = (ConfiguracionTipoCaso)x;                
                 if(configTC.getFechaFinVigencia() == null){
-                  //  if(configTC.getFechaVerificacion() != null){
-                        if(fechaDesde.before(configTC.getFechaInicioVigencia())){                        
-                            dtoErrores.setErrorMensaje("Fecha No permitida, ingrese otra");
-                            dtoErrores.setVerificarError(1);   
-                        }
-                  //  } 
+                    if(configTC.getTipoCaso().getCodTipoCaso() == codTipoCaso){
+                        if(configTC.getFechaVerificacion() != null){
+                            if(fechaDesde.before(configTC.getFechaInicioVigencia())){                        
+                                dtoErrores.setErrorMensaje("Fecha No permitida. Hay una configuración anterior verificada, ingrese otra");
+                                dtoErrores.setVerificarError(1);   
+                            }                     
+                        } 
+                    }
                 }
-            }
-           
-        }else{
+            }   
+       /* }else{
             dtoErrores.setErrorMensaje("Debe ser una fecha posterior a la actual");
             dtoErrores.setVerificarError(1); 
-        }
+        }*/
         return dtoErrores;
     }
     public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(String nombreConfiguracion){
@@ -357,6 +354,7 @@ public class ExpertoConfigurar {
             
             dtoConfig.setNroConfig(tc.getNroConfigTC());         
             dtoConfig.setCodTipoCaso(tc.getTipoCaso().getCodTipoCaso());
+            dtoConfig.setNombreTipoCaso(tc.getTipoCaso().getNombreTipoCaso());
             dtoConfig.setFechaInicioVigencia(tc.getFechaInicioVigencia());
             dtoConfig.setFechaFinVigencia(tc.getFechaFinVigencia());
             dtoConfig.setFechaVerificacion(tc.getFechaVerificacion());

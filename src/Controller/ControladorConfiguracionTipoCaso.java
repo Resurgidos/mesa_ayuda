@@ -19,9 +19,9 @@ public class ControladorConfiguracionTipoCaso {
     public DTOErroresMensajes agregarConfiguracion(DTOAgregarConfiguracion dtoAgregarConf){
        return expertoC.agregarConfiguracion(dtoAgregarConf);
     }
-    public DTOErroresMensajes validarFecha(Date fechaDesde){
+    /*public DTOErroresMensajes validarFecha(Date fechaDesde){
         return expertoC.validarFecha(fechaDesde);
-    }
+    }*/
     public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
        return expertoC.modificarConfiguracion(dtoModificarConfig);
     }

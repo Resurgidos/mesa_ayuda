@@ -4,10 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/ABMConfiguracionTipoCaso.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/entidades/TipoCasoTipoInstancia.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/AgregarRenglon.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMSector/ABMSector.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMTipoCaso/ABMTipoCaso.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/TrabajarRenglones.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMTipoTarea/ABMTipoTarea.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/DTO/DTOsConfiguración/DTOVisualizarVerificar.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Controller/ControladorConfiguracionTipoCaso.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/VerDatosConfiguracion.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMTipoInstancia/ABMTipoInstancia.java</file>
             <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/main/ExpertoConfigurar.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/entidades/ConfiguracionTipoCaso.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,7 @@ import Interfaces.ABMSector.AgregarSector;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseListener;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -307,8 +308,11 @@ public class ABMTipoCaso extends javax.swing.JFrame {
         tablaTipoCasos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         tablaTipoCasos.getTableHeader().setBackground(new Color(172, 202, 221));
       
-       
-        tablaTipoCasos.setAutoCreateRowSorter(true);
+        tablaTipoCasos.getTableHeader().setReorderingAllowed(false);
+ 
+        for(MouseListener listener : tablaTipoCasos.getTableHeader().getMouseListeners()){
+        tablaTipoCasos.getTableHeader().removeMouseListener(listener);
+        }
       
         for (int i = 0; i < ordenarTC.length; i++) {
             Vector ejemplo = new Vector();

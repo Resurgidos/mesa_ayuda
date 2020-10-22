@@ -18,6 +18,7 @@ public class DTOTipoConfiguracionGrilla {
     Date fechaFinVigencia;
     Date fechaVerificacion;
     int codTipoCaso;
+    String nombreTipoCaso;
 
     public int getNroConfig() {
         return nroConfig;
@@ -58,8 +59,12 @@ public class DTOTipoConfiguracionGrilla {
     public void setNroConfig(int nroConfig) {
         this.nroConfig = nroConfig;
     }
-    
-    
-    
-    
+
+    public String getNombreTipoCaso() {
+        return nombreTipoCaso;
+    }
+
+    public void setNombreTipoCaso(String nombreTipoCaso) {
+        this.nombreTipoCaso = nombreTipoCaso;
+    }
 }

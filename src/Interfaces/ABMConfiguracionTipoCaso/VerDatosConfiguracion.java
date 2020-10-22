@@ -7,6 +7,7 @@ import DTO.DTOsConfiguración.DTORenglones;
 import DTO.DTOsConfiguración.DTOVisualizarVerificar;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -71,13 +72,27 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         String fechaVer = df.format(fechaV);  
         verFV.setText(fechaVer);
         }
-      //  tablaVisualizarConf(dtovisu);
-        
+        tablaVisualizarConf(dtovisu.renglones);      
     }
-    public void tablaVisualizarConf(DTOVisualizarVerificar dtovisuTabla) { //Método de la tabla que se muestra en la interfaz de los renglones de la configuración
+    public void tablaVisualizarConf(List<DTORenglones> dtovisuTablaRenglon) { //Método de la tabla que se muestra en la interfaz de los renglones de la configuración
+        DTORenglones[] ordenarVisualizarRenglones = new DTORenglones[dtovisuTablaRenglon.size()];
+        ordenarVisualizarRenglones = dtovisuTablaRenglon.toArray(ordenarVisualizarRenglones);
         
         
-        List<DTORenglones> lista = dtovisuTabla.getRenglones();
+        for (int i = 0; i < ordenarVisualizarRenglones.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarVisualizarRenglones.length - 1; j++) { 
+                if (ordenarVisualizarRenglones[j].ordenTCTI > ordenarVisualizarRenglones[j + 1].ordenTCTI) {
+                   
+                    DTORenglones temp = ordenarVisualizarRenglones[j + 1];
+                    ordenarVisualizarRenglones[j + 1] = ordenarVisualizarRenglones[j];
+                    ordenarVisualizarRenglones[j] = temp;
+                  
+                }
+            }
+        }
+        
+        List<DTORenglones> lista = dtovisuTablaRenglon;
         tablaVisualizarConf = new DefaultTableModel();
         tablaRenglon.setModel(tablaVisualizarConf);
         
@@ -89,18 +104,22 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
         tablaRenglon.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         tablaRenglon.getTableHeader().setBackground(new Color(172, 202, 221));
 
-        tablaRenglon.setAutoCreateRowSorter(true);
-        tablaRenglon.getRowSorter().toggleSortOrder(1);
+        tablaRenglon.getTableHeader().setReorderingAllowed(false);
+ 
+        for(MouseListener listener : tablaRenglon.getTableHeader().getMouseListeners()){
+        tablaRenglon.getTableHeader().removeMouseListener(listener);
+        }
+       
 
        for (int i = 0; i < lista.size(); i++) {
             Vector fil = new Vector();
-            fil.add(lista.get(i).ordenTCTI);
-            fil.add(lista.get(i).minutosMAXReso);
-            fil.add(lista.get(i).codTI);
-            fil.add(lista.get(i).nombreTI);           
+            fil.add(ordenarVisualizarRenglones[i].ordenTCTI);
+            fil.add(ordenarVisualizarRenglones[i].minutosMAXReso);
+            fil.add(ordenarVisualizarRenglones[i].codTI);
+            fil.add(ordenarVisualizarRenglones[i].nombreTI);           
             tablaVisualizarConf.addRow(fil);
         }
-       //PONER PARA ORDENAR POR ORDEN ACA!
+       
        
     }
     private VerDatosConfiguracion() {

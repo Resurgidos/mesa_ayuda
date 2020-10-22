@@ -14,11 +14,11 @@
             <column name="nroConfig"/>
         </property>
 
-        <property name="fechaInicioVigencia" type="timestamp">
+        <property name="fechaInicioVigencia" type="date">
             <column name="fechaInicioVigencia"/>
         </property>
         
-        <property name="fechaFinVigencia" type="timestamp">
+        <property name="fechaFinVigencia" type="date">
             <column name="fechaFinVigencia"/>
         </property>
         

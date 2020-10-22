@@ -6,7 +6,7 @@ import Controller.ControladorConfiguracionTipoCaso;
 import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
 import java.awt.Color;
 import java.awt.Font;
-import java.sql.Array;
+import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -43,12 +43,16 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         ErrorMensaje = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         textTitulo = new javax.swing.JLabel();
-        filtroBusqueda = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         AgregarCTC = new javax.swing.JButton();
         botonMostrarDatos = new javax.swing.JButton();
         botonTrabajarRenglo = new javax.swing.JButton();
         botonVerificar = new javax.swing.JButton();
+        filtroBusquedaNombTC = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        filtroBusquedaNumConf = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -74,17 +78,17 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         tablaConfiguracionCaso.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tablaConfiguracionCaso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Núm. Config. TC", "Cod.Tipo Caso", "Fecha Inicio Vigencia", "Fecha Fin Vigencia", "Fecha Verificación"
+                "Núm. Config. TC", "Cod.Tipo Caso", "Nombre Tipo Caso", "Fecha Inicio Vigencia", "Fecha Fin Vigencia", "Fecha Verificación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -140,26 +144,6 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         textTitulo.setForeground(new java.awt.Color(0, 0, 0));
         textTitulo.setText("Configuración Tipo Caso");
 
-        filtroBusqueda.setBackground(new java.awt.Color(255, 255, 255));
-        filtroBusqueda.setBorder(null);
-        filtroBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filtroBusquedaActionPerformed(evt);
-            }
-        });
-        filtroBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                filtroBusquedaKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                filtroBusquedaKeyReleased(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
-
         AgregarCTC.setBackground(new java.awt.Color(119, 148, 166));
         AgregarCTC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         AgregarCTC.setForeground(new java.awt.Color(0, 0, 0));
@@ -181,11 +165,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(textTitulo)
-                .addGap(65, 65, 65)
-                .addComponent(filtroBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AgregarCTC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -195,12 +175,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AgregarCTC)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(filtroBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(textTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         botonMostrarDatos.setBackground(new java.awt.Color(204, 204, 204));
@@ -245,37 +221,118 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
         });
 
+        filtroBusquedaNombTC.setBackground(new java.awt.Color(255, 255, 255));
+        filtroBusquedaNombTC.setBorder(null);
+        filtroBusquedaNombTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroBusquedaNombTCActionPerformed(evt);
+            }
+        });
+        filtroBusquedaNombTC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                filtroBusquedaNombTCKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filtroBusquedaNombTCKeyReleased(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+
+        filtroBusquedaNumConf.setBackground(new java.awt.Color(255, 255, 255));
+        filtroBusquedaNumConf.setBorder(null);
+        filtroBusquedaNumConf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroBusquedaNumConfActionPerformed(evt);
+            }
+        });
+        filtroBusquedaNumConf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                filtroBusquedaNumConfKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filtroBusquedaNumConfKeyReleased(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Filtrar por Cód. Tipo Caso: ");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Filtrar por N° de Configuración: ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(botonVolver)
-                        .addGap(383, 383, 383)
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonTrabajarRenglo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ErrorMensaje, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(36, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(botonVolver)
+                                .addGap(590, 590, 590)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botonTrabajarRenglo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(filtroBusquedaNumConf)
+                                    .addComponent(jLabel2))
+                                .addGap(11, 11, 11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonVolver, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,6 +386,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         
         tablaConfiguraciones.addColumn("Num Config. TC");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
         tablaConfiguraciones.addColumn("Cod. Tipo Caso");//que Luego esta tabla le setteamos para mostrar en modelo de la interfaz
+        tablaConfiguraciones.addColumn("Nomb. Tipo Caso");
         tablaConfiguraciones.addColumn("Fecha Inicio Vigencia");
         tablaConfiguraciones.addColumn("Fecha Fin Vigencia");
         tablaConfiguraciones.addColumn("Fecha Verificacion");
@@ -336,16 +394,29 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         tablaConfiguracionCaso.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         tablaConfiguracionCaso.getTableHeader().setBackground(new Color(172, 202, 221));
 
-        tablaConfiguracionCaso.setAutoCreateRowSorter(true);
+        tablaConfiguracionCaso.getTableHeader().setReorderingAllowed(false);
+ 
+        for(MouseListener listener : tablaConfiguracionCaso.getTableHeader().getMouseListeners()){
+        tablaConfiguracionCaso.getTableHeader().removeMouseListener(listener);
+        }
 
 
        for (int i = 0; i < ordenarCTC.length; i++) {
             Vector fil = new Vector();
             fil.add(ordenarCTC[i].getNroConfig());
             fil.add(ordenarCTC[i].getCodTipoCaso());
+            fil.add(ordenarCTC[i].getNombreTipoCaso());
             fil.add(ordenarCTC[i].getFechaInicioVigencia());
+            if(ordenarCTC[i].getFechaFinVigencia() != null){
             fil.add(ordenarCTC[i].getFechaFinVigencia());
+            }else{
+            fil.add("Vigente");    
+            }
+            if(ordenarCTC[i].getFechaVerificacion()!= null){
             fil.add(ordenarCTC[i].getFechaVerificacion());
+            }else{
+            fil.add("Sin verificar");    
+            }            
             tablaConfiguraciones.addRow(fil);
       }
     }
@@ -387,19 +458,19 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ModificarConfiguracionActionPerformed
 
-    private void filtroBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroBusquedaActionPerformed
+    private void filtroBusquedaNombTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroBusquedaNombTCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_filtroBusquedaActionPerformed
+    }//GEN-LAST:event_filtroBusquedaNombTCActionPerformed
 
-    private void filtroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaKeyPressed
+    private void filtroBusquedaNombTCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaNombTCKeyPressed
       /*  if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             tablaTI(filBusqueda.getText());
         }*/
-    }//GEN-LAST:event_filtroBusquedaKeyPressed
+    }//GEN-LAST:event_filtroBusquedaNombTCKeyPressed
 
-    private void filtroBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaKeyReleased
+    private void filtroBusquedaNombTCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaNombTCKeyReleased
        // tablaTI(filBusqueda.getText());
-    }//GEN-LAST:event_filtroBusquedaKeyReleased
+    }//GEN-LAST:event_filtroBusquedaNombTCKeyReleased
 
     private void AgregarCTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCTCActionPerformed
         //Metodo para agregar un Tipo instancia
@@ -459,7 +530,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
         } else  {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-              if(tablaConfiguracionCaso.getValueAt(i,4) != null){
+              if(tablaConfiguracionCaso.getValueAt(i,4) == "Sin verificar"){
                 ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                 ErrorMensaje.setText("La Configuración seleccionada ya está verificada");
               }else{  
@@ -478,6 +549,18 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ErrorMensajeActionPerformed
+
+    private void filtroBusquedaNumConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroBusquedaNumConfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtroBusquedaNumConfActionPerformed
+
+    private void filtroBusquedaNumConfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaNumConfKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtroBusquedaNumConfKeyPressed
+
+    private void filtroBusquedaNumConfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroBusquedaNumConfKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtroBusquedaNumConfKeyReleased
 
     /**
      * @param args the command line arguments
@@ -522,9 +605,13 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     private javax.swing.JButton botonTrabajarRenglo;
     private javax.swing.JButton botonVerificar;
     private javax.swing.JButton botonVolver;
-    private javax.swing.JTextField filtroBusqueda;
+    private javax.swing.JTextField filtroBusquedaNombTC;
+    private javax.swing.JTextField filtroBusquedaNumConf;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;

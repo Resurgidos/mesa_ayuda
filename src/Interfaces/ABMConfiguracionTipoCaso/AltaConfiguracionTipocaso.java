@@ -199,7 +199,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         MensajeError.setBackground(new java.awt.Color(204, 204, 204));
         MensajeError.setBorder(null);
 
-        fechaDesde.setDateFormatString("dd/MM/yyyy -  HH:mm:ss");
+        fechaDesde.setDateFormatString("dd/MM/yyyy ");
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
 

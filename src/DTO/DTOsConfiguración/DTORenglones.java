@@ -3,7 +3,7 @@ package DTO.DTOsConfiguración;
 
 public class DTORenglones {
    public int ordenTCTI;
-   public float minutosMAXReso;
+   public int minutosMAXReso;
    public int codTI;
    public String nombreTI;
 
@@ -15,11 +15,11 @@ public class DTORenglones {
         this.ordenTCTI = ordenTCTI;
     }
 
-    public float getMinutosMAXReso() {
+    public int getMinutosMAXReso() {
         return minutosMAXReso;
     }
 
-    public void setMinutosMAXReso(float minutosMAXReso) {
+    public void setMinutosMAXReso(int minutosMAXReso) {
         this.minutosMAXReso = minutosMAXReso;
     }
 

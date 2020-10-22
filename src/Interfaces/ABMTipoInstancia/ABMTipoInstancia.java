@@ -5,6 +5,7 @@ import DTO.DTOsTipoInstancia.DTOFiltroTI;
 import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseListener;
 
 import java.util.List;
 import java.util.Vector;
@@ -391,9 +392,12 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         tablaTipoInstancia.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         tablaTipoInstancia.getTableHeader().setBackground(new Color(172, 202, 221));
 
-        tablaTipoInstancia.setAutoCreateRowSorter(true);
-//        
-
+        tablaTipoInstancia.getTableHeader().setReorderingAllowed(false);
+ 
+        for(MouseListener listener : tablaTipoInstancia.getTableHeader().getMouseListeners()){
+        tablaTipoInstancia.getTableHeader().removeMouseListener(listener);
+        }
+        
         for (int i = 0; i < ordenarTI.length; i++) {
             Vector fil = new Vector();
             fil.add(ordenarTI[i].getCodTipoInstancia());

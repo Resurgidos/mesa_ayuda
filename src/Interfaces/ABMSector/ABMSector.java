@@ -6,6 +6,7 @@ import DTO.DTOsSector.DTOSector;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseListener;
 import java.sql.Date;
 
 import java.util.List;
@@ -309,7 +310,11 @@ public class ABMSector extends javax.swing.JFrame {
         
         tablaSector.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         tablaSector.getTableHeader().setBackground(new Color(172, 202, 221));
-        
+        tablaSector.getTableHeader().setReorderingAllowed(false);
+ 
+        for(MouseListener listener : tablaSector.getTableHeader().getMouseListeners()){
+        tablaSector.getTableHeader().removeMouseListener(listener);
+        }
      
         for (int i = 0; i < ordenarS.length; i++) {
             Vector ejemplo = new Vector();
