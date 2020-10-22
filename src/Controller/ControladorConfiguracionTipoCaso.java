@@ -61,5 +61,17 @@ public class ControladorConfiguracionTipoCaso {
         return expertoC.verDatosRenglon( nroConfigCaso, ordenTCTISelec);
     }
     
+    public DTOErroresMensajes modificarRenglon(DTOModificarRenglon dtoMofidRenglon) {
+        return expertoC.modificarRenglon(dtoMofidRenglon);
+    }
+    
+    public String inputCodTipoInstancia(String codTipoInstancia) {
+        return expertoC.inputCodTipoInstancia(codTipoInstancia);
+    }
+    
+    public DTOModificarRenglon buscarRenglonModificar(int nroConfigCaso, int ordenTCTISelec) {
+        return expertoC.buscarRenglonModificar( nroConfigCaso, ordenTCTISelec);
+    }
+    
     
 }

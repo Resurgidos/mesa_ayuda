@@ -665,23 +665,25 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnModificarRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarRenglonActionPerformed
-        // Boton modificar renglon
+          // Boton modificar renglon
         int numTabSec = tablaTrabajarRenglon.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-
+       
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
-        } else {
+        } else  {
             for (int i = 0; i < tablaTrabajarRenglon.getRowCount(); i++) { //Recorremos la tabla
 //                
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
                     int codConfMostrar = (int) (tablaTrabajarRenglon.getValueAt(i, 0));
-
-                    ModificarRenglon modificarRenglon = new ModificarRenglon();
+                    
+                    
+                    int ordenTCTISelec = (int) (tablaTrabajarRenglon.getValueAt(i, 0));
+                    ModificarRenglon modificarRenglon = new ModificarRenglon(Integer.parseInt(nroConfigCaso.getText()), ordenTCTISelec);
                     modificarRenglon.setVisible(true);
                     this.setVisible(false);
                 }
-            }
+            }       
         }
     }//GEN-LAST:event_btnModificarRenglonActionPerformed
 

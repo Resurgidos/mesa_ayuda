@@ -5,12 +5,18 @@
  */
 package Interfaces.ABMConfiguracionTipoCaso;
 
-/**
- *
- * @author leand
- */
+import Controller.ControladorConfiguracionTipoCaso;
+import DTO.DTOsConfiguración.DTOErroresMensajes;
+import DTO.DTOsConfiguración.DTOModificarRenglon;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
+
 public class ModificarRenglon extends javax.swing.JFrame {
 
+    ControladorConfiguracionTipoCaso control = new ControladorConfiguracionTipoCaso();
+    int nroConfiguracion = 0;
+    
     /**
      * Creates new form ModificarRenglon
      */
@@ -18,6 +24,25 @@ public class ModificarRenglon extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Modificar Renglón");
+    }
+    
+    
+    ModificarRenglon(int nroConfigura, int ordenTCTISelec) {
+        initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Modificar Renglón");
+        
+        DTOModificarRenglon dtomodificar = control.buscarRenglonModificar(nroConfigura, ordenTCTISelec);
+        nroConfiguracion = dtomodificar.getNroConfig();
+        iniciarDatos(dtomodificar);
+    }
+    
+    
+    private void iniciarDatos(DTOModificarRenglon dtomodificar) {
+        inputordenTCTI.setText(Integer.toString(dtomodificar.getOrdenTCTI()));        
+        inputMinutosMaximos.setText(Integer.toString( dtomodificar.getMinutosMAXReso()));
+        inputCodInstancia.setText(Integer.toString(dtomodificar.getCodTI()));
+        outNombTI.setText(dtomodificar.getNombreTI());
     }
 
     /**
@@ -32,14 +57,14 @@ public class ModificarRenglon extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelNroRenglo = new javax.swing.JLabel();
         confirmarModificar = new javax.swing.JButton();
-        inputNumRenglon = new javax.swing.JTextField();
+        inputordenTCTI = new javax.swing.JTextField();
         outNombTI = new javax.swing.JTextField();
-        inputMinMax = new javax.swing.JTextField();
+        inputCodInstancia = new javax.swing.JTextField();
         labelNombTipoInstancia = new javax.swing.JLabel();
         MensajeError = new javax.swing.JTextField();
         labelCodTipoInstancia = new javax.swing.JLabel();
         labelMinDura = new javax.swing.JLabel();
-        inputCodTI = new javax.swing.JTextField();
+        inputMinutosMaximos = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         volverABM = new javax.swing.JButton();
@@ -67,16 +92,17 @@ public class ModificarRenglon extends javax.swing.JFrame {
             }
         });
 
-        inputNumRenglon.setBackground(new java.awt.Color(255, 255, 255));
-        inputNumRenglon.setBorder(null);
-        inputNumRenglon.addActionListener(new java.awt.event.ActionListener() {
+        inputordenTCTI.setEditable(false);
+        inputordenTCTI.setBackground(new java.awt.Color(153, 153, 153));
+        inputordenTCTI.setBorder(null);
+        inputordenTCTI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputNumRenglonActionPerformed(evt);
+                inputordenTCTIActionPerformed(evt);
             }
         });
-        inputNumRenglon.addKeyListener(new java.awt.event.KeyAdapter() {
+        inputordenTCTI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputNumRenglonKeyTyped(evt);
+                inputordenTCTIKeyTyped(evt);
             }
         });
 
@@ -99,16 +125,16 @@ public class ModificarRenglon extends javax.swing.JFrame {
             }
         });
 
-        inputMinMax.setBackground(new java.awt.Color(255, 255, 255));
-        inputMinMax.setBorder(null);
-        inputMinMax.addFocusListener(new java.awt.event.FocusAdapter() {
+        inputCodInstancia.setBackground(new java.awt.Color(255, 255, 255));
+        inputCodInstancia.setBorder(null);
+        inputCodInstancia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                inputMinMaxFocusLost(evt);
+                inputCodInstanciaFocusLost(evt);
             }
         });
-        inputMinMax.addActionListener(new java.awt.event.ActionListener() {
+        inputCodInstancia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputMinMaxActionPerformed(evt);
+                inputCodInstanciaActionPerformed(evt);
             }
         });
 
@@ -131,22 +157,21 @@ public class ModificarRenglon extends javax.swing.JFrame {
         labelMinDura.setForeground(new java.awt.Color(0, 0, 0));
         labelMinDura.setText("Minutos máximos: ");
 
-        inputCodTI.setEditable(false);
-        inputCodTI.setBackground(new java.awt.Color(255, 255, 255));
-        inputCodTI.setBorder(null);
-        inputCodTI.addFocusListener(new java.awt.event.FocusAdapter() {
+        inputMinutosMaximos.setBackground(new java.awt.Color(255, 255, 255));
+        inputMinutosMaximos.setBorder(null);
+        inputMinutosMaximos.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                inputCodTIFocusLost(evt);
+                inputMinutosMaximosFocusLost(evt);
             }
         });
-        inputCodTI.addActionListener(new java.awt.event.ActionListener() {
+        inputMinutosMaximos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputCodTIActionPerformed(evt);
+                inputMinutosMaximosActionPerformed(evt);
             }
         });
-        inputCodTI.addKeyListener(new java.awt.event.KeyAdapter() {
+        inputMinutosMaximos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputCodTIKeyTyped(evt);
+                inputMinutosMaximosKeyTyped(evt);
             }
         });
 
@@ -205,14 +230,14 @@ public class ModificarRenglon extends javax.swing.JFrame {
                                 .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
                                 .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(inputMinMax, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputCodInstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(outNombTI, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelNombTipoInstancia)
                             .addComponent(labelCodTipoInstancia)
                             .addComponent(labelNroRenglo)
-                            .addComponent(inputNumRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputordenTCTI, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelMinDura)
-                            .addComponent(inputCodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(inputMinutosMaximos, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -225,15 +250,15 @@ public class ModificarRenglon extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelNroRenglo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputNumRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputordenTCTI, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelMinDura)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(inputCodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputMinutosMaximos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(labelCodTipoInstancia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputMinMax, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputCodInstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(labelNombTipoInstancia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -264,71 +289,55 @@ public class ModificarRenglon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarModificarActionPerformed
-        //Método para agregar un Tipo de Instancia
-        /*
-        try {
-            if (!inputNumRenglon.getText().isEmpty()) {
-                if (!inputMinMax.getText().isEmpty()) {
-                    if (!inputCodTI.getText().isEmpty()) {
-                        if(!inputCodTI.getText().isEmpty()){
-                            //int validacion = validarFecha(inputNombreTipoCaso.getText());
-                            //if(validacion==1){
-                                do{
-                                    DTOAgregarConfiguracion dtoAgregar = new DTOAgregarConfiguracion();
-                                    dtoAgregar.setNroConfiguracion(Integer.parseInt(inputNumRenglon.getText()));
-                                    dtoAgregar.setCodTipoCaso(Integer.parseInt(inputMinMax.getText()));
-                                    dtoAgregar.setNombreTipoCaso(inputCodTI.getText());
-                                    dtoAgregar.setFechaDesde(fechaDesde.getDate());
-                                    dtoE = controlador.agregarConfiguracion(dtoAgregar);
-                                    /* SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy"); // La cadena de formato de fecha se pasa como un argumento al objeto
-                                    String fechaFin = objSDF.format(fechaInicioConfiguracion.getDateFormatString());
-                                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                    Date fechaInicio= dateFormat.parse(fechaInicioConfiguracion.getDate().toString());
-                                    String fechaBase = dateFormat.format(fechaInicio);
-                                    Date fechaBaseDatos = dateFormat.parse(fechaBase);*/
-
-                                    /*SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy");
-                                    String fechaFin = objSDF.format(fechaInicioConfiguracion.getDate());
-                                    dtoAgregar.setFechaDesde(objSDF.parse(fechaFin));
-
-                                    if(dtoE.getVerificarError() == 0){
-                                        JOptionPane.showMessageDialog(this, "La configuración se grabo exitosamente");
-                                        ABMConfiguracionTipoCaso abmC = new ABMConfiguracionTipoCaso();
-                                        abmC.setVisible(true);
-                                        this.setVisible(false);
-                                    }else{
-                                        MensajeError.setForeground(Color.red);
-                                        MensajeError.setText(dtoE.getErrorMensaje());
-                                        dtoE.setVerificarError(0);
-                                    }
-
-                                }while(dtoE.getVerificarError()!=0);
-
+        DTOErroresMensajes dtoError = new DTOErroresMensajes();
+        
+        
+        
+        if(!inputordenTCTI.getText().isEmpty()){
+            if(!inputMinutosMaximos.getText().isEmpty()){
+                if(!inputCodInstancia.getText().isEmpty()){
+                    if(!outNombTI.getText().isEmpty()){
+                        do{
+                            DTOModificarRenglon dtoMofidRenglon = new DTOModificarRenglon();
+                            dtoMofidRenglon.setNroConfig(nroConfiguracion);
+                            dtoMofidRenglon.setOrdenTCTI(Integer.parseInt(inputordenTCTI.getText()));
+                            dtoMofidRenglon.setMinutosMAXReso(Integer.parseInt(inputMinutosMaximos.getText()));
+                            dtoMofidRenglon.setCodTI(Integer.parseInt(inputCodInstancia.getText()));
+                            dtoMofidRenglon.setNombreTI(outNombTI.getText());
+                            dtoError = control.modificarRenglon(dtoMofidRenglon);
+                            
+                            if(dtoError.getVerificarError() == 0){
+                                JOptionPane.showMessageDialog(this, "El renglon se modificó con éxito");
+                                TrabajarRenglones trabajarRenglones = new TrabajarRenglones(nroConfiguracion);
+                                trabajarRenglones.setVisible(true);
+                                this.setVisible(false);
                             }else{
-                                JOptionPane.showMessageDialog(this, "Por favor ingrese una Fecha de Inicio", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                                MensajeError.setForeground(Color.red);
+                                MensajeError.setText(dtoError.getErrorMensaje());
+                                dtoError.setVerificarError(0);
                             }
-                        }else{
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Número de Configuración de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                            
+                        }while(dtoError.getVerificarError()!=0);
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Instancia valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                    }    
+                }else{
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }*/
+            }else{
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un número de minutos maximos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_confirmarModificarActionPerformed
 
-    private void inputNumRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNumRenglonActionPerformed
+    private void inputordenTCTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputordenTCTIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputNumRenglonActionPerformed
+    }//GEN-LAST:event_inputordenTCTIActionPerformed
 
-    private void inputNumRenglonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNumRenglonKeyTyped
+    private void inputordenTCTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputordenTCTIKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputNumRenglonKeyTyped
+    }//GEN-LAST:event_inputordenTCTIKeyTyped
 
     private void outNombTIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_outNombTIFocusLost
         // TODO add your handling code here:
@@ -342,34 +351,48 @@ public class ModificarRenglon extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_outNombTIKeyTyped
 
-    private void inputMinMaxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMinMaxFocusLost
-        /*   if (!inputMinMax.getText().isEmpty()) {
-            MostrarTipoCasoInput(inputMinMax.getText());
+    private void inputCodInstanciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCodInstanciaFocusLost
+        if (!inputCodInstancia.getText().isEmpty()) {
+            MostrarTipoInstanciaInput(inputCodInstancia.getText());
         }else{
-            JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-        }*/
-    }//GEN-LAST:event_inputMinMaxFocusLost
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_inputCodInstanciaFocusLost
 
-    private void inputMinMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinMaxActionPerformed
+    private void MostrarTipoInstanciaInput(String codTipoInstancia) {
+        String nombreTInstancia = control.inputCodTipoInstancia(codTipoInstancia);     
+        if(nombreTInstancia == "El tipo de instancia ingresado está dado de baja"){
+            JOptionPane.showMessageDialog(this, "El tipo de instancia ingresado está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            outNombTI.setText("");
+        }else if (nombreTInstancia == "No existe el Tipo Instancia Ingresado"){
+            JOptionPane.showMessageDialog(this, "No existe el Tipo Instancia Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            outNombTI.setText("");
+        }else{
+            outNombTI.setText(nombreTInstancia);
+        }
+    }
+    
+    
+    private void inputCodInstanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCodInstanciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputMinMaxActionPerformed
+    }//GEN-LAST:event_inputCodInstanciaActionPerformed
 
-    private void inputCodTIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCodTIFocusLost
+    private void inputMinutosMaximosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMinutosMaximosFocusLost
 
-    }//GEN-LAST:event_inputCodTIFocusLost
+    }//GEN-LAST:event_inputMinutosMaximosFocusLost
 
-    private void inputCodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCodTIActionPerformed
+    private void inputMinutosMaximosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinutosMaximosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputCodTIActionPerformed
+    }//GEN-LAST:event_inputMinutosMaximosActionPerformed
 
-    private void inputCodTIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCodTIKeyTyped
+    private void inputMinutosMaximosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMinutosMaximosKeyTyped
         //Declaramos una variable y asignamos un evento
-    }//GEN-LAST:event_inputCodTIKeyTyped
+    }//GEN-LAST:event_inputMinutosMaximosKeyTyped
 
     private void volverABMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverABMActionPerformed
 
-        TrabajarRenglones abmConf = new TrabajarRenglones();
-        abmConf.setVisible(true);
+        TrabajarRenglones trabajarRenglos = new TrabajarRenglones(nroConfiguracion);
+        trabajarRenglos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_volverABMActionPerformed
 
@@ -411,9 +434,9 @@ public class ModificarRenglon extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField MensajeError;
     private javax.swing.JButton confirmarModificar;
-    private javax.swing.JTextField inputCodTI;
-    private javax.swing.JTextField inputMinMax;
-    private javax.swing.JTextField inputNumRenglon;
+    private javax.swing.JTextField inputCodInstancia;
+    private javax.swing.JTextField inputMinutosMaximos;
+    private javax.swing.JTextField inputordenTCTI;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;

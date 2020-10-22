@@ -61,14 +61,14 @@
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                   <Component id="volverABM" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="inputMinMax" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
+                              <Component id="inputCodInstancia" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
                               <Component id="outNombTI" alignment="0" min="-2" pref="282" max="-2" attributes="0"/>
                               <Component id="labelNombTipoInstancia" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labelCodTipoInstancia" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labelNroRenglo" min="-2" max="-2" attributes="0"/>
-                              <Component id="inputNumRenglon" min="-2" pref="282" max="-2" attributes="0"/>
+                              <Component id="inputordenTCTI" min="-2" pref="282" max="-2" attributes="0"/>
                               <Component id="labelMinDura" min="-2" max="-2" attributes="0"/>
-                              <Component id="inputCodTI" min="-2" pref="282" max="-2" attributes="0"/>
+                              <Component id="inputMinutosMaximos" min="-2" pref="282" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -87,15 +87,15 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="labelNroRenglo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="inputNumRenglon" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="inputordenTCTI" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="labelMinDura" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="8" max="32767" attributes="0"/>
-                  <Component id="inputCodTI" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="inputMinutosMaximos" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="labelCodTipoInstancia" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="inputMinMax" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="inputCodInstancia" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="labelNombTipoInstancia" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -154,18 +154,19 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarModificarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputNumRenglon">
+        <Component class="javax.swing.JTextField" name="inputordenTCTI">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNumRenglonActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputNumRenglonKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputordenTCTIActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputordenTCTIKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="outNombTI">
@@ -184,7 +185,7 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="outNombTIKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputMinMax">
+        <Component class="javax.swing.JTextField" name="inputCodInstancia">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -194,8 +195,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputMinMaxFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputMinMaxActionPerformed"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputCodInstanciaFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputCodInstanciaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelNombTipoInstancia">
@@ -251,9 +252,8 @@
             <Property name="text" type="java.lang.String" value="Minutos m&#xe1;ximos: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputCodTI">
+        <Component class="javax.swing.JTextField" name="inputMinutosMaximos">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -262,9 +262,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputCodTIFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputCodTIActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputCodTIKeyTyped"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputMinutosMaximosFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputMinutosMaximosActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputMinutosMaximosKeyTyped"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel4">
