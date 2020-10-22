@@ -10,7 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JOptionPane;
+
 
 
 public class ExpertoConfigurar {
@@ -328,7 +328,7 @@ public class ExpertoConfigurar {
         }*/
         return dtoErrores;
     }
-    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(int codTC, int codNumConf ){
+    public List<DTOTipoConfiguracionGrilla> filtroConfiguracion(int codTC, int codNumConf){
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
         
@@ -359,6 +359,7 @@ public class ExpertoConfigurar {
             
                     dtoList.add(dtoConfig);
                 }
+               
             }
      
         return dtoList;  

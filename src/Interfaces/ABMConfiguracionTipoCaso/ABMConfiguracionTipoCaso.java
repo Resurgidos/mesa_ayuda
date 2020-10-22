@@ -19,7 +19,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     ControladorConfiguracionTipoCaso controlador = new ControladorConfiguracionTipoCaso();
     DTOTipoConfiguracionGrilla dtoConfi = new DTOTipoConfiguracionGrilla();
    
-    public ABMConfiguracionTipoCaso() {
+    public ABMConfiguracionTipoCaso(){
+    
         initComponents();
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
         setTitle("ABM Configuracion De Tipo Caso");
@@ -285,6 +286,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -296,8 +298,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))
-                            .addComponent(jScrollPane1)))
+                                .addComponent(jLabel8))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -322,8 +323,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -573,9 +574,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         tablaConfiguracion(filtroBusquedaNombTC.getText(), filtroBusquedaNumConf.getText());
     }//GEN-LAST:event_filtroBusquedaNumConfKeyReleased
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

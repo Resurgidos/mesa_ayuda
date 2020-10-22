@@ -8,7 +8,6 @@ import DTO.DTOsConfiguración.DTOTipoConfiguracionGrilla;
 import DTO.DTOsConfiguración.DTOTrabajarRenglones;
 import DTO.DTOsConfiguración.DTOVerRenglon;
 import DTO.DTOsConfiguración.DTOVisualizarVerificar;
-import java.util.Date;
 import java.util.List;
 import main.ExpertoConfigurar;
 
