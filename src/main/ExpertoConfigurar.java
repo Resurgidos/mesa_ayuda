@@ -638,17 +638,21 @@ public class ExpertoConfigurar {
         List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
                 
         for (Object x : objetoList){
-            configTipo = (ConfiguracionTipoCaso)x;  
+            configTipo = (ConfiguracionTipoCaso)x; 
+             
             for (int i = 0; i < configTipo.getTipoCtipoIns().size(); i++) {
 
                 if(configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoMofidRenglon.getOrdenTCTI() ){
+                    
+                    System.out.println("El codigo de order es igual"+ dtoMofidRenglon.getOrdenTCTI()+"el de config" + configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
                     
                     DTOCriterio dtoCrit1 = new DTOCriterio();
                     dtoCrit1.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                     dtoCrit1.setOperacion("=");
                     dtoCrit1.setValor(dtoMofidRenglon.getCodTI()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
-                    listadtoCrit.add(dtoCrit1);
-                    List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+                    List<DTOCriterio> listadtoCrit2 = new ArrayList<>();
+                    listadtoCrit2.add(dtoCrit1);
+                    List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit2 );
                                 
                     for (Object c : objetoList3) {                     
                         ti = (TipoInstancia)c ;
@@ -657,18 +661,27 @@ public class ExpertoConfigurar {
                             dtoErrores.setErrorMensaje("El TipoInstancia esta dado de baja");
                             return dtoErrores;
                         }
-                    }  
-                     
+                    }                      
                     
+//                    System.out.println(dtoMofidRenglon.getMinutosMAXReso());
+//                    System.out.println(ti.getCodTipoInstancia()+"cod tipo instancia");
+                    tcti.setOrdenTipoCasoTipoInstancia(dtoMofidRenglon.getOrdenTCTI());
                     tcti.setMinutosMaximoResolucion(dtoMofidRenglon.getMinutosMAXReso());
                     tcti.setTipoInstancia(ti);
-                    configTipo.addTipoCasoTipoInstancia(tcti);
-                    FachadaPersistencia.getInstance().guardar(configTipo);                 
-                }                
+                    configTipo.updateTCTI(i, tcti);
+                    
+                    System.out.println("Datos finales orden"+ tcti.getOrdenTipoCasoTipoInstancia());
+                    System.out.println("Datos finales MinutosMaximoResolucion"+ tcti.getMinutosMaximoResolucion());
+                    System.out.println("Datos finales TipoInstancia"+ tcti.getTipoInstancia().getCodTipoInstancia());
+                    
+                    
+                    FachadaPersistencia.getInstance().modificar(configTipo);
+                 
+                }            
             }            
         }      
         FachadaPersistencia.getInstance().finalizarTransaccion();       
-        return dtoErrores;      
+          return dtoErrores;  
     }
     
     public String inputCodTipoInstancia(String codTipoInstancia) {

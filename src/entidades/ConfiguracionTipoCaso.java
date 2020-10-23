@@ -73,6 +73,10 @@ public class ConfiguracionTipoCaso extends Entidad{
      public void removeTCTI (TipoCasoTipoInstancia tipocasotipoinstancia){
          tipoCtipoIns.remove(tipocasotipoinstancia);
      }
+     
+     public void updateTCTI(int index, TipoCasoTipoInstancia tipocasotipoinstancia){
+         tipoCtipoIns.set(index, tipocasotipoinstancia);
+     }
        
     
 }
