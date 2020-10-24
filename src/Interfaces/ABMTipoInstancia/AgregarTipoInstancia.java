@@ -432,7 +432,8 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
            DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombSec.setText(tI.getNombreSector());
         }*/
-        String nombreSector = control.buscarNombSector(filSector);
+        
+       String nombreSector = control.buscarNombSector(filSector);
         if (nombreSector == "No se encontro el Sector") {
             outnombSec.setText("");
             outnombSec.setForeground(Color.red);
@@ -486,7 +487,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
            outnombTT.setText(tI.getNombreTipoTarea());
          }*/
 
-        String nombreTipoT = control.buscarNombTipoTarea(nombreTT);
+       String nombreTipoT = control.buscarNombTipoTarea(nombreTT);
         if (nombreTipoT == "No se encontro el TipoTarea") {
             outnombTT.setText("");
             outnombTT.setForeground(Color.red);

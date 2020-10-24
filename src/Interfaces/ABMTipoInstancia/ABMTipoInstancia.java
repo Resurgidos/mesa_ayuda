@@ -473,7 +473,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                     //    dtoTI.setCodTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         int j = JOptionPane.showConfirmDialog(this,
                                 ""
-                                + "¿Estas seguro que desea dar de baja? \n\n"
+                                + "¿Está seguro que desea confirmar la baja? \n\n"
                                 + "Cod Tipo Instancia: " + (int) tablaTipoInstancia.getValueAt(i, 0) + "\n"
                                 + "Nombre Tipo Instancia: " + tablaTipoInstancia.getValueAt(i, 1) + "\n"
                                 + "Nombre Sector: " + tablaTipoInstancia.getValueAt(i, 2) + "\n"

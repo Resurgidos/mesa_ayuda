@@ -278,7 +278,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_inputCodTipoCasoModifKeyTyped
@@ -340,10 +340,10 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                         }
                     }while(dtoError.getVerificarError()!=0);
                 }else{
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso válido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             }else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }    
     }//GEN-LAST:event_confirmarModificarActionPerformed
 
@@ -364,9 +364,9 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
             outNombreTipoCaso.setForeground(Color.RED);
             outNombreTipoCaso.setText("El Tipo Caso está dado de baja");
         }else if (nombreTCaso == "No existe el Tipo Caso Ingresado"){
-            JOptionPane.showMessageDialog(this, "No existe el codigo del Tipo Caso Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No existe el código del Tipo Caso Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             outNombreTipoCaso.setForeground(Color.RED);
-            outNombreTipoCaso.setText("No existe el codigo del Tipo Caso Ingresado");
+            outNombreTipoCaso.setText("No existe el código del Tipo Caso Ingresado");
         }else{
             outNombreTipoCaso.setForeground(Color.black);
             outNombreTipoCaso.setText(nombreTCaso);

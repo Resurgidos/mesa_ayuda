@@ -215,7 +215,7 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
             dtoTipoCaso.setCodTipoCaso(Integer.parseInt(inputCodTipoCaso.getText()));
             dtoTipoCaso.setNombreTipoCaso(nombreNuevoTipoCaso);
             control.modificarTipoCaso(dtoTipoCaso);
-            JOptionPane.showMessageDialog(this, "Se modifico con éxito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Se modificó con éxito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
             abmTipoCaso.setVisible(true);
             this.setVisible(false);
             abmTipoCaso.tablaTipoCaso("");

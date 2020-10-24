@@ -248,7 +248,7 @@ public class ModificarSector extends javax.swing.JFrame {
         dtoSec.setDescripcionSector(descSecnuevo);
         control.modificarSector(dtoSec);
 
-        JOptionPane.showMessageDialog(this, "Se modifico con éxito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Se modificó con éxito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
 
                 abmSec.setVisible(true);
                 this.setVisible(false);

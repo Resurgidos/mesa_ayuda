@@ -702,7 +702,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                     numConfig = codConfig;
                     nroOrden = (int) (tablaTrabajarRenglon.getValueAt(i, 0));
                     int j = JOptionPane.showConfirmDialog(this, ""
-                            + "¿Estas seguro que confirmar la baja? \n\n"
+                            + "¿Está seguro que desea confirmar la baja? \n\n"
                             + "Orden: " + (int) tablaTrabajarRenglon.getValueAt(i, 0) + "\n"
                             + "Minutos: " + tablaTrabajarRenglon.getValueAt(i, 1) + "\n"
                             + "Cod Tipo Instancia: " + tablaTrabajarRenglon.getValueAt(i, 2) + "\n"

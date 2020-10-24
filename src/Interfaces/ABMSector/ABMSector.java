@@ -397,7 +397,7 @@ public class ABMSector extends javax.swing.JFrame {
                 }else{
                     dtosector.setCodSector((int) tablaSector.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         int j = JOptionPane.showConfirmDialog(this, ""
-                                + "¿Estas seguro que confirmar la baja? \n\n"
+                                + "¿Está seguro que desea confirmar la baja? \n\n"
                                 + "Cod Sector: " + (int) tablaSector.getValueAt(i, 0) + "\n"
                                 + "Nombre: " + tablaSector.getValueAt(i, 1) + "\n"
                                 + "Descripción: " + tablaSector.getValueAt(i, 2) + "\n\n"

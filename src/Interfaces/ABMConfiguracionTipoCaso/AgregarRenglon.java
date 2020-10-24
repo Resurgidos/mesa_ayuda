@@ -380,7 +380,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
                                     dtoE = controlador.agregarRenglon(dtoAgregar);
                                   
                                     if(dtoE.getVerificarError() == 0){
-                                        JOptionPane.showMessageDialog(this, "El renglón se grabo exitosamente");
+                                        JOptionPane.showMessageDialog(this, "El renglón se grabó exitosamente");
                                         TrabajarRenglones abmT = new TrabajarRenglones(codConfig);
                                         abmT.setVisible(true);
                                         this.setVisible(false);

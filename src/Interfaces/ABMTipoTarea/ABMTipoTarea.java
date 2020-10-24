@@ -380,7 +380,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                 }else{
                     dtotipotareamodificar.setCodTipoTarea((int)TipoTareaTabla.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                     int j = JOptionPane.showConfirmDialog(this, ""
-                                + "¿Estas seguro que confirmar la baja? \n\n"
+                                + "¿Está seguro que desea confirmar la baja? \n\n"
                                 + "Cod Tipo Tarea: " + (int) TipoTareaTabla.getValueAt(i, 0) + "\n"
                                 + "Nombre: " + TipoTareaTabla.getValueAt(i, 1) + "\n"
                                 + "Descripción: " + TipoTareaTabla.getValueAt(i, 2) + "\n\n"

@@ -305,7 +305,7 @@ public class ModificarRenglon extends javax.swing.JFrame {
                             dtoError = control.modificarRenglon(dtoMofidRenglon);
                             
                             if(dtoError.getVerificarError() == 0){
-                                JOptionPane.showMessageDialog(this, "El renglon se modificó con éxito");
+                                JOptionPane.showMessageDialog(this, "El renglón se modificó con éxito");
                                 TrabajarRenglones trabajarRenglones = new TrabajarRenglones(nroConfiguracion);
                                 trabajarRenglones.setVisible(true);
                                 this.setVisible(false);
@@ -324,7 +324,7 @@ public class ModificarRenglon extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             }else{
-                JOptionPane.showMessageDialog(this, "Por favor ingrese un número de minutos maximos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un número de minutos máximos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_confirmarModificarActionPerformed

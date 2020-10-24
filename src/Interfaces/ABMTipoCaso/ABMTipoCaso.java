@@ -386,7 +386,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                         dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         System.out.println((int) tablaTipoCasos.getValueAt(i, 0));
                         int j = JOptionPane.showConfirmDialog(this, ""
-                                + "¿Estas seguro que confirmar la baja? \n\n"
+                                + "¿Está seguro que desea confirmar la baja? \n\n"
                                 + "Cod TipoCaso: " + (int) tablaTipoCasos.getValueAt(i, 0) + "\n"
                                 + "Nombre: " + tablaTipoCasos.getValueAt(i, 1) + "\n\n",
                                  "Dar de baja Tipo Caso", JOptionPane.YES_NO_OPTION);
