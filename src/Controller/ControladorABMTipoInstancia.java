@@ -46,6 +46,10 @@ public class ControladorABMTipoInstancia {
     public List<DTOLupaBuscarSector> buscarLupitaSector(){
         return expertoTI.buscarLupitaSector();
     }
+
+    public List<DTOLupaBuscarTarea> buscarLupitaTarea() {
+        return expertoTI.buscarLupitaTarea();
+    }
    
     
 }

@@ -43,6 +43,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         outnombTT = new javax.swing.JTextField();
         botonbuscarSector = new javax.swing.JButton();
+        botonbuscarTipoTarea = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,10 +203,21 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             }
         });
 
+        botonbuscarSector.setBackground(new java.awt.Color(119, 148, 166));
         botonbuscarSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+        botonbuscarSector.setBorder(null);
         botonbuscarSector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonbuscarSectorActionPerformed(evt);
+            }
+        });
+
+        botonbuscarTipoTarea.setBackground(new java.awt.Color(119, 148, 166));
+        botonbuscarTipoTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+        botonbuscarTipoTarea.setBorder(null);
+        botonbuscarTipoTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonbuscarTipoTareaActionPerformed(evt);
             }
         });
 
@@ -216,27 +228,30 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                             .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(outnombTT, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputcodTT, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(outnombSec, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputnombTI, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputcodTI, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputcodTT, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(botonbuscarTipoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outnombTT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,9 +269,9 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputcodSec))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -264,7 +279,9 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputcodTT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputcodTT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonbuscarTipoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
@@ -471,14 +488,26 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void botonbuscarSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarSectorActionPerformed
          List<DTOLupaBuscarSector> listaSectores = control.buscarLupitaSector();
         
-        String mensaje= "\n";
+        String mensaje= "Listado de Sectores \n\n ";
         
         for(int i=0; i< listaSectores.size(); i++){           
-            mensaje +=  "Codigo Sector: "+ listaSectores.get(i).getCodigoSector()+ " Nombre Sector: "+ listaSectores.get(i).getNombreSector() + "\n\n" ;                
+            mensaje +=  "Codigo Sector: "+ listaSectores.get(i).getCodigoSector()+ ", Nombre Sector: "+ listaSectores.get(i).getNombreSector() + "\n\n" ;                
         }
         
         JOptionPane.showMessageDialog(this, mensaje, "Lista de Sectores", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonbuscarSectorActionPerformed
+
+    private void botonbuscarTipoTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarTipoTareaActionPerformed
+        List<DTOLupaBuscarTarea> listaTarea = control.buscarLupitaTarea();
+        
+        String mensaje= "Listado de Tipo Tarea \n\n";
+        
+        for(int i=0; i< listaTarea.size(); i++){           
+            mensaje +=  "Codigo Tipo Tarea: "+ listaTarea.get(i).getCodigoTarea()+ ", Nombre Tipo Tarea: "+ listaTarea.get(i).getNombreTarea()+ "\n\n" ;                
+        }
+        
+        JOptionPane.showMessageDialog(this, mensaje, "Lista de Tipo Tarea", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_botonbuscarTipoTareaActionPerformed
 
     public void MostrarTTFil(int nombreTT) {
         /*  List<DTOTipoInstancia> lista = control.filtradoTT(nombreTT);
@@ -542,6 +571,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonbuscarSector;
+    private javax.swing.JButton botonbuscarTipoTarea;
     private javax.swing.JButton confirmarAgregar;
     private javax.swing.JTextField inputcodSec;
     private javax.swing.JTextField inputcodTI;

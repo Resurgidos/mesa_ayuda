@@ -6,6 +6,7 @@ import DTO.DTOsTipoInstancia.DTOFiltroTI;
 import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
 import DTO.DTOsTipoInstancia.DTOErrorMensajes;
 import DTO.DTOsTipoInstancia.DTOLupaBuscarSector;
+import DTO.DTOsTipoInstancia.DTOLupaBuscarTarea;
 import DTO.DTOsTipoInstancia.DTOModificarTipoInstancia;
 import DTO.DTOsTipoInstancia.DTOVisualizarDatosTI;
 import entidades.*;
@@ -375,6 +376,24 @@ public class ExpertoTipoInstancia {
         }
         return resultado;
     }
+    
+    public List<DTOLupaBuscarTarea> buscarLupitaTarea() {
+        FachadaPersistencia.getInstance().iniciarTransaccion();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+        List objetoList = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit );
+        List<DTOLupaBuscarTarea> resultado = new ArrayList<>();
+
+        for (Object x : objetoList) { 
+            TipoTarea tt = (TipoTarea)x;
+            DTOLupaBuscarTarea dtoTarea = new DTOLupaBuscarTarea();             
+            dtoTarea.setCodigoTarea(tt.getCodTipoTarea());
+            dtoTarea.setNombreTarea(tt.getNombreTipoTarea());
+            resultado.add(dtoTarea);            
+        }
+        return resultado;
+    }
+    
+    
     /*
     public List<DTOAgregarTipoInstancia> filtradoSector(String filSector){
         DTOAgregarTipoInstancia dtosec = new DTOAgregarTipoInstancia();
@@ -435,6 +454,8 @@ public class ExpertoTipoInstancia {
                 }         
         return dtoList;
     }*/
+
+    
 }
    
 

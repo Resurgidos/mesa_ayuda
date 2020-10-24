@@ -8,6 +8,8 @@ package Interfaces.ABMTipoInstancia;
 import Controller.ControladorABMTipoInstancia;
 import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
 import DTO.DTOsTipoInstancia.DTOErrorMensajes;
+import DTO.DTOsTipoInstancia.DTOLupaBuscarSector;
+import DTO.DTOsTipoInstancia.DTOLupaBuscarTarea;
 import DTO.DTOsTipoInstancia.DTOModificarTipoInstancia;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
@@ -77,6 +79,8 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         confirmarModificar = new javax.swing.JButton();
         inputcodTTmod = new javax.swing.JTextField();
+        botonbuscarSector = new javax.swing.JButton();
+        botonbuscarTipoTarea = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,7 +89,6 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(119, 148, 166));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_edit_black_18dp.png"))); // NOI18N
         jLabel5.setText("MODIFICAR TIPO INSTANCIA");
 
@@ -108,7 +111,6 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Nombre Sector:");
 
         outnombSecmod.setEditable(false);
@@ -127,12 +129,10 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cod. Tipo Instancia:");
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nombre Tipo Tarea:");
 
         inputcodTImod.setEditable(false);
@@ -165,10 +165,8 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre Tipo Instancia:");
 
-        inputnombTImod.setBackground(new java.awt.Color(255, 255, 255));
         inputnombTImod.setBorder(null);
         inputnombTImod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -178,10 +176,8 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cod. Sector:");
 
-        inputcodSecmod.setBackground(new java.awt.Color(255, 255, 255));
         inputcodSecmod.setBorder(null);
         inputcodSecmod.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -201,12 +197,11 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
         volverABMAgregar.setBackground(new java.awt.Color(204, 204, 204));
         volverABMAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        volverABMAgregar.setForeground(new java.awt.Color(0, 0, 0));
         volverABMAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         volverABMAgregar.setMnemonic('v');
         volverABMAgregar.setText("Volver");
         volverABMAgregar.setBorder(null);
-        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverABMAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         volverABMAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMAgregarActionPerformed(evt);
@@ -215,23 +210,20 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cod. Tipo Tarea:");
 
         confirmarModificar.setBackground(new java.awt.Color(204, 204, 204));
-        confirmarModificar.setForeground(new java.awt.Color(0, 0, 0));
         confirmarModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_check_black_18dp.png"))); // NOI18N
         confirmarModificar.setMnemonic('c');
         confirmarModificar.setText("Confirmar");
         confirmarModificar.setBorder(null);
-        confirmarModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         confirmarModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarModificarActionPerformed(evt);
             }
         });
 
-        inputcodTTmod.setBackground(new java.awt.Color(255, 255, 255));
         inputcodTTmod.setBorder(null);
         inputcodTTmod.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -249,6 +241,24 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             }
         });
 
+        botonbuscarSector.setBackground(new java.awt.Color(119, 148, 166));
+        botonbuscarSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+        botonbuscarSector.setBorder(null);
+        botonbuscarSector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonbuscarSectorActionPerformed(evt);
+            }
+        });
+
+        botonbuscarTipoTarea.setBackground(new java.awt.Color(119, 148, 166));
+        botonbuscarTipoTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+        botonbuscarTipoTarea.setBorder(null);
+        botonbuscarTipoTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonbuscarTipoTareaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -259,11 +269,9 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                         .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(inputcodTTmod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                     .addComponent(outnombSecmod, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputcodSecmod, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputnombTImod, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +280,15 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputcodTImod, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(outnombTTmod))
+                    .addComponent(outnombTTmod)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(inputcodSecmod)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(inputcodTTmod, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonbuscarTipoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -290,7 +306,9 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputcodSecmod, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputcodSecmod, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -298,7 +316,9 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputcodTTmod, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputcodTTmod, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonbuscarTipoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -515,6 +535,30 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     
     }//GEN-LAST:event_inputcodTTmodFocusLost
 
+    private void botonbuscarSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarSectorActionPerformed
+        List<DTOLupaBuscarSector> listaSectores = control.buscarLupitaSector();
+
+        String mensaje= "Listado de Sectores \n\n ";
+
+        for(int i=0; i< listaSectores.size(); i++){
+            mensaje +=  "Codigo Sector: "+ listaSectores.get(i).getCodigoSector()+ ", Nombre Sector: "+ listaSectores.get(i).getNombreSector() + "\n\n" ;
+        }
+
+        JOptionPane.showMessageDialog(this, mensaje, "Lista de Sectores", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_botonbuscarSectorActionPerformed
+
+    private void botonbuscarTipoTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarTipoTareaActionPerformed
+        List<DTOLupaBuscarTarea> listaTarea = control.buscarLupitaTarea();
+
+        String mensaje= "Listado de Tipo Tarea \n\n";
+
+        for(int i=0; i< listaTarea.size(); i++){
+            mensaje +=  "Codigo Tipo Tarea: "+ listaTarea.get(i).getCodigoTarea()+ ", Nombre Tipo Tarea: "+ listaTarea.get(i).getNombreTarea()+ "\n\n" ;
+        }
+
+        JOptionPane.showMessageDialog(this, mensaje, "Lista de Tipo Tarea", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_botonbuscarTipoTareaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -551,6 +595,8 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonbuscarSector;
+    private javax.swing.JButton botonbuscarTipoTarea;
     private javax.swing.JButton confirmarModificar;
     private javax.swing.JTextField inputcodSecmod;
     private javax.swing.JTextField inputcodTImod;
