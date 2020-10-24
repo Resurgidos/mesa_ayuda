@@ -665,8 +665,13 @@ public class ExpertoConfigurar {
                             dtoErrores.setErrorMensaje("El TipoInstancia esta dado de baja");
                             return dtoErrores;
                         }
-                    }                      
+                    }
+                    if(dtoMofidRenglon.getMinutosMAXReso() <= 0){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("Los minutos máximos deben ser mayor a 0");
                     
+                    }
+                     
                     configTipo.getTipoCtipoIns().get(i).setOrdenTipoCasoTipoInstancia(dtoMofidRenglon.getOrdenTCTI());
                     configTipo.getTipoCtipoIns().get(i).setMinutosMaximoResolucion(dtoMofidRenglon.getMinutosMAXReso());
                     configTipo.getTipoCtipoIns().get(i).setTipoInstancia(ti);
