@@ -56,15 +56,19 @@
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="confirmarAgregar" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace pref="99" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="volverABMAgregar" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                           <Component id="outnombTT" alignment="0" max="32767" attributes="0"/>
                           <Component id="inputcodTT" alignment="0" max="32767" attributes="0"/>
                           <Component id="outnombSec" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputcodSec" alignment="0" max="32767" attributes="0"/>
                           <Component id="inputnombTI" alignment="0" max="32767" attributes="0"/>
                           <Component id="inputcodTI" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="inputcodSec" min="-2" pref="321" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="botonbuscarSector" min="-2" pref="73" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -86,8 +90,11 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="inputcodSec" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="botonbuscarSector" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="inputcodSec" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="outnombSec" min="-2" pref="35" max="-2" attributes="0"/>
@@ -104,7 +111,7 @@
                       <Component id="confirmarAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="volverABMAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -338,6 +345,16 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outnombTTActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="outnombTTKeyTyped"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonbuscarSector">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/baseline_search_black_18dp.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonbuscarSectorActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

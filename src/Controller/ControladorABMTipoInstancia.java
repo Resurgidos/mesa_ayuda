@@ -42,6 +42,10 @@ public class ControladorABMTipoInstancia {
     public String buscarNombTipoTarea(int codTipoTarea){ //Método para buscar el nombre TipoTarea y devolver el nombre a pantalla
        return expertoTI.buscarNombTipoTarea(codTipoTarea); 
     }
+
+    public List<DTOLupaBuscarSector> buscarLupitaSector() {
+        return expertoTI.buscarLupitaSector();
+    }
    
     
 }

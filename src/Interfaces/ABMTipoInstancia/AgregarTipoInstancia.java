@@ -42,6 +42,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         outnombSec = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         outnombTT = new javax.swing.JTextField();
+        botonbuscarSector = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -201,6 +202,13 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             }
         });
 
+        botonbuscarSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+        botonbuscarSector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonbuscarSectorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -218,14 +226,17 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(volverABMAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(outnombTT, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputcodTT, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(outnombSec, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputcodSec, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputnombTI, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputcodTI, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(inputcodTI, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -243,8 +254,10 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputcodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonbuscarSector, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputcodSec))
+                .addGap(23, 23, 23)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(outnombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,7 +273,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmarAgregar)
                     .addComponent(volverABMAgregar))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -454,6 +467,18 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_inputcodTTFocusLost
 
+    private void botonbuscarSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarSectorActionPerformed
+         List<DTOLupaBuscarSector> listaSectores = control.buscarLupitaSector();
+        
+        String mensaje= "\n";
+        
+        for(int i=0; i< listaSectores.size(); i++){           
+            mensaje +=  "Codigo Sector: "+ listaSectores.get(i).getCodigoSector()+ " Nombre Sector: "+ listaSectores.get(i).getNombreSector() + "\n\n" ;                
+        }
+        
+        JOptionPane.showConfirmDialog(this, mensaje, "Lista de Sectores", JOptionPane.OK_OPTION);
+    }//GEN-LAST:event_botonbuscarSectorActionPerformed
+
     public void MostrarTTFil(int nombreTT) {
         /*  List<DTOTipoInstancia> lista = control.filtradoTT(nombreTT);
         for (int i = 0; i < lista.size(); i++) {
@@ -515,6 +540,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonbuscarSector;
     private javax.swing.JButton confirmarAgregar;
     private javax.swing.JTextField inputcodSec;
     private javax.swing.JTextField inputcodTI;
