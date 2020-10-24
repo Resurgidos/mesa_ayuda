@@ -384,7 +384,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                                 + "Cod Tipo Tarea: " + (int) TipoTareaTabla.getValueAt(i, 0) + "\n"
                                 + "Nombre: " + TipoTareaTabla.getValueAt(i, 1) + "\n"
                                 + "Descripción: " + TipoTareaTabla.getValueAt(i, 2) + "\n\n"
-                                , "Dar de baja Tipo Caso", JOptionPane.YES_NO_OPTION);
+                                , "Dar de baja Tipo Tarea", JOptionPane.YES_NO_OPTION);
                     if (j == 0) {
                         controlador.bajaTipoTarea(dtotipotareamodificar);
                         JOptionPane.showMessageDialog(this, "Tipo Tarea Dado de baja"); 

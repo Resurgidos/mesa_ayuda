@@ -319,11 +319,27 @@ public class AgregarRenglon extends javax.swing.JFrame {
     }//GEN-LAST:event_inputMinMaxActionPerformed
 
     private void inputCodTIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCodTIFocusLost
-           int codTI = Integer.parseInt(inputCodTI.getText());
-           String nombreTI = controlador.buscarNombTipoInstancia(codTI);
-           outNombTI.setText(nombreTI);
+        if (!inputCodTI.getText().isEmpty()) {
+            MostrarTipoInstanciaInput(inputCodTI.getText());
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_inputCodTIFocusLost
 
+    
+    private void MostrarTipoInstanciaInput(String codTipoInstancia) {
+        String nombreTInstancia = controlador.inputCodTipoInstancia(codTipoInstancia);     
+        if(nombreTInstancia == "El tipo de instancia ingresado está dado de baja"){
+            JOptionPane.showMessageDialog(this, "El tipo de instancia ingresado está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            outNombTI.setText("");
+        }else if (nombreTInstancia == "No existe el Tipo Instancia Ingresado"){
+            JOptionPane.showMessageDialog(this, "No existe el Tipo Instancia Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            outNombTI.setText("");
+        }else{
+            outNombTI.setText(nombreTInstancia);
+        }
+    }
+    
     private void inputCodTIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCodTIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputCodTIActionPerformed

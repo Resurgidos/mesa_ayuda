@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaces.ABMConfiguracionTipoCaso;
 
 import Controller.ControladorConfiguracionTipoCaso;
@@ -20,9 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class ModificarConfigTipoCaso extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ModificarTipoCaso
-     */
+    
     ControladorConfiguracionTipoCaso control = new ControladorConfiguracionTipoCaso();
     
     public ModificarConfigTipoCaso(int codSeleccionado) {
@@ -332,6 +326,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                         dtoModificar.setNombreTipoCaso(outNombreTipoCaso.getText());
                         dtoModificar.setFechaDesde(inputFechaDesdeModif.getDate());
                         dtoError = control.modificarConfiguracion(dtoModificar);
+                        JOptionPane.showMessageDialog(null, dtoError.getVerificarError());
                         
                         if(dtoError.getVerificarError() == 0){
                             JOptionPane.showMessageDialog(this, "La Configuración se modificó con éxito");
@@ -343,7 +338,6 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                             MensajeError.setText(dtoError.getErrorMensaje());
                             dtoError.setVerificarError(0);
                         }
-                        
                     }while(dtoError.getVerificarError()!=0);
                 }else{
                     JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -359,6 +353,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
             MostrarTipoCasoInput(inputCodTipoCasoModif.getText());
         }else{
             JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            
         }
     }//GEN-LAST:event_inputCodTipoCasoModifFocusLost
 
@@ -366,10 +361,12 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         String nombreTCaso = control.inputCodTipoCaso(text);     
         if(nombreTCaso == "El tipo de caso ingresado está dado de baja"){
             JOptionPane.showMessageDialog(this, "El Tipo Caso está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            outNombreTipoCaso.setText("");
+            outNombreTipoCaso.setForeground(Color.RED);
+            outNombreTipoCaso.setText("El Tipo Caso está dado de baja");
         }else if (nombreTCaso == "No existe el Tipo Caso Ingresado"){
             JOptionPane.showMessageDialog(this, "No existe el codigo del Tipo Caso Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            outNombreTipoCaso.setText("");
+            outNombreTipoCaso.setForeground(Color.RED);
+            outNombreTipoCaso.setText("No existe el codigo del Tipo Caso Ingresado");
         }else{
             outNombreTipoCaso.setForeground(Color.black);
             outNombreTipoCaso.setText(nombreTCaso);

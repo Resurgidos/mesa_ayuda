@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 
 
@@ -70,11 +71,10 @@ public class ExpertoConfigurar {
                                         configTC.setFechaFinVigencia(null);
                                         configTC.setFechaVerificacion(null);
                                         FachadaPersistencia.getInstance().guardar(configTC); 
-                                        
-                                        
-                                        
-                    
-                                    }}    }else{
+                                    
+                                }
+                        }
+                    }else{
                      dtoErrores.setErrorMensaje("El código ya existe");  //Muestra el mensaje si el código está existente
                      }
                 }catch(Exception e){
@@ -101,12 +101,11 @@ public class ExpertoConfigurar {
             dtoCrit.setValor(dtoModificarConfig.getNroConfiguracion()); 
             
             listadtoCrit.add(dtoCrit);
-            
+             
             try{
-                List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
                 dtoErrores = validarFecha(dtoModificarConfig.getFechaDesde(), dtoModificarConfig.getCodTipoCaso());
-                
-                
+                List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+ 
                 for (Object x : objetoList){
                     configTipo = (ConfiguracionTipoCaso)x;                 
                  
@@ -114,26 +113,41 @@ public class ExpertoConfigurar {
                     dtoCrit.setOperacion("=");
                     dtoCrit.setValor(dtoModificarConfig.getCodTipoCaso()); 
                     listadtoCrit.add(dtoCrit);
-                    
+              
+
                     List tipoCasoMof = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
+                    int verificarm = 0;
                     for (Object h : tipoCasoMof) {
                         tipoCaso = (TipoCaso)h ;
-                        configTipo.setTipoCaso(tipoCaso);
-                    }                      
-                  
-                    configTipo.setFechaInicioVigencia(dtoModificarConfig.getFechaDesde());
-                    FachadaPersistencia.getInstance().modificar(configTipo);  
+                        verificarm = tipoCaso.getCodTipoCaso();
+                                                          System.out.println("No existe");
+                        if(tipoCaso.getCodTipoCaso()  == 0){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El tipo caso NO EXISTE");
+                            return dtoErrores;
+                        }else if(tipoCaso.getFechaFinVigenciaTipoCaso() == null){
+                            configTipo.setTipoCaso(tipoCaso);
+                            configTipo.setFechaInicioVigencia(dtoModificarConfig.getFechaDesde());                         
+                            FachadaPersistencia.getInstance().modificar(configTipo);
+                            System.out.println("Guarda");
+                        }else{
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El tipo caso esta dado de baja");
+                            System.out.println("Baja");
+                            return dtoErrores;
+                        }
+                    }
                 } 
             }catch(Exception e){
                 System.out.println("No se pudo modificar el TipoCaso"); 
-            } 
-            FachadaPersistencia.getInstance().finalizarTransaccion();
-        }catch(Exception e){
-               System.out.println("No se pudo encontrar el TipoCaso");                
-        }
-          
-       return dtoErrores;
+        } 
+        FachadaPersistencia.getInstance().finalizarTransaccion();
+    }catch(Exception e){
+           System.out.println("No se pudo encontrar el TipoCaso");                
     }
+   
+    return dtoErrores;
+}
     
     
     
@@ -379,8 +393,6 @@ public class ExpertoConfigurar {
         listadtoCrit.add(dtoCrit);
         
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
-            
-        
         
         if(objetoList.size() > 0){
             TipoCaso tipoCaso = (TipoCaso) objetoList.get(0);        
@@ -389,7 +401,6 @@ public class ExpertoConfigurar {
         }else {
             return "No existe el Tipo Caso Ingresado";
         }
-        
     }
     public DTOModificarConf buscarPorNumConfig(int codSeleccionado){ 
         FachadaPersistencia.getInstance().iniciarTransaccion();  

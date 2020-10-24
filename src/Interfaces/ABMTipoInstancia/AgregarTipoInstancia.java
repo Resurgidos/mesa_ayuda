@@ -476,7 +476,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             mensaje +=  "Codigo Sector: "+ listaSectores.get(i).getCodigoSector()+ " Nombre Sector: "+ listaSectores.get(i).getNombreSector() + "\n\n" ;                
         }
         
-        JOptionPane.showConfirmDialog(this, mensaje, "Lista de Sectores", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(this, mensaje, "Lista de Sectores", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonbuscarSectorActionPerformed
 
     public void MostrarTTFil(int nombreTT) {

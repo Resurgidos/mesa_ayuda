@@ -439,6 +439,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
 
     private void confirmarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarModificarActionPerformed
         //Método para agregar un Tipo de Instancia
+        DTOErrorMensajes dtoError = new DTOErrorMensajes();
          if (!inputnombTImod.getText().isEmpty()) {
              if (!inputcodSecmod.getText().isEmpty()) { //Para que no sea vacio el cod de sector
                          if (!inputcodTTmod.getText().isEmpty()) { //Para que el cod de Tarea no sea vacio
@@ -458,7 +459,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null,"El tipoInstancia fue modificado con éxito");
                                         abmti.setVisible(true);
                                         this.setVisible(false); 
-                                         }else{
+                                    }else{
                                         JOptionPane.showMessageDialog(this,dtoError.getErrorMensaje());                           
                                         dtoError.setVerificarError(0);
                                 }}while(dtoError.getVerificarError() != 0);
