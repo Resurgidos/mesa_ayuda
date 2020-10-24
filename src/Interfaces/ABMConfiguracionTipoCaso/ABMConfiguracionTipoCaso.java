@@ -21,7 +21,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
    
     public ABMConfiguracionTipoCaso(){
     
-        initComponents();
+        initComponents();      
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
         setTitle("ABM Configuracion De Tipo Caso");
         tablaConfiguracion("","");    
@@ -302,7 +302,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +446,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         int filaSeleccionada = tablaConfiguracionCaso.getSelectedRow();
         if (filaSeleccionada == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningún sector para modificar");
+            ErrorMensaje.setText("No ha seleccionado ningún configuración para modificar");
         }else {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
                 if (tablaConfiguracionCaso.getValueAt(i, 4) != "Vigente") {
@@ -539,7 +539,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
        
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para Trabajar");
+            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para Verificar");
         } else  {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
               if(tablaConfiguracionCaso.getValueAt(i,5) != "Sin verificar"){

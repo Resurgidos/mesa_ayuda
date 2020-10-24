@@ -435,7 +435,7 @@ public class ExpertoConfigurar {
                         for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {                           
                             if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoAR.getOrdenTCTI()){
                                 dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("El orden de instancia ya está existente");
+                                dtoErrores.setErrorMensaje("El orden de renglón ya está existente");
                                 return dtoErrores;
                             }
                         }
@@ -443,8 +443,12 @@ public class ExpertoConfigurar {
                     if(dtoAR.getOrdenTCTI() == 0){ //Verificamos que el codigo no sea cero, si es 0 Settea error
                             dtoErrores.setVerificarError(1);
                             dtoErrores.setErrorMensaje("El Código no esta permitido");                            
-                    }else{
-                        if(dtoErrores.getVerificarError()==0){
+                    }else 
+                        if(dtoAR.getMinutosMAXReso() <= 0){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("Los minutos máximos deben ser mayor a 0");
+                    
+                    }else if(dtoErrores.getVerificarError()==0){
                             dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                             dtoCrit.setOperacion("=");
                             dtoCrit.setValor(dtoAR.getCodTI()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
@@ -467,7 +471,7 @@ public class ExpertoConfigurar {
                         //    FachadaPersistencia.getInstance().guardar(tcti);
                             FachadaPersistencia.getInstance().guardar(configTC);
                         }
-                    }
+                    
         FachadaPersistencia.getInstance().finalizarTransaccion();       
         return dtoErrores;
     }
@@ -502,7 +506,7 @@ public class ExpertoConfigurar {
                                 tcti = configTC.getTipoCtipoIns().get(i);
                                 configTC.removeTCTI(tcti);
                                 FachadaPersistencia.getInstance().guardar(configTC); 
-                            //    FachadaPersistencia.getInstance().delete(tcti);                              
+                          //    FachadaPersistencia.getInstance().delete(tcti);                              
                             }catch(Exception e){
                                 dtoE.setVerificarError(1);
                                 dtoE.setErrorMensaje("Hubo un error al intentar eliminar el renglón");
@@ -636,7 +640,7 @@ public class ExpertoConfigurar {
         dtoCrit.setValor(dtoMofidRenglon.getNroConfig()); 
         validarCod.add(dtoCrit);
         List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
-                
+        try{        
         for (Object x : objetoList){
             configTipo = (ConfiguracionTipoCaso)x; 
              
@@ -644,7 +648,7 @@ public class ExpertoConfigurar {
 
                 if(configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoMofidRenglon.getOrdenTCTI() ){
                     
-                    System.out.println("El codigo de order es igual"+ dtoMofidRenglon.getOrdenTCTI()+"el de config" + configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
+                //    System.out.println("El código de order es igual"+ dtoMofidRenglon.getOrdenTCTI()+"el de config" + configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
                     
                     DTOCriterio dtoCrit1 = new DTOCriterio();
                     dtoCrit1.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
@@ -663,23 +667,18 @@ public class ExpertoConfigurar {
                         }
                     }                      
                     
-//                    System.out.println(dtoMofidRenglon.getMinutosMAXReso());
-//                    System.out.println(ti.getCodTipoInstancia()+"cod tipo instancia");
-                    tcti.setOrdenTipoCasoTipoInstancia(dtoMofidRenglon.getOrdenTCTI());
-                    tcti.setMinutosMaximoResolucion(dtoMofidRenglon.getMinutosMAXReso());
-                    tcti.setTipoInstancia(ti);
-                    configTipo.updateTCTI(i, tcti);
-                    
-                    System.out.println("Datos finales orden"+ tcti.getOrdenTipoCasoTipoInstancia());
-                    System.out.println("Datos finales MinutosMaximoResolucion"+ tcti.getMinutosMaximoResolucion());
-                    System.out.println("Datos finales TipoInstancia"+ tcti.getTipoInstancia().getCodTipoInstancia());
-                    
-                    
-                    FachadaPersistencia.getInstance().modificar(configTipo);
+                    configTipo.getTipoCtipoIns().get(i).setOrdenTipoCasoTipoInstancia(dtoMofidRenglon.getOrdenTCTI());
+                    configTipo.getTipoCtipoIns().get(i).setMinutosMaximoResolucion(dtoMofidRenglon.getMinutosMAXReso());
+                    configTipo.getTipoCtipoIns().get(i).setTipoInstancia(ti);
+                    configTipo.updateTCTI(i, configTipo.getTipoCtipoIns().get(i));                  
+                    FachadaPersistencia.getInstance().guardar(configTipo);
                  
                 }            
             }            
-        }      
+        }
+        }catch(Exception e){
+            System.out.println("No se pudo modificar el renglón");
+        }
         FachadaPersistencia.getInstance().finalizarTransaccion();       
           return dtoErrores;  
     }

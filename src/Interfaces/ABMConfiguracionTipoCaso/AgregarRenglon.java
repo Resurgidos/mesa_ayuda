@@ -378,7 +378,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
 
                                
                         }else{
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Instancia valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Instancia valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
                         JOptionPane.showMessageDialog(this, "Por favor ingrese los minutos máximos de resolución", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);

@@ -496,8 +496,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
 
     private void botonMostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarDatosActionPerformed
         //Método Mostrar datos de TipoInstancia
-        int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
-        System.out.println(tablaTI.getValueAt(numTabSec, 0));
+        int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec       
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");

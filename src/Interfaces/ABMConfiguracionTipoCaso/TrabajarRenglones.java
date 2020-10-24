@@ -368,6 +368,11 @@ public class TrabajarRenglones extends javax.swing.JFrame {
             }
         });
 
+        tablaTrabajarRenglon = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tablaTrabajarRenglon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -670,7 +675,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
        
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para mostrar");
+            ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para modificar");
         } else  {
             for (int i = 0; i < tablaTrabajarRenglon.getRowCount(); i++) { //Recorremos la tabla
 //                

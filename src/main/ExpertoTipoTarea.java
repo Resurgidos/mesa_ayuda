@@ -112,7 +112,7 @@ public class ExpertoTipoTarea {
 
         if(nombreTipoTarea.matches("[0-9]+") ) {
             dtoCriterio.setAtributo("codTipoTarea");
-            dtoCriterio.setOperacion("=");
+            dtoCriterio.setOperacion(">=");
             dtoCriterio.setValor(Integer.parseInt(nombreTipoTarea)); 
             listadtoCriterio.add(dtoCriterio);
         }else {

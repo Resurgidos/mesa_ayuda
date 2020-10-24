@@ -414,7 +414,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
        int numTabTT = TipoTareaTabla.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
        if(numTabTT == -1){
            MensajeError.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-           MensajeError.setText("No ha seleccionado ningún sector para mostrar");
+           MensajeError.setText("No ha seleccionado ningún TipoTarea para mostrar");
        } else{
             for(int i=0; i<TipoTareaTabla.getRowCount(); i++){ //Recorremos la tabla
                 

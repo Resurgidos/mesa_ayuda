@@ -121,7 +121,7 @@ public class ExpertoSector {
 
         if(nombreSector.matches("[0-9]+") ) {//El matches es propia d ejava y evalua lo que hay entre parentesis
             dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
-            dtoCrit.setOperacion("=");
+            dtoCrit.setOperacion(">=");
             dtoCrit.setValor(Integer.parseInt(nombreSector)); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
         }else {
