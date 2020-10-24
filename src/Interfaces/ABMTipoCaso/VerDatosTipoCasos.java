@@ -35,7 +35,7 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
         if(dtoTipoCaso.getFechaFinVigenciaTipoCaso() == null){
             inputFechaTipoCaso.setText("vigente");
         }else{
-            DateFormat df = new SimpleDateFormat();
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
             Date fecha = dtoTipoCaso.getFechaFinVigenciaTipoCaso();
             String fechaString = df.format(fecha);
             inputFechaTipoCaso.setText(fechaString);
