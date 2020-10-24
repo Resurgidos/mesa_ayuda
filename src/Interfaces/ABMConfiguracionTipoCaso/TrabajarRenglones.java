@@ -62,7 +62,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         volverABMAgregar = new javax.swing.JButton();
         confirmarAgregar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
         jPanel3 = new javax.swing.JPanel();
         volverABMAgregar3 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -314,9 +314,6 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         volverABMAgregar3.setBackground(new java.awt.Color(204, 204, 204));
@@ -356,7 +353,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         );
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Configuración a trabajar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Renglones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel9.setForeground(new java.awt.Color(0, 0, 0));
 
         btnAgregarRenglon.setBackground(new java.awt.Color(255, 255, 255));
@@ -440,7 +437,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                 .addComponent(btnModificarRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(btnDarBajaRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(botonMostrarDatos)
                 .addGap(67, 67, 67))
             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -468,7 +465,8 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         jLabel1.setText("Nro. Configuración:");
 
         nroConfigCaso.setEditable(false);
-        nroConfigCaso.setForeground(new java.awt.Color(153, 153, 153));
+        nroConfigCaso.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        nroConfigCaso.setForeground(new java.awt.Color(0, 0, 0));
         nroConfigCaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nroConfigCasoActionPerformed(evt);
@@ -484,7 +482,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(nroConfigCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,14 +490,21 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nroConfigCaso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nroConfigCaso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
+
+        nroConfigCaso.getAccessibleContext().setAccessibleName("");
 
         ErrorMensaje.setEditable(false);
         ErrorMensaje.setBackground(new java.awt.Color(204, 204, 204));
         ErrorMensaje.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ErrorMensaje.setBorder(null);
+        ErrorMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ErrorMensajeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -514,15 +519,14 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(volverABMAgregar3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(86, 86, 86)
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(volverABMAgregar3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,28 +538,20 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(volverABMAgregar3)
-                .addContainerGap())
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -705,24 +701,25 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                     int numConfig, nroOrden;
                     numConfig = codConfig;
                     nroOrden = (int) (tablaTrabajarRenglon.getValueAt(i, 0));
-                    JOptionPane.showConfirmDialog(this, ""
+                    int j = JOptionPane.showConfirmDialog(this, ""
                             + "¿Estas seguro que confirmar la baja? \n\n"
                             + "Orden: " + (int) tablaTrabajarRenglon.getValueAt(i, 0) + "\n"
                             + "Minutos: " + tablaTrabajarRenglon.getValueAt(i, 1) + "\n"
                             + "Cod Tipo Instancia: " + tablaTrabajarRenglon.getValueAt(i, 2) + "\n"
                             + "Nombre Tipo Instancia: " + tablaTrabajarRenglon.getValueAt(i, 3) + "\n\n",
                              "Dar de baja renglon", JOptionPane.YES_NO_OPTION);
-                    dtoE = control.eliminarRenglon(numConfig, nroOrden);
-                    if (dtoE.getVerificarError() == 0) {
-                        //    JOptionPane.showMessageDialog(null, "Se elimino el renglón");                
-                        TrabajarRenglones trabajar = new TrabajarRenglones(codConfig);
-                        this.setVisible(false);
-                        tablaRenglones.fireTableDataChanged();
-                        trabajar.setVisible(true);
-                    } else {
-                        JOptionPane.showMessageDialog(null, dtoE.getErrorMensaje());
+                    if(j == 0){
+                        dtoE = control.eliminarRenglon(numConfig, nroOrden);
+                        if (dtoE.getVerificarError() == 0) {
+                            //    JOptionPane.showMessageDialog(null, "Se elimino el renglón");                
+                            TrabajarRenglones trabajar = new TrabajarRenglones(codConfig);
+                            this.setVisible(false);
+                            tablaRenglones.fireTableDataChanged();
+                            trabajar.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, dtoE.getErrorMensaje());
+                        }
                     }
-
                 }
             }
         }
@@ -767,6 +764,10 @@ public class TrabajarRenglones extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnAgregarRenglonActionPerformed
+
+    private void ErrorMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorMensajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ErrorMensajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -817,11 +818,11 @@ public class TrabajarRenglones extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
