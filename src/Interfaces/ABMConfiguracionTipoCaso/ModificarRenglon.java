@@ -356,13 +356,20 @@ public class ModificarRenglon extends javax.swing.JFrame {
     private void MostrarTipoInstanciaInput(String codTipoInstancia) {
         String nombreTInstancia = control.inputCodTipoInstancia(codTipoInstancia);     
         if(nombreTInstancia == "El tipo de instancia ingresado está dado de baja"){
+            outNombTI.setForeground(Color.RED);
+            MensajeError.setText("");
+            outNombTI.setText("El tipo de instancia ingresado está dado de baja");
             JOptionPane.showMessageDialog(this, "El tipo de instancia ingresado está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            outNombTI.setText("");
+
         }else if (nombreTInstancia == "No existe el Tipo Instancia Ingresado"){
+            outNombTI.setText("No existe el Tipo Instancia Ingresado");
+            MensajeError.setText("");
             JOptionPane.showMessageDialog(this, "No existe el Tipo Instancia Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            outNombTI.setText("");
+
         }else{
+            MensajeError.setText("");
             outNombTI.setText(nombreTInstancia);
+           
         }
     }
     

@@ -330,13 +330,21 @@ public class AgregarRenglon extends javax.swing.JFrame {
     private void MostrarTipoInstanciaInput(String codTipoInstancia) {
         String nombreTInstancia = controlador.inputCodTipoInstancia(codTipoInstancia);     
         if(nombreTInstancia == "El tipo de instancia ingresado está dado de baja"){
+            outNombTI.setForeground(Color.red);
+            MensajeError.setText("");
+            outNombTI.setText("El tipo de instancia ingresado está dado de baja");
             JOptionPane.showMessageDialog(this, "El tipo de instancia ingresado está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            outNombTI.setText("");
+
         }else if (nombreTInstancia == "No existe el Tipo Instancia Ingresado"){
+            outNombTI.setForeground(Color.red);
+            MensajeError.setText("");
+            outNombTI.setText("No existe el Tipo Instancia Ingresado");
             JOptionPane.showMessageDialog(this, "No existe el Tipo Instancia Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            outNombTI.setText("");
+
         }else{
             outNombTI.setText(nombreTInstancia);
+            MensajeError.setText("");
+            outNombTI.setForeground(Color.BLACK);
         }
     }
     
@@ -365,7 +373,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
 
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
         //Método para agregar un Tipo de Instancia
-         try {
+       //  try {
             if (!inputCodTI.getText().isEmpty()) {
                 if (!inputMinMax.getText().isEmpty()) {
                     if (!inputNumRenglon.getText().isEmpty()) {
@@ -403,9 +411,9 @@ public class AgregarRenglon extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese un Número de Configuración de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
 
-            } catch (Exception e) {
+          /*  } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+        }*/
     }//GEN-LAST:event_confirmarAgregarActionPerformed
 
     private void outNombTIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_outNombTIFocusLost

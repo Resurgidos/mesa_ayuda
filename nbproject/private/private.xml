@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/julie/Documents/Proyecto-disenio/src/Interfaces/ABMTipoInstancia/AgregarTipoInstancia.java</file>
-            <file>file:/C:/Users/julie/Documents/Proyecto-disenio/src/Controller/ControladorABMTipoInstancia.java</file>
-            <file>file:/C:/Users/julie/Documents/Proyecto-disenio/src/main/ExpertoTipoInstancia.java</file>
-            <file>file:/C:/Users/julie/Documents/Proyecto-disenio/src/Interfaces/ABMTipoInstancia/ABMTipoInstancia.java</file>
-            <file>file:/C:/Users/julie/Documents/Proyecto-disenio/src/DTO/DTOsTipoInstancia/DTOLupaBuscarSector.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/ABMConfiguracionTipoCaso.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/AgregarRenglon.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Controller/ControladorConfiguracionTipoCaso.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/main/ExpertoConfigurar.java</file>
         </group>
     </open-files>
 </project-private>

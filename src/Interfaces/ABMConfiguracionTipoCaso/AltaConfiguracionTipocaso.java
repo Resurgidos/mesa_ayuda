@@ -321,17 +321,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                                 dtoAgregar.setNombreTipoCaso(inputNombreTipoCaso.getText()); 
                                 dtoAgregar.setFechaDesde(fechaDesde.getDate());
                                 dtoE = controlador.agregarConfiguracion(dtoAgregar);
-                               /* SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy"); // La cadena de formato de fecha se pasa como un argumento al objeto 
-                                String fechaFin = objSDF.format(fechaInicioConfiguracion.getDateFormatString());
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");            
-                                Date fechaInicio= dateFormat.parse(fechaInicioConfiguracion.getDate().toString());                              
-                                String fechaBase = dateFormat.format(fechaInicio);
-                                Date fechaBaseDatos = dateFormat.parse(fechaBase);*/
-                                
-                                
-                                /*SimpleDateFormat objSDF = new SimpleDateFormat("dd/MM/yyyy");
-                                String fechaFin = objSDF.format(fechaInicioConfiguracion.getDate());
-                                dtoAgregar.setFechaDesde(objSDF.parse(fechaFin));    */
+                               
                                 
                                 if(dtoE.getVerificarError() == 0){
                                         JOptionPane.showMessageDialog(this, "La configuración se grabo exitosamente");
@@ -370,8 +360,20 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         if(nombreTCaso == ""){
             JOptionPane.showMessageDialog(this, "Ingrese un Código de Tipo Caso VÁLIDO", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             inputNombreTipoCaso.setText("");
+            
+        }else if(nombreTCaso == "El tipo de caso ingresado está dado de baja"){
+            inputNombreTipoCaso.setForeground(Color.RED);
+            inputNombreTipoCaso.setText("El tipo de caso ingresado está dado de baja");
+            JOptionPane.showMessageDialog(this, "El tipo de caso ingresado está dado de baja","Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+
+        }else if(nombreTCaso == "No existe el Tipo Caso Ingresado"){
+            inputNombreTipoCaso.setForeground(Color.RED);
+            inputNombreTipoCaso.setText("No existe el Tipo Caso Ingresado");
+            JOptionPane.showMessageDialog(null, "No existe el Tipo Caso Ingresado","Mensaje de Error", JOptionPane.ERROR_MESSAGE);       
+
         }else{
             inputNombreTipoCaso.setForeground(Color.black);
+            MensajeError.setText("");
             inputNombreTipoCaso.setText(nombreTCaso);
         }
         

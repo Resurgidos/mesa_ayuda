@@ -54,12 +54,28 @@ public class ExpertoConfigurar {
 
 
                                         //Busco el sector que ingrese por la interfaz y luego se lo asigno al Tipo Instancia que estoy creando
+                                        int codExiste =0;
                                         List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
                                          for (Object x : objetoList3) {
                                              tc = (TipoCaso)x ;
                                              configTC.setTipoCaso(tc);
-                                            }  
-
+                                             codExiste = tc.getCodTipoCaso();
+                                             if(tc.getFechaFinVigenciaTipoCaso() != null){
+                                                dtoErrores.setVerificarError(1);
+                                                dtoErrores.setErrorMensaje("El TipoCaso esta dado de baja");  
+                                                return dtoErrores;
+                                             }
+                                            }
+                                        if(codExiste == 0){
+                                            dtoErrores.setVerificarError(1);
+                                            dtoErrores.setErrorMensaje("El TipoCaso ingresado no existe");  
+                                            return dtoErrores;
+                                        }
+                                        if(dtoAgregarConfig.getFechaDesde() == null){
+                                            dtoErrores.setVerificarError(1);
+                                            dtoErrores.setErrorMensaje("No ha ingresado una fecha de inicio");  
+                                            return dtoErrores;
+                                        }
                                         //Asigno al tipo instancia que estoy creando el código y el nombre
                                         configTC.setNroConfigTC(dtoAgregarConfig.getNroConfiguracion());
 
@@ -120,23 +136,28 @@ public class ExpertoConfigurar {
                     for (Object h : tipoCasoMof) {
                         tipoCaso = (TipoCaso)h ;
                         verificarm = tipoCaso.getCodTipoCaso();
-                                                          System.out.println("No existe");
-                        if(tipoCaso.getCodTipoCaso()  == 0){
+                    }   
+                        if(dtoModificarConfig.getFechaDesde() == null){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("No ha ingresado una fecha de inicio");  
+                            return dtoErrores;
+                        }
+                        
+                        if(verificarm  == 0){
                             dtoErrores.setVerificarError(1);
                             dtoErrores.setErrorMensaje("El tipo caso NO EXISTE");
                             return dtoErrores;
-                        }else if(tipoCaso.getFechaFinVigenciaTipoCaso() == null){
+                        }
+                        if(tipoCaso.getFechaFinVigenciaTipoCaso() == null){
                             configTipo.setTipoCaso(tipoCaso);
                             configTipo.setFechaInicioVigencia(dtoModificarConfig.getFechaDesde());                         
                             FachadaPersistencia.getInstance().modificar(configTipo);
-                            System.out.println("Guarda");
                         }else{
                             dtoErrores.setVerificarError(1);
                             dtoErrores.setErrorMensaje("El tipo caso esta dado de baja");
-                            System.out.println("Baja");
                             return dtoErrores;
                         }
-                    }
+                    
                 } 
             }catch(Exception e){
                 System.out.println("No se pudo modificar el TipoCaso"); 
@@ -466,21 +487,31 @@ public class ExpertoConfigurar {
                             listadtoCrit.add(dtoCrit);
 
                             List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
-
+                            
+                            int codExiste = 0;
+                            Date fechaTI= null;
                             for (Object c : objetoList3) {
                                 ti = (TipoInstancia)c ;
-                                if(ti.getFechaHoraFinVigenciaTipoInstancia() != null){
+                                fechaTI = ti.getFechaHoraFinVigenciaTipoInstancia();
+                                codExiste = ti.getCodTipoInstancia();
+                            } 
+                            if(fechaTI != null){
                                     dtoErrores.setVerificarError(1);
-                                    dtoErrores.setErrorMensaje("El TipoInstancia esta dado de baja");
+                                    dtoErrores.setErrorMensaje("El TipoInstancia está dado de baja");
                                     return dtoErrores;
-                                }
-                            }  
-                            tcti.setOrdenTipoCasoTipoInstancia(dtoAR.getOrdenTCTI());
-                            tcti.setMinutosMaximoResolucion(dtoAR.getMinutosMAXReso());
-                            tcti.setTipoInstancia(ti);
-                            configTC.addTipoCasoTipoInstancia(tcti);
-                        //    FachadaPersistencia.getInstance().guardar(tcti);
-                            FachadaPersistencia.getInstance().guardar(configTC);
+                            }else if(codExiste == 0){
+                                    dtoErrores.setVerificarError(1);
+                                    dtoErrores.setErrorMensaje("El TipoInstancia no existe");
+                                    return dtoErrores;
+                            }else{
+                                tcti.setOrdenTipoCasoTipoInstancia(dtoAR.getOrdenTCTI());
+                                tcti.setMinutosMaximoResolucion(dtoAR.getMinutosMAXReso());
+                                tcti.setTipoInstancia(ti);
+                                configTC.addTipoCasoTipoInstancia(tcti);
+                            //    FachadaPersistencia.getInstance().guardar(tcti);
+                                FachadaPersistencia.getInstance().guardar(configTC);
+                            }
+                            
                         }
                     
         FachadaPersistencia.getInstance().finalizarTransaccion();       
@@ -668,14 +699,23 @@ public class ExpertoConfigurar {
                     List<DTOCriterio> listadtoCrit2 = new ArrayList<>();
                     listadtoCrit2.add(dtoCrit1);
                     List objetoList3 = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit2 );
-                                
+                    
+                    int codExiste =0;
+                    Date fechaFin = null;
                     for (Object c : objetoList3) {                     
                         ti = (TipoInstancia)c ;
-                        if(ti.getFechaHoraFinVigenciaTipoInstancia() != null){
+                        codExiste = ti.getCodTipoInstancia();
+                        fechaFin = ti.getFechaHoraFinVigenciaTipoInstancia();
+                    }
+                    if(fechaFin != null){
                             dtoErrores.setVerificarError(1);
                             dtoErrores.setErrorMensaje("El TipoInstancia esta dado de baja");
                             return dtoErrores;
-                        }
+                    }
+                    if(codExiste == 0){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El TipoInstancia NO EXISTE");
+                            return dtoErrores;
                     }
                     if(dtoMofidRenglon.getMinutosMAXReso() <= 0){
                             dtoErrores.setVerificarError(1);

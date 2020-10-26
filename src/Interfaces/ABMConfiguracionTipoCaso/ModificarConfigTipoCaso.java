@@ -317,7 +317,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         //Método para modificar una Configuracion tipo caso
         DTOModificarConf dtoModificar = new DTOModificarConf();
         DTOErroresMensajes dtoError = new DTOErroresMensajes();
-          
+        if(inputFechaDesdeModif.getDate() != null){
             if(!inputCodTipoCasoModif.getText().isEmpty() ){
                 if(!outNombreTipoCaso.getText().isEmpty() ){
                     do{
@@ -339,12 +339,18 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                             dtoError.setVerificarError(0);
                         }
                     }while(dtoError.getVerificarError()!=0);
+                
+   
+                        
                 }else{
                     JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso válido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             }else {
                 JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            }    
+            }}else{
+                JOptionPane.showMessageDialog(this, "Por favor ingrese una fecha", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
     }//GEN-LAST:event_confirmarModificarActionPerformed
 
     private void inputCodTipoCasoModifFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCodTipoCasoModifFocusLost
@@ -360,15 +366,20 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     private void MostrarTipoCasoInput(String text) {
         String nombreTCaso = control.inputCodTipoCaso(text);     
         if(nombreTCaso == "El tipo de caso ingresado está dado de baja"){
-            JOptionPane.showMessageDialog(this, "El Tipo Caso está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            
             outNombreTipoCaso.setForeground(Color.RED);
+            MensajeError.setText("");
             outNombreTipoCaso.setText("El Tipo Caso está dado de baja");
+            JOptionPane.showMessageDialog(this, "El Tipo Caso está dado de baja", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }else if (nombreTCaso == "No existe el Tipo Caso Ingresado"){
-            JOptionPane.showMessageDialog(this, "No existe el código del Tipo Caso Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+           
             outNombreTipoCaso.setForeground(Color.RED);
+            MensajeError.setText("");
             outNombreTipoCaso.setText("No existe el código del Tipo Caso Ingresado");
+            JOptionPane.showMessageDialog(this, "No existe el código del Tipo Caso Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }else{
             outNombreTipoCaso.setForeground(Color.black);
+            MensajeError.setText("");
             outNombreTipoCaso.setText(nombreTCaso);
         }
     }
