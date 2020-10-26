@@ -307,8 +307,7 @@ public class AgregarSector extends javax.swing.JFrame {
                             volver.tablaSectores("");
                             this.setVisible(false);
                         }else{
-                           JOptionPane.showMessageDialog(this,dtoSec.getMensajeError());
-                           System.out.println("acá esta el error, en registro de sector en validar");
+                           JOptionPane.showMessageDialog(this,dtoSec.getMensajeError());                          
                            dtoSec.setVerificarerror(0);
                        } }while(dtoSec.getVerificarerror() != 0);
                         //Aca setteo el sector al controller

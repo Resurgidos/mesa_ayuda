@@ -390,7 +390,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             
             
             fechaInicio = dateFormat.parse(fechaInicioConfiguracion.getDateFormatString());
-            System.out.println(fechaInicio);
+       
             
             int dia = fechaInicio.getDate();
             int mes = fechaInicio.getMonth();

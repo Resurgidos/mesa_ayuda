@@ -415,7 +415,6 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
         for (int i = 0; i < lista.size(); i++) {
            DTOAgregarTipoInstancia tI = (DTOAgregarTipoInstancia) lista.get(i);
            outnombTTmod.setText(tI.getNombreTipoTarea());
-            System.out.println(tI.getNombreTipoTarea());
            
         }*/
        String nombreTT = control.buscarNombTipoTarea(codTTModi);

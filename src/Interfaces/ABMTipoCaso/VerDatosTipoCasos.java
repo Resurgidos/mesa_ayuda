@@ -31,7 +31,6 @@ public class VerDatosTipoCasos extends javax.swing.JFrame {
         inputFechaTipoCaso.setForeground(Color.black);
         inputCodTipoCaso.setText(Integer.toString(dtoTipoCaso.getCodTipoCaso()));
         inputNomTipoCaso.setText(dtoTipoCaso.getNombreTipoCaso());
-//        System.out.println(dtoTipoCaso.getFechaFinVigenciaTipoCaso());
         if(dtoTipoCaso.getFechaFinVigenciaTipoCaso() == null){
             inputFechaTipoCaso.setText("vigente");
         }else{

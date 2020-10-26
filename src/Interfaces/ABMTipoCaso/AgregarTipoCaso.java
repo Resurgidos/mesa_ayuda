@@ -372,7 +372,6 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
                             this.setVisible(false);
                         }else{
                            JOptionPane.showMessageDialog(this,dtoTipoCaso.getMensajeError());
-//                           System.out.println("acá esta el error, en registro de sector en validar");
                             dtoTipoCaso.setVerificarerror(0);
                        } 
                     }while(dtoTipoCaso.getVerificarerror() != 0);

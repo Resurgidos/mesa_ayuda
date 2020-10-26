@@ -374,17 +374,14 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún tipo caso para dar de baja");
         } else {
-//            System.out.println(tablaTipoCasos.getRowCount());
             for (int i = 0; i < tablaTipoCasos.getRowCount(); i++) { //Recorremos la tabla
                 if (numTabTipoCaso == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
-                    System.out.println("Encontre el numero");
-                    System.out.println(tablaTipoCasos.getValueAt(i, 2));
                     if (tablaTipoCasos.getValueAt(i, 2) != null) {
                         ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
                         ErrorMensaje.setText("El Tipo Caso elegido ya esta dado de baja");
                     } else {
                         dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
-                        System.out.println((int) tablaTipoCasos.getValueAt(i, 0));
+                    
                         int j = JOptionPane.showConfirmDialog(this, ""
                                 + "¿Está seguro que desea confirmar la baja? \n\n"
                                 + "Cod TipoCaso: " + (int) tablaTipoCasos.getValueAt(i, 0) + "\n"

@@ -443,7 +443,6 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
                         int codTIModi = (int)tablaTI.getValueAt(i, 0);  
                         //la "i" es la fila y el 0 la columna de la tabla
                        
-                        System.out.println("Es la interfaz");    
                         
                     ModificarTipoInstancia mod = new ModificarTipoInstancia(codTIModi);
                     mod.setVisible(true);
@@ -502,9 +501,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");
         } else  {
             for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
-//                System.out.println(tablaTI.getValueAt(i, 0));
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
-                    System.out.println(tablaTI.getValueAt(i, 0));
                     int codTIMostrar = (int) tablaTI.getValueAt(i, 0);
                     VerDatosTipoInstancia mostrar = new VerDatosTipoInstancia(codTIMostrar);
                     mostrar.setVisible(true);

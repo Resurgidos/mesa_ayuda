@@ -36,7 +36,7 @@ public class ModificarSector extends javax.swing.JFrame {
 //        inputnomSec.setText((String)abmsec.dto.get(1));
         
       //  inputCodSec.setText(abmsec.datosPasar.getCodSector());
-//        System.out.println(abmsec.datosPasar.getCodSector());
+//        
      /*   inputnomSec.setText((String)abmsec.dto.get(1));
         inputDesc.setText((String)abmsec.dto.get(2));*/
     }

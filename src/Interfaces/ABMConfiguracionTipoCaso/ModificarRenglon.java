@@ -363,11 +363,13 @@ public class ModificarRenglon extends javax.swing.JFrame {
 
         }else if (nombreTInstancia == "No existe el Tipo Instancia Ingresado"){
             outNombTI.setText("No existe el Tipo Instancia Ingresado");
+            outNombTI.setForeground(Color.RED);
             MensajeError.setText("");
             JOptionPane.showMessageDialog(this, "No existe el Tipo Instancia Ingresado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
 
         }else{
             MensajeError.setText("");
+            outNombTI.setForeground(Color.BLACK);
             outNombTI.setText(nombreTInstancia);
            
         }

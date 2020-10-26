@@ -278,7 +278,6 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
                         this.setVisible(false);
                         }else{
                            JOptionPane.showMessageDialog(this,dtotipotarea.getMensajeError());
-                            //System.out.println("acá esta el error, en registro de sector en validar");
                            dtotipotarea.setVerificarError(0);
                        } }while(dtotipotarea.getVerificarError() != 0);
                         //Aca setteo el sector al controller

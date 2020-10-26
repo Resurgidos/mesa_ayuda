@@ -20,7 +20,6 @@ public class ExpertoTipoTarea {
             dtoCriterio.setOperacion("=");
             dtoCriterio.setValor(dtotipotarea.getCodTipoTarea());
             listadtoCrit.add(dtoCriterio);
-            //System.out.println("Experto "+dtotipotarea.getNombreTipoTarea());
        try{ 
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit );
         int verificar = 0;
@@ -60,7 +59,6 @@ public class ExpertoTipoTarea {
             dtoCrit.setOperacion("=");
             dtoCrit.setValor(dtotitarea.getCodTipoTarea()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
-            //System.out.println("Experto "+dtoSec.getNombreSector());
         
             try{
         List objetoList = FachadaPersistencia.getInstance().buscar("TipoTarea",listadtoCrit );

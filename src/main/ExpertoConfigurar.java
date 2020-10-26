@@ -235,7 +235,6 @@ public class ExpertoConfigurar {
                 ConfiguracionTipoCaso configTipoCaso = new ConfiguracionTipoCaso();       
                 for(Object x:objetoList1){
                 configTipoCaso = (ConfiguracionTipoCaso) x;
-                System.out.println(configTipoCaso);
                 if(configTipoCaso.getFechaFinVigencia() == null){
                     if(configTipoCaso.getFechaVerificacion() != null){
                         if(configTipoCaso.getTipoCaso().getCodTipoCaso() == codTC){
@@ -690,7 +689,6 @@ public class ExpertoConfigurar {
 
                 if(configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoMofidRenglon.getOrdenTCTI() ){
                     
-                //    System.out.println("El código de order es igual"+ dtoMofidRenglon.getOrdenTCTI()+"el de config" + configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
                     
                     DTOCriterio dtoCrit1 = new DTOCriterio();
                     dtoCrit1.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
@@ -789,7 +787,6 @@ public class ExpertoConfigurar {
 
                     if(ordenTCTISelec == configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia()){
                         
-                        System.out.println(configTipo.getTipoCtipoIns().get(i).getTipoInstancia().getCodTipoInstancia());
                         
                         dtoModificarRenglon.setOrdenTCTI(configTipo.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia());
                         dtoModificarRenglon.setMinutosMAXReso(configTipo.getTipoCtipoIns().get(i).getMinutosMaximoResolucion());
@@ -798,7 +795,6 @@ public class ExpertoConfigurar {
                         
                         dtoModificarRenglon.setNombreTI(configTipo.getTipoCtipoIns().get(i).getTipoInstancia().getNombreTipoInstancia());
                         
-                        System.out.println(dtoModificarRenglon.getCodTI());
                     }
 
                 }

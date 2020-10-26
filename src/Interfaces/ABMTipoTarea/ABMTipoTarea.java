@@ -334,14 +334,12 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                 }else{
                 if(numTabtita==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
 
-                    System.out.println(tablaTipoTarea.getValueAt(i, 0));
-                    System.out.println(tablaTipoTarea.getValueAt(i, 1));
-
+                  
                     dtotipotareamodificar.setCodTipoTarea((int) tablaTipoTarea.getValueAt(i, 0));
                     dtotipotareamodificar.setNombreTipoTarea((String)tablaTipoTarea.getValueAt(i, 1));
                     dtotipotareamodificar.setDescripcionTipoTarea((String) tablaTipoTarea.getValueAt(i, 2));
 
-                    System.out.println(dtotipotareamodificar.getCodTipoTarea());
+                 
                     ModificarTipoTarea mod = new ModificarTipoTarea(dtotipotareamodificar);
                     mod.setVisible(true);
                     this.setVisible(false);
@@ -420,15 +418,14 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                 
                 if(numTabTT==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
 
-                    System.out.println(tablaTipoTarea.getValueAt(i, 0));
-                    System.out.println(tablaTipoTarea.getValueAt(i, 1));
+           
 
                     dtotipotareamodificar.setCodTipoTarea((int) tablaTipoTarea.getValueAt(i, 0));
                     dtotipotareamodificar.setNombreTipoTarea((String)tablaTipoTarea.getValueAt(i, 1));
                     dtotipotareamodificar.setDescripcionTipoTarea((String) tablaTipoTarea.getValueAt(i, 2));
                     dtotipotareamodificar.setFechaHoraFinVigenciaTipoTarea((java.util.Date)tablaTipoTarea.getValueAt(i, 3));
                     
-                    System.out.println(dtotipotareamodificar.getCodTipoTarea());
+                  
                     VerDatosTipoTarea mostrar = new VerDatosTipoTarea(dtotipotareamodificar);
                     mostrar.setVisible(true);
                     

@@ -24,8 +24,7 @@ public class ModificarTipoCaso extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Modificar Tipo Caso");
-        System.out.println(dtoTipoCasoModif.getCodTipoCaso());
-        System.out.println(dtoTipoCasoModif.getNombreTipoCaso());
+
         
         
         
