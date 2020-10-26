@@ -123,6 +123,11 @@ public class AgregarRenglon extends javax.swing.JFrame {
         MensajeError.setEditable(false);
         MensajeError.setBackground(new java.awt.Color(204, 204, 204));
         MensajeError.setBorder(null);
+        MensajeError.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MensajeErrorActionPerformed(evt);
+            }
+        });
 
         labelCodTipoInstancia.setBackground(new java.awt.Color(0, 0, 0));
         labelCodTipoInstancia.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -160,6 +165,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
         volverABM.setText("Volver");
         volverABM.setBorder(null);
         volverABM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverABM.setPreferredSize(new java.awt.Dimension(120, 36));
         volverABM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMActionPerformed(evt);
@@ -174,6 +180,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
         confirmarAgregar.setText("Confirmar");
         confirmarAgregar.setBorder(null);
         confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarAgregar.setPreferredSize(new java.awt.Dimension(120, 36));
         confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarAgregarActionPerformed(evt);
@@ -231,9 +238,9 @@ public class AgregarRenglon extends javax.swing.JFrame {
                                             .addComponent(inputCodTI, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(34, 34, 34))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(97, 97, 97)
                         .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(45, 45, 45)
                         .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,8 +273,8 @@ public class AgregarRenglon extends javax.swing.JFrame {
                 .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmarAgregar)
-                    .addComponent(volverABM))
+                    .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -439,6 +446,10 @@ public class AgregarRenglon extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_inputMinMaxKeyTyped
+
+    private void MensajeErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MensajeErrorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MensajeErrorActionPerformed
 
     /**
      * @param args the command line arguments

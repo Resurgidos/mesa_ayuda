@@ -106,7 +106,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelcodver3.setBackground(new java.awt.Color(0, 0, 0));
         labelcodver3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelcodver3.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver3.setText("Cod. Sector:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,7 +115,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(119, 148, 166));
 
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        labelTituloMostrar.setForeground(new java.awt.Color(0, 0, 0));
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_visibility_black_18dp.png"))); // NOI18N
         labelTituloMostrar.setText("DATOS TIPO INSTANCIA");
 
@@ -139,7 +137,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelcodver.setBackground(new java.awt.Color(0, 0, 0));
         labelcodver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelcodver.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver.setText("Cod. Tipo Instancia:");
 
         verCodTI.setEditable(false);
@@ -158,7 +155,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelnombver.setBackground(new java.awt.Color(0, 0, 0));
         labelnombver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelnombver.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver.setText("Nombre Tipo Instancia:");
 
         verNombTI.setEditable(false);
@@ -172,7 +168,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelFechaFinver.setBackground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelFechaFinver.setForeground(new java.awt.Color(0, 0, 0));
         labelFechaFinver.setText("Fecha Fin Vigencia :");
 
         verFechaFinTI.setEditable(false);
@@ -186,7 +181,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelcodver1.setBackground(new java.awt.Color(0, 0, 0));
         labelcodver1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelcodver1.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver1.setText("Cod. Tipo Tarea:");
 
         verCodTT.setEditable(false);
@@ -205,7 +199,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelnombver1.setBackground(new java.awt.Color(0, 0, 0));
         labelnombver1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelnombver1.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver1.setText("Nombre Tipo Tarea:");
 
         verNombTT.setEditable(false);
@@ -219,7 +212,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelFechaFinver1.setBackground(new java.awt.Color(0, 0, 0));
         labelFechaFinver1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelFechaFinver1.setForeground(new java.awt.Color(0, 0, 0));
         labelFechaFinver1.setText("Fecha Fin Vigencia :");
 
         verFechaFinTT.setEditable(false);
@@ -233,7 +225,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelcodver2.setBackground(new java.awt.Color(0, 0, 0));
         labelcodver2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelcodver2.setForeground(new java.awt.Color(0, 0, 0));
         labelcodver2.setText("Cod. Sector:");
 
         verCodSec.setEditable(false);
@@ -252,7 +243,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelnombver2.setBackground(new java.awt.Color(0, 0, 0));
         labelnombver2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelnombver2.setForeground(new java.awt.Color(0, 0, 0));
         labelnombver2.setText("Nombre Sector:");
 
         verNombSec.setEditable(false);
@@ -266,7 +256,6 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         labelFechaFinver2.setBackground(new java.awt.Color(0, 0, 0));
         labelFechaFinver2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelFechaFinver2.setForeground(new java.awt.Color(0, 0, 0));
         labelFechaFinver2.setText("Fecha Fin Vigencia :");
 
         verFechaFinSec.setEditable(false);
@@ -280,12 +269,12 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
 
         botonContinuar.setBackground(new java.awt.Color(204, 204, 204));
         botonContinuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonContinuar.setForeground(new java.awt.Color(0, 0, 0));
         botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_arrow_back_black_18dp.png"))); // NOI18N
         botonContinuar.setMnemonic('v');
         botonContinuar.setText("Volver");
         botonContinuar.setBorder(null);
-        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonContinuar.setPreferredSize(new java.awt.Dimension(120, 36));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);
@@ -328,7 +317,7 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
                                 .addComponent(verNombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(verCodSec, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,9 +359,9 @@ public class VerDatosTipoInstancia extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(verFechaFinTT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(botonContinuar)
-                .addGap(22, 22, 22))
+                .addGap(55, 55, 55)
+                .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

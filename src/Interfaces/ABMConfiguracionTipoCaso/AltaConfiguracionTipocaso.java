@@ -105,6 +105,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         volverABM.setText("Volver");
         volverABM.setBorder(null);
         volverABM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volverABM.setPreferredSize(new java.awt.Dimension(120, 36));
         volverABM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverABMActionPerformed(evt);
@@ -124,6 +125,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         confirmarAgregar.setText("Confirmar");
         confirmarAgregar.setBorder(null);
         confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmarAgregar.setPreferredSize(new java.awt.Dimension(120, 36));
         confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarAgregarActionPerformed(evt);
@@ -144,7 +146,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel5)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +235,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                         .addComponent(inputNombreTipoCaso, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(fechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,8 +267,8 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(volverABM)
-                    .addComponent(confirmarAgregar))
+                    .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
         );
 

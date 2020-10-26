@@ -45,26 +45,22 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelcodver" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="verCodSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
-                              <Component id="labeldescver" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelFechaFinver" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelnombver" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="verNombSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
-                              <Component id="verDescSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
-                              <Component id="verFechaFinSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="confirmarAgregar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                           <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelcodver" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="verCodSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
+                          <Component id="labeldescver" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFechaFinver" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelnombver" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="verNombSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
+                          <Component id="verDescSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
+                          <Component id="verFechaFinSec" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="42" max="32767" attributes="0"/>
@@ -221,6 +217,9 @@
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor de Mano"/>
             </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 36]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonContinuarActionPerformed"/>
@@ -305,6 +304,9 @@
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor de Mano"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 36]"/>
             </Property>
           </Properties>
         </Component>

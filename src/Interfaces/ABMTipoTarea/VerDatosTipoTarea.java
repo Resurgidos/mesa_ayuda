@@ -84,6 +84,7 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
         botonContinuar.setText("Volver");
         botonContinuar.setBorder(null);
         botonContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonContinuar.setPreferredSize(new java.awt.Dimension(120, 36));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);
@@ -103,7 +104,7 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(labelTituloMostrar)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,6 +152,11 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
         verFechaFinTipoTarea.setEditable(false);
         verFechaFinTipoTarea.setBackground(new java.awt.Color(153, 153, 153));
         verFechaFinTipoTarea.setBorder(null);
+        verFechaFinTipoTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verFechaFinTipoTareaActionPerformed(evt);
+            }
+        });
         verFechaFinTipoTarea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 verFechaFinTipoTareaKeyTyped(evt);
@@ -184,15 +190,15 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
                             .addComponent(labelFechaFinver)
                             .addComponent(verCodTipoTarea)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(botonContinuar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(181, 181, 181)
+                        .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(22, 22, 22)
                 .addComponent(labelcodver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verCodTipoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,8 +215,8 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verFechaFinTipoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(botonContinuar)
-                .addGap(20, 20, 20))
+                .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -273,6 +279,10 @@ public class VerDatosTipoTarea extends javax.swing.JFrame {
     private void verDescTipoTareaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verDescTipoTareaKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_verDescTipoTareaKeyTyped
+
+    private void verFechaFinTipoTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verFechaFinTipoTareaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verFechaFinTipoTareaActionPerformed
 
     /**
      * @param args the command line arguments
