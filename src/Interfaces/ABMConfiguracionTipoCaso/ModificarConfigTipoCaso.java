@@ -336,8 +336,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                         dtoModificar.setCodTipoCaso(Integer.parseInt(inputCodTipoCasoModif.getText()));
                         dtoModificar.setNombreTipoCaso(outNombreTipoCaso.getText());
                         dtoModificar.setFechaDesde(inputFechaDesdeModif.getDate());
-                        dtoError = control.modificarConfiguracion(dtoModificar);
-                        JOptionPane.showMessageDialog(null, dtoError.getVerificarError());
+                        dtoError = control.modificarConfiguracion(dtoModificar);                       
                         
                         if(dtoError.getVerificarError() == 0){
                             JOptionPane.showMessageDialog(this, "La Configuración se modificó con éxito");

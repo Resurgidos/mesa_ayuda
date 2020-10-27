@@ -379,7 +379,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
                 if (numTabTipoCaso == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
                     if (tablaTipoCasos.getValueAt(i, 2) != null) {
                         ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-                        ErrorMensaje.setText("El Tipo Caso elegido ya esta dado de baja");
+                        ErrorMensaje.setText("El Tipo Caso elegido ya está dado de baja");
                     } else {
                         dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                     

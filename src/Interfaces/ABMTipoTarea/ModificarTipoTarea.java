@@ -125,6 +125,7 @@ public class ModificarTipoTarea extends javax.swing.JFrame {
 
         inputCodtita.setEditable(false);
         inputCodtita.setBackground(new java.awt.Color(153, 153, 153));
+        inputCodtita.setAlignmentX(0.1F);
         inputCodtita.setBorder(null);
         inputCodtita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

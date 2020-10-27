@@ -130,7 +130,7 @@ public class ExpertoTipoCaso {
     }
 
     public void bajaTipoCaso(DTOTipoCaso dtoTCaso) {
-        Date fecha = new Date();
+        Date fecha = new Date(System.currentTimeMillis());
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();
         

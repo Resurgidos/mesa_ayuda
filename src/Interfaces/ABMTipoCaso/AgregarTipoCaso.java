@@ -353,7 +353,7 @@ public class AgregarTipoCaso extends javax.swing.JFrame {
                             volver.tablaTipoCaso("");
                             this.setVisible(false);
                         }else{
-                           JOptionPane.showMessageDialog(this,dtoTipoCaso.getMensajeError());
+                           JOptionPane.showMessageDialog(this,dtoTipoCaso.getMensajeError(), "Mensaje de Error Nombre", JOptionPane.INFORMATION_MESSAGE);
                             dtoTipoCaso.setVerificarerror(0);
                        } 
                     }while(dtoTipoCaso.getVerificarerror() != 0);
