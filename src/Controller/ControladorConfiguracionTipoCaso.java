@@ -72,6 +72,14 @@ public class ControladorConfiguracionTipoCaso {
     public DTOModificarRenglon buscarRenglonModificar(int nroConfigCaso, int ordenTCTISelec) {
         return expertoC.buscarRenglonModificar( nroConfigCaso, ordenTCTISelec);
     }
+
+    public List<DTOLupitaTipoCaso> buscarLupitaTipoCaso() {
+        return expertoC.buscarLupitaTipoCaso();
+    }
+
+    public List<DTOLupitaTipoInstancia> buscarLupitaTipoInstancia() {
+        return expertoC.buscarLupitaTipoInstancia();
+    }
     
     
 }

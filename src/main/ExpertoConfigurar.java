@@ -3,6 +3,7 @@ package main;
 
 import DTO.DTOCriterio;
 import DTO.DTOsConfiguración.*;
+import DTO.DTOsTipoInstancia.DTOLupaBuscarTarea;
 import java.util.ArrayList;
 import java.util.List;
 import entidades.*;
@@ -806,6 +807,38 @@ public class ExpertoConfigurar {
         
         
         return dtoModificarRenglon;
+    }
+
+    public List<DTOLupitaTipoCaso> buscarLupitaTipoCaso() {
+        FachadaPersistencia.getInstance().iniciarTransaccion();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+        List objetoList = FachadaPersistencia.getInstance().buscar("TipoCaso",listadtoCrit );
+        List<DTOLupitaTipoCaso> resultado = new ArrayList<>();
+
+        for (Object x : objetoList) { 
+            TipoCaso tc = (TipoCaso)x;
+            DTOLupitaTipoCaso dtoTiCaso = new DTOLupitaTipoCaso();             
+            dtoTiCaso.setCodTipoCaso(tc.getCodTipoCaso());
+            dtoTiCaso.setNombreTipoCaso(tc.getNombreTipoCaso());
+            resultado.add(dtoTiCaso);            
+        }
+        return resultado;
+    }
+
+    public List<DTOLupitaTipoInstancia> buscarLupitaTipoInstancia() {
+        FachadaPersistencia.getInstance().iniciarTransaccion();
+        List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistenciaDTOCriterio dtoCrit = new DTOCriterio();
+        List objetoList = FachadaPersistencia.getInstance().buscar("TipoInstancia",listadtoCrit );
+        List<DTOLupitaTipoInstancia> resultado = new ArrayList<>();
+
+        for (Object x : objetoList) { 
+            TipoInstancia ti = (TipoInstancia)x;
+            DTOLupitaTipoInstancia dtoTiCaso = new DTOLupitaTipoInstancia();             
+            dtoTiCaso.setCodigoTipoInstancia(ti.getCodTipoInstancia());
+            dtoTiCaso.setNombreTipoInstancia(ti.getNombreTipoInstancia());
+            resultado.add(dtoTiCaso);            
+        }
+        return resultado;
     }
     
     
