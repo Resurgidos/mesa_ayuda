@@ -385,12 +385,12 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
            
         }*/
        String nombreSector = control.buscarNombSector(codSecModi);
-       if(nombreSector == "No se encontro el Sector"){
+       if(nombreSector == "No se encontró el Sector"){
             outnombSecmod.setText("");
             outnombSecmod.setForeground(Color.red);
             outnombSecmod.setText(nombreSector);
            JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");    
-       }else if(nombreSector == "El Sector ingresado esta dado de Baja"){
+       }else if(nombreSector == "El Sector ingresado está dado de baja"){
            outnombSecmod.setText("");
            outnombSecmod.setForeground(Color.red);
            outnombSecmod.setText(nombreSector);
@@ -420,12 +420,12 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
            
         }*/
        String nombreTT = control.buscarNombTipoTarea(codTTModi);
-       if(nombreTT == "No se encontro el TipoTarea"){
+       if(nombreTT == "No se encontró el Tipo Tarea"){
            outnombTTmod.setText("");
            outnombTTmod.setForeground(Color.red);
            outnombTTmod.setText(nombreTT);
-           JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");    
-       }else if(nombreTT == "El Tipo Tarea ingresado esta dado de Baja"){
+           JOptionPane.showMessageDialog(this, "No se encontró el Tipo Tarea, ingrese otro código");    
+       }else if(nombreTT == "El Tipo Tarea ingresado está dado de baja"){
            outnombTTmod.setText("");
            outnombTTmod.setForeground(Color.red);
            outnombTTmod.setText(nombreTT);

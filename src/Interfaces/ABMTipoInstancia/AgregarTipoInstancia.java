@@ -341,11 +341,11 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
 
                             //y un chatch en el caso que no se pueda crear el Tipo Instancia
                         } else {
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo de Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Tipo Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                         }
 
                     } else {
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Por favor ingrese el código del Sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del Tipo Instancia", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -372,7 +372,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputcodTIKeyTyped
 
@@ -396,7 +396,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputcodSecKeyTyped
 
@@ -416,7 +416,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputcodTTKeyTyped
 
@@ -453,12 +453,12 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         }*/
         
        String nombreSector = control.buscarNombSector(filSector);
-        if (nombreSector == "No se encontro el Sector") {
+        if (nombreSector == "No se encontró el Sector") {
             outnombSec.setText("");
             outnombSec.setForeground(Color.red);
             outnombSec.setText(nombreSector);
-            JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");
-        } else if (nombreSector == "El Sector ingresado esta dado de Baja") {
+            JOptionPane.showMessageDialog(this, "No se encontró el Sector, ingrese otro código");
+        } else if (nombreSector == "El Sector ingresado está dado de baja") {
             outnombSec.setText("");
             outnombSec.setForeground(Color.red);
             outnombSec.setText(nombreSector);
@@ -505,7 +505,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         String mensaje= "Listado de Tipo Tarea \n\n";
         
         for(int i=0; i< listaTarea.size(); i++){           
-            mensaje +=  "Codigo Tipo Tarea: "+ listaTarea.get(i).getCodigoTarea()+ ", Nombre Tipo Tarea: "+ listaTarea.get(i).getNombreTarea()+ "\n\n" ;                
+            mensaje +=  "Código Tipo Tarea: "+ listaTarea.get(i).getCodigoTarea()+ ", Nombre Tipo Tarea: "+ listaTarea.get(i).getNombreTarea()+ "\n\n" ;                
         }
         
         JOptionPane.showMessageDialog(this, mensaje, "Lista de Tipo Tarea", JOptionPane.INFORMATION_MESSAGE);
@@ -519,12 +519,12 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
          }*/
 
        String nombreTipoT = control.buscarNombTipoTarea(nombreTT);
-        if (nombreTipoT == "No se encontro el TipoTarea") {
+        if (nombreTipoT == "No se encontró el Tipo Tarea") {
             outnombTT.setText("");
             outnombTT.setForeground(Color.red);
             outnombTT.setText(nombreTipoT);
-            JOptionPane.showMessageDialog(this, "No se encontro el TipoTarea, ingrese otro código");
-        } else if (nombreTipoT == "El Tipo Tarea ingresado esta dado de Baja") {
+            JOptionPane.showMessageDialog(this, "No se encontró el Tipo Tarea, ingrese otro código");
+        } else if (nombreTipoT == "El Tipo Tarea ingresado está dado de baja") {
             outnombTT.setText("");
             outnombTT.setForeground(Color.red);
             outnombTT.setText(nombreTipoT);

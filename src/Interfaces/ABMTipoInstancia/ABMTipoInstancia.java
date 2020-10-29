@@ -448,7 +448,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
             for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
                 if (tablaTipoInstancia.getValueAt(i, 4) != null) {
                     ErrorMensaje.setForeground(Color.RED);
-                    ErrorMensaje.setText("El Tipo instancia esta dado de baja, no se puede modificar");
+                    ErrorMensaje.setText("El Tipo instancia está dado de baja, no se puede modificar");
                 } else {
                     if (numTabTI == i) { //comparamos de que el numero almacenado en numTabTI sea igual al numero del arreglo
                         
@@ -472,14 +472,14 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para dar de baja");
+            ErrorMensaje.setText("No ha seleccionado ningún Tipo Instancia para dar de baja");
 
         } else {
             for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
                     if (tablaTipoInstancia.getValueAt(i, 4) != null) {
                         ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-                        ErrorMensaje.setText("El sector elegido ya esta dado de baja");
+                        ErrorMensaje.setText("El Tipo Instancia elegido ya está dado de baja");
                     } else {
                     //    dtoTI.setCodTipoInstancia((int) tablaTipoInstancia.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         int j = JOptionPane.showConfirmDialog(this,
@@ -510,7 +510,7 @@ public class ABMTipoInstancia extends javax.swing.JFrame {
         int numTabSec = tablaTipoInstancia.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec       
         if (numTabSec == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-            ErrorMensaje.setText("No ha seleccionado ningún TipoInstancia para mostrar");
+            ErrorMensaje.setText("No ha seleccionado ningún Tipo Instancia para mostrar");
         } else  {
             for (int i = 0; i < tablaTipoInstancia.getRowCount(); i++) { //Recorremos la tabla
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo

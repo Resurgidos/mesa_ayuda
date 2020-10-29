@@ -93,7 +93,7 @@ public class ExpertoTipoInstancia {
                                 tipoIns.setTipoTarea(tt);
                             }else{
                                 dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("El TipoTarea ingresado está dado de baja");
+                                dtoErrores.setErrorMensaje("El Tipo Tarea ingresado está dado de baja");
                                 return dtoErrores;
                              }
                          }            
@@ -148,7 +148,7 @@ public class ExpertoTipoInstancia {
                             verificarcodExiste = sec.getCodSector();
                             if(verificarcodExiste == 0 ){
                                 dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("El Sector ingresado NO EXISTE"); 
+                                dtoErrores.setErrorMensaje("No se encontró el Sector"); 
                                 return dtoErrores;
                             }else if(sec.getFechaHoraFinVigenciaSector() == null){
                              ti.setSector(sec);
@@ -172,13 +172,13 @@ public class ExpertoTipoInstancia {
                             verificarCodTTExiste = tt.getCodTipoTarea();
                             if(verificarCodTTExiste == 0 ){
                                     dtoErrores.setVerificarError(1);
-                                    dtoErrores.setErrorMensaje("El TipoTarea ingresado NO EXISTE"); 
+                                    dtoErrores.setErrorMensaje("No se encontró el Tipo Tarea"); 
                                     return dtoErrores;
                             }else if(tt.getFechaHoraFinVigenciaTipoTarea() == null){
                              ti.setTipoTarea(tt);
                             }else{
                              dtoErrores.setVerificarError(1);
-                             dtoErrores.setErrorMensaje("El TipoTarea ingresado está dado de baja");                            
+                             dtoErrores.setErrorMensaje("El Tipo Tarea ingresado está dado de baja");                            
                              return dtoErrores;
                              }
                             } 
@@ -328,12 +328,12 @@ public class ExpertoTipoInstancia {
                 nombreSec = sec.getNombreSector();
                 return nombreSec;
                 }else{
-                nombreSec = "El Sector ingresado esta dado de Baja";  
+                nombreSec = "El Sector ingresado está dado de baja";  
                 return nombreSec;
                 }
             }
           
-          return "No se encontro el Sector"; 
+          return "No se encontró el Sector"; 
     }
     public String buscarNombTipoTarea(int codTipoTarea){
         FachadaPersistencia.getInstance().iniciarTransaccion();  
@@ -354,11 +354,11 @@ public class ExpertoTipoInstancia {
                 nombreTT = tt.getNombreTipoTarea();
                 return nombreTT;
                 } else{
-                nombreTT = "El Tipo Tarea ingresado esta dado de Baja"; 
+                nombreTT = "El Tipo Tarea ingresado está dado de baja"; 
                 return nombreTT;
                 }
             }                   
-          return "No se encontro el TipoTarea"; 
+          return "No se encontró el Tipo Tarea"; 
     }
     public List<DTOLupaBuscarSector> buscarLupitaSector() {
        
