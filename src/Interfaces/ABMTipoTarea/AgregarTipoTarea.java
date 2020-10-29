@@ -285,7 +285,7 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre de Tipo Tarea", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese el codigo", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor ingrese el código", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (Exception e) {

@@ -342,7 +342,7 @@ public class ABMTipoCaso extends javax.swing.JFrame {
             for (int i = 0; i < tablaTipoCasos.getRowCount(); i++) {
                 if (tablaTipoCasos.getValueAt(i, 2) != null) {
                     ErrorMensaje.setForeground(Color.RED);
-                    ErrorMensaje.setText("El Tipo Caso ya esta dado de baja, no se puede modificar");
+                    ErrorMensaje.setText("El Tipo Caso ya está dado de baja, no se puede modificar");
                 } else {
                     if (i == numTabTipoCaso) {
                         dtoTipoCaso.setCodTipoCaso((int) tablaTipoCasos.getValueAt(i, 0));

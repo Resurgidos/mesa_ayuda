@@ -239,7 +239,7 @@ public class ModificarTipoTarea extends javax.swing.JFrame {
         dtotita.setDescripcionTipoTarea(desctitanuevo);
         control.modificarTipoTarea(dtotita);
         
-        JOptionPane.showMessageDialog(this, "Se modificó con exito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Se modificó con éxito", "Modificado", JOptionPane.INFORMATION_MESSAGE);
         
         abmtita.setVisible(true);
         this.setVisible(false);

@@ -331,7 +331,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             for(int i=0; i<TipoTareaTabla.getRowCount(); i++){ //Recorremos la tabla
                 if(TipoTareaTabla.getValueAt(i, 3) != null){
                     MensajeError.setForeground(Color.RED);
-                    MensajeError.setText("Tipo Tarea esta dado de baja, no se puede modificar");
+                    MensajeError.setText("Tipo Tarea está dado de baja, no se puede modificar");
                 }else{
                 if(numTabtita==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
 
@@ -375,7 +375,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
             if(numTabtita==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
                 if(TipoTareaTabla.getValueAt(i, 3) != null){
                     MensajeError.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-                    MensajeError.setText("Tipo Tarea elegido ya esta dado de baja");
+                    MensajeError.setText("Tipo Tarea elegido ya está dado de baja");
                 }else{
                     dtotipotareamodificar.setCodTipoTarea((int)TipoTareaTabla.getValueAt(i,0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                     int j = JOptionPane.showConfirmDialog(this, ""
@@ -386,7 +386,7 @@ public class ABMTipoTarea extends javax.swing.JFrame {
                                 , "Dar de baja Tipo Tarea", JOptionPane.YES_NO_OPTION);
                     if (j == 0) {
                         controlador.bajaTipoTarea(dtotipotareamodificar);
-                        JOptionPane.showMessageDialog(this, "Tipo Tarea Dado de baja"); 
+                        JOptionPane.showMessageDialog(this, "Tipo Tarea dado de baja"); 
                     }
                     tablaTipoTarea("");
                }

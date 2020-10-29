@@ -359,7 +359,7 @@ public class ABMSector extends javax.swing.JFrame {
             for(int i=0; i<tablaSector.getRowCount(); i++){ //Recorremos la tabla
                 if(tablaSector.getValueAt(i, 3) != null){
                     ErrorMensaje.setForeground(Color.RED);
-                    ErrorMensaje.setText("El sector esta dado de baja, no se puede modificar");
+                    ErrorMensaje.setText("El sector está dado de baja, no se puede modificar");
                 }else{
                 if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo
 
@@ -395,7 +395,7 @@ public class ABMSector extends javax.swing.JFrame {
             if(numTabSec==i){ //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo 
                 if(tablaSector.getValueAt(i, 3) != null){
                     ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-                    ErrorMensaje.setText("El sector elegido ya esta dado de baja");
+                    ErrorMensaje.setText("El sector elegido ya está dado de baja");
                 }else{
                     dtosector.setCodSector((int) tablaSector.getValueAt(i, 0));//el primero del parametro hace referencia a la fila y el segundo a la columna
                         int j = JOptionPane.showConfirmDialog(this, ""
@@ -406,7 +406,7 @@ public class ABMSector extends javax.swing.JFrame {
                                 , "Dar de baja Sector", JOptionPane.YES_NO_OPTION);
                         if (j == 0) {
                             controlador.bajaSector(dtosector);
-                            JOptionPane.showMessageDialog(this, "Sector Dado de baja");
+                            JOptionPane.showMessageDialog(this, "Sector dado de baja");
                         }
                         tablaSectores("");
                }
