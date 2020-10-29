@@ -511,7 +511,7 @@ public class VerDatosConfiguracion extends javax.swing.JFrame {
                             volver.setVisible(true);                                   
                             this.setVisible(false);
                         }else{
-                            JOptionPane.showMessageDialog(this,dtoError.getErrorMensaje());                           
+                            JOptionPane.showMessageDialog(this,dtoError.getErrorMensaje(),"Mensaje de error", JOptionPane.ERROR_MESSAGE);                           
                             dtoError.setVerificarError(0);
                         }
                     }while(dtoError.getVerificarError() != 0);

@@ -28,7 +28,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Trabajar Renglones");
+        setTitle("Detalle Configuración");
         DTOTrabajarRenglones dtorenglo = control.buscarRenglones(codConfSelecc);
         nroConfigCaso.setText(Integer.toString(dtorenglo.getCodConfSelecc()));
         tablaConRenglones(dtorenglo.getTipoCtipoIns());

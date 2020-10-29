@@ -220,18 +220,39 @@ public class ExpertoConfigurar {
         List<DTOCriterio> busquedaConf = new ArrayList<>();
         int codTC = 0;
         Date fechaIVaVerificar = null;
+        int ordenDetalleExiste = 0;
+        
         
             dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
             dtoCrit.setOperacion("=");
             dtoCrit.setValor(numConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
+                           
+            
+            int conteoOrden = 0;
+            int huboErrorEnElOrden = 0;
             for(Object x : objetoList){
                 configTC = (ConfiguracionTipoCaso) x;
                 fechaIVaVerificar = configTC.getFechaInicioVigencia();
-                codTC  = configTC.getTipoCaso().getCodTipoCaso();                    
+                codTC  = configTC.getTipoCaso().getCodTipoCaso();
+                for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {
+                    ordenDetalleExiste = configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia();
+                    if(ordenDetalleExiste == conteoOrden ||  ordenDetalleExiste > (conteoOrden + 1)){
+                        huboErrorEnElOrden = 1;
+                        conteoOrden = ordenDetalleExiste;
+                        System.out.println(conteoOrden);
+                    }
+                    conteoOrden = conteoOrden + 1;
+                }
             }
-                      
+            
+            if(huboErrorEnElOrden != 0){
+                dtoErrores.setVerificarError(1);
+                dtoErrores.setErrorMensaje("El orden: "+conteoOrden+" se encuentra repetido o faltan número intermedios");            
+                return dtoErrores;   
+            }
+            
             List objetoList1 = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",busquedaConf);
                 ConfiguracionTipoCaso configTipoCaso = new ConfiguracionTipoCaso();       
                 for(Object x:objetoList1){
@@ -253,7 +274,13 @@ public class ExpertoConfigurar {
                 dtoErrores.setErrorMensaje("La fechaInicioVigencia debe ser mayor a la fechaActual");
                 return dtoErrores;
             }
-            
+
+            if(ordenDetalleExiste == 0){
+                dtoErrores.setVerificarError(1);
+                dtoErrores.setErrorMensaje("No se puede verificar la configuración porque no posee ningún renglón");            
+                return dtoErrores;                
+            }
+                
             int pruebaFecha = 0; 
             pruebaFecha = cerrarconfiguraciónanterior(numConf);
             if(pruebaFecha !=0){
@@ -272,6 +299,9 @@ public class ExpertoConfigurar {
             }
         return dtoErrores;
     }
+    
+    
+    
     public int cerrarconfiguraciónanterior(int numConf) {
         ConfiguracionTipoCaso configTC = new ConfiguracionTipoCaso();       
         DTOCriterio dtoCrit = new DTOCriterio();
@@ -385,7 +415,7 @@ public class ExpertoConfigurar {
             
             ConfiguracionTipoCaso tc = (ConfiguracionTipoCaso) x;
             
-                if(tc.getTipoCaso().getCodTipoCaso() >= codTC){
+                if(tc.getTipoCaso().getCodTipoCaso() == codTC || codTC==0){
                     
                     dtoConfig.setNroConfig(tc.getNroConfigTC());         
                     dtoConfig.setCodTipoCaso(tc.getTipoCaso().getCodTipoCaso());
@@ -541,14 +571,11 @@ public class ExpertoConfigurar {
                 for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) { 
                    
                     if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == ordenTCTISelec){
-                            
-                         
-                            
                             try{
                                 tcti = configTC.getTipoCtipoIns().get(i);
                                 configTC.removeTCTI(tcti);
                                 FachadaPersistencia.getInstance().guardar(configTC); 
-                          //    FachadaPersistencia.getInstance().delete(tcti);                              
+                                FachadaPersistencia.getInstance().delete(tcti);                              
                             }catch(Exception e){
                                 dtoE.setVerificarError(1);
                                 dtoE.setErrorMensaje("Hubo un error al intentar eliminar el renglón");

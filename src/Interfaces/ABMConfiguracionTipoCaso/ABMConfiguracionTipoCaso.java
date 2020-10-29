@@ -42,14 +42,13 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         textTitulo = new javax.swing.JLabel();
         AgregarCTC = new javax.swing.JButton();
         botonMostrarDatos = new javax.swing.JButton();
-        botonTrabajarRenglo = new javax.swing.JButton();
+        botonDetalleConfiguracion = new javax.swing.JButton();
         botonVerificar = new javax.swing.JButton();
-        filtroBusquedaNombTC = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        filtroBusquedaNumConf = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        panelFiltros = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        filtroBusquedaNombTC = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        filtroBusquedaNumConf = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -81,7 +80,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Núm. Config. TC", "Cod.Tipo Caso", "Nombre Tipo Caso", "Fecha Inicio Vigencia", "Fecha Fin Vigencia", "Fecha Verificación"
+                "Cod.Tipo Caso", "Nombre Tipo Caso", "Núm. Config. TC", "Fecha Inicio Vigencia", "Fecha Fin Vigencia", "Fecha Verificación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -193,17 +192,17 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        botonTrabajarRenglo.setBackground(new java.awt.Color(204, 204, 204));
-        botonTrabajarRenglo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        botonTrabajarRenglo.setForeground(new java.awt.Color(0, 0, 0));
-        botonTrabajarRenglo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar_renglon.png"))); // NOI18N
-        botonTrabajarRenglo.setMnemonic('m');
-        botonTrabajarRenglo.setText("Trabajar con renglones");
-        botonTrabajarRenglo.setBorder(null);
-        botonTrabajarRenglo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonTrabajarRenglo.addActionListener(new java.awt.event.ActionListener() {
+        botonDetalleConfiguracion.setBackground(new java.awt.Color(204, 204, 204));
+        botonDetalleConfiguracion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        botonDetalleConfiguracion.setForeground(new java.awt.Color(0, 0, 0));
+        botonDetalleConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar_renglon.png"))); // NOI18N
+        botonDetalleConfiguracion.setMnemonic('m');
+        botonDetalleConfiguracion.setText("Detalle Configuración");
+        botonDetalleConfiguracion.setBorder(null);
+        botonDetalleConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonDetalleConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonTrabajarRengloActionPerformed(evt);
+                botonDetalleConfiguracionActionPerformed(evt);
             }
         });
 
@@ -221,6 +220,13 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
         });
 
+        panelFiltros.setBackground(new java.awt.Color(204, 204, 204));
+        panelFiltros.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Cód. Tipo Caso: ");
+
         filtroBusquedaNombTC.setBackground(new java.awt.Color(255, 255, 255));
         filtroBusquedaNombTC.setBorder(null);
         filtroBusquedaNombTC.addActionListener(new java.awt.event.ActionListener() {
@@ -237,9 +243,9 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("N° de Configuración: ");
 
         filtroBusquedaNumConf.setBackground(new java.awt.Color(255, 255, 255));
         filtroBusquedaNumConf.setBorder(null);
@@ -257,17 +263,38 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_search_black_18dp.png"))); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Filtrar por Cód. Tipo Caso: ");
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Filtrar por N° de Configuración: ");
+        javax.swing.GroupLayout panelFiltrosLayout = new javax.swing.GroupLayout(panelFiltros);
+        panelFiltros.setLayout(panelFiltrosLayout);
+        panelFiltrosLayout.setHorizontalGroup(
+            panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFiltrosLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        panelFiltrosLayout.setVerticalGroup(
+            panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFiltrosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelFiltrosLayout.createSequentialGroup()
+                        .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1))
+                    .addGroup(panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelFiltrosLayout.createSequentialGroup()
+                                .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))
+                            .addComponent(jLabel1))))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -277,57 +304,35 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(590, 590, 590)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(botonTrabajarRenglo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonDetalleConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(botonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))))
+                            .addComponent(jScrollPane1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(114, 114, 114)
-                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(panelFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(11, 11, 11))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(filtroBusquedaNombTC, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(filtroBusquedaNumConf, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(ErrorMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -339,7 +344,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                                 .addComponent(botonVerificar)
                                 .addComponent(botonMostrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(botonTrabajarRenglo))
+                            .addComponent(botonDetalleConfiguracion))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(42, 42, 42)
                             .addComponent(ModificarConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -399,9 +404,10 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         tablaConfiguraciones = new DefaultTableModel();
         tablaConfiguracionCaso.setModel(tablaConfiguraciones);
         
-        tablaConfiguraciones.addColumn("Num Config. TC");  //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
+          //Cada una  de las sentencias es una columna en la tabla modelo que instanciamos
         tablaConfiguraciones.addColumn("Cod. Tipo Caso");//que Luego esta tabla le setteamos para mostrar en modelo de la interfaz
         tablaConfiguraciones.addColumn("Nomb. Tipo Caso");
+        tablaConfiguraciones.addColumn("Num Config. TC");
         tablaConfiguraciones.addColumn("Fecha Inicio Vigencia");
         tablaConfiguraciones.addColumn("Fecha Fin Vigencia");
         tablaConfiguraciones.addColumn("Fecha Verificacion");
@@ -417,9 +423,9 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
         for (int i = 0; i < ordenarCTC.length; i++) {
             Vector fil = new Vector();
-        fil.add(ordenarCTC[i].getNroConfig());
         fil.add(ordenarCTC[i].getCodTipoCaso());
         fil.add(ordenarCTC[i].getNombreTipoCaso());
+        fil.add(ordenarCTC[i].getNroConfig());
         fil.add(ordenarCTC[i].getFechaInicioVigencia());
             if(ordenarCTC[i].getFechaFinVigencia() != null){
                 fil.add(ordenarCTC[i].getFechaFinVigencia());   
@@ -460,7 +466,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     ErrorMensaje.setText("El Configurar Caso seleccionado ya está verificado, no se puede modificar");
                 }else {
                     if (filaSeleccionada == i) {              
-                        int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 0);  
+                        int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 2);  
                         ModificarConfigTipoCaso mod = new ModificarConfigTipoCaso(codConfSelecc);                      
                         mod.setVisible(true);
                         this.setVisible(false);
@@ -504,7 +510,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
 //                
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
-                    int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 0));
+                    int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 2));
                     VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(0, codConfMostrar );
                     verVerifica.setVisible(true);
                     this.setVisible(false);
@@ -513,7 +519,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonMostrarDatosActionPerformed
 
-    private void botonTrabajarRengloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrabajarRengloActionPerformed
+    private void botonDetalleConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDetalleConfiguracionActionPerformed
         int filaSeleccionada = tablaConfiguracionCaso.getSelectedRow();
         if (filaSeleccionada == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
@@ -525,7 +531,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 ErrorMensaje.setText("La configuración seleccionada ya fue verificada, no se puede trabajar");
               }else{  
                     if (filaSeleccionada == i) {              
-                        int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 0);  
+                        int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 2);  
                         TrabajarRenglones TConReng = new TrabajarRenglones(codConfSelecc);
                         TConReng.setVisible(true);
                         this.setVisible(false);
@@ -535,7 +541,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
 
             }
         }
-    }//GEN-LAST:event_botonTrabajarRengloActionPerformed
+    }//GEN-LAST:event_botonDetalleConfiguracionActionPerformed
 
     private void botonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerificarActionPerformed
         int numTabSec = tablaConfiguracionCaso.getSelectedRow();//Almacenamos el numero de la columna en la variable numTabSec
@@ -550,7 +556,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                 ErrorMensaje.setText("La Configuración seleccionada ya está verificada");
               }else{  
                 if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
-                    int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 0));
+                    int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 2));
                     VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(1, codConfMostrar );
                     verVerifica.setVisible(true);
                     this.setVisible(false);
@@ -614,8 +620,8 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     private javax.swing.JButton AgregarCTC;
     private javax.swing.JTextField ErrorMensaje;
     private javax.swing.JButton ModificarConfiguracion;
+    private javax.swing.JButton botonDetalleConfiguracion;
     private javax.swing.JButton botonMostrarDatos;
-    private javax.swing.JButton botonTrabajarRenglo;
     private javax.swing.JButton botonVerificar;
     private javax.swing.JButton botonVolver;
     private javax.swing.JTextField filtroBusquedaNombTC;
@@ -623,11 +629,10 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelFiltros;
     private javax.swing.JTable tablaConfiguracionCaso;
     private javax.swing.JLabel textTitulo;
     // End of variables declaration//GEN-END:variables
