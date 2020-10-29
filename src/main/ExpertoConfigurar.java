@@ -236,19 +236,25 @@ public class ExpertoConfigurar {
                 configTC = (ConfiguracionTipoCaso) x;
                 fechaIVaVerificar = configTC.getFechaInicioVigencia();
                 codTC  = configTC.getTipoCaso().getCodTipoCaso();
+                int ordenAnterior = 1;
                 for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {
+                    
                     ordenDetalleExiste = configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia();
-                    if(ordenDetalleExiste == conteoOrden){
-                        conteoOrden = conteoOrden + 1;
-                        if(ordenDetalleExiste > conteoOrden){                                                  
+                    System.out.println("Numero de iteracion"+ i);
+                    System.out.println("Estoy dentro del if");
+                    System.out.println("ordenDetalleExiste" + ordenDetalleExiste);
+                    System.out.println("ordenAnterior" + ordenAnterior);
+                    if(ordenAnterior==1 && ordenDetalleExiste==1){
+                        System.out.println("Primera iteracion, empieza con uno");
+                    }else if (ordenDetalleExiste == ordenAnterior+1) {
+                        System.out.println("Esta todo bien y sigue el orden");
+                        ordenAnterior=ordenDetalleExiste;
+                    }else{
                         huboErrorEnElOrden = 1;
-                        conteoOrden = ordenDetalleExiste;
-                        System.out.println(conteoOrden);
-                        conteoOrden = conteoOrden - 1;
+                        System.out.println("Ocurrio un error");
                     }
-                    conteoOrden = conteoOrden + 1;
                 }
-            }
+            
             }
             
             if(huboErrorEnElOrden != 0){
