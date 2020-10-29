@@ -238,13 +238,17 @@ public class ExpertoConfigurar {
                 codTC  = configTC.getTipoCaso().getCodTipoCaso();
                 for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {
                     ordenDetalleExiste = configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia();
-                    if(ordenDetalleExiste == conteoOrden ||  ordenDetalleExiste > (conteoOrden + 1)){
+                    if(ordenDetalleExiste == conteoOrden){
+                        conteoOrden = conteoOrden + 1;
+                        if(ordenDetalleExiste > conteoOrden){                                                  
                         huboErrorEnElOrden = 1;
                         conteoOrden = ordenDetalleExiste;
                         System.out.println(conteoOrden);
+                        conteoOrden = conteoOrden - 1;
                     }
                     conteoOrden = conteoOrden + 1;
                 }
+            }
             }
             
             if(huboErrorEnElOrden != 0){
