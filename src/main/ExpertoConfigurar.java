@@ -10,6 +10,7 @@ import entidades.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import static java.util.Collections.list;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -232,26 +233,48 @@ public class ExpertoConfigurar {
             
             int conteoOrden = 0;
             int huboErrorEnElOrden = 0;
+            
+            
+            
             for(Object x : objetoList){
                 configTC = (ConfiguracionTipoCaso) x;
                 fechaIVaVerificar = configTC.getFechaInicioVigencia();
                 codTC  = configTC.getTipoCaso().getCodTipoCaso();
                 int ordenAnterior = 1;
-                for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {
+                
+                List<TipoCasoTipoInstancia> lista = configTC.getTipoCtipoIns();
+                TipoCasoTipoInstancia[] ordenartcti = new TipoCasoTipoInstancia[lista.size()];
+                ordenartcti = lista.toArray(ordenartcti);
+
+
+                for (int i = 0; i < ordenartcti.length - 1; i++) {
+
+                    for (int j = 0; j < ordenartcti.length - 1; j++) { 
+                        if (ordenartcti[j].getOrdenTipoCasoTipoInstancia()> ordenartcti[j + 1].getOrdenTipoCasoTipoInstancia()) {
+
+                            TipoCasoTipoInstancia temp = ordenartcti[j + 1];
+                            ordenartcti[j + 1] = ordenartcti[j];
+                            ordenartcti[j] = temp;
+
+                        }
+                    }
+                }
+     
+                for (int i = 0; i < ordenartcti.length; i++) {
                     
-                    ordenDetalleExiste = configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia();
-                    System.out.println("Numero de iteracion"+ i);
-                    System.out.println("Estoy dentro del if");
-                    System.out.println("ordenDetalleExiste" + ordenDetalleExiste);
-                    System.out.println("ordenAnterior" + ordenAnterior);
+                    ordenDetalleExiste = ordenartcti[i].getOrdenTipoCasoTipoInstancia();
+//                    System.out.println("Numero de iteracion"+ i);
+//                    System.out.println("Estoy dentro del if");
+//                    System.out.println("ordenDetalleExiste" + ordenDetalleExiste);
+//                    System.out.println("ordenAnterior" + ordenAnterior);
                     if(ordenAnterior==1 && ordenDetalleExiste==1){
-                        System.out.println("Primera iteracion, empieza con uno");
+//                        System.out.println("Primera iteracion, empieza con uno");
                     }else if (ordenDetalleExiste == ordenAnterior+1) {
-                        System.out.println("Esta todo bien y sigue el orden");
+//                        System.out.println("Esta todo bien y sigue el orden");
                         ordenAnterior=ordenDetalleExiste;
                     }else{
                         huboErrorEnElOrden = 1;
-                        System.out.println("Ocurrio un error");
+//                        System.out.println("Ocurrio un error");
                     }
                 }
             
