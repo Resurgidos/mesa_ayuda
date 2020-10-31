@@ -261,14 +261,15 @@ public class ExpertoConfigurar {
                 }
      
                 for (int i = 0; i < ordenartcti.length; i++) {
-                    
-                    ordenDetalleExiste = ordenartcti[i].getOrdenTipoCasoTipoInstancia();
-                   
+                  ordenDetalleExiste = ordenartcti[i].getOrdenTipoCasoTipoInstancia();
+
                     if(ordenAnterior==1 && ordenDetalleExiste==1){
-        
+
                     }else if (ordenDetalleExiste == ordenAnterior+1) {
                         ordenAnterior=ordenDetalleExiste;
-                    }else{
+                    }else if(i==0 && ordenDetalleExiste!=1 ){
+                        huboErrorEnElOrden = 1;
+                    }else {
                         huboErrorEnElOrden = 1;
                     }
                 }
