@@ -7,15 +7,10 @@ import DTO.DTOsConfiguración.DTOLupitaTipoCaso;
 import DTO.DTOsConfiguración.DTOModificarConf;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author leand
- */
+
 public class ModificarConfigTipoCaso extends javax.swing.JFrame {
 
     
@@ -353,12 +348,12 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
    
                         
                 }else{
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso válido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             }else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }}else{
-                JOptionPane.showMessageDialog(this, "Por favor ingrese una fecha", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             
         }
     }//GEN-LAST:event_confirmarModificarActionPerformed
@@ -369,7 +364,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
             MostrarTipoCasoInput(inputCodTipoCasoModif.getText());
         }else{
             JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            
+            outNombreTipoCaso.setText("");
         }
     }//GEN-LAST:event_inputCodTipoCasoModifFocusLost
 

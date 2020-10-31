@@ -335,7 +335,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                                
                                 
                                 if(dtoE.getVerificarError() == 0){
-                                        JOptionPane.showMessageDialog(this, "La configuración se grabo exitosamente");
+                                        JOptionPane.showMessageDialog(this, "La configuración se grabó exitosamente");
                                         ABMConfiguracionTipoCaso abmC = new ABMConfiguracionTipoCaso();
                                         abmC.setVisible(true);
                                         this.setVisible(false);
@@ -343,23 +343,39 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                                     MensajeError.setForeground(Color.red);
                                     MensajeError.setText(dtoE.getErrorMensaje());
                                     dtoE.setVerificarError(0);
-                                }
-                           
-                             }while(dtoE.getVerificarError()!=0);
+                                }                          
+                            }while(dtoE.getVerificarError()!=0);
                                      
-                                     
-                                     }else{
+                                    
+                                   
+                                   
+                                   
+                                }else{
+                            JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                   }else{
+                        JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                   }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            }
+   
+                                   
+                        /*             }else{
                             JOptionPane.showMessageDialog(this, "Por favor ingrese una Fecha de Inicio", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                         }
                    }else{
-                        JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Codigo Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor ingrese un Número de Configuración de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            }
+            }*/
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -463,6 +479,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
             MostrarTipoCasoInput(inputCodTipoCaso1.getText());
         }else{
             JOptionPane.showMessageDialog(this, "Por favor ingrese el código de Tipo Caso", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            inputNombreTipoCaso.setText("");
         }
     }//GEN-LAST:event_inputCodTipoCaso1FocusLost
 

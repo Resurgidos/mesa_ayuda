@@ -93,7 +93,7 @@ public class ExpertoConfigurar {
                                 }
                         }
                     }else{
-                     dtoErrores.setErrorMensaje("El código ya existe");  //Muestra el mensaje si el código está existente
+                     dtoErrores.setErrorMensaje("El nro de configuración ingresado ya existe");  //Muestra el mensaje si el código está existente
                      }
                 }catch(Exception e){
                         System.out.println("No se pudo registrar la configuración de tipo caso"); 
