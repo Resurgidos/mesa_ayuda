@@ -332,9 +332,10 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
                                     volver.setVisible(true);
                                     volver.tablaTI("", "");
                                     this.setVisible(false);
+                                    
 
                                 } else {
-                                    JOptionPane.showMessageDialog(this, dtoErrores.getErrorMensaje());
+                                    JOptionPane.showMessageDialog(this, dtoErrores.getErrorMensaje(),"Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                                     dtoErrores.setVerificarError(0);
                                 }
                             } while (dtoErrores.getVerificarError() != 0);
@@ -457,12 +458,12 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             outnombSec.setText("");
             outnombSec.setForeground(Color.red);
             outnombSec.setText(nombreSector);
-            JOptionPane.showMessageDialog(this, "No se encontró el Sector, ingrese otro código");
+            JOptionPane.showMessageDialog(this, "No se encontró el Sector, ingrese otro código","Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         } else if (nombreSector == "El Sector ingresado está dado de baja") {
             outnombSec.setText("");
             outnombSec.setForeground(Color.red);
             outnombSec.setText(nombreSector);
-            JOptionPane.showMessageDialog(this, nombreSector);
+            JOptionPane.showMessageDialog(this, nombreSector,"Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         } else {
             outnombSec.setText("");
             outnombSec.setForeground(Color.black);
@@ -523,12 +524,12 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
             outnombTT.setText("");
             outnombTT.setForeground(Color.red);
             outnombTT.setText(nombreTipoT);
-            JOptionPane.showMessageDialog(this, "No se encontró el Tipo Tarea, ingrese otro código");
+            JOptionPane.showMessageDialog(this, "No se encontró el Tipo Tarea, ingrese otro código","Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         } else if (nombreTipoT == "El Tipo Tarea ingresado está dado de baja") {
             outnombTT.setText("");
             outnombTT.setForeground(Color.red);
             outnombTT.setText(nombreTipoT);
-            JOptionPane.showMessageDialog(this, nombreTipoT);
+            JOptionPane.showMessageDialog(this, nombreTipoT,"Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         } else {
             outnombTT.setText("");
             outnombTT.setForeground(Color.black);

@@ -61,18 +61,19 @@ public class ExpertoTipoInstancia {
                              
                             sec = (Sector)x ;
                             verificarCodExiste = sec.getCodSector();
-                            if(verificarCodExiste == 0 ){
-                                    dtoErrores.setVerificarError(1);
-                                    dtoErrores.setErrorMensaje("El Sector ingresado NO EXISTE"); 
-                                    return dtoErrores;
-                            }else if(sec.getFechaHoraFinVigenciaSector() == null){
-                                    tipoIns.setSector(sec);                           
-                            }else{
-                                    dtoErrores.setVerificarError(1);
-                                    dtoErrores.setErrorMensaje("El Sector ingresado está dado de baja");
-                                    return dtoErrores;
-                             }
-                         }  
+
+                        } 
+                        if(verificarCodExiste == 0 ){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El Sector ingresado NO EXISTE"); 
+                            return dtoErrores;
+                        }else if(sec.getFechaHoraFinVigenciaSector() == null){
+                            tipoIns.setSector(sec);                           
+                        }else{
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El Sector ingresado está dado de baja");
+                            return dtoErrores;
+                        }
 
                         dtoCrit.setAtributo("codTipoTarea");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                         dtoCrit.setOperacion("=");
@@ -84,19 +85,19 @@ public class ExpertoTipoInstancia {
                         int verificarCodTTExiste = 0; 
                         for (Object x : objetoList2) {
                             tt = (TipoTarea)x ;
-                            verificarCodTTExiste = tt.getCodTipoTarea();
-                            if(verificarCodTTExiste == 0 ){
-                                dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("El TipoTarea ingresado NO EXISTE"); 
-                                return dtoErrores;
-                            }else if(tt.getFechaHoraFinVigenciaTipoTarea() == null){
-                                tipoIns.setTipoTarea(tt);
-                            }else{
-                                dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("El Tipo Tarea ingresado está dado de baja");
-                                return dtoErrores;
-                             }
-                         }            
+                            verificarCodTTExiste = tt.getCodTipoTarea();                            
+                         } 
+                        if(verificarCodTTExiste == 0 ){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El TipoTarea ingresado NO EXISTE"); 
+                            return dtoErrores;
+                        }else if(tt.getFechaHoraFinVigenciaTipoTarea() == null){
+                            tipoIns.setTipoTarea(tt);
+                        }else{
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El Tipo Tarea ingresado está dado de baja");
+                            return dtoErrores;
+                        }
                         
                         //Asigno al tipo instancia que estoy creando el código y el nombre
                         tipoIns.setCodTipoInstancia(dtoAgregarTI.getCodTipoInstancia());           
@@ -143,22 +144,21 @@ public class ExpertoTipoInstancia {
                         List secmod = FachadaPersistencia.getInstance().buscar("Sector",listadtoCrit );
                         int verificarcodExiste = 0; 
                         for (Object h : secmod) {
-
                             sec = (Sector)h ;
                             verificarcodExiste = sec.getCodSector();
-                            if(verificarcodExiste == 0 ){
-                                dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("No se encontró el Sector"); 
-                                return dtoErrores;
-                            }else if(sec.getFechaHoraFinVigenciaSector() == null){
-                             ti.setSector(sec);
-                            }else{
-                             dtoErrores.setVerificarError(1);
-                             dtoErrores.setErrorMensaje("El Sector ingresado está dado de baja");
-                             return dtoErrores;
-                             }                  
-                            }  
-                        
+                                              
+                        }  
+                        if(verificarcodExiste == 0 ){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("No se encontró el Sector"); 
+                            return dtoErrores;
+                        }else if(sec.getFechaHoraFinVigenciaSector() == null){
+                            ti.setSector(sec);
+                        }else{
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El Sector ingresado está dado de baja");
+                            return dtoErrores;
+                        }
                         dtoCrit.setAtributo("codTipoTarea");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                         dtoCrit.setOperacion("=");
                         dtoCrit.setValor(dtoModificarTI.getCodTipoTarea()); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
@@ -169,19 +169,19 @@ public class ExpertoTipoInstancia {
                         int verificarCodTTExiste = 0; 
                         for (Object j : ttmod) {
                             tt = (TipoTarea)j ;
-                            verificarCodTTExiste = tt.getCodTipoTarea();
-                            if(verificarCodTTExiste == 0 ){
-                                    dtoErrores.setVerificarError(1);
-                                    dtoErrores.setErrorMensaje("No se encontró el Tipo Tarea"); 
-                                    return dtoErrores;
-                            }else if(tt.getFechaHoraFinVigenciaTipoTarea() == null){
-                             ti.setTipoTarea(tt);
-                            }else{
-                             dtoErrores.setVerificarError(1);
-                             dtoErrores.setErrorMensaje("El Tipo Tarea ingresado está dado de baja");                            
-                             return dtoErrores;
-                             }
-                            } 
+                            verificarCodTTExiste = tt.getCodTipoTarea();                       
+                        }
+                        if(verificarCodTTExiste == 0 ){
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("No se encontró el Tipo Tarea"); 
+                            return dtoErrores;
+                        }else if(tt.getFechaHoraFinVigenciaTipoTarea() == null){
+                            ti.setTipoTarea(tt);
+                        }else{
+                            dtoErrores.setVerificarError(1);
+                            dtoErrores.setErrorMensaje("El Tipo Tarea ingresado está dado de baja");                            
+                            return dtoErrores;
+                        }
                    ti.setNombreTipoInstancia(dtoModificarTI.getNombreTipoInstancia());
                    FachadaPersistencia.getInstance().modificar(ti);  
              } }catch(Exception e){

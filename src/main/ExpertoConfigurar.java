@@ -263,18 +263,13 @@ public class ExpertoConfigurar {
                 for (int i = 0; i < ordenartcti.length; i++) {
                     
                     ordenDetalleExiste = ordenartcti[i].getOrdenTipoCasoTipoInstancia();
-//                    System.out.println("Numero de iteracion"+ i);
-//                    System.out.println("Estoy dentro del if");
-//                    System.out.println("ordenDetalleExiste" + ordenDetalleExiste);
-//                    System.out.println("ordenAnterior" + ordenAnterior);
+                   
                     if(ordenAnterior==1 && ordenDetalleExiste==1){
-//                        System.out.println("Primera iteracion, empieza con uno");
+        
                     }else if (ordenDetalleExiste == ordenAnterior+1) {
-//                        System.out.println("Esta todo bien y sigue el orden");
                         ordenAnterior=ordenDetalleExiste;
                     }else{
                         huboErrorEnElOrden = 1;
-//                        System.out.println("Ocurrio un error");
                     }
                 }
             
@@ -282,7 +277,7 @@ public class ExpertoConfigurar {
             
             if(huboErrorEnElOrden != 0){
                 dtoErrores.setVerificarError(1);
-                dtoErrores.setErrorMensaje("El orden: "+conteoOrden+" se encuentra repetido o faltan número intermedios");            
+                dtoErrores.setErrorMensaje("No se puede verificar la configuración porque hay renglones salteados");            
                 return dtoErrores;   
             }
             

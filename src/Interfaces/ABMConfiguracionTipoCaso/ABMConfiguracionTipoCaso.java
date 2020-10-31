@@ -471,9 +471,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                         mod.setVisible(true);
                         this.setVisible(false);
                     }
-
                 }
-
             }
         }
     }//GEN-LAST:event_ModificarConfiguracionActionPerformed

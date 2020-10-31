@@ -6,7 +6,6 @@
 package Interfaces.ABMTipoInstancia;
 
 import Controller.ControladorABMTipoInstancia;
-import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
 import DTO.DTOsTipoInstancia.DTOErrorMensajes;
 import DTO.DTOsTipoInstancia.DTOLupaBuscarSector;
 import DTO.DTOsTipoInstancia.DTOLupaBuscarTarea;
@@ -389,12 +388,12 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
             outnombSecmod.setText("");
             outnombSecmod.setForeground(Color.red);
             outnombSecmod.setText(nombreSector);
-           JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código");    
+           JOptionPane.showMessageDialog(this, "No se encontro el Sector, ingrese otro código", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);    
        }else if(nombreSector == "El Sector ingresado está dado de baja"){
            outnombSecmod.setText("");
            outnombSecmod.setForeground(Color.red);
            outnombSecmod.setText(nombreSector);
-           JOptionPane.showMessageDialog(this, nombreSector); 
+           JOptionPane.showMessageDialog(this, nombreSector, "Mensaje de Error", JOptionPane.ERROR_MESSAGE); 
        }else{
          outnombSecmod.setText("");
          outnombSecmod.setForeground(Color.black);
@@ -424,12 +423,12 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
            outnombTTmod.setText("");
            outnombTTmod.setForeground(Color.red);
            outnombTTmod.setText(nombreTT);
-           JOptionPane.showMessageDialog(this, "No se encontró el Tipo Tarea, ingrese otro código");    
+           JOptionPane.showMessageDialog(this, "No se encontró el Tipo Tarea, ingrese otro código", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);    
        }else if(nombreTT == "El Tipo Tarea ingresado está dado de baja"){
            outnombTTmod.setText("");
            outnombTTmod.setForeground(Color.red);
            outnombTTmod.setText(nombreTT);
-           JOptionPane.showMessageDialog(this, nombreTT);    
+           JOptionPane.showMessageDialog(this, nombreTT, "Mensaje de Error", JOptionPane.ERROR_MESSAGE);    
        }else{
          outnombTTmod.setText("");
          outnombTTmod.setForeground(Color.black);
@@ -481,7 +480,7 @@ public class ModificarTipoInstancia extends javax.swing.JFrame {
                                         abmti.setVisible(true);
                                         this.setVisible(false); 
                                     }else{
-                                        JOptionPane.showMessageDialog(this,dtoError.getErrorMensaje());                           
+                                        JOptionPane.showMessageDialog(this,dtoError.getErrorMensaje(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);                           
                                         dtoError.setVerificarError(0);
                                 }}while(dtoError.getVerificarError() != 0);
                          } else {
