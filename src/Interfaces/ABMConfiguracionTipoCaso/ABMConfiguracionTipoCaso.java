@@ -388,18 +388,24 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
         DTOTipoConfiguracionGrilla[] ordenarCTC = new DTOTipoConfiguracionGrilla[lista.size()];
         ordenarCTC = lista.toArray(ordenarCTC);
         
-        
-        for (int i = 0; i < ordenarCTC.length - 1; i++) {
-            
-            for (int j = 0; j < ordenarCTC.length - 1; j++) { 
-                if (ordenarCTC[j].getNroConfig() > ordenarCTC[j + 1].getNroConfig()) {
-                   
-                    DTOTipoConfiguracionGrilla temp = ordenarCTC[j + 1];
+        for (int i = 0; i < ordenarCTC.length - 1; i++) {            
+            for (int j = 0; j < ordenarCTC.length - 1; j++) { //Ordeno de adentro hacia afuera
+                        if (ordenarCTC[j].getNroConfig() > ordenarCTC[j + 1].getNroConfig()) {
+                            DTOTipoConfiguracionGrilla temp = ordenarCTC[j + 1];
+                            ordenarCTC[j + 1] = ordenarCTC[j];
+                            ordenarCTC[j] = temp;
+                        }                   
+                    if (ordenarCTC[j].getFechaInicioVigencia().after(ordenarCTC[j + 1].getFechaInicioVigencia())) {
+                        DTOTipoConfiguracionGrilla fecha = ordenarCTC[j+1];
+                        ordenarCTC[j + 1] = ordenarCTC[j];
+                        ordenarCTC[j] = fecha;
+                    } 
+                if (ordenarCTC[j].getCodTipoCaso() > ordenarCTC[j + 1].getCodTipoCaso()) { 
+                    DTOTipoConfiguracionGrilla nCodTC = ordenarCTC[j+1];
                     ordenarCTC[j + 1] = ordenarCTC[j];
-                    ordenarCTC[j] = temp;
-                  
+                    ordenarCTC[j] = nCodTC;
                 }
-            }
+            }   
         }
         tablaConfiguraciones = new DefaultTableModel();
         tablaConfiguracionCaso.setModel(tablaConfiguraciones);
