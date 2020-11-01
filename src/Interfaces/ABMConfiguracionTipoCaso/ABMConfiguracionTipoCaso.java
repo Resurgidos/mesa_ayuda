@@ -23,7 +23,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     
         initComponents();      
         setLocationRelativeTo(null); //Este método me permite poder centrar la ventana en la pantalla
-        setTitle("ABM Configuracion De Tipo Caso");
+        setTitle("ABMConfiguraciónTipoCaso");
         tablaConfiguracion("","");    
     }
 
