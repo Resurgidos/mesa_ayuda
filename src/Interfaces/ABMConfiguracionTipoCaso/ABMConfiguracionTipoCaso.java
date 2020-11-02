@@ -395,7 +395,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                             ordenarCTC[j + 1] = ordenarCTC[j];
                             ordenarCTC[j] = temp;
                         }                   
-                    if (ordenarCTC[j].getFechaInicioVigencia().after(ordenarCTC[j + 1].getFechaInicioVigencia())) {
+                    if (ordenarCTC[j].getFechaInicioVigencia().before(ordenarCTC[j + 1].getFechaInicioVigencia())) {
                         DTOTipoConfiguracionGrilla fecha = ordenarCTC[j+1];
                         ordenarCTC[j + 1] = ordenarCTC[j];
                         ordenarCTC[j] = fecha;
