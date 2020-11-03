@@ -325,6 +325,7 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
         if(inputFechaDesdeModif.getDate() != null){
             if(!inputCodTipoCasoModif.getText().isEmpty() ){
                 if(!outNombreTipoCaso.getText().isEmpty() ){
+                    if(inputFechaDesdeModif.getDate() != null){
                     do{
                         dtoModificar.setNroConfiguracion(Integer.parseInt(inputNumConfMod.getText()));
                         dtoModificar.setCodTipoCaso(Integer.parseInt(inputCodTipoCasoModif.getText()));
@@ -344,7 +345,9 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
                         }
                     }while(dtoError.getVerificarError()!=0);
                 
-   
+                        }else{
+                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                }
                         
                 }else{
                     JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);

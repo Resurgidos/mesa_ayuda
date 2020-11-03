@@ -323,6 +323,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                 if (!inputCodTipoCaso1.getText().isEmpty()) {
                    if (!inputNombreTipoCaso.getText().isEmpty()) {
                         if(!inputNombreTipoCaso.getText().isEmpty()){
+                            if(fechaDesde.getDate() != null){
                             //int validacion = validarFecha(inputNombreTipoCaso.getText());
                             //if(validacion==1){
                              do{
@@ -347,10 +348,10 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
                             }while(dtoE.getVerificarError()!=0);
                                      
                                     
-                                   
-                                   
-                                   
-                                }else{
+                            
+                                            }else{
+                                    JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                            }}else{
                             JOptionPane.showMessageDialog(this, "Los datos ingresados son incorrectos o hay campos vacíos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                         }
                    }else{
