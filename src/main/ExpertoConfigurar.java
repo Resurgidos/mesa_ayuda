@@ -229,12 +229,9 @@ public class ExpertoConfigurar {
             dtoCrit.setValor(numConf); //En el caso de utilizar mas filtros usamos la cantidad necesaria de estas 3 sentencias
             listadtoCrit.add(dtoCrit);
             List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
-                           
+                          
             
-            int conteoOrden = 0;
             int huboErrorEnElOrden = 0;
-            
-            
             
             for(Object x : objetoList){
                 configTC = (ConfiguracionTipoCaso) x;
@@ -262,9 +259,9 @@ public class ExpertoConfigurar {
      
                 for (int i = 0; i < ordenartcti.length; i++) {
                   ordenDetalleExiste = ordenartcti[i].getOrdenTipoCasoTipoInstancia();
-
+                
                     if(ordenAnterior==1 && ordenDetalleExiste==1){
-
+                        huboErrorEnElOrden = 1;
                     }else if (ordenDetalleExiste == ordenAnterior+1) {
                         ordenAnterior=ordenDetalleExiste;
                     }else if(i==0 && ordenDetalleExiste!=1 ){
@@ -607,14 +604,12 @@ public class ExpertoConfigurar {
                                 FachadaPersistencia.getInstance().delete(tcti);                              
                             }catch(Exception e){
                                 dtoE.setVerificarError(1);
-                                dtoE.setErrorMensaje("Hubo un error al intentar eliminar el renglón");
+                                dtoE.setErrorMensaje("Hubo un error al intentar eliminar el detalle");
                             }
                         }
                     }   
                 }
-            
-            
-        }
+            }
         FachadaPersistencia.getInstance().finalizarTransaccion();
         return dtoE;           
     }
