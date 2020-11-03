@@ -21,7 +21,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
     public AgregarRenglon(int numConfig) {
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Agregar Renglón");
+        setTitle("Agregar Detalle Configuración");
         codConfig = numConfig; 
         inputNumRenglon.requestFocus();
         outNombTI.setForeground(Color.black);
@@ -63,7 +63,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baseline_add_black_18dp.png"))); // NOI18N
-        jLabel5.setText("AGREGAR RENGLÓN");
+        jLabel5.setText("AGREGAR DETALLE");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -85,7 +85,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
         labelNroRenglo.setBackground(new java.awt.Color(0, 0, 0));
         labelNroRenglo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelNroRenglo.setForeground(new java.awt.Color(0, 0, 0));
-        labelNroRenglo.setText("Número de renglón:");
+        labelNroRenglo.setText("Número de detalle:");
 
         inputNumRenglon.setBackground(new java.awt.Color(255, 255, 255));
         inputNumRenglon.setBorder(null);
@@ -410,7 +410,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
                                     dtoE = controlador.agregarRenglon(dtoAgregar);
                                   
                                     if(dtoE.getVerificarError() == 0){
-                                        JOptionPane.showMessageDialog(this, "El renglón se grabó exitosamente");
+                                        JOptionPane.showMessageDialog(this, "El detalle se grabó exitosamente");
                                         TrabajarRenglones abmT = new TrabajarRenglones(codConfig);
                                         abmT.setVisible(true);
                                         this.setVisible(false);

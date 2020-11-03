@@ -17,7 +17,7 @@ public class EditarRenglon extends javax.swing.JFrame {
     public EditarRenglon() {
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Editar Renglón");
+        setTitle("Editar Detalle Configuración");
     }
 
     /**
@@ -123,7 +123,7 @@ public class EditarRenglon extends javax.swing.JFrame {
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelTituloMostrar.setForeground(new java.awt.Color(0, 0, 0));
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojonegro.png"))); // NOI18N
-        labelTituloMostrar.setText("MODIFICAR DE RENGLÓN");
+        labelTituloMostrar.setText("MODIFICAR DETALLE");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -178,7 +178,7 @@ public class EditarRenglon extends javax.swing.JFrame {
                         .addComponent(verNombSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(verDescSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(verFechaFinSec, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

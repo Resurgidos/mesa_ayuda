@@ -20,7 +20,7 @@ public class ModificarRenglon extends javax.swing.JFrame {
     public ModificarRenglon() {
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Modificar Renglón");
+        setTitle("Modificar Detalle Configuración");
         inputMinutosMaximos.selectAll();
         inputMinutosMaximos.requestFocus();
         
@@ -73,7 +73,7 @@ public class ModificarRenglon extends javax.swing.JFrame {
         labelNroRenglo.setBackground(new java.awt.Color(0, 0, 0));
         labelNroRenglo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelNroRenglo.setForeground(new java.awt.Color(0, 0, 0));
-        labelNroRenglo.setText("Número de renglón:");
+        labelNroRenglo.setText("Número de detalle:");
 
         confirmarModificar.setBackground(new java.awt.Color(204, 204, 204));
         confirmarModificar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -144,6 +144,11 @@ public class ModificarRenglon extends javax.swing.JFrame {
         MensajeError.setEditable(false);
         MensajeError.setBackground(new java.awt.Color(204, 204, 204));
         MensajeError.setBorder(null);
+        MensajeError.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MensajeErrorActionPerformed(evt);
+            }
+        });
 
         labelCodTipoInstancia.setBackground(new java.awt.Color(0, 0, 0));
         labelCodTipoInstancia.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -231,32 +236,27 @@ public class ModificarRenglon extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(MensajeError)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(inputordenTCTI, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputMinutosMaximos, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputordenTCTI)
+                    .addComponent(inputMinutosMaximos)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputCodInstancia)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(inputCodInstancia)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelNombTipoInstancia)
-                                            .addComponent(labelCodTipoInstancia)
-                                            .addComponent(labelNroRenglo)
-                                            .addComponent(labelMinDura))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonbuscarTipocaso, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(outNombTI, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18))))
+                                    .addComponent(labelNombTipoInstancia)
+                                    .addComponent(labelCodTipoInstancia)
+                                    .addComponent(labelNroRenglo)
+                                    .addComponent(labelMinDura))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonbuscarTipocaso, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(outNombTI))
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,9 +280,9 @@ public class ModificarRenglon extends javax.swing.JFrame {
                 .addComponent(labelNombTipoInstancia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(outNombTI, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(volverABM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,7 +322,7 @@ public class ModificarRenglon extends javax.swing.JFrame {
                             dtoError = control.modificarRenglon(dtoMofidRenglon);
                             
                             if(dtoError.getVerificarError() == 0){
-                                JOptionPane.showMessageDialog(this, "El renglón se modificó con éxito");
+                                JOptionPane.showMessageDialog(this, "El detalle se modificó con éxito");
                                 TrabajarRenglones trabajarRenglones = new TrabajarRenglones(nroConfiguracion);
                                 trabajarRenglones.setVisible(true);
                                 this.setVisible(false);
@@ -438,6 +438,10 @@ public class ModificarRenglon extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, mensaje, "Lista de Sectores", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonbuscarTipocasoActionPerformed
+
+    private void MensajeErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MensajeErrorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MensajeErrorActionPerformed
 
     /**
      * @param args the command line arguments

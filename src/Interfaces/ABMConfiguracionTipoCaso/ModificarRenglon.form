@@ -50,41 +50,33 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="MensajeError" min="-2" pref="353" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="MensajeError" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="confirmarModificar" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="volverABM" min="-2" pref="120" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="inputordenTCTI" alignment="0" max="32767" attributes="0"/>
-                              <Component id="inputMinutosMaximos" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="inputCodInstancia" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="labelNombTipoInstancia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labelCodTipoInstancia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labelNroRenglo" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labelMinDura" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="botonbuscarTipocaso" min="-2" pref="73" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="outNombTI" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="confirmarModificar" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="volverABM" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="inputordenTCTI" alignment="0" max="32767" attributes="0"/>
+                      <Component id="inputMinutosMaximos" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="inputCodInstancia" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelNombTipoInstancia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelCodTipoInstancia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelNroRenglo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMinDura" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="botonbuscarTipocaso" min="-2" pref="73" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="outNombTI" alignment="0" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,9 +103,9 @@
                   <Component id="labelNombTipoInstancia" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="outNombTI" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Component id="MensajeError" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="confirmarModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="volverABM" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -135,7 +127,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="N&#xfa;mero de rengl&#xf3;n:"/>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero de detalle:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="confirmarModificar">
@@ -237,6 +229,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MensajeErrorActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelCodTipoInstancia">
           <Properties>

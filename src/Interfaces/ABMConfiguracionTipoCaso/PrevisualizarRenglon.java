@@ -10,7 +10,7 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
     public PrevisualizarRenglon(int nroConfigCaso, int ordenTCTISelec) {
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Previsualizar Renglón");
+        setTitle("Previsualizar Detalle Configuración");
         DTOVerRenglon dtorenglon = control.verDatosRenglon(nroConfigCaso, ordenTCTISelec);
         iniciarFormulario(dtorenglon);
         
@@ -94,7 +94,7 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelTituloMostrar.setForeground(new java.awt.Color(0, 0, 0));
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojonegro.png"))); // NOI18N
-        labelTituloMostrar.setText("DATOS DE RENGLÓN");
+        labelTituloMostrar.setText("DATOS DE DETALLE");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -103,7 +103,7 @@ public class PrevisualizarRenglon extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(labelTituloMostrar)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

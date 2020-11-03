@@ -488,7 +488,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/ojonegro.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="TRABAJAR CON RENGL&#xd3;N"/>
+                <Property name="text" type="java.lang.String" value="TRABAJAR CON DETALLE DE CONFIGURACI&#xd3;N"/>
               </Properties>
             </Component>
           </SubComponents>

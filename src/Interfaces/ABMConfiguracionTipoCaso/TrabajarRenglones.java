@@ -333,7 +333,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
 
         labelTituloMostrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelTituloMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ojonegro.png"))); // NOI18N
-        labelTituloMostrar.setText("TRABAJAR CON RENGLÓN");
+        labelTituloMostrar.setText("TRABAJAR CON DETALLE DE CONFIGURACIÓN");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -707,7 +707,7 @@ public class TrabajarRenglones extends javax.swing.JFrame {
                             + "Minutos: " + tablaTrabajarRenglon.getValueAt(i, 1) + "\n"
                             + "Cod Tipo Instancia: " + tablaTrabajarRenglon.getValueAt(i, 2) + "\n"
                             + "Nombre Tipo Instancia: " + tablaTrabajarRenglon.getValueAt(i, 3) + "\n\n",
-                             "Dar de baja renglon", JOptionPane.YES_NO_OPTION);
+                             "Dar de baja detalle", JOptionPane.YES_NO_OPTION);
                     if(j == 0){
                         dtoE = control.eliminarRenglon(numConfig, nroOrden);
                         if (dtoE.getVerificarError() == 0) {
