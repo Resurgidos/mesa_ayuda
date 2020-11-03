@@ -5,12 +5,9 @@
         <group>
             <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/ABMConfiguracionTipoCaso.java</file>
             <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/TrabajarRenglones.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/ModificarRenglon.java</file>
             <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/AgregarRenglon.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/ModificarConfigTipoCaso.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Controller/ControladorConfiguracionTipoCaso.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/AltaConfiguracionTipocaso.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/VerDatosConfiguracion.java</file>
-            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/main/ExpertoConfigurar.java</file>
+            <file>file:/D:/Facultad/Tercer%20Año/Diseño%20de%20sistemas/2020/Proyecto%20final/Proyecto%20Resurgidos/src/Interfaces/ABMConfiguracionTipoCaso/PrevisualizarRenglon.java</file>
         </group>
     </open-files>
 </project-private>
