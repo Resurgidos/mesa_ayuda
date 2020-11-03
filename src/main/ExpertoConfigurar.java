@@ -232,12 +232,12 @@ public class ExpertoConfigurar {
                           
             
             int huboErrorEnElOrden = 0;
-            
+            int ordenAnterior = 1;
             for(Object x : objetoList){
                 configTC = (ConfiguracionTipoCaso) x;
                 fechaIVaVerificar = configTC.getFechaInicioVigencia();
                 codTC  = configTC.getTipoCaso().getCodTipoCaso();
-                int ordenAnterior = 1;
+                
                 
                 List<TipoCasoTipoInstancia> lista = configTC.getTipoCtipoIns();
                 TipoCasoTipoInstancia[] ordenartcti = new TipoCasoTipoInstancia[lista.size()];
@@ -259,13 +259,16 @@ public class ExpertoConfigurar {
      
                 for (int i = 0; i < ordenartcti.length; i++) {
                   ordenDetalleExiste = ordenartcti[i].getOrdenTipoCasoTipoInstancia();
-                if(ordenDetalleExiste == 0){
-                    huboErrorEnElOrden = 1;
-                }else if(ordenDetalleExiste > 1 && i==0){
-                    huboErrorEnElOrden = 1;
-                }else if(ordenDetalleExiste == ordenAnterior+1){
-                    ordenAnterior=ordenDetalleExiste;
-                }
+                  
+                    if(ordenDetalleExiste == 0){
+                        huboErrorEnElOrden = 1;
+                    }else if(ordenDetalleExiste > 1 && i==0){
+                        huboErrorEnElOrden = 1;
+                    }else if(ordenDetalleExiste != ordenAnterior){                         
+                        huboErrorEnElOrden = 1;                            
+                    }else{
+                        ordenAnterior++;                                             
+                    }
                 /*
                     if(ordenAnterior==1 && ordenDetalleExiste==1){
                         huboErrorEnElOrden = 1;
