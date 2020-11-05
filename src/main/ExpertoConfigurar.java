@@ -219,9 +219,9 @@ public class ExpertoConfigurar {
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
         List<DTOCriterio> busquedaConf = new ArrayList<>();
-        int codTC = 0;
-        Date fechaIVaVerificar = null;
-        int ordenDetalleExiste = 0;
+            int codTC = 0;
+            Date fechaIVaVerificar = null;
+            int ordenDetalleExiste = 0;
         
         
             dtoCrit.setAtributo("nroConfigTC");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
@@ -269,18 +269,18 @@ public class ExpertoConfigurar {
                     }else{
                         ordenAnterior++;                                             
                     }
-                /*
-                    if(ordenAnterior==1 && ordenDetalleExiste==1){
-                        huboErrorEnElOrden = 1;
-                    }else if (ordenDetalleExiste == ordenAnterior+1) {
-                        ordenAnterior=ordenDetalleExiste;
-                    }else if(i==0 && ordenDetalleExiste!=1 ){
-                        huboErrorEnElOrden = 1;
-                    }else {
-                        huboErrorEnElOrden = 1;
-                    }*/
                 }
-            
+            }
+            List<DTOCriterio> fechaRepetida = new ArrayList<>();
+            ConfiguracionTipoCaso configTCRepetido = null;
+            List verificarConfigFechaRepetida = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",fechaRepetida);
+            for(Object c: verificarConfigFechaRepetida){
+                configTCRepetido = (ConfiguracionTipoCaso) c;
+                if(configTC.getNroConfigTC() != configTCRepetido.getNroConfigTC() && configTC.getFechaInicioVigencia().equals(configTCRepetido.getFechaInicioVigencia()) && configTCRepetido.getFechaVerificacion() != null){
+                    dtoErrores.setVerificarError(1);
+                    dtoErrores.setErrorMensaje("Una configuracion ya verificada, tiene la misma fecha de Inicio");            
+                    return dtoErrores; 
+                }                   
             }
             
             if(huboErrorEnElOrden != 0){
