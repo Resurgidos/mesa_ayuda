@@ -104,6 +104,7 @@ public class ExpertoConfigurar {
         }
         return dtoErrores;
     }
+    
     public DTOErroresMensajes modificarConfiguracion(DTOModificarConf dtoModificarConfig){
         TipoCaso tipoCaso = new TipoCaso();
         ConfiguracionTipoCaso configTipo = new ConfiguracionTipoCaso();
@@ -121,10 +122,15 @@ public class ExpertoConfigurar {
             listadtoCrit.add(dtoCrit);
              
             try{
-                dtoErrores = validarFecha(dtoModificarConfig.getFechaDesde(), dtoModificarConfig.getCodTipoCaso());
+                
                 List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
  
                 for (Object x : objetoList){
+                    dtoErrores = validarFecha(dtoModificarConfig.getFechaDesde(), dtoModificarConfig.getCodTipoCaso());
+                    
+                    if(dtoErrores.getVerificarError()!=0) return dtoErrores;
+                    
+                    
                     configTipo = (ConfiguracionTipoCaso)x;                 
                  
                     dtoCrit.setAtributo("codTipoCaso");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
@@ -139,6 +145,8 @@ public class ExpertoConfigurar {
                         tipoCaso = (TipoCaso)h ;
                         verificarm = tipoCaso.getCodTipoCaso();
                     }   
+                    
+                    
                         if(dtoModificarConfig.getFechaDesde() == null){
                             dtoErrores.setVerificarError(1);
                             dtoErrores.setErrorMensaje("No ha ingresado una fecha de inicio");  
@@ -276,9 +284,9 @@ public class ExpertoConfigurar {
             List verificarConfigFechaRepetida = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",fechaRepetida);
             for(Object c: verificarConfigFechaRepetida){
                 configTCRepetido = (ConfiguracionTipoCaso) c;
-                if(configTC.getNroConfigTC() != configTCRepetido.getNroConfigTC() && configTC.getFechaInicioVigencia().equals(configTCRepetido.getFechaInicioVigencia()) && configTCRepetido.getFechaVerificacion() != null){
+                if(configTC.getNroConfigTC() != configTCRepetido.getNroConfigTC() && configTC.getFechaInicioVigencia().equals(configTCRepetido.getFechaInicioVigencia()) && configTCRepetido.getFechaVerificacion() != null && configTCRepetido.getTipoCaso().getCodTipoCaso() == configTC.getTipoCaso().getCodTipoCaso()){
                     dtoErrores.setVerificarError(1);
-                    dtoErrores.setErrorMensaje("Una configuracion ya verificada, tiene la misma fecha de Inicio");            
+                    dtoErrores.setErrorMensaje("Una configuración ya verificada tiene la misma fecha de Inicio");            
                     return dtoErrores; 
                 }                   
             }

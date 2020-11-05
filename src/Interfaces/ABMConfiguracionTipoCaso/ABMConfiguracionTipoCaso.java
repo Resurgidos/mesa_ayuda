@@ -459,26 +459,31 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
     private void ModificarConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarConfiguracionActionPerformed
         //Método para modificar
         int filaSeleccionada = tablaConfiguracionCaso.getSelectedRow();
+        
         if (filaSeleccionada == -1) {
             ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
             ErrorMensaje.setText("No ha seleccionado ningún configuración para modificar");
-        }else {
+        }else {           
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if (tablaConfiguracionCaso.getValueAt(i, 4) != "Vigente") {
-                    ErrorMensaje.setForeground(Color.RED);
-                    ErrorMensaje.setText("El Configurar Caso seleccionado está dado de baja, no se puede modificar");
-                }else if (tablaConfiguracionCaso.getValueAt(i, 5) != "Sin verificar"){
-                    ErrorMensaje.setForeground(Color.RED);
-                    ErrorMensaje.setText("El Configurar Caso seleccionado ya está verificado, no se puede modificar");
-                }else {
-                    if (filaSeleccionada == i) {              
-                        int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 2);  
-                        ModificarConfigTipoCaso mod = new ModificarConfigTipoCaso(codConfSelecc);                      
-                        mod.setVisible(true);
-                        this.setVisible(false);
+                
+                if(filaSeleccionada == i){
+                    if (tablaConfiguracionCaso.getValueAt(i, 4) == "Vigente" && tablaConfiguracionCaso.getValueAt(i, 5) != "Sin verificar" ) {             
+                        ErrorMensaje.setForeground(Color.RED);
+                        ErrorMensaje.setText("La Configuración Tipo Caso seleccionada ya está verificada, no se puede modificar");           
+                    }else if( tablaConfiguracionCaso.getValueAt(i, 4) != "Vigente"){                   
+                        ErrorMensaje.setForeground(Color.RED);
+
+                        ErrorMensaje.setText("La Configuración Tipo Caso seleccionada está dada de baja, no se puede modificar");   
+                    }else {
+                        if (filaSeleccionada == i) {              
+                            int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 2);  
+                            ModificarConfigTipoCaso mod = new ModificarConfigTipoCaso(codConfSelecc);                      
+                            mod.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
-            }
+            }            
         }
     }//GEN-LAST:event_ModificarConfiguracionActionPerformed
 
@@ -530,10 +535,16 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningúna configuración para trabajar");
         }else {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-                if(tablaConfiguracionCaso.getValueAt(i,5) != "Sin verificar"){
-                ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-                ErrorMensaje.setText("La configuración seleccionada ya fue verificada, no se puede trabajar");
-              }else{  
+                
+                
+              if(filaSeleccionada==i){
+                if (tablaConfiguracionCaso.getValueAt(i, 4) == "Vigente" && tablaConfiguracionCaso.getValueAt(i, 5) != "Sin verificar" ) {             
+                        ErrorMensaje.setForeground(Color.RED);
+                        ErrorMensaje.setText("La Configuración Tipo Caso seleccionada ya está verificada, no se puede agregar detalle");           
+                }else if( tablaConfiguracionCaso.getValueAt(i, 4) != "Vigente"){                   
+                        ErrorMensaje.setForeground(Color.RED);
+                        ErrorMensaje.setText("La Configuración Tipo Caso seleccionada está dada de baja, no se puede agregar detalle"); 
+                }else{  
                     if (filaSeleccionada == i) {              
                         int codConfSelecc = (int)tablaConfiguracionCaso.getValueAt(i, 2);  
                         TrabajarRenglones TConReng = new TrabajarRenglones(codConfSelecc);
@@ -542,6 +553,7 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
                     }
 
                 }
+              }
 
             }
         }
@@ -555,17 +567,22 @@ public class ABMConfiguracionTipoCaso extends javax.swing.JFrame {
             ErrorMensaje.setText("No ha seleccionado ningúna Configuracion para Verificar");
         } else  {
             for (int i = 0; i < tablaConfiguracionCaso.getRowCount(); i++) { //Recorremos la tabla
-              if(tablaConfiguracionCaso.getValueAt(i,5) != "Sin verificar"){
-                ErrorMensaje.setForeground(Color.RED); //Este sentencia le asigna el color rojo al texto
-                ErrorMensaje.setText("La Configuración seleccionada ya está verificada");
-              }else{  
-                if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
-                    int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 2));
-                    VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(1, codConfMostrar );
-                    verVerifica.setVisible(true);
-                    this.setVisible(false);
+              if(numTabSec==i){
+                if (tablaConfiguracionCaso.getValueAt(i, 4) == "Vigente" && tablaConfiguracionCaso.getValueAt(i, 5) != "Sin verificar" ) {             
+                        ErrorMensaje.setForeground(Color.RED);
+                        ErrorMensaje.setText("La Configuración Tipo Caso seleccionada ya está verificada, no se puede verificar");           
+                }else if( tablaConfiguracionCaso.getValueAt(i, 4) != "Vigente"){                   
+                        ErrorMensaje.setForeground(Color.RED);
+                        ErrorMensaje.setText("La Configuración Tipo Caso seleccionada está dada de baja, no se puede verificar"); 
+                }else{  
+                    if (numTabSec == i) { //comparamos de que el numero almacenado en numTabSec sea igual al numero del arreglo                    
+                        int codConfMostrar = (int) (tablaConfiguracionCaso.getValueAt(i, 2));
+                        VerDatosConfiguracion verVerifica = new VerDatosConfiguracion(1, codConfMostrar );
+                        verVerifica.setVisible(true);
+                        this.setVisible(false);
+                    }
                 }
-            }
+              }
             }
         
         }

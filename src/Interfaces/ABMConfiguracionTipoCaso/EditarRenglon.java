@@ -156,6 +156,11 @@ public class EditarRenglon extends javax.swing.JFrame {
         confirmarAgregar.setBorder(null);
         confirmarAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         confirmarAgregar.setPreferredSize(new java.awt.Dimension(120, 36));
+        confirmarAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -263,6 +268,10 @@ public class EditarRenglon extends javax.swing.JFrame {
         abm.setVisible(false);
         this.setVisible(false);*/
     }//GEN-LAST:event_botonContinuarActionPerformed
+
+    private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarAgregarActionPerformed
 
     /**
      * @param args the command line arguments
