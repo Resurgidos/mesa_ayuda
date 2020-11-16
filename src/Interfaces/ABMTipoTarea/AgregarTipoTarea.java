@@ -234,7 +234,7 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
         char car = evt.getKeyChar();
        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_campocodigoKeyTyped
 
@@ -270,7 +270,7 @@ public class AgregarTipoTarea extends javax.swing.JFrame {
                         
                         if(dtotipotarea.getVerificarError()== 0){//si el mensaje de error del dto es ""(no hubo error) grabamos los datos
                         ABMTipoTarea volver = new ABMTipoTarea(); //Oculto la pagina para dar de alta volviendo al menu de Sector                                                                                                                    
-                        JOptionPane.showMessageDialog(this, "Tipo Tarea fue creado con éxito");
+                        JOptionPane.showMessageDialog(this, "El Tipo Tarea fue creado con éxito");
                         volver.setVisible(true);
                         volver.tablaTipoTarea("");
                         this.setVisible(false);

@@ -34,7 +34,7 @@ public class ExpertoSector {
                                 //Pasamos los parametros al Sector   
                                 if(dtoSec.getCodSector() == 0){ //Verificamos que el codigo no sea cero
                                     dtoSec.setVerificarerror(1);
-                                    dtoSec.setMensajeError("El Código no esta permitido");                                                                        
+                                    dtoSec.setMensajeError("El Código no está permitido");                                                                        
                                 }else{
                                     sector.setCodSector(dtoSec.getCodSector());
                                     sector.setNombreSector(dtoSec.getNombreSector());

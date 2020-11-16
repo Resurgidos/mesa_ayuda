@@ -397,7 +397,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputcodSecKeyTyped
 
@@ -417,7 +417,7 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_inputcodTTKeyTyped
 

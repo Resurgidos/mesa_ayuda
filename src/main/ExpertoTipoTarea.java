@@ -33,7 +33,7 @@ public class ExpertoTipoTarea {
         if(dtotipotarea.getCodTipoTarea() == 0){ 
 //Verificamos que el codigo no sea cero
             dtotipotarea.setVerificarError(1);
-            dtotipotarea.setMensajeError("El Código no esta permitido"); 
+            dtotipotarea.setMensajeError("El Código no está permitido"); 
         }else{
         tipotarea.setCodTipoTarea(dtotipotarea.getCodTipoTarea());
         tipotarea.setNombreTipoTarea(dtotipotarea.getNombreTipoTarea());

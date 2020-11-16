@@ -79,7 +79,7 @@ public class ExpertoTipoCaso {
                 if(dtoTCaso.getVerificarerror() == 0 ){
                     if(dtoTCaso.getCodTipoCaso() == 0){ //Verificamos que el codigo no sea cero
                         dtoTCaso.setVerificarerror(1);
-                        dtoTCaso.setMensajeError("El Código no esta permitido");                                                                        
+                        dtoTCaso.setMensajeError("El Código no está permitido");                                                                        
                     }else{
                         tipoCaso.setCodTipoCaso(dtoTCaso.getCodTipoCaso());
                         tipoCaso.setNombreTipoCaso(dtoTCaso.getNombreTipoCaso());                  

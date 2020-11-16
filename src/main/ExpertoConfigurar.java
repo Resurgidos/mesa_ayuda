@@ -44,7 +44,7 @@ public class ExpertoConfigurar {
                 }if(dtoErrores.getVerificarError() == 0 ){  //Comprobamos que el código no existe. Si existe settea el mensaje
                     if(dtoAgregarConfig.getNroConfiguracion() == 0){ //Verificamos que el codigo no sea cero, si es 0 Settea error
                                     dtoErrores.setVerificarError(1);
-                                    dtoErrores.setErrorMensaje("El Código no esta permitido");                            
+                                    dtoErrores.setErrorMensaje("El Código no está permitido");                            
                              }else{
                                 dtoErrores = validarFecha(dtoAgregarConfig.getFechaDesde(),dtoAgregarConfig.getCodTipoCaso());
                                     if(dtoErrores.getVerificarError()==0){
@@ -64,7 +64,7 @@ public class ExpertoConfigurar {
                                              codExiste = tc.getCodTipoCaso();
                                              if(tc.getFechaFinVigenciaTipoCaso() != null){
                                                 dtoErrores.setVerificarError(1);
-                                                dtoErrores.setErrorMensaje("El TipoCaso esta dado de baja");  
+                                                dtoErrores.setErrorMensaje("El TipoCaso está dado de baja");  
                                                 return dtoErrores;
                                              }
                                             }
@@ -164,7 +164,7 @@ public class ExpertoConfigurar {
                             FachadaPersistencia.getInstance().modificar(configTipo);
                         }else{
                             dtoErrores.setVerificarError(1);
-                            dtoErrores.setErrorMensaje("El tipo caso esta dado de baja");
+                            dtoErrores.setErrorMensaje("El tipo caso está dado de baja");
                             return dtoErrores;
                         }
                     
@@ -293,7 +293,7 @@ public class ExpertoConfigurar {
             
             if(huboErrorEnElOrden != 0){
                 dtoErrores.setVerificarError(1);
-                dtoErrores.setErrorMensaje("No se puede verificar la configuración porque hay renglones salteados");            
+                dtoErrores.setErrorMensaje("No se puede verificar la configuración porque hay número de detalles salteados");            
                 return dtoErrores;   
             }
             
@@ -315,13 +315,13 @@ public class ExpertoConfigurar {
             }
             if(fechaIVaVerificar.before(fechaactual)){
                 dtoErrores.setVerificarError(1);
-                dtoErrores.setErrorMensaje("La fechaInicioVigencia debe ser mayor a la fechaActual");
+                dtoErrores.setErrorMensaje("La fechaInicioVigencia debe ser mayor a la fecha actual");
                 return dtoErrores;
             }
 
             if(ordenDetalleExiste == 0){
                 dtoErrores.setVerificarError(1);
-                dtoErrores.setErrorMensaje("No se puede verificar la configuración porque no posee ningún renglón");            
+                dtoErrores.setErrorMensaje("No se puede verificar la configuración porque no posee ningún detalle");            
                 return dtoErrores;                
             }
                 
@@ -541,7 +541,7 @@ public class ExpertoConfigurar {
                         for (int i = 0; i < configTC.getTipoCtipoIns().size(); i++) {                           
                             if(configTC.getTipoCtipoIns().get(i).getOrdenTipoCasoTipoInstancia() == dtoAR.getOrdenTCTI()){
                                 dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("El orden de renglón ya está existente");
+                                dtoErrores.setErrorMensaje("El número de detalle ya está existente");
                                 return dtoErrores;
                             }
                         }
@@ -777,7 +777,7 @@ public class ExpertoConfigurar {
                     }
                     if(fechaFin != null){
                             dtoErrores.setVerificarError(1);
-                            dtoErrores.setErrorMensaje("El TipoInstancia esta dado de baja");
+                            dtoErrores.setErrorMensaje("El TipoInstancia está dado de baja");
                             return dtoErrores;
                     }
                     if(codExiste == 0){

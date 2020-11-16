@@ -323,7 +323,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_inputNumRenglonKeyTyped
@@ -381,7 +381,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_inputCodTIKeyTyped
@@ -424,7 +424,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
 
                                
                         }else{
-                            JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Instancia valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Por favor ingrese un Código Tipo Instancia válido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
                         JOptionPane.showMessageDialog(this, "Por favor ingrese los minutos máximos de resolución", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -457,7 +457,7 @@ public class AgregarRenglon extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_inputMinMaxKeyTyped

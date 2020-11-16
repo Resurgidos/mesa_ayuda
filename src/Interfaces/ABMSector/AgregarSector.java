@@ -216,7 +216,7 @@ public class AgregarSector extends javax.swing.JFrame {
         //Condicion
         if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Codigo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite numeros", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jTextField1KeyTyped
 
@@ -309,7 +309,7 @@ public class AgregarSector extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del sector", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese el codigo", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor ingrese el código", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (Exception e) {

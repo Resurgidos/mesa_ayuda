@@ -46,7 +46,7 @@ public class ExpertoTipoInstancia {
                 }if(dtoErrores.getVerificarError() == 0 ){  //Comprobamos que el código no existe. Si existe settea el mensaje
                     if(dtoAgregarTI.getCodTipoInstancia() == 0){ //Verificamos que el codigo no sea cero, si es 0 Settea error
                                     dtoErrores.setVerificarError(1);
-                                    dtoErrores.setErrorMensaje("El Código no esta permitido"); 
+                                    dtoErrores.setErrorMensaje("El Código no está permitido"); 
                     }else{                        
                         dtoCrit.setAtributo("codSector");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
                         dtoCrit.setOperacion("=");
