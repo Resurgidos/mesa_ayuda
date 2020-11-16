@@ -114,6 +114,7 @@ public class ExpertoTipoInstancia {
             }catch(Exception e){
                     System.out.println("No se pudo encontrar el TipoInstancia");                
         }
+          FachadaPersistencia.getInstance().finalizarTransaccion();
         return dtoErrores;
     }
         
@@ -190,12 +191,12 @@ public class ExpertoTipoInstancia {
         }catch(Exception e){
             System.out.println("No se pudo encontrar el TipoInstancia");                
         }
-          
+           FachadaPersistencia.getInstance().finalizarTransaccion();
        return dtoErrores;
     }
     public void bajaTipoInstancia(int codTipoInstancia){
-        Date fecha = new Date();
-            
+        
+        Date fecha = new Date();           
         DTOCriterio dtoCrit = new DTOCriterio();//Lo necesitamos para hacer la busqueda en la base de datos
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
             dtoCrit.setAtributo("codTipoInstancia");  //Utilizamos la sentencias para buscar el sector que pusimos en el filtro 
@@ -216,6 +217,7 @@ public class ExpertoTipoInstancia {
                         e.getMessage();
                     }
         }
+                 
      }
     
     public DTOVisualizarDatosTI visualizarDatosTipoInstancia(int codTipoInstancia){
@@ -243,13 +245,14 @@ public class ExpertoTipoInstancia {
                 dtoVisualizar.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
                 dtoVisualizar.setFechaHoraFinVigenciaTipoTarea(ti.getTipoTarea().getFechaHoraFinVigenciaTipoTarea());               
                 }  
-        
+          FachadaPersistencia.getInstance().finalizarTransaccion();
         return dtoVisualizar;
     }
     
    
      
     public List<DTOFiltroTI> filtroTINombreTI2(int cod ,String filTipoInstanciaNomb){ //Filtro la tabla por nombre de tipo instancia
+          FachadaPersistencia.getInstance().iniciarTransaccion();
         DTOCriterio dtoCrit = new DTOCriterio();
         List<DTOCriterio> listadtoCrit = new ArrayList<>();//pasamos esta lista a la fachada de persistencia
 
@@ -280,7 +283,8 @@ public class ExpertoTipoInstancia {
             dtoTI.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
             dtoTI.setFechaHoraFinVigenciaTI(ti.getFechaHoraFinVigenciaTipoInstancia());          
             dtoList.add(dtoTI);
-           }       
+           }
+          FachadaPersistencia.getInstance().finalizarTransaccion();
         return dtoList;
     }
     
@@ -306,7 +310,8 @@ public class ExpertoTipoInstancia {
                 dtoModificar.setCodTipoTarea(ti.getTipoTarea().getCodTipoTarea());
                 dtoModificar.setNombreTipoTarea(ti.getTipoTarea().getNombreTipoTarea());
                 
-                }    
+                }   
+              FachadaPersistencia.getInstance().finalizarTransaccion();
            return dtoModificar;
     }
     public String buscarNombSector(int codSector){
@@ -332,7 +337,7 @@ public class ExpertoTipoInstancia {
                 return nombreSec;
                 }
             }
-          
+            FachadaPersistencia.getInstance().finalizarTransaccion();
           return "No se encontró el Sector"; 
     }
     public String buscarNombTipoTarea(int codTipoTarea){
@@ -357,7 +362,8 @@ public class ExpertoTipoInstancia {
                 nombreTT = "El Tipo Tarea ingresado está dado de baja"; 
                 return nombreTT;
                 }
-            }                   
+            }   
+              FachadaPersistencia.getInstance().finalizarTransaccion();
           return "No se encontró el Tipo Tarea"; 
     }
     public List<DTOLupaBuscarSector> buscarLupitaSector() {
@@ -374,6 +380,7 @@ public class ExpertoTipoInstancia {
             dtoSector.setNombreSector(sector.getNombreSector());
             resultado.add(dtoSector);            
         }
+          FachadaPersistencia.getInstance().finalizarTransaccion();
         return resultado;
     }
     
@@ -390,6 +397,7 @@ public class ExpertoTipoInstancia {
             dtoTarea.setNombreTarea(tt.getNombreTipoTarea());
             resultado.add(dtoTarea);            
         }
+          FachadaPersistencia.getInstance().finalizarTransaccion();
         return resultado;
     }
     

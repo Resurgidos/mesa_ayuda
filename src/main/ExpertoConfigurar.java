@@ -128,7 +128,8 @@ public class ExpertoConfigurar {
                 for (Object x : objetoList){
                     dtoErrores = validarFecha(dtoModificarConfig.getFechaDesde(), dtoModificarConfig.getCodTipoCaso());
                     
-                    if(dtoErrores.getVerificarError()!=0) return dtoErrores;
+                    if(dtoErrores.getVerificarError()==0){ 
+                        
                     
                     
                     configTipo = (ConfiguracionTipoCaso)x;                 
@@ -167,7 +168,9 @@ public class ExpertoConfigurar {
                             dtoErrores.setErrorMensaje("El tipo caso está dado de baja");
                             return dtoErrores;
                         }
-                    
+                    } else {
+                        return dtoErrores;
+                    }
                 } 
             }catch(Exception e){
                 System.out.println("No se pudo modificar el TipoCaso"); 
@@ -305,9 +308,9 @@ public class ExpertoConfigurar {
                     if(configTipoCaso.getFechaVerificacion() != null){
                         if(configTipoCaso.getTipoCaso().getCodTipoCaso() == codTC){
                             if(fechaIVaVerificar.before(configTipoCaso.getFechaInicioVigencia())){
-                                dtoErrores.setVerificarError(1);
-                                dtoErrores.setErrorMensaje("La fechaDesde ingresada debe ser mayor a la fechaInicioVigencia de la configuración anterior verificada");                               
-                                return dtoErrores;
+                                    dtoErrores.setVerificarError(1);
+                                    dtoErrores.setErrorMensaje("La fechaDesde ingresada debe ser mayor a la fechaInicioVigencia de la configuración anterior verificada");                               
+                                    return dtoErrores;
                             }
                         }
                     }
@@ -425,7 +428,7 @@ public class ExpertoConfigurar {
                 if(configTC.getFechaFinVigencia() == null){
                     if(configTC.getTipoCaso().getCodTipoCaso() == codTipoCaso){
                         if(configTC.getFechaVerificacion() != null){
-                            if(fechaDesde.before(configTC.getFechaInicioVigencia())){                        
+                            if(fechaDesde.before(configTC.getFechaInicioVigencia())||fechaDesde.equals(configTC.getFechaInicioVigencia())){                        
                                 dtoErrores.setErrorMensaje("Fecha No permitida. Hay una configuración anterior verificada, ingrese otra");
                                 dtoErrores.setVerificarError(1);   
                             }                     
