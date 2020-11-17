@@ -373,10 +373,27 @@ public class ModificarConfigTipoCaso extends javax.swing.JFrame {
     private void botonbuscarTipocasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarTipocasoActionPerformed
         List<DTOLupitaTipoCaso> listaTipoCasos = control.buscarLupitaTipoCaso();
 
+        DTOLupitaTipoCaso[] ordenarTC = new DTOLupitaTipoCaso[listaTipoCasos.size()];
+        ordenarTC = listaTipoCasos.toArray(ordenarTC);
+        
+        
+        for (int i = 0; i < ordenarTC.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTC.length - 1; j++) { 
+                if (ordenarTC[j].getCodTipoCaso() > ordenarTC[j + 1].getCodTipoCaso()) {
+                   
+                    DTOLupitaTipoCaso temp = ordenarTC[j + 1];
+                    ordenarTC[j + 1] = ordenarTC[j];
+                    ordenarTC[j] = temp;
+                  
+                }
+            }
+        }
+        
         String mensaje= "Listado de Tipo Caso \n\n ";
 
         for(int i=0; i< listaTipoCasos.size(); i++){
-            mensaje +=  "Código Tipo Caso: "+ listaTipoCasos.get(i).getCodTipoCaso()+ ", Nombre Tipo Caso: "+ listaTipoCasos.get(i).getNombreTipoCaso()+ "\n\n" ;
+            mensaje +=  "Código Tipo Caso: "+ ordenarTC[i].getCodTipoCaso()+ ", Nombre Tipo Caso: "+ ordenarTC[i].getNombreTipoCaso()+ "\n\n" ;
         }
 
         JOptionPane.showMessageDialog(this, mensaje, "Lista de Sectores", JOptionPane.INFORMATION_MESSAGE);

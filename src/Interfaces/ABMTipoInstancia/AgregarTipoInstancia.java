@@ -2,6 +2,7 @@ package Interfaces.ABMTipoInstancia;
 
 import DTO.DTOsTipoInstancia.DTOAgregarTipoInstancia;
 import Controller.ControladorABMTipoInstancia;
+import DTO.DTOsConfiguración.DTOLupitaTipoCaso;
 import DTO.DTOsTipoInstancia.*;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
@@ -489,12 +490,29 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_inputcodTTFocusLost
 
     private void botonbuscarSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarSectorActionPerformed
-         List<DTOLupaBuscarSector> listaSectores = control.buscarLupitaSector();
+        List<DTOLupaBuscarSector> listaSectores = control.buscarLupitaSector();
         
+        DTOLupaBuscarSector[] ordenarTC = new DTOLupaBuscarSector[listaSectores.size()];
+        ordenarTC = listaSectores.toArray(ordenarTC);
+        
+        
+        for (int i = 0; i < ordenarTC.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTC.length - 1; j++) { 
+                if (ordenarTC[j].getCodigoSector()> ordenarTC[j + 1].getCodigoSector()) {
+                   
+                    DTOLupaBuscarSector temp = ordenarTC[j + 1];
+                    ordenarTC[j + 1] = ordenarTC[j];
+                    ordenarTC[j] = temp;
+                  
+                }
+            }
+        }
+         
         String mensaje= "Listado de Sectores \n\n ";
         
         for(int i=0; i< listaSectores.size(); i++){           
-            mensaje +=  "Codigo Sector: "+ listaSectores.get(i).getCodigoSector()+ ", Nombre Sector: "+ listaSectores.get(i).getNombreSector() + "\n\n" ;                
+            mensaje +=  "Codigo Sector: "+ ordenarTC[i].getCodigoSector()+ ", Nombre Sector: "+ ordenarTC[i].getNombreSector() + "\n\n" ;                
         }
         
         JOptionPane.showMessageDialog(this, mensaje, "Lista de Sectores", JOptionPane.INFORMATION_MESSAGE);
@@ -503,10 +521,27 @@ public class AgregarTipoInstancia extends javax.swing.JFrame {
     private void botonbuscarTipoTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarTipoTareaActionPerformed
         List<DTOLupaBuscarTarea> listaTarea = control.buscarLupitaTarea();
         
+        DTOLupaBuscarTarea[] ordenarTC = new DTOLupaBuscarTarea[listaTarea.size()];
+        ordenarTC = listaTarea.toArray(ordenarTC);
+        
+        
+        for (int i = 0; i < ordenarTC.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTC.length - 1; j++) { 
+                if (ordenarTC[j].getCodigoTarea()> ordenarTC[j + 1].getCodigoTarea()) {
+                   
+                    DTOLupaBuscarTarea temp = ordenarTC[j + 1];
+                    ordenarTC[j + 1] = ordenarTC[j];
+                    ordenarTC[j] = temp;
+                  
+                }
+            }
+        }
+        
         String mensaje= "Listado de Tipo Tarea \n\n";
         
         for(int i=0; i< listaTarea.size(); i++){           
-            mensaje +=  "Código Tipo Tarea: "+ listaTarea.get(i).getCodigoTarea()+ ", Nombre Tipo Tarea: "+ listaTarea.get(i).getNombreTarea()+ "\n\n" ;                
+            mensaje +=  "Código Tipo Tarea: "+ ordenarTC[i].getCodigoTarea()+ ", Nombre Tipo Tarea: "+ ordenarTC[i].getNombreTarea()+ "\n\n" ;                
         }
         
         JOptionPane.showMessageDialog(this, mensaje, "Lista de Tipo Tarea", JOptionPane.INFORMATION_MESSAGE);

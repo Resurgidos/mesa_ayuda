@@ -469,10 +469,27 @@ public class AgregarRenglon extends javax.swing.JFrame {
     private void botonbuscarTipocasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarTipocasoActionPerformed
         List<DTOLupitaTipoInstancia> listadoTipoInstancia = controlador.buscarLupitaTipoInstancia();
 
+        DTOLupitaTipoInstancia[] ordenarTC = new DTOLupitaTipoInstancia[listadoTipoInstancia.size()];
+        ordenarTC = listadoTipoInstancia.toArray(ordenarTC);
+        
+        
+        for (int i = 0; i < ordenarTC.length - 1; i++) {
+            
+            for (int j = 0; j < ordenarTC.length - 1; j++) { 
+                if (ordenarTC[j].getCodigoTipoInstancia()> ordenarTC[j + 1].getCodigoTipoInstancia()) {
+                   
+                    DTOLupitaTipoInstancia temp = ordenarTC[j + 1];
+                    ordenarTC[j + 1] = ordenarTC[j];
+                    ordenarTC[j] = temp;
+                  
+                }
+            }
+        }
+        
         String mensaje= "Listado de Tipo Instancia \n\n ";
 
         for(int i=0; i< listadoTipoInstancia.size(); i++){
-            mensaje +=  "Código Tipo Instancia: "+ listadoTipoInstancia.get(i).getCodigoTipoInstancia()+ ", Nombre Tipo Instancia: "+ listadoTipoInstancia.get(i).getNombreTipoInstancia()+ "\n\n" ;
+            mensaje +=  "Código Tipo Instancia: "+ ordenarTC[i].getCodigoTipoInstancia()+ ", Nombre Tipo Instancia: "+ ordenarTC[i].getNombreTipoInstancia()+ "\n\n" ;
         }
 
         JOptionPane.showMessageDialog(this, mensaje, "Lista de Sectores", JOptionPane.INFORMATION_MESSAGE);
