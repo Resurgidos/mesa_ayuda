@@ -64,7 +64,7 @@ public class ExpertoConfigurar {
                                              codExiste = tc.getCodTipoCaso();
                                              if(tc.getFechaFinVigenciaTipoCaso() != null){
                                                 dtoErrores.setVerificarError(1);
-                                                dtoErrores.setErrorMensaje("El TipoCaso está dado de baja");  
+                                                dtoErrores.setErrorMensaje("El tipo de caso ingresado está dado de baja");  
                                                 return dtoErrores;
                                              }
                                             }
@@ -165,7 +165,7 @@ public class ExpertoConfigurar {
                             FachadaPersistencia.getInstance().modificar(configTipo);
                         }else{
                             dtoErrores.setVerificarError(1);
-                            dtoErrores.setErrorMensaje("El tipo caso está dado de baja");
+                            dtoErrores.setErrorMensaje("El tipo de caso ingresado está dado de baja");
                             return dtoErrores;
                         }
                     } else {

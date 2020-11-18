@@ -197,6 +197,7 @@ public class AltaConfiguracionTipocaso extends javax.swing.JFrame {
         MensajeError.setBackground(new java.awt.Color(204, 204, 204));
         MensajeError.setBorder(null);
 
+        fechaDesde.setMaxSelectableDate(new java.util.Date(16725240066000L));
         fechaDesde.setMinSelectableDate(new java.util.Date(14467000L));
 
         botonbuscarTipocaso.setBackground(new java.awt.Color(119, 148, 166));

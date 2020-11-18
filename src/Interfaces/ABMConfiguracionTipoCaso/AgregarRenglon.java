@@ -396,9 +396,9 @@ public class AgregarRenglon extends javax.swing.JFrame {
     private void confirmarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarAgregarActionPerformed
         //Método para agregar un Tipo de Instancia
        //  try {
-            if (!inputCodTI.getText().isEmpty()) {
+            if (!inputNumRenglon.getText().isEmpty()) {
                 if (!inputMinMax.getText().isEmpty()) {
-                    if (!inputNumRenglon.getText().isEmpty()) {
+                    if (!inputCodTI.getText().isEmpty()) {
                         
                                 do{
                                     DTOAgregarRenglon dtoAgregar = new DTOAgregarRenglon();
