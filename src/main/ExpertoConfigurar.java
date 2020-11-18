@@ -753,6 +753,7 @@ public class ExpertoConfigurar {
         dtoCrit.setOperacion("=");
         dtoCrit.setValor(dtoMofidRenglon.getNroConfig()); 
         validarCod.add(dtoCrit);
+        listadtoCrit.add(dtoCrit);
         List objetoList = FachadaPersistencia.getInstance().buscar("ConfiguracionTipoCaso",listadtoCrit );
         try{        
         for (Object x : objetoList){
