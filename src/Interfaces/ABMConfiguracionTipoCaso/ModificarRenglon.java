@@ -135,6 +135,11 @@ public class ModificarRenglon extends javax.swing.JFrame {
                 inputCodInstanciaActionPerformed(evt);
             }
         });
+        inputCodInstancia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputCodInstanciaKeyTyped(evt);
+            }
+        });
 
         labelNombTipoInstancia.setBackground(new java.awt.Color(0, 0, 0));
         labelNombTipoInstancia.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -457,6 +462,18 @@ public class ModificarRenglon extends javax.swing.JFrame {
     private void MensajeErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MensajeErrorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MensajeErrorActionPerformed
+
+    private void inputCodInstanciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCodInstanciaKeyTyped
+         //Declaramos una variable y asignamos un evento
+        char car = evt.getKeyChar();
+
+        //Condicion
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Por favor el campo solo admite números", "Mensaje de Error Código", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_inputCodInstanciaKeyTyped
 
     /**
      * @param args the command line arguments
